@@ -1,0 +1,11 @@
+# secrets: never commit
+API/
+*.pages
+.env
+*.token
+
+# local build output / cache
+data/
+out/
+__pycache__/
+.DS_Store

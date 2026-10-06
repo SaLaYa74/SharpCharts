@@ -136,11 +136,20 @@ def main():
     urls = [f"https://raw.githubusercontent.com/{repo}/{sha}/{r}" for r in rel]
     summary("\n" + "\n".join(f"![slide {i+1}]({u})" for i, u in enumerate(urls)))
 
+    from sharpcharts.instagram import Instagram, InstagramError
     if not live:
+        if os.environ.get("IG_TOKEN"):
+            try:  # read-only token check, publishes nothing
+                ig = Instagram()
+                me, limit = ig.me(), ig.publishing_limit()
+                summary(f"\n🔑 Token OK: signed in as **@{me.get('username')}** · "
+                        f"{limit.get('quota_usage', 0)} posts used in the last 24h")
+            except InstagramError as e:
+                summary(f"\n❌ Token check failed: {e}")
+                sys.exit(1)
         summary("\nDry run: nothing was posted. Set POSTING_ENABLED=true to go live.")
         return
 
-    from sharpcharts.instagram import Instagram
     ig = Instagram()
     limit = ig.publishing_limit()
     if limit.get("quota_usage", 0) >= limit.get("config", {}).get("quota_total", 50):

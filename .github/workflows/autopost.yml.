@@ -1,0 +1,41 @@
+name: Auto-post
+
+on:
+  schedule:
+    - cron: "0 16 * * 2"   # Tue 9am PT: weekly recap carousel
+    - cron: "0 17 * * 4"   # Thu 10am PT: week slate carousel
+    - cron: "0 17 * * 6"   # Sat 10am PT: featured game
+  workflow_dispatch:
+    inputs:
+      kind:
+        description: "Which post"
+        type: choice
+        options: [auto, recap, slate, featured]
+        default: auto
+
+permissions:
+  contents: write
+
+concurrency:
+  group: autopost
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+      - name: Configure git
+        run: |
+          git config user.name "sharpcharts-bot"
+          git config user.email "actions@users.noreply.github.com"
+      - name: Build and post
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          POSTING_ENABLED: ${{ vars.POSTING_ENABLED }}
+        run: python autopost.py "${{ inputs.kind || 'auto' }}"

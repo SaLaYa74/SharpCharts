@@ -2,7 +2,7 @@ name: Auto-post
 
 on:
   schedule:
-    - cron: "7 * * * *"   # every hour; sharpcharts/schedule.py decides what's due
+        - cron: "*/15 * * * *"   # every 15 min; sharpcharts/schedule.py decides what's due
   workflow_dispatch:
     inputs:
       target:

@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""Build one SharpCharts post and (optionally) publish it to Instagram.
+"""SharpCharts runner: builds, checks and publishes posts on the calendar in sharpcharts/schedule.py.
 
-    python3 autopost.py slate              # dry run: build + save to media/, nothing posted
-    python3 autopost.py auto               # pick by day of week (Tue recap, Thu slate, Sat featured)
-    python3 autopost.py recap --live       # actually publish (needs IG_TOKEN + a pushed git repo)
+    python3 autopost.py                    # run whatever is due now (what GitHub runs hourly)
+    python3 autopost.py mlb_story          # run one job or builder now (dry run unless --live)
+    python3 autopost.py --list             # show the calendar
 
-In GitHub Actions, posting is live only when the repo variable POSTING_ENABLED is "true".
-Safety: nothing is posted if score verification fails, the week isn't complete,
-the caption breaks Instagram limits, or the same post key was already published.
+Every post goes through the data-check gate (sharpcharts/checks.py). Any blocking
+check means it is NOT published. Results are saved in media/<run>/checks.json.
+Posting needs BOTH the job marked live in schedule.py AND the repo variable
+POSTING_ENABLED=true (the global kill switch).
 """
 import argparse
 import json
@@ -15,17 +16,24 @@ import os
 import subprocess
 import sys
 import time
+import traceback
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 from PIL import Image
 
+from sharpcharts import archive
+from sharpcharts import checks as C
 from sharpcharts import posts as P
+from sharpcharts import sports as S
+from sharpcharts.schedule import JOBS, WINDOW_HOURS, Job
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-LOG = os.path.join(ROOT, "posted.json")
-SCHEDULE = {1: "recap", 3: "slate", 5: "featured"}  # Mon=0 … Tue=1, Thu=3, Sat=5 (Pacific time)
+PT = ZoneInfo("America/Los_Angeles")
+POSTED = os.path.join(ROOT, "posted.json")
+RUNS = os.path.join(ROOT, "state", "runs.json")
+DONE = ("posted", "previewed", "done", "duplicate", "skipped")
 
 
 def sh(*cmd):
@@ -40,31 +48,25 @@ def summary(text):
     print(text)
 
 
-def load_log():
-    return json.load(open(LOG)) if os.path.exists(LOG) else {}
+def load(path):
+    return json.load(open(path)) if os.path.exists(path) else {}
 
 
-def to_jpeg(png):
-    jpg = png[:-4] + ".jpg"
-    Image.open(png).convert("RGB").save(jpg, "JPEG", quality=92, optimize=True)  # API requires JPEG
-    os.remove(png)
-    return jpg
-
-
-def check_caption(caption):
-    if len(caption) > 2200:
-        raise P.DataError(f"Caption too long ({len(caption)} > 2200)")
-    if caption.count("#") > 30:
-        raise P.DataError("More than 30 hashtags")
+def save(path, data):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w") as f:
+        json.dump(data, f, indent=2, sort_keys=True)
 
 
 def git_push(message, paths):
-    sh("git", "add", *paths)
-    if not sh("git", "status", "--porcelain", *paths):
+    paths = [p for p in paths if os.path.exists(os.path.join(ROOT, p))]
+    if not paths:
         return sh("git", "rev-parse", "HEAD")
-    sh("git", "commit", "-m", message)
-    sh("git", "pull", "--rebase", "--quiet")
-    sh("git", "push", "--quiet")
+    sh("git", "add", *paths)
+    if sh("git", "diff", "--cached", "--name-only"):
+        sh("git", "commit", "-m", message)
+        sh("git", "pull", "--rebase", "--quiet")
+        sh("git", "push", "--quiet")
     return sh("git", "rev-parse", "HEAD")
 
 
@@ -80,92 +82,174 @@ def wait_public(url, tries=24):
     raise RuntimeError(f"Image never became public: {url}")
 
 
+def to_jpeg(png):
+    jpg = png[:-4] + ".jpg"
+    Image.open(png).convert("RGB").save(jpg, "JPEG", quality=90, optimize=True)  # API requires JPEG
+    os.remove(png)
+    return jpg
+
+
+class Runner:
+    def __init__(self, live_allowed, in_ci, force=False):
+        self.live_allowed, self.in_ci, self.force = live_allowed, in_ci, force
+        self._ctx = None
+        self.touched = set()
+
+    @property
+    def ctx(self):
+        if self._ctx is None:
+            self._ctx = P.Context(2026)
+        return self._ctx
+
+    def build(self, job, out_dir):
+        if job.builder in S.BUILDERS:
+            return S.BUILDERS[job.builder](out_dir)
+        sizes = ("story",) if job.builder.endswith("_story") else ("feed",)
+        return P.BUILDERS[job.builder](self.ctx, out_dir, sizes)
+
+    def run(self, job, now):
+        """Returns (status, detail)."""
+        if job.builder == "archive":
+            files = archive.snapshot(ROOT, now.date())
+            self.touched.add("archive")
+            return "done", f"{len(files)} snapshot files"
+
+        out_dir = os.path.join(ROOT, "media", f"{now:%Y-%m-%d}_{job.name}")
+        try:
+            post = self.build(job, out_dir)
+        except P.NoContent as e:
+            return "skipped", str(e)
+        except P.DataError as e:
+            return "waiting", str(e)
+
+        posted = load(POSTED)
+        if post.key in posted and not self.force:
+            return "duplicate", f"{post.key} already posted"
+
+        # Final gate: rendered images + caption, on top of the builder's data checks.
+        images = [to_jpeg(img[post.size]) for img in post.images][:P.MAX_CAROUSEL]
+        for img in images:
+            C.image(post.checks, img, post.size)
+        if post.media == "feed":
+            C.caption(post.checks, post.caption)
+        post.checks.save(os.path.join(out_dir, "checks.json"))
+        with open(os.path.join(out_dir, "caption.txt"), "w") as f:
+            f.write(post.caption)
+        self.touched.add(os.path.relpath(out_dir, ROOT))
+
+        live = job.live and self.live_allowed
+        mode = "🚀 LIVE" if live else "🧪 PREVIEW"
+        summary(f"\n## {mode} · `{job.name}` → `{post.key}` ({post.media}, {len(images)} image{'s' * (len(images) > 1)})")
+        summary(post.checks.markdown())
+        if post.media == "feed":
+            summary("```\n" + post.caption + "\n```")
+
+        if not post.checks.ok:
+            return "blocked", "; ".join(i["detail"] for i in post.checks.blocked)[:300]
+        if not self.in_ci and not live:
+            return "previewed", f"saved to {out_dir}"
+
+        rel = [os.path.relpath(p, ROOT) for p in images]
+        sha = git_push(f"{'Post' if live else 'Preview'} {post.key}", [os.path.relpath(out_dir, ROOT)])
+        repo = os.environ.get("GITHUB_REPOSITORY") or "SaLaYa74/SharpCharts"
+        urls = [f"https://raw.githubusercontent.com/{repo}/{sha}/{r}" for r in rel]
+        summary("\n" + " ".join(f"![{i + 1}]({u})" for i, u in enumerate(urls)))
+        if not live:
+            return "previewed", "built and checked, not published"
+
+        from sharpcharts.instagram import Instagram
+        ig = Instagram()
+        limit = ig.publishing_limit()
+        if limit.get("quota_usage", 0) >= limit.get("config", {}).get("quota_total", 50):
+            return "waiting", "Instagram daily publishing limit reached"
+        for u in urls:
+            wait_public(u)
+        media_id = ig.publish(urls, post.caption, media=post.media)
+        link = None if post.media == "story" else ig.permalink(media_id)
+        posted = load(POSTED)
+        posted[post.key] = {"media_id": media_id, "permalink": link, "media": post.media, "images": len(urls),
+                            "job": job.name, "posted_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
+        save(POSTED, posted)
+        self.touched.add("posted.json")
+        summary(f"✅ Published {post.media}: {link or post.key}")
+        return "posted", link or post.key
+
+
+def due_jobs(now, runs):
+    out = []
+    for job in JOBS:
+        if now.weekday() not in job.days:
+            continue
+        hh, mm = map(int, job.time.split(":"))
+        start = now.replace(hour=hh, minute=mm, second=0, microsecond=0)
+        if not (start <= now < start + timedelta(hours=WINDOW_HOURS)):
+            continue
+        rec = runs.get(f"{now:%Y-%m-%d}:{job.name}", {})
+        if rec.get("status") in DONE:
+            continue
+        final = now >= start + timedelta(hours=WINDOW_HOURS - 1)
+        out.append((job, final))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("kind", choices=["auto", *P.BUILDERS])
-    ap.add_argument("--season", type=int, default=2026)
-    ap.add_argument("--week", type=int, help="override the week for slate/featured")
-    ap.add_argument("--live", action="store_true", help="publish to Instagram (default: dry run)")
-    ap.add_argument("--force", action="store_true", help="rebuild/post even if this key was already posted")
+    ap.add_argument("target", nargs="?", default="scheduled")
+    ap.add_argument("--live", action="store_true", help="allow publishing for live jobs when run locally")
+    ap.add_argument("--force", action="store_true", help="ignore duplicate protection")
+    ap.add_argument("--at", help="pretend it's this Pacific time, e.g. '2026-10-10 08:05' (testing)")
+    ap.add_argument("--list", action="store_true")
     args = ap.parse_args()
 
+    if args.list:
+        days = "Mon Tue Wed Thu Fri Sat Sun".split()
+        for j in sorted(JOBS, key=lambda j: (j.days[0], j.time)):
+            print(f"{'LIVE   ' if j.live else 'preview'}  {j.time} PT  {','.join(days[d] for d in j.days):<28} {j.name:<15} {j.note}")
+        return
+
     in_ci = os.environ.get("GITHUB_ACTIONS") == "true"
-    live = args.live or (in_ci and os.environ.get("POSTING_ENABLED", "").lower() == "true")
+    live_allowed = args.live or (in_ci and os.environ.get("POSTING_ENABLED", "").strip().lower() == "true")
+    now = datetime.strptime(args.at, "%Y-%m-%d %H:%M").replace(tzinfo=PT) if args.at else datetime.now(PT)
+    runs = load(RUNS)
 
-    kind = args.kind
-    if kind == "auto":
-        today = datetime.now(ZoneInfo("America/Los_Angeles")).weekday()
-        kind = SCHEDULE.get(today)
-        if not kind:
-            summary("No post scheduled today.")
-            return
-
-    try:
-        ctx = P.Context(args.season)
-        print(f"✔ Verified {ctx.verified} final scores against ESPN · stats thru week {ctx.thru_week}")
-        builder = P.BUILDERS[kind]
-        # Key first, so we don't render a post that's already out.
-        week = ctx.thru_week if kind == "recap" else (args.week or ctx.upcoming_week)
-        key = f"{args.season}-wk{week:02d}-{kind}"
-        log = load_log()
-        if key in log and not args.force:
-            summary(f"⏭️ `{key}` already posted ({log[key].get('permalink')}). Skipping.")
-            return
-        out_dir = os.path.join(ROOT, "media", key)
-        kwargs = {} if kind == "recap" else {"week": week}
-        post = builder(ctx, out_dir, sizes=("feed",), **kwargs)
-        check_caption(post.caption)
-    except P.DataError as e:
-        summary(f"⚠️ **Not posting ({kind})**: {e}")
-        sys.exit(1)
-
-    images = [to_jpeg(img["feed"]) for img in post.images][:P.MAX_CAROUSEL]
-    with open(os.path.join(out_dir, "caption.txt"), "w") as f:
-        f.write(post.caption)
-    rel = [os.path.relpath(p, ROOT) for p in images]
-
-    summary(f"## {'🚀 LIVE' if live else '🧪 DRY RUN'}: `{post.key}` ({len(images)} image{'s' if len(images) > 1 else ''})\n")
-    summary("```\n" + post.caption + "\n```")
-
-    if not in_ci and not live:
-        print("\nDry run saved to", out_dir)
+    # Names used by the original workflow file keep working.
+    args.target = {"auto": "scheduled", "recap": "nfl_recap", "slate": "nfl_slate",
+                   "featured": "nfl_snf_story"}.get(args.target, args.target)
+    if args.target == "scheduled":
+        todo = due_jobs(now, runs)
+    else:
+        match = [j for j in JOBS if j.name == args.target]
+        job = match[0] if match else Job(args.target, args.target, tuple(range(7)), "00:00", live=False)
+        todo = [(job, True)]
+    if not todo:
+        print(f"Nothing due at {now:%a %H:%M} PT.")
         return
 
-    sha = git_push(f"{'Post' if live else 'Preview'} {post.key}", [os.path.relpath(out_dir, ROOT)])
-    repo = os.environ.get("GITHUB_REPOSITORY") or sh("gh", "repo", "view", "--json", "nameWithOwner", "-q", ".nameWithOwner")
-    urls = [f"https://raw.githubusercontent.com/{repo}/{sha}/{r}" for r in rel]
-    summary("\n" + "\n".join(f"![slide {i+1}]({u})" for i, u in enumerate(urls)))
+    runner = Runner(live_allowed, in_ci, args.force)
+    failed = []
+    for job, final in todo:
+        try:
+            status, detail = runner.run(job, now)
+        except Exception as e:
+            traceback.print_exc()
+            status, detail = "error", f"{type(e).__name__}: {e}"
+        if status in ("waiting", "blocked") and final:
+            status = "skipped" if status == "waiting" else "blocked-final"
+        runs[f"{now:%Y-%m-%d}:{job.name}"] = {"status": status, "detail": detail[:300],
+                                              "at": now.isoformat(timespec="minutes")}
+        icon = {"posted": "✅", "previewed": "🧪", "done": "🗄️", "duplicate": "⏭️", "skipped": "⏭️",
+                "waiting": "⏳", "blocked": "⛔", "blocked-final": "⛔", "error": "❌"}.get(status, "•")
+        summary(f"{icon} **{job.name}**: {status}: {detail}")
+        if status in ("blocked-final", "error"):
+            failed.append(job.name)
 
-    from sharpcharts.instagram import Instagram, InstagramError
-    if not live:
-        if os.environ.get("IG_TOKEN"):
-            try:  # read-only token check, publishes nothing
-                ig = Instagram()
-                me, limit = ig.me(), ig.publishing_limit()
-                summary(f"\n🔑 Token OK: signed in as **@{me.get('username')}** · "
-                        f"{limit.get('quota_usage', 0)} posts used in the last 24h")
-            except InstagramError as e:
-                summary(f"\n❌ Token check failed: {e}")
-                sys.exit(1)
-        summary("\nDry run: nothing was posted. Set POSTING_ENABLED=true to go live.")
-        return
-
-    ig = Instagram()
-    limit = ig.publishing_limit()
-    if limit.get("quota_usage", 0) >= limit.get("config", {}).get("quota_total", 50):
-        summary("⚠️ Instagram daily publishing limit reached. Not posting.")
+    save(RUNS, runs)
+    runner.touched.add("state")
+    if in_ci:
+        git_push(f"Run {now:%Y-%m-%d %H:%M} PT", sorted(runner.touched))
+    if failed:
+        summary(f"\n❌ Needs attention: {', '.join(failed)}")
         sys.exit(1)
-    for u in urls:
-        wait_public(u)
-    media_id = ig.publish(urls, post.caption)
-    link = ig.permalink(media_id)
-    log = load_log()
-    log[post.key] = {"media_id": media_id, "permalink": link, "images": len(urls),
-                     "posted_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
-    with open(LOG, "w") as f:
-        json.dump(log, f, indent=2)
-    git_push(f"Log {post.key}", ["posted.json"])
-    summary(f"\n✅ Posted: {link}")
 
 
 if __name__ == "__main__":

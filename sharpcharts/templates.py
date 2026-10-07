@@ -56,13 +56,30 @@ def logo_svg(size=46, bg=True):
   <polygon points="84,18 68,22 80,34" fill="#2BFF88"/></svg>'''
 
 
+def mascot_svg(size=64):
+    """Original fox mascot: rising-chart tail (ties to the logo) + analyst glasses."""
+    return f'''<svg width="{size}" height="{size}" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <polyline points="112,176 138,146 156,158 186,110" fill="none" stroke="#2BFF88" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="196,94 172,103 189,121" fill="#2BFF88"/>
+  <polygon points="36,30 70,82 20,94" fill="#FF7A2F"/><polygon points="40,46 60,80 32,86" fill="#7A2E12"/>
+  <polygon points="144,30 110,82 160,94" fill="#FF7A2F"/><polygon points="140,46 120,80 148,86" fill="#7A2E12"/>
+  <polygon points="16,88 164,88 90,176" fill="#FF7A2F"/>
+  <polygon points="16,90 90,176 56,122" fill="#FFF4EA"/><polygon points="164,90 90,176 124,122" fill="#FFF4EA"/>
+  <circle cx="64" cy="116" r="17" fill="rgba(255,255,255,.18)" stroke="#0A0F1C" stroke-width="6"/>
+  <circle cx="116" cy="116" r="17" fill="rgba(255,255,255,.18)" stroke="#0A0F1C" stroke-width="6"/>
+  <line x1="81" y1="114" x2="99" y2="114" stroke="#0A0F1C" stroke-width="6"/>
+  <path d="M56 119 q8 -8 16 0" fill="none" stroke="#0A0F1C" stroke-width="5" stroke-linecap="round"/>
+  <path d="M108 119 q8 -8 16 0" fill="none" stroke="#0A0F1C" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="90" cy="164" rx="9" ry="7" fill="#0A0F1C"/></svg>'''
+
+
 def page(inner, size="feed", tag="", source="", note=""):
     frame_cls = "frame story" if size == "story" else "frame"
     note_html = f"<div>{note}</div>" if note else ""
     return f'''<!doctype html><html><head><meta charset="utf-8">{FONTS}<style>{BRAND_CSS}</style></head>
 <body><div class="{frame_cls}"><div class="grid"></div>
 <div class="top"><div class="brand">{logo_svg()}<span>{HANDLE}</span></div>
-{f'<div class="pill">{escape(tag)}</div>' if tag else ''}</div>
+<div style="display:flex;align-items:center;gap:16px">{f'<div class="pill">{escape(tag)}</div>' if tag else ''}{mascot_svg(68)}</div></div>
 {inner}
 <div class="foot"><div>{note_html}<div>Data: <b>{escape(source)}</b></div></div><div style="text-align:right">21+ · Gamble responsibly<br>1-800-GAMBLER</div></div>
 </div></body></html>'''
@@ -122,22 +139,26 @@ def big_stat(title_html, subtitle, number, number_label, context_rows, tag, sour
     return page(inner, size, tag=tag, source=source)
 
 
-def bar_ranking(title_html, subtitle, rows, tag, source, size="feed", note="", scale=None):
-    """rows: list of dict(abbr,color,name,value,value_label,record). Diverging bars around 0."""
+def bar_ranking(title_html, subtitle, rows, tag, source, size="feed", note="", scale=None, diverging=True):
+    """rows: list of dict(abbr,color,name,value,value_label,record). Diverging bars around 0,
+    or left-anchored bars when diverging=False (all-positive data like usage share)."""
     scale = scale or max(abs(r["value"]) for r in rows) or 1
     row_h = 66 if size == "feed" else 80
     html_rows = []
     for r in rows:
-        pct = abs(r["value"]) / scale * 50
+        pct = abs(r["value"]) / scale * (50 if diverging else 100)
         pos = r["value"] >= 0
-        bar_style = (f"left:50%;width:{pct}%;background:linear-gradient(90deg,rgba(43,255,136,.55),var(--green))" if pos else
+        if not diverging:
+            pct = min(pct, 100)
+        left = "50%" if diverging else "0"
+        bar_style = (f"left:{left};width:{pct}%;background:linear-gradient(90deg,rgba(43,255,136,.55),var(--green))" if pos else
                      f"right:50%;width:{pct}%;background:linear-gradient(270deg,rgba(255,77,94,.55),var(--red))")
         html_rows.append(f'''<div style="display:flex;align-items:center;gap:18px;height:{row_h}px">
   {chip(r["abbr"], r["color"], 54, 25)}
   <div style="width:250px"><div style="font-size:27px;font-weight:700">{escape(r["name"])}</div>
      <div class="m" style="font-size:20px">{escape(r.get("record",""))}</div></div>
   <div style="flex:1;position:relative;height:30px;background:var(--panel);border-radius:6px">
-     <div style="position:absolute;top:-6px;bottom:-6px;left:50%;width:2px;background:var(--line)"></div>
+     {'<div style="position:absolute;top:-6px;bottom:-6px;left:50%;width:2px;background:var(--line)"></div>' if diverging else ''}
      <div style="position:absolute;top:0;bottom:0;border-radius:6px;{bar_style}"></div></div>
   <div class="cond {'g' if pos else 'r'}" style="width:110px;text-align:right;font-size:38px;font-weight:800">{escape(r["value_label"])}</div></div>''')
     inner = f'''<h1>{title_html}</h1><div class="sub">{subtitle}</div>
@@ -193,7 +214,15 @@ def matchup(away, home, line_info, stat_rows, tag, source, size="feed", note="")
     return page(inner, size, tag=tag, source=source, note=note)
 
 
-def slate(week, rows, tag, source, size="feed", note=""):
+def _rank(team):
+    """Small '#7' label when a (abbr, color, rank) tuple carries a ranking."""
+    rank = team[2] if len(team) > 2 else None
+    return f'<span class="cond g" style="font-size:24px;font-weight:800;width:36px;text-align:right">#{rank}</span>' if rank else (
+        '<span style="width:36px"></span>' if len(team) > 2 else "")
+
+
+def slate(week, rows, tag, source, size="feed", note="", title_html=None,
+          subtitle="Every game · spread &amp; total · swipe for breakdowns →"):
     """Every game of the week with spread + total. rows: dict(kick, away, home, spread, total, fav_home)."""
     n = len(rows)
     row_h = min(64, int((760 if size == "feed" else 1060) / max(n, 1)))
@@ -206,11 +235,36 @@ def slate(week, rows, tag, source, size="feed", note=""):
         body.append(f'''<div style="display:flex;align-items:center;height:{row_h}px;border-top:2px solid var(--line)">
   <div class="m" style="width:170px;font-size:22px;font-weight:600">{escape(r["kick"])}</div>
   <div style="flex:1;display:flex;align-items:center;gap:10px">
-    {chip(r["away"][0], r["away"][1], chip_sz, int(chip_sz*.42))}<span class="m cond" style="font-size:28px;font-weight:700">@</span>
-    {chip(r["home"][0], r["home"][1], chip_sz, int(chip_sz*.42))}</div>
+    {_rank(r["away"])}{chip(r["away"][0], r["away"][1], chip_sz, int(chip_sz*.42))}<span class="m cond" style="font-size:28px;font-weight:700">@</span>
+    {_rank(r["home"])}{chip(r["home"][0], r["home"][1], chip_sz, int(chip_sz*.42))}</div>
   <div class="cond" style="width:190px;text-align:right;font-size:36px;font-weight:800">{escape(r["spread"])}</div>
   <div class="cond g" style="width:120px;text-align:right;font-size:36px;font-weight:800">{escape(r["total"])}</div></div>''')
-    inner = f'''<h1 style="font-size:96px">Week {week}<br><em>betting slate</em></h1>
-<div class="sub" style="font-size:26px">Every game · spread &amp; total · swipe for breakdowns →</div>
+    title_html = title_html or f"Week {week}<br><em>betting slate</em>"
+    inner = f'''<h1 style="font-size:96px">{title_html}</h1>
+<div class="sub" style="font-size:26px">{subtitle}</div>
 <div class="body" style="justify-content:flex-start;margin-top:26px">{head}{''.join(body)}</div>'''
+    return page(inner, size, tag=tag, source=source, note=note)
+
+
+def game_blocks(title_html, subtitle, games, tag, source, size="feed", note=""):
+    """Stacked game cards (any sport). games: dict(kick, headline, total,
+    away/home=dict(abbr,color,name,line,detail))."""
+    n = max(len(games), 1)
+    avail = 700 if size == "feed" else 1000
+    block_h = min(240, int(avail / n) - 14)
+    big = block_h >= 190
+    chip_sz = 62 if big else 50
+
+    def side(t):
+        return f'''<div style="display:flex;align-items:center;gap:16px;height:{chip_sz + 8}px">
+      {chip(t["abbr"], t["color"], chip_sz, int(chip_sz * .38))}
+      <div style="flex:1;min-width:0"><div style="font-size:{28 if big else 24}px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{escape(t["name"])}</div>
+        <div class="m" style="font-size:{20 if big else 18}px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{escape(t.get("detail", ""))}</div></div>
+      <div class="cond" style="font-size:{44 if big else 38}px;font-weight:800;text-align:right;width:130px">{escape(t.get("line", ""))}</div></div>'''
+    blocks = "".join(f'''<div style="background:var(--panel);border:2px solid var(--line);border-radius:20px;padding:{14 if big else 10}px 22px;display:flex;flex-direction:column;justify-content:center;gap:6px;height:{block_h}px">
+    <div style="display:flex;justify-content:space-between;font-size:19px;letter-spacing:2px;text-transform:uppercase;font-weight:600">
+      <span class="m">{escape(g["kick"])} · <span style="color:var(--text)">O/U {escape(g.get("total", "—"))}</span></span><span class="g">{escape(g.get("headline", ""))}</span></div>
+    {side(g["away"])}{side(g["home"])}</div>''' for g in games)
+    inner = f'''<h1 style="font-size:92px">{title_html}</h1><div class="sub" style="font-size:26px">{subtitle}</div>
+<div class="body" style="justify-content:flex-start;gap:14px;margin-top:24px">{blocks}</div>'''
     return page(inner, size, tag=tag, source=source, note=note)

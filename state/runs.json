@@ -8,5 +8,20 @@
     "at": "2026-10-07T06:12-07:00",
     "detail": "8 snapshot files",
     "status": "done"
+  },
+  "2026-10-07:fantasy_wed": {
+    "at": "2026-10-07T11:29-07:00",
+    "detail": "https://www.instagram.com/p/DeNAY4OmGIl/",
+    "status": "posted"
+  },
+  "2026-10-07:mlb_feed": {
+    "at": "2026-10-07T11:29-07:00",
+    "detail": "CalledProcessError: Command '('git', 'pull', '--rebase', '--quiet')' returned non-zero exit status 128.",
+    "status": "error"
+  },
+  "2026-10-07:mlb_story": {
+    "at": "2026-10-07T11:29-07:00",
+    "detail": "CalledProcessError: Command '('git', 'pull', '--rebase', '--quiet')' returned non-zero exit status 128.",
+    "status": "error"
   }
 }

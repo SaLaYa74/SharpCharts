@@ -18,6 +18,7 @@ body{background:var(--bg);color:var(--text);font-family:Inter,"Helvetica Neue",A
     radial-gradient(700px 500px at 0% 100%, rgba(64,120,255,.10), transparent 60%),
     var(--bg)}
 .frame.story{padding:230px 72px 270px}
+.frame.reel{padding:200px 150px 380px 72px}
 .grid{position:absolute;inset:0;pointer-events:none;opacity:.35;
   background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
   background-size:54px 54px;mask-image:linear-gradient(180deg,rgba(0,0,0,.6),transparent 45%)}
@@ -74,7 +75,7 @@ def mascot_svg(size=64):
 
 
 def page(inner, size="feed", tag="", source="", note=""):
-    frame_cls = "frame story" if size == "story" else "frame"
+    frame_cls = {"story": "frame story", "reel": "frame reel"}.get(size, "frame")
     note_html = f"<div>{note}</div>" if note else ""
     return f'''<!doctype html><html><head><meta charset="utf-8">{FONTS}<style>{BRAND_CSS}</style></head>
 <body><div class="{frame_cls}"><div class="grid"></div>
@@ -128,25 +129,25 @@ def intro_post(size="feed"):
                 note="Follow for daily NFL · NBA · MLB charts")
 
 
-def big_stat(title_html, subtitle, number, number_label, context_rows, tag, source, size="feed", color="var(--green)"):
+def big_stat(title_html, subtitle, number, number_label, context_rows, tag, source, size="feed", color="var(--green)", p=1.0):
     ctx = "".join(f'''<div style="display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:2px solid var(--line);font-size:32px">
        <span class="m">{escape(k)}</span><span class="cond" style="font-size:46px;font-weight:700">{v}</span></div>''' for k, v in context_rows)
     inner = f'''<h1>{title_html}</h1><div class="sub">{subtitle}</div>
 <div class="body"><div style="text-align:center;padding:10px 0 30px">
-  <div class="cond" style="font-size:300px;font-weight:800;line-height:.9;color:{color};text-shadow:0 0 60px rgba(43,255,136,.25)">{number}</div>
+  <div class="cond" style="font-size:300px;font-weight:800;line-height:.9;color:{color};text-shadow:0 0 60px rgba(43,255,136,.25);opacity:{min(1, p * 1.4):.2f};transform:scale({0.55 + 0.45 * p:.3f})">{number}</div>
   <div style="font-size:32px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-top:8px">{number_label}</div></div>
   <div>{ctx}</div></div>'''
     return page(inner, size, tag=tag, source=source)
 
 
-def bar_ranking(title_html, subtitle, rows, tag, source, size="feed", note="", scale=None, diverging=True):
+def bar_ranking(title_html, subtitle, rows, tag, source, size="feed", note="", scale=None, diverging=True, p=1.0):
     """rows: list of dict(abbr,color,name,value,value_label,record). Diverging bars around 0,
     or left-anchored bars when diverging=False (all-positive data like usage share)."""
     scale = scale or max(abs(r["value"]) for r in rows) or 1
-    row_h = 66 if size == "feed" else 80
+    row_h = {"feed": 66, "story": 80, "reel": 76}.get(size, 66)
     html_rows = []
     for r in rows:
-        pct = abs(r["value"]) / scale * (50 if diverging else 100)
+        pct = abs(r["value"]) / scale * (50 if diverging else 100) * p
         pos = r["value"] >= 0
         if not diverging:
             pct = min(pct, 100)
@@ -160,7 +161,7 @@ def bar_ranking(title_html, subtitle, rows, tag, source, size="feed", note="", s
   <div style="flex:1;position:relative;height:30px;background:var(--panel);border-radius:6px">
      {'<div style="position:absolute;top:-6px;bottom:-6px;left:50%;width:2px;background:var(--line)"></div>' if diverging else ''}
      <div style="position:absolute;top:0;bottom:0;border-radius:6px;{bar_style}"></div></div>
-  <div class="cond {'g' if pos else 'r'}" style="width:110px;text-align:right;font-size:38px;font-weight:800">{escape(r["value_label"])}</div></div>''')
+  <div class="cond {'g' if pos else 'r'}" style="width:110px;text-align:right;font-size:38px;font-weight:800;opacity:{min(1, p * 1.25):.2f}">{escape(r["value_label"])}</div></div>''')
     inner = f'''<h1>{title_html}</h1><div class="sub">{subtitle}</div>
 <div class="body" style="gap:2px">{''.join(html_rows)}</div>'''
     return page(inner, size, tag=tag, source=source, note=note)
@@ -268,3 +269,22 @@ def game_blocks(title_html, subtitle, games, tag, source, size="feed", note=""):
     inner = f'''<h1 style="font-size:92px">{title_html}</h1><div class="sub" style="font-size:26px">{subtitle}</div>
 <div class="body" style="justify-content:flex-start;gap:14px;margin-top:24px">{blocks}</div>'''
     return page(inner, size, tag=tag, source=source, note=note)
+
+
+def reel_hook(line1, line2, tag, p=1.0):
+    """Opening Reel frame: the hook, big and centered, with the mascot."""
+    inner = f'''<div class="body" style="align-items:center;text-align:center;gap:40px">
+  <div style="transform:scale({0.9 + 0.1 * p:.3f});opacity:{min(1, p * 1.5):.2f}">{mascot_svg(260)}</div>
+  <h1 style="margin:0;font-size:122px;line-height:.95">{line1}<br><em>{line2}</em></h1>
+  <div class="sub" style="font-size:34px">Watch the chart <span class="g">↓</span></div></div>'''
+    return page(inner, "reel", tag=tag, source="verified before posting")
+
+
+def reel_outro(tag):
+    """Closing Reel frame: follow call-to-action."""
+    inner = f'''<div class="body" style="align-items:center;text-align:center;gap:34px">
+  {mascot_svg(340)}
+  <h1 style="margin:0;font-size:110px">Follow<br><em>{HANDLE}</em></h1>
+  <div class="sub" style="font-size:36px">Verified betting &amp; fantasy data, every day</div>
+  <div class="pill" style="font-size:30px;margin-top:10px">Save this · send it to your group chat</div></div>'''
+    return page(inner, "reel", tag=tag, source="nflverse · MLB · ESPN")

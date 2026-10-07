@@ -89,7 +89,7 @@ def line_ranges(rep, sport, label, spread=None, total=None, moneylines=()):
 
 
 def image(rep, path, size):
-    expected = {"feed": (1080, 1350), "story": (1080, 1920), "square": (1080, 1080)}[size]
+    expected = {"feed": (1080, 1350), "story": (1080, 1920), "reel": (1080, 1920), "square": (1080, 1080)}[size]
     name = os.path.basename(path)
     if not rep.require(os.path.exists(path), f"{name}: rendered", "file missing"):
         return

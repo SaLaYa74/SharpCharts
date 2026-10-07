@@ -26,6 +26,7 @@ from PIL import Image
 from sharpcharts import archive
 from sharpcharts import checks as C
 from sharpcharts import posts as P
+from sharpcharts import reels as R
 from sharpcharts import sports as S
 from sharpcharts.schedule import JOBS, WINDOW_HOURS, Job
 
@@ -70,16 +71,17 @@ def git_push(message, paths):
     return sh("git", "rev-parse", "HEAD")
 
 
-def wait_public(url, tries=24):
+def wait_public(url, tries=24, video=False):
     for _ in range(tries):
         try:
             with urllib.request.urlopen(urllib.request.Request(url, method="HEAD"), timeout=20) as r:
-                if r.status == 200:
+                ctype = r.headers.get("Content-Type", "")
+                if r.status == 200 and (not video or ctype.startswith("video/")):
                     return
         except Exception:
             pass
         time.sleep(5)
-    raise RuntimeError(f"Image never became public: {url}")
+    raise RuntimeError(f"Media never became publicly available (or wrong content type): {url}")
 
 
 def to_jpeg(png):
@@ -104,6 +106,8 @@ class Runner:
     def build(self, job, out_dir):
         if job.builder in S.BUILDERS:
             return S.BUILDERS[job.builder](out_dir)
+        if job.builder in R.BUILDERS:
+            return R.BUILDERS[job.builder](self.ctx, out_dir)
         sizes = ("story",) if job.builder.endswith("_story") else ("feed",)
         return P.BUILDERS[job.builder](self.ctx, out_dir, sizes)
 
@@ -127,10 +131,15 @@ class Runner:
             return "duplicate", f"{post.key} already posted"
 
         # Final gate: rendered images + caption, on top of the builder's data checks.
-        images = [to_jpeg(img[post.size]) for img in post.images][:P.MAX_CAROUSEL]
-        for img in images:
-            C.image(post.checks, img, post.size)
-        if post.media == "feed":
+        if post.media == "reel":
+            images = [post.images[0]["reel"]]          # video + cover were checked by the builder
+            cover = post.images[0]["cover"]
+        else:
+            images = [to_jpeg(img[post.size]) for img in post.images][:P.MAX_CAROUSEL]
+            cover = None
+            for img in images:
+                C.image(post.checks, img, post.size)
+        if post.media in ("feed", "reel"):
             C.caption(post.checks, post.caption)
         post.checks.save(os.path.join(out_dir, "checks.json"))
         with open(os.path.join(out_dir, "caption.txt"), "w") as f:
@@ -141,7 +150,7 @@ class Runner:
         mode = "🚀 LIVE" if live else "🧪 PREVIEW"
         summary(f"\n## {mode} · `{job.name}` → `{post.key}` ({post.media}, {len(images)} image{'s' * (len(images) > 1)})")
         summary(post.checks.markdown())
-        if post.media == "feed":
+        if post.media in ("feed", "reel"):
             summary("```\n" + post.caption + "\n```")
 
         if not post.checks.ok:
@@ -152,19 +161,29 @@ class Runner:
         rel = [os.path.relpath(p, ROOT) for p in images]
         sha = git_push(f"{'Post' if live else 'Preview'} {post.key}", [os.path.relpath(out_dir, ROOT)])
         repo = os.environ.get("GITHUB_REPOSITORY") or "SaLaYa74/SharpCharts"
-        urls = [f"https://raw.githubusercontent.com/{repo}/{sha}/{r}" for r in rel]
-        summary("\n" + " ".join(f"![{i + 1}]({u})" for i, u in enumerate(urls)))
+        raw = lambda r: f"https://raw.githubusercontent.com/{repo}/{sha}/{r}"
+        if post.media == "reel":
+            # Videos are served through jsDelivr (proper video/mp4 type); the cover through GitHub raw.
+            urls = [f"https://cdn.jsdelivr.net/gh/{repo}@{sha}/{rel[0]}"]
+            cover_url = raw(os.path.relpath(cover, ROOT))
+            summary(f"\n![cover]({cover_url})\n\n🎬 [Watch the Reel]({urls[0]})")
+        else:
+            urls = [raw(r) for r in rel]
+            cover_url = None
+            summary("\n" + " ".join(f"![{i + 1}]({u})" for i, u in enumerate(urls)))
         if not live:
-            return "previewed", "built and checked, not published"
+            for u in urls + ([cover_url] if cover_url else []):
+                wait_public(u, video=u.endswith(".mp4"))   # proves Instagram will be able to fetch it
+            return "previewed", "built, checked and hosting verified, not published"
 
         from sharpcharts.instagram import Instagram
         ig = Instagram()
         limit = ig.publishing_limit()
         if limit.get("quota_usage", 0) >= limit.get("config", {}).get("quota_total", 50):
             return "waiting", "Instagram daily publishing limit reached"
-        for u in urls:
-            wait_public(u)
-        media_id = ig.publish(urls, post.caption, media=post.media)
+        for u in urls + ([cover_url] if cover_url else []):
+            wait_public(u, video=u.endswith(".mp4"))
+        media_id = ig.publish(urls, post.caption, media=post.media, cover_url=cover_url)
         link = None if post.media == "story" else ig.permalink(media_id)
         posted = load(POSTED)
         posted[post.key] = {"media_id": media_id, "permalink": link, "media": post.media, "images": len(urls),
@@ -215,11 +234,15 @@ def main():
     # Names used by the original workflow file keep working.
     args.target = {"auto": "scheduled", "recap": "nfl_recap", "slate": "nfl_slate",
                    "featured": "nfl_snf_story"}.get(args.target, args.target)
+    preview_only = args.target.startswith("preview:")
+    args.target = args.target.split(":", 1)[-1]
     if args.target == "scheduled":
         todo = due_jobs(now, runs)
     else:
         match = [j for j in JOBS if j.name == args.target]
         job = match[0] if match else Job(args.target, args.target, tuple(range(7)), "00:00", live=False)
+        if preview_only:
+            job = Job(job.name, job.builder, job.days, job.time, live=False, note=job.note)
         todo = [(job, True)]
     if not todo:
         print(f"Nothing due at {now:%a %H:%M} PT.")

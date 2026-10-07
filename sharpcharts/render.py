@@ -13,7 +13,8 @@ CHROME = os.environ.get("CHROME") or next(
 
 SIZES = {
     "feed": (1080, 1350),    # Instagram feed 4:5
-    "story": (1080, 1920),   # IG Stories / Reels / TikTok 9:16
+    "story": (1080, 1920),   # IG Stories / TikTok 9:16
+    "reel": (1080, 1920),    # Reels: 9:16 with UI-safe padding
     "square": (1080, 1080),  # profile pic, X/Twitter, carousel covers
 }
 

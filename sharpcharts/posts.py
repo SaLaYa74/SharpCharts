@@ -128,19 +128,36 @@ def _render(html_fn, out_dir, name, sizes):
 
 # ---------------------------------------------------------------- recap
 
-def recap(ctx, out_dir, sizes=("feed",)):
-    """Tuesday carousel: ATS best/worst, league splits, over/under teams."""
-    recs, thru, note = ctx.recs, ctx.thru, ctx.thru_note
-
-    def ats_row(t):
-        r = recs[t]
+def ats_ranked(ctx):
+    """All teams, best to worst against the spread (win %, then avg cover margin)."""
+    def row(t):
+        r = ctx.recs[t]
         v = r["cover_margin_sum"] / r["games"]
         return {"abbr": t, "color": D.TEAMS[t][1], "name": D.TEAMS[t][0], "value": v,
                 "value_label": f"{v:+.1f}",
                 "record": f"{rec(r['ats_W'], r['ats_L'], r['ats_P'])} ATS · {rec(r['su_W'], r['su_L'], r['su_T'])} SU",
-                "ats": rec(r["ats_W"], r["ats_L"], r["ats_P"]),
+                "ats": rec(r["ats_W"], r["ats_L"], r["ats_P"]), "wins": r["ats_W"],
                 "pct": r["ats_W"] / max(1, r["ats_W"] + r["ats_L"])}
-    ranked = sorted((ats_row(t) for t in recs), key=lambda x: (x["pct"], x["value"]), reverse=True)
+    return sorted((row(t) for t in ctx.recs), key=lambda x: (x["pct"], x["value"]), reverse=True)
+
+
+def ou_ranked_rows(ctx):
+    """All teams, most overs to most unders."""
+    def row(t):
+        r = ctx.recs[t]
+        v = r["ou_margin_sum"] / r["games"]
+        return {"abbr": t, "color": D.TEAMS[t][1], "name": D.TEAMS[t][0], "value": v,
+                "value_label": f"{v:+.1f}", "record": f"O/U {rec(r['ou_O'], r['ou_U'], r['ou_P'])}",
+                "ou": rec(r["ou_O"], r["ou_U"], r["ou_P"]),
+                "pct": r["ou_O"] / max(1, r["ou_O"] + r["ou_U"])}
+    return sorted((row(t) for t in ctx.recs), key=lambda x: (x["pct"], x["value"]), reverse=True)
+
+
+def recap(ctx, out_dir, sizes=("feed",)):
+    """Tuesday carousel: ATS best/worst, league splits, over/under teams."""
+    recs, thru, note = ctx.recs, ctx.thru, ctx.thru_note
+
+    ranked = ats_ranked(ctx)
     top, bottom = ranked[:6], ranked[-6:]
 
     sp = D.league_splits(ctx.finals)
@@ -151,14 +168,7 @@ def recap(ctx, out_dir, sizes=("feed",)):
         {"label": "Underdogs winning outright", "left": ("Dog wins", sp["dog_outright_W"]), "right": ("Fav wins", sp["dog_outright_L"])},
     ]
 
-    def ou_row(t):
-        r = recs[t]
-        v = r["ou_margin_sum"] / r["games"]
-        return {"abbr": t, "color": D.TEAMS[t][1], "name": D.TEAMS[t][0], "value": v,
-                "value_label": f"{v:+.1f}", "record": f"O/U {rec(r['ou_O'], r['ou_U'], r['ou_P'])}",
-                "ou": rec(r["ou_O"], r["ou_U"], r["ou_P"]),
-                "pct": r["ou_O"] / max(1, r["ou_O"] + r["ou_U"])}
-    ou_ranked = sorted((ou_row(t) for t in recs), key=lambda x: (x["pct"], x["value"]), reverse=True)
+    ou_ranked = ou_ranked_rows(ctx)
 
     slides = [
         _render(lambda s: T.bar_ranking('Best &amp; worst<br><em>against the spread</em>',
@@ -443,10 +453,8 @@ def _player_weeks(season, thru_week):
     return rows
 
 
-def fantasy(ctx, out_dir, sizes=("feed",), focus=None, day=None):
-    """RB opportunity share or WR/TE target share leaders, season to date."""
-    day = day or date.today()
-    focus = focus or ("rb" if day.weekday() == 2 else "wr")   # Wed RBs, Sun WR/TE
+def fantasy_board(ctx, focus):
+    """Verified usage leaderboard (focus 'rb' or 'wr'). Returns a dict used by posts and Reels."""
     rows = _player_weeks(ctx.season, ctx.thru_week)
     rep = C.Report(f"fantasy {focus}").extend(ctx.report)
     rep.require(len(rows) > 500, "fantasy: player data loaded", f"only {len(rows)} player-weeks")
@@ -493,6 +501,16 @@ def fantasy(ctx, out_dir, sizes=("feed",), focus=None, day=None):
     rep.require(len(top) == 12, "fantasy: full leaderboard", f"only {len(top)} qualified players")
     bars = [{"abbr": p["team"], "color": D.TEAMS.get(p["team"], ("", "#3A4A6B"))[1], "name": p["name"],
              "value": p["share"], "value_label": f"{p['share'] * 100:.0f}%", "record": detail(p)} for p in top]
+    return dict(title=title, sub=sub, tag=tag, bars=bars, rep=rep, top=top, min_games=min_games, hashtags=hashtags)
+
+
+def fantasy(ctx, out_dir, sizes=("feed",), focus=None, day=None):
+    """RB opportunity share or WR/TE target share leaders, season to date."""
+    day = day or date.today()
+    focus = focus or ("rb" if day.weekday() == 2 else "wr")   # Wed RBs, Sun WR/TE
+    b = fantasy_board(ctx, focus)
+    title, sub, tag, bars, rep, top, min_games, hashtags = (b[k] for k in
+        ("title", "sub", "tag", "bars", "rep", "top", "min_games", "hashtags"))
     img = _render(lambda s: T.bar_ranking(title, sub, bars, tag=f"{tag} · {ctx.thru}", size=s, diverging=False,
                                           source="nflverse player stats", note=f"Min. {min_games} games · {ctx.thru_note}"),
                   out_dir, f"fantasy_{focus}", sizes)

@@ -67,10 +67,18 @@ class Instagram:
             time.sleep(5)
         raise InstagramError(f"Media container {container_id} not ready after {timeout}s")
 
-    def publish(self, image_urls, caption, media="feed"):
-        """Publish one image, a 2-10 image carousel, or a Story. Returns the new media id."""
+    def publish(self, image_urls, caption, media="feed", cover_url=None):
+        """Publish one image, a 2-10 image carousel, a Story, or a Reel (image_urls=[video_url]).
+        Returns the new media id."""
         if not 1 <= len(image_urls) <= 10:
             raise InstagramError(f"Need 1-10 images, got {len(image_urls)}")
+        if media == "reel":
+            params = {"media_type": "REELS", "video_url": image_urls[0], "caption": caption, "share_to_feed": "true"}
+            if cover_url:
+                params["cover_url"] = cover_url
+            cid = self._call("POST", f"{self.user_id}/media", params)["id"]
+            self._wait_ready(cid, timeout=900)   # video processing takes longer
+            return self._call("POST", f"{self.user_id}/media_publish", {"creation_id": cid})["id"]
         if media == "story":
             if len(image_urls) != 1:
                 raise InstagramError("A Story is one image")

@@ -44,6 +44,11 @@ JOBS = [
     Job("nfl_snf_story", "snf_story",     (SAT,), "17:00", live=True, note="SNF preview Story"),
     Job("nfl_gameday",   "gameday_story", (SUN,), "07:00", live=True, note="NFL Sunday slate Story"),
     Job("nfl_mnf_story", "mnf_story",     (MON,), "15:00", live=True, note="MNF card Story"),
+    # ---- Reels (animated chart + original beat), shared to the feed
+    Job("reel_ou",      "reel_ou",      (MON,), "12:00", live=True, note="Reel: over/under teams"),
+    Job("reel_ats",     "reel_ats",     (TUE,), "12:00", live=True, note="Reel: best/worst ATS"),
+    Job("reel_fantasy", "reel_fantasy", (THU,), "12:00", live=True, note="Reel: target share leaders"),
+    Job("reel_trend",   "reel_trend",   (FRI,), "13:00", live=True, note="Reel: stat of the day"),
     # ---- Background: multi-sport line archive (never posts)
     Job("archive_am",   "archive",  EVERY_DAY, "06:00", live=True, note="Save lines + results"),
     Job("archive_pm",   "archive",  EVERY_DAY, "14:00", live=True, note="Save lines closer to game time"),

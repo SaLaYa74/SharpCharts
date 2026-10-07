@@ -8,7 +8,7 @@ hourly for WINDOW_HOURS, then skipped for the day.
 """
 from dataclasses import dataclass
 
-WINDOW_HOURS = 3
+WINDOW_HOURS = 6
 
 MON, TUE, WED, THU, FRI, SAT, SUN = range(7)
 EVERY_DAY = (MON, TUE, WED, THU, FRI, SAT, SUN)

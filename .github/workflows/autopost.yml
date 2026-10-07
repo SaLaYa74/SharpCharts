@@ -2,16 +2,13 @@ name: Auto-post
 
 on:
   schedule:
-    - cron: "0 16 * * 2"   # Tue 9am PT: weekly recap carousel
-    - cron: "0 17 * * 4"   # Thu 10am PT: week slate carousel
-    - cron: "0 17 * * 6"   # Sat 10am PT: featured game
+    - cron: "7 * * * *"   # every hour; sharpcharts/schedule.py decides what's due
   workflow_dispatch:
     inputs:
-      kind:
-        description: "Which post"
-        type: choice
-        options: [auto, recap, slate, featured]
-        default: auto
+      target:
+        description: "Job to run now (e.g. mlb_story), or 'scheduled'"
+        type: string
+        default: scheduled
 
 permissions:
   contents: write
@@ -23,7 +20,7 @@ concurrency:
 jobs:
   post:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -34,8 +31,8 @@ jobs:
         run: |
           git config user.name "sharpcharts-bot"
           git config user.email "actions@users.noreply.github.com"
-      - name: Build and post
+      - name: Run due jobs
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
           POSTING_ENABLED: ${{ vars.POSTING_ENABLED }}
-        run: python autopost.py "${{ inputs.kind || 'auto' }}"
+        run: python autopost.py "${{ inputs.target || 'scheduled' }}"

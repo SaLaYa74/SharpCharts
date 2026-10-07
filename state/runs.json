@@ -3,5 +3,10 @@
     "at": "2026-10-06T23:05-07:00",
     "detail": "built, checked and hosting verified, not published",
     "status": "previewed"
+  },
+  "2026-10-07:archive_am": {
+    "at": "2026-10-07T06:12-07:00",
+    "detail": "8 snapshot files",
+    "status": "done"
   }
 }

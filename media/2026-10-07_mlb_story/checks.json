@@ -1,0 +1,155 @@
+{
+  "subject": "mlb tonight",
+  "counts": {
+    "pass": 28,
+    "warn": 1,
+    "block": 0
+  },
+  "checks": [
+    {
+      "status": "pass",
+      "check": "mlb: CLE@CWS found on ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: CLE@CWS start time agrees",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@CWS: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@CWS: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: CLE@CWS away starter announced",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: CLE@CWS home starter announced",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: LAD@ATL found on ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: LAD@ATL start time agrees",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAD@ATL: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAD@ATL: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: LAD@ATL away starter announced",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: LAD@ATL home starter announced",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: TB@NYY found on ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: TB@NYY start time agrees",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TB@NYY: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TB@NYY: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: TB@NYY away starter announced",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: TB@NYY home starter announced",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: MIL@SD found on ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: MIL@SD start time agrees",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@SD: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@SD: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "warn",
+      "check": "mlb: MIL@SD away starter announced",
+      "detail": "starter TBD"
+    },
+    {
+      "status": "pass",
+      "check": "mlb: MIL@SD home starter announced",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: at least one verified game",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb_story_story.jpg: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb_story_story.jpg: dimensions",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb_story_story.jpg: not empty",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb_story_story.jpg: has visible content",
+      "detail": ""
+    }
+  ]
+}

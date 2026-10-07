@@ -66,7 +66,7 @@ def git_push(message, paths):
     sh("git", "add", *paths)
     if sh("git", "diff", "--cached", "--name-only"):
         sh("git", "commit", "-m", message)
-        sh("git", "pull", "--rebase", "--quiet")
+        sh("git", "pull", "--rebase", "--autostash", "--quiet")
         sh("git", "push", "--quiet")
     return sh("git", "rev-parse", "HEAD")
 

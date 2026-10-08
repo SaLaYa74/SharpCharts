@@ -15,6 +15,14 @@
     "permalink": null,
     "posted_at": "2026-10-07T18:32:31+00:00"
   },
+  "2026-10-08-mlb-story": {
+    "images": 1,
+    "job": "mlb_story",
+    "media": "story",
+    "media_id": "17912082363531205",
+    "permalink": null,
+    "posted_at": "2026-10-08T21:40:05+00:00"
+  },
   "2026-wk04-fantasy-rb": {
     "images": 1,
     "job": "fantasy_wed",
@@ -28,5 +36,21 @@
     "media_id": "18035637038895360",
     "permalink": "https://www.instagram.com/p/DeKq9ijgW_r/",
     "posted_at": "2026-10-06T20:44:32+00:00"
+  },
+  "2026-wk04-reel-fantasy-wr": {
+    "images": 1,
+    "job": "reel_fantasy",
+    "media": "reel",
+    "media_id": "18208219630370953",
+    "permalink": "https://www.instagram.com/reel/DeP7CbeimFM/",
+    "posted_at": "2026-10-08T21:41:35+00:00"
+  },
+  "2026-wk05-slate": {
+    "images": 10,
+    "job": "nfl_slate",
+    "media": "feed",
+    "media_id": "18562756582074686",
+    "permalink": "https://www.instagram.com/p/DeP64WzD1c0/",
+    "posted_at": "2026-10-08T21:39:51+00:00"
   }
 }

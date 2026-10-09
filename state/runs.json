@@ -63,5 +63,15 @@
     "at": "2026-10-09T07:38-07:00",
     "detail": "8 snapshot files",
     "status": "done"
+  },
+  "2026-10-09:mlb_story": {
+    "at": "2026-10-09T12:44-07:00",
+    "detail": "No MLB games on 2026-10-09.",
+    "status": "skipped"
+  },
+  "2026-10-09:nfl_trend": {
+    "at": "2026-10-09T12:44-07:00",
+    "detail": "https://www.instagram.com/p/DeSSdVnluYX/",
+    "status": "posted"
   }
 }

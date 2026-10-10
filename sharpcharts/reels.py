@@ -98,6 +98,13 @@ def _glance(rows, detail="ats"):
     return out
 
 
+def _share_kit(out_dir, reddit_title, body, x_text):
+    """Ready-to-paste text for Reddit/X (you post it; we never auto-post to other sites)."""
+    with open(os.path.join(out_dir, "share.md"), "w") as f:
+        f.write(f"## Reddit\n**Title:** {reddit_title}\n\n{body}\n\n(Source: nflverse play-by-play data. Chart by @sharp_charts)\n\n"
+                f"## X / Twitter\n{x_text}\n")
+
+
 def _post(key, mp4, cover, caption, rep):
     video_checks(rep, mp4)
     C.image(rep, cover, "reel")
@@ -165,7 +172,12 @@ def reel_fantasy(ctx, out_dir, sizes=None, focus="wr"):
     caption = P.with_question(
         f"{'Target share' if focus == 'wr' else 'RB opportunity share'} leaders through Week {ctx.thru_week} 🎯\n\n"
         + "\n".join(f"{i + 1}. {p['name']} ({p['team']}) {p['share'] * 100:.0f}%" for i, p in enumerate(b["top"][:5])),
-        "fantasy", key)
+        "fantasy", key, top=b["top"][0]["name"], second=b["top"][1]["name"])
+    top5 = "\n".join(f"{i + 1}. {p['name']} ({p['team']}) {p['share'] * 100:.0f}%" for i, p in enumerate(b["top"][:8]))
+    _share_kit(out_dir, f"[OC] {'Target share' if focus == 'wr' else 'RB opportunity share'} leaders through Week {ctx.thru_week}",
+               f"{b['sub'].replace('&amp;', '&')}, minimum {b['min_games']} games:\n\n{top5}",
+               f"{'Target share' if focus == 'wr' else 'RB touch share'} leaders thru Week {ctx.thru_week} 🎯\n\n"
+               + "\n".join(f"{p['name']} {p['share'] * 100:.0f}%" for p in b["top"][:5]) + "\n\n#FantasyFootball")
     caption += f"\n\nRaw usage data, no projections.\n👉 Follow @sharp_charts for more.\n{P.DISCLAIMER}\n{b['hashtags']}"
     return _post(key, mp4, cover, caption, C.Report("reel fantasy").extend(b["rep"]))
 
@@ -181,7 +193,8 @@ def reel_trend(ctx, out_dir, sizes=None, day=None):
     mp4, cover = make_reel(out_dir, f"reel_trend_{tkey}", hook, lambda p: T.big_stat(
         title, sub, number, label, rows, tag=tag, source=P.SRC, size="reel", color=color, p=p, hook=hook), tag, f"trend-{day}")
     key = f"{day.isoformat()}-reel-trend"
-    caption = P.with_question(f"{sentence} 📊\n\nData {ctx.thru.lower()}, verified vs ESPN.", "trend", key)
+    team_kw = {"team": hook[0][4:]} if hook[0].startswith("The ") else {}
+    caption = P.with_question(f"{sentence} 📊\n\nData {ctx.thru.lower()}, verified vs ESPN.", "trend", key, **team_kw)
     caption += f"\n\n👉 Follow @sharp_charts for daily verified betting data.\n{P.DISCLAIMER}\n#nfl #nflbetting #bettingtrends #sportsbetting"
     return _post(key, mp4, cover, caption, C.Report("reel trend").extend(ctx.report))
 
@@ -210,13 +223,51 @@ def reel_waiver(ctx, out_dir, sizes=None):
     caption = P.with_question(
         f"Week {ctx.thru_week + 1} waiver wire: who's getting more of the ball? 📈📉\n\n"
         f"Share of team carries + targets, Week {ctx.thru_week} vs. their earlier average:\n\n{lines_up}\n\n{lines_dn}",
-        "fantasy", key)
+        "fantasy", key, top=risers[0]["name"], second=risers[1]["name"])
+    _share_kit(out_dir, f"[OC] Week {ctx.thru_week + 1} waiver wire: biggest usage risers & fallers (share of team carries + targets)",
+               f"Week {ctx.thru_week} share of team carries + targets vs. each player's earlier average:\n\n{lines_up}\n\n{lines_dn}",
+               f"Week {ctx.thru_week + 1} waiver wire, by usage 📈📉\n\n" + "\n".join(
+                   f"🟢 {m['name']} {pct(m['base'])} → {pct(m['now'])}" for m in risers[:3])
+               + "\n" + "\n".join(f"🔴 {m['name']} {pct(m['base'])} → {pct(m['now'])}" for m in fallers[:2])
+               + "\n\n#FantasyFootball #WaiverWire")
     caption += (f"\n\nRaw usage data, no projections. Source: nflverse.\n👉 Follow @sharp_charts for weekly usage data.\n"
                 f"{P.DISCLAIMER}\n#fantasyfootball #waiverwire #fantasyfootballadvice #nfl #week{ctx.thru_week + 1}")
     return _post(key, mp4, cover, caption, rep)
 
 
-BUILDERS = {"reel_ats": reel_ats, "reel_ou": reel_ou, "reel_trend": reel_trend, "reel_waiver": reel_waiver,
+def reel_onestat(ctx, out_dir, sizes=None, day=None):
+    """One giant number. Rotates through verified facts so consecutive weeks differ."""
+    day = day or date.today()
+    ats = P.ats_ranked(ctx)
+    facts = []
+    w = ats[-1]
+    facts.append(("ats_worst", (f"The {w['name']}", "can't cover", "red"), w["ats"], "against the spread", w, "red",
+                  f"The {w['name']} are {w['ats']} against the spread this season.", {"team": w["name"]}))
+    b = ats[0]
+    facts.append(("ats_best", (f"The {b['name']}", "keep cashing"), b["ats"], "against the spread", b, "green",
+                  f"The {b['name']} are {b['ats']} against the spread this season.", {"team": b["name"]}))
+    try:
+        rb = P.fantasy_board(ctx, "rb")["top"][0]
+        facts.append(("rb_share", (f"{rb['name']}", "gets the ball"), f"{rb['share'] * 100:.0f}%", "of his team's touches",
+                      {"abbr": rb["team"], "color": P.D.TEAMS.get(rb["team"], ("", "#3A4A6B"))[1], "name": P.D.TEAMS.get(rb["team"], (rb["team"],))[0]},
+                      "green", f"{rb['name']} is getting {rb['share'] * 100:.0f}% of his team's carries + targets.",
+                      {"top": rb["name"]}))
+    except P.DataError:
+        pass
+    fkey, hook, number, label, who, color, sentence, qvals = facts[day.toordinal() % len(facts)]
+    who = {"abbr": who["abbr"], "color": who["color"], "name": who.get("name", "")}
+    tag = f"NFL · {ctx.thru}"
+    mp4, cover = make_reel(out_dir, f"reel_onestat_{fkey}", hook, lambda p: T.one_stat(
+        hook, number, label, who, color, tag=tag, source="nflverse player stats" if fkey.startswith("rb") else P.SRC, p=p),
+        tag, f"onestat-{day}")
+    key = f"{day.isoformat()}-reel-onestat"
+    kind = "onestat"
+    caption = P.with_question(f"{sentence} 📊\n\nData {ctx.thru.lower()}, verified.", kind, key, **qvals)
+    caption += f"\n\n👉 Follow @sharp_charts for one stat a day.\n{P.DISCLAIMER}\n#nfl #nflbetting #fantasyfootball #sportsbetting"
+    return _post(key, mp4, cover, caption, C.Report("reel onestat").extend(ctx.report))
+
+
+BUILDERS = {"reel_onestat": reel_onestat, "reel_ats": reel_ats, "reel_ou": reel_ou, "reel_trend": reel_trend, "reel_waiver": reel_waiver,
             "reel_fantasy": reel_fantasy,
             "reel_fantasy_rb": lambda ctx, out_dir, sizes=None: reel_fantasy(ctx, out_dir, focus="rb"),
             "reel_fantasy_wr": lambda ctx, out_dir, sizes=None: reel_fantasy(ctx, out_dir, focus="wr")}

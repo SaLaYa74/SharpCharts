@@ -171,6 +171,22 @@ def main(days=30):
         lines.append(f"| {kind} | {n} | {fmt(avg(m['views']))} | {fmt(avg(m['reach']))} | {fmt(avg(m['saved']), 1)} | "
                      f"{fmt(avg(m['shares']), 1)} | {fmt(avg(m['follows']), 1)} | {fmt(avg(m['comments']), 1)} | "
                      f"{fmt(watch / 1000 if watch else None, 1)} |")
+    # Posting-time test: Reels posted midday vs. evening (Pacific)
+    reels = [r for r in rows if r["type"] == "REELS" and isinstance(r.get("reach"), (int, float))]
+    slot = lambda r: "Evening (4pm PT / 7pm ET)" if datetime.fromisoformat(r["ts"]).astimezone().hour >= 15 else "Midday (before 3pm PT)"
+    by_slot = defaultdict(list)
+    for r in reels:
+        by_slot[slot(r)].append(r)
+    if by_slot:
+        lines += ["", "## Posting-time test (Reels)", "", "| Slot | Reels | Avg reach | Avg views | Avg watch (s) |", "|---|---|---|---|---|"]
+        for k, rs in sorted(by_slot.items()):
+            wt = [r["ig_reels_avg_watch_time"] for r in rs if isinstance(r.get("ig_reels_avg_watch_time"), (int, float))]
+            lines.append(f"| {k} | {len(rs)} | {fmt(avg([r['reach'] for r in rs]))} | {fmt(avg([r['views'] or 0 for r in rs]))} | "
+                         f"{fmt(avg(wt) / 1000 if wt else None, 1)} |")
+    if reels:
+        best = max(reels, key=lambda r: r["reach"])
+        lines += ["", f"**Best Reel to re-post with a trending sound:** {best['kind']} ({best['when']}, reach {best['reach']}) {best.get('permalink') or ''}",
+                  "Open the app → Reels → tap a trending sound → upload this Reel's video (in the GitHub media folder) with that sound."]
     lines += ["", "## Every post", "", "| When | Kind | Views | Reach | Saves | Shares | Follows | Avg watch (s) |",
               "|---|---|---|---|---|---|---|---|"]
     for r in sorted(rows, key=lambda r: r["ts"], reverse=True):

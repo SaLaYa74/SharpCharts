@@ -133,6 +133,9 @@ def intro_post(size="feed"):
 def _head(title_html, subtitle, hook=None):
     if not hook:
         return f'<h1>{title_html}</h1><div class="sub">{subtitle}</div>'
+    if not title_html:
+        em = ' style="color:var(--red)"' if len(hook) > 2 and hook[2] == "red" else ""
+        return f'<h1 style="font-size:96px;line-height:.93;margin-top:30px">{escape(hook[0])}<br><em{em}>{escape(hook[1])}</em></h1>'
     plain = re.sub(r"<[^>]+>", " ", title_html).replace("&amp;", "&")
     plain = escape(re.sub(r"\s+", " ", plain).strip())
     em = ' style="color:var(--red)"' if len(hook) > 2 and hook[2] == "red" else ""
@@ -301,3 +304,17 @@ def reel_outro(tag):
   <div class="sub" style="font-size:36px">Verified betting &amp; fantasy data, every day</div>
   <div class="pill" style="font-size:30px;margin-top:10px">Save this · send it to your group chat</div></div>'''
     return page(inner, "reel", tag=tag, source="nflverse · MLB · ESPN")
+
+
+def one_stat(hook, number, label, who, color, tag, source, p=1.0, note=""):
+    """One giant number, readable in under a second. who = dict(abbr, color, name)."""
+    c = "var(--green)" if color == "green" else "var(--red)"
+    glow = "rgba(43,255,136,.30)" if color == "green" else "rgba(255,77,94,.30)"
+    inner = f'''{_head("", "", hook) if hook else ""}
+<div class="body" style="align-items:center;text-align:center;gap:26px">
+  <div style="display:flex;align-items:center;gap:20px;opacity:{min(1, p * 2):.2f}">
+    {chip(who["abbr"], who["color"], 84, 36)}
+    <div class="cond" style="font-size:64px;font-weight:800;text-transform:uppercase">{escape(who["name"])}</div></div>
+  <div class="cond" style="font-size:{int(250 + 170 * p)}px;font-weight:800;line-height:.85;color:{c};text-shadow:0 0 80px {glow}">{escape(number)}</div>
+  <div style="font-size:40px;font-weight:700;letter-spacing:4px;text-transform:uppercase;opacity:{min(1, p * 1.5):.2f}">{escape(label)}</div></div>'''
+    return page(inner, "reel", tag=tag, source=source, note=note)

@@ -183,10 +183,11 @@ class Runner:
             return "waiting", "Instagram daily publishing limit reached"
         for u in urls + ([cover_url] if cover_url else []):
             wait_public(u, video=u.endswith(".mp4"))
-        media_id = ig.publish(urls, post.caption, media=post.media, cover_url=cover_url)
+        media_id = ig.publish(urls, post.caption, media=post.media, cover_url=cover_url, trial=job.trial)
         link = None if post.media == "story" else ig.permalink(media_id)
         posted = load(POSTED)
         posted[post.key] = {"media_id": media_id, "permalink": link, "media": post.media, "images": len(urls),
+                            "trial": job.trial, "scheduled": job.time,
                             "job": job.name, "posted_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
         save(POSTED, posted)
         self.touched.add("posted.json")
@@ -242,7 +243,7 @@ def main():
         match = [j for j in JOBS if j.name == args.target]
         job = match[0] if match else Job(args.target, args.target, tuple(range(7)), "00:00", live=False)
         if preview_only:
-            job = Job(job.name, job.builder, job.days, job.time, live=False, note=job.note)
+            job = Job(job.name, job.builder, job.days, job.time, live=False, note=job.note, trial=job.trial)
         todo = [(job, True)]
     if not todo:
         print(f"Nothing due at {now:%a %H:%M} PT.")

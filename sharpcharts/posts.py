@@ -542,3 +542,45 @@ BUILDERS = {
     "gameday_story": gameday_story,
     "featured": _wrap(primetime, slot="snf", media="feed"),
 }
+
+
+# ---------------------------------------------------------------- waiver wire: usage risers & fallers
+
+def usage_movers(ctx, n=4):
+    """Biggest week-over-week changes in opportunity share (team carries + targets) for RB/WR/TE.
+    Last completed week vs. the player's average in earlier weeks. Returns (risers, fallers, report)."""
+    rows = _player_weeks(ctx.season, ctx.thru_week)
+    rep = C.Report("usage movers").extend(ctx.report)
+    L = ctx.thru_week
+    weeks = {int(r["week"]) for r in rows}
+    rep.require(L in weeks and L >= 3, "waiver: latest week present", f"need week {L} data and 2+ prior weeks")
+    num = lambda v: float(v) if v not in ("", "NA", None) else 0.0
+    team = {}
+    for r in rows:
+        k = (r["team"], int(r["week"]))
+        team[k] = team.get(k, 0) + num(r["carries"]) + num(r["targets"])
+    for (t, w), v in team.items():
+        rep.require(20 <= v <= 110, f"waiver: {t} wk{w} team opportunities plausible", f"{v:.0f} carries+targets")
+    players = {}
+    for r in rows:
+        if r["position"] not in ("RB", "WR", "TE"):
+            continue
+        w, opp = int(r["week"]), num(r["carries"]) + num(r["targets"])
+        p = players.setdefault(r["player_id"], {"name": r["player_display_name"], "pos": r["position"], "w": {}})
+        p["team"] = r["team"]
+        p["w"][w] = (opp, opp / team[(r["team"], w)] if team[(r["team"], w)] else 0)
+    moves = []
+    for p in players.values():
+        if L not in p["w"]:
+            continue
+        prev = [p["w"][w][1] for w in range(1, L) if w in p["w"]]
+        if len(prev) < 2:
+            continue
+        base, now, opps = sum(prev) / len(prev), p["w"][L][1], p["w"][L][0]
+        if opps >= 8 or base >= 0.12:             # ignore noise from tiny roles
+            rep.require(0 <= base <= 1 and 0 <= now <= 1, f"waiver: {p['name']} shares valid", f"{base:.2f}/{now:.2f}")
+            moves.append({**p, "base": base, "now": now, "opps": opps, "delta": now - base})
+    moves.sort(key=lambda m: m["delta"])
+    risers, fallers = moves[::-1][:n], moves[:n]
+    rep.require(len(risers) == n and len(fallers) == n, "waiver: enough qualified players", f"{len(moves)} qualified")
+    return risers, fallers, rep

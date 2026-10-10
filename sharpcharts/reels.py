@@ -88,6 +88,16 @@ def video_checks(rep, mp4):
 
 # ---------------------------------------------------------------- builders
 
+def _glance(rows, detail="ats"):
+    """Reels show one short detail line per row (record or team), not the full stat line."""
+    out = []
+    for r in rows:
+        d = {"ats": r.get("ats", "") and f"{r['ats']} ATS", "ou": r.get("ou", "") and f"{r['ou']} O/U",
+             "team": r.get("record", "").split(" · ")[0]}[detail]
+        out.append({**r, "record": d})
+    return out
+
+
 def _post(key, mp4, cover, caption, rep):
     video_checks(rep, mp4)
     C.image(rep, cover, "reel")
@@ -97,16 +107,17 @@ def _post(key, mp4, cover, caption, rep):
 def reel_ats(ctx, out_dir, sizes=None):
     ranked = P.ats_ranked(ctx)
     zero = [r for r in ranked if r["wins"] == 0]
-    n_bottom = min(max(5, len(zero)), 7)          # every team the hook mentions is on the chart
-    rows = ranked[:10 - n_bottom] + ranked[-n_bottom:]
+    n_bottom = min(max(4, len(zero)), 6)          # every team the hook mentions is on the chart
+    rows = ranked[:8 - n_bottom] + ranked[-n_bottom:]
     if zero and len(zero) <= n_bottom:
-        hook = (f"{len(zero)} NFL team{'s' * (len(zero) > 1)}", f"{'haven' if len(zero) > 1 else 'hasn'}'t covered once")
+        hook = (f"{len(zero)} NFL team{'s' * (len(zero) > 1)}", f"{'haven' if len(zero) > 1 else 'hasn'}'t covered once", "red")
     else:
         hook = ("Who's actually", "cashing tickets?")
     tag = f"NFL · {ctx.thru}"
     mp4, cover = make_reel(out_dir, "reel_ats", hook, lambda p: T.bar_ranking(
         'Best &amp; worst<br><em>against the spread</em>', "Avg. cover margin per game",
-        rows, tag=tag, source=P.SRC, size="reel", note=ctx.thru_note, p=p, hook=hook), tag, f"ats-{ctx.thru_week}")
+        _glance(rows), tag=tag, source=P.SRC, size="reel", note=ctx.thru_note, p=p, hook=hook, glance=True),
+        tag, f"ats-{ctx.thru_week}")
     key = f"{ctx.season}-wk{ctx.thru_week:02d}-reel-ats"
     best, worst = rows[0], rows[-1]
     caption = P.with_question(
@@ -119,14 +130,15 @@ def reel_ats(ctx, out_dir, sizes=None):
 
 def reel_ou(ctx, out_dir, sizes=None):
     ranked = P.ou_ranked_rows(ctx)
-    rows = ranked[:5] + ranked[-5:]
+    rows = ranked[:4] + ranked[-4:]
     top = rows[0]
     tag = f"NFL · {ctx.thru}"
     o, u = (int(x) for x in top["ou"].split("-")[:2])
     hook = (f"{top['name']} games", "keep going over") if o > u else ("The NFL's biggest", "over & under teams")
     mp4, cover = make_reel(out_dir, "reel_ou", hook, lambda p: T.bar_ranking(
         'Over teams vs<br><em>under teams</em>', "Avg. points vs. the closing total per game",
-        rows, tag=tag, source=P.SRC, size="reel", note=ctx.thru_note, p=p, hook=hook), tag, f"ou-{ctx.thru_week}")
+        _glance(rows, "ou"), tag=tag, source=P.SRC, size="reel", note=ctx.thru_note, p=p, hook=hook, glance=True),
+        tag, f"ou-{ctx.thru_week}")
     key = f"{ctx.season}-wk{ctx.thru_week:02d}-reel-ou"
     caption = P.with_question(
         f"The NFL's biggest over and under teams through Week {ctx.thru_week} 📈📉\n\n"
@@ -145,7 +157,7 @@ def reel_fantasy(ctx, out_dir, sizes=None, focus="wr"):
     tag = f"{b['tag']} · {ctx.thru}"
     hook = (f"{last}: {lead['share'] * 100:.0f}%", f"of {lead['team']}'s {'targets' if focus == 'wr' else 'touches'}")
     mp4, cover = make_reel(out_dir, f"reel_fantasy_{focus}", hook,
-                           lambda p: T.bar_ranking(b["title"], b["sub"], b["bars"][:10], tag=tag, size="reel", diverging=False,
+                           lambda p: T.bar_ranking(b["title"], b["sub"], _glance(b["bars"][:8], "team"), tag=tag, size="reel", diverging=False, glance=True,
                                                    source="nflverse player stats", note=f"Min. {b['min_games']} games", p=p,
                                                    hook=hook),
                            tag, f"fantasy-{focus}-{ctx.thru_week}")
@@ -174,4 +186,37 @@ def reel_trend(ctx, out_dir, sizes=None, day=None):
     return _post(key, mp4, cover, caption, C.Report("reel trend").extend(ctx.report))
 
 
-BUILDERS = {"reel_ats": reel_ats, "reel_ou": reel_ou, "reel_fantasy": reel_fantasy, "reel_trend": reel_trend}
+def reel_waiver(ctx, out_dir, sizes=None):
+    """Tuesday waiver wire: biggest usage risers (green) and fallers (red) from last week."""
+    risers, fallers, rep = P.usage_movers(ctx, n=4)
+    top = risers[0]
+    first = top["name"].split()[0]
+    last = top["name"].split()[-1] if len(top["name"]) > 13 else top["name"]
+    hook = (f"{last}'s role", "just exploded")
+    pct = lambda x: f"{x * 100:.0f}%"
+    def row(m):
+        return {"abbr": m["team"], "color": P.D.TEAMS.get(m["team"], ("", "#3A4A6B"))[1], "name": m["name"],
+                "value": m["delta"], "value_label": f"{m['delta'] * 100:+.0f}",
+                "record": f"{m['pos']} · {pct(m['base'])} → {pct(m['now'])} of touches"}
+    rows = [row(m) for m in risers] + [row(m) for m in fallers[::-1]]
+    tag = f"Waiver wire · Wk {ctx.thru_week + 1}"
+    mp4, cover = make_reel(out_dir, "reel_waiver", hook, lambda p: T.bar_ranking(
+        "Usage risers<br><em>&amp; fallers</em>", f"Share of team carries + targets: Week {ctx.thru_week} vs. before",
+        rows, tag=tag, source="nflverse player stats", size="reel", note="Change in percentage points",
+        p=p, hook=hook, glance=True), tag, f"waiver-{ctx.thru_week}")
+    key = f"{ctx.season}-wk{ctx.thru_week:02d}-reel-waiver"
+    lines_up = "\n".join(f"🟢 {m['name']} ({m['team']} {m['pos']}): {pct(m['base'])} → {pct(m['now'])}" for m in risers)
+    lines_dn = "\n".join(f"🔴 {m['name']} ({m['team']} {m['pos']}): {pct(m['base'])} → {pct(m['now'])}" for m in fallers)
+    caption = P.with_question(
+        f"Week {ctx.thru_week + 1} waiver wire: who's getting more of the ball? 📈📉\n\n"
+        f"Share of team carries + targets, Week {ctx.thru_week} vs. their earlier average:\n\n{lines_up}\n\n{lines_dn}",
+        "fantasy", key)
+    caption += (f"\n\nRaw usage data, no projections. Source: nflverse.\n👉 Follow @sharp_charts for weekly usage data.\n"
+                f"{P.DISCLAIMER}\n#fantasyfootball #waiverwire #fantasyfootballadvice #nfl #week{ctx.thru_week + 1}")
+    return _post(key, mp4, cover, caption, rep)
+
+
+BUILDERS = {"reel_ats": reel_ats, "reel_ou": reel_ou, "reel_trend": reel_trend, "reel_waiver": reel_waiver,
+            "reel_fantasy": reel_fantasy,
+            "reel_fantasy_rb": lambda ctx, out_dir, sizes=None: reel_fantasy(ctx, out_dir, focus="rb"),
+            "reel_fantasy_wr": lambda ctx, out_dir, sizes=None: reel_fantasy(ctx, out_dir, focus="wr")}

@@ -135,7 +135,8 @@ def _head(title_html, subtitle, hook=None):
         return f'<h1>{title_html}</h1><div class="sub">{subtitle}</div>'
     plain = re.sub(r"<[^>]+>", " ", title_html).replace("&amp;", "&")
     plain = escape(re.sub(r"\s+", " ", plain).strip())
-    return (f'<h1 style="font-size:96px;line-height:.93;margin-top:30px">{escape(hook[0])}<br><em>{escape(hook[1])}</em></h1>'
+    em = ' style="color:var(--red)"' if len(hook) > 2 and hook[2] == "red" else ""
+    return (f'<h1 style="font-size:96px;line-height:.93;margin-top:30px">{escape(hook[0])}<br><em{em}>{escape(hook[1])}</em></h1>'
             f'<div class="sub" style="font-size:30px;margin-top:14px"><b style="color:var(--text)">{plain}</b> · {subtitle}</div>')
 
 
@@ -150,11 +151,13 @@ def big_stat(title_html, subtitle, number, number_label, context_rows, tag, sour
     return page(inner, size, tag=tag, source=source)
 
 
-def bar_ranking(title_html, subtitle, rows, tag, source, size="feed", note="", scale=None, diverging=True, p=1.0, hook=None):
+def bar_ranking(title_html, subtitle, rows, tag, source, size="feed", note="", scale=None, diverging=True, p=1.0, hook=None,
+                glance=False):
     """rows: list of dict(abbr,color,name,value,value_label,record). Diverging bars around 0,
     or left-anchored bars when diverging=False (all-positive data like usage share)."""
     scale = scale or max(abs(r["value"]) for r in rows) or 1
-    row_h = {"feed": 66, "story": 80, "reel": 82}.get(size, 66)
+    row_h = 104 if glance else {"feed": 66, "story": 80, "reel": 82}.get(size, 66)
+    name_px, detail_px, value_px, chip_px = (36, 22, 54, 66) if glance else (27, 20, 38, 54)
     html_rows = []
     for r in rows:
         pct = abs(r["value"]) / scale * (50 if diverging else 100) * p
@@ -165,13 +168,13 @@ def bar_ranking(title_html, subtitle, rows, tag, source, size="feed", note="", s
         bar_style = (f"left:{left};width:{pct}%;background:linear-gradient(90deg,rgba(43,255,136,.55),var(--green))" if pos else
                      f"right:50%;width:{pct}%;background:linear-gradient(270deg,rgba(255,77,94,.55),var(--red))")
         html_rows.append(f'''<div style="display:flex;align-items:center;gap:18px;height:{row_h}px">
-  {chip(r["abbr"], r["color"], 54, 25)}
-  <div style="width:250px"><div style="font-size:27px;font-weight:700">{escape(r["name"])}</div>
-     <div class="m" style="font-size:20px">{escape(r.get("record",""))}</div></div>
-  <div style="flex:1;position:relative;height:30px;background:var(--panel);border-radius:6px">
+  {chip(r["abbr"], r["color"], chip_px, int(chip_px * .46))}
+  <div style="width:{330 if glance else 250}px"><div style="font-size:{name_px}px;font-weight:700;line-height:1.1">{escape(r["name"])}</div>
+     <div class="m" style="font-size:{detail_px}px">{escape(r.get("record",""))}</div></div>
+  <div style="flex:1;position:relative;height:{44 if glance else 30}px;background:var(--panel);border-radius:8px">
      {'<div style="position:absolute;top:-6px;bottom:-6px;left:50%;width:2px;background:var(--line)"></div>' if diverging else ''}
      <div style="position:absolute;top:0;bottom:0;border-radius:6px;{bar_style}"></div></div>
-  <div class="cond {'g' if pos else 'r'}" style="width:110px;text-align:right;font-size:38px;font-weight:800;opacity:{min(1, p * 1.25):.2f}">{escape(r["value_label"])}</div></div>''')
+  <div class="cond {'g' if pos else 'r'}" style="width:{130 if glance else 110}px;text-align:right;font-size:{value_px}px;font-weight:800;opacity:{min(1, p * 1.25):.2f}">{escape(r["value_label"])}</div></div>''')
     inner = f'''{_head(title_html, subtitle, hook)}
 <div class="body" style="gap:2px">{''.join(html_rows)}</div>'''
     return page(inner, size, tag=tag, source=source, note=note)

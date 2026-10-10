@@ -11,6 +11,7 @@ import io
 import json
 import os
 import time
+import urllib.error
 import urllib.request
 from collections import defaultdict
 from datetime import date, timedelta
@@ -38,10 +39,20 @@ TEAMS = {
 }
 
 
-def _get(url, timeout=30):
+def _get(url, timeout=30, tries=4):
+    """GET with retries: transient network/TLS errors shouldn't fail a post."""
     req = urllib.request.Request(url, headers={"User-Agent": "SharpCharts/1.0"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.read()
+    for attempt in range(tries):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.read()
+        except urllib.error.HTTPError as e:
+            if e.code < 500 or attempt == tries - 1:   # 4xx is a real answer, don't retry
+                raise
+        except (urllib.error.URLError, TimeoutError, ConnectionError, OSError):
+            if attempt == tries - 1:
+                raise
+        time.sleep(2 * (attempt + 1))
 
 
 def load_games(season, refresh=True):

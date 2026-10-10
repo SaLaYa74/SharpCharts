@@ -1,4 +1,5 @@
 """SharpCharts brand + post templates. Each function returns a full HTML page."""
+import re
 from html import escape
 
 HANDLE = "@sharp_charts"
@@ -129,10 +130,19 @@ def intro_post(size="feed"):
                 note="Follow for daily NFL · NBA · MLB charts")
 
 
-def big_stat(title_html, subtitle, number, number_label, context_rows, tag, source, size="feed", color="var(--green)", p=1.0):
+def _head(title_html, subtitle, hook=None):
+    if not hook:
+        return f'<h1>{title_html}</h1><div class="sub">{subtitle}</div>'
+    plain = re.sub(r"<[^>]+>", " ", title_html).replace("&amp;", "&")
+    plain = escape(re.sub(r"\s+", " ", plain).strip())
+    return (f'<h1 style="font-size:96px;line-height:.93;margin-top:30px">{escape(hook[0])}<br><em>{escape(hook[1])}</em></h1>'
+            f'<div class="sub" style="font-size:30px;margin-top:14px"><b style="color:var(--text)">{plain}</b> · {subtitle}</div>')
+
+
+def big_stat(title_html, subtitle, number, number_label, context_rows, tag, source, size="feed", color="var(--green)", p=1.0, hook=None):
     ctx = "".join(f'''<div style="display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:2px solid var(--line);font-size:32px">
        <span class="m">{escape(k)}</span><span class="cond" style="font-size:46px;font-weight:700">{v}</span></div>''' for k, v in context_rows)
-    inner = f'''<h1>{title_html}</h1><div class="sub">{subtitle}</div>
+    inner = f'''{_head(title_html, subtitle, hook)}
 <div class="body"><div style="text-align:center;padding:10px 0 30px">
   <div class="cond" style="font-size:300px;font-weight:800;line-height:.9;color:{color};text-shadow:0 0 60px rgba(43,255,136,.25);opacity:{min(1, p * 1.4):.2f};transform:scale({0.55 + 0.45 * p:.3f})">{number}</div>
   <div style="font-size:32px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-top:8px">{number_label}</div></div>
@@ -140,11 +150,11 @@ def big_stat(title_html, subtitle, number, number_label, context_rows, tag, sour
     return page(inner, size, tag=tag, source=source)
 
 
-def bar_ranking(title_html, subtitle, rows, tag, source, size="feed", note="", scale=None, diverging=True, p=1.0):
+def bar_ranking(title_html, subtitle, rows, tag, source, size="feed", note="", scale=None, diverging=True, p=1.0, hook=None):
     """rows: list of dict(abbr,color,name,value,value_label,record). Diverging bars around 0,
     or left-anchored bars when diverging=False (all-positive data like usage share)."""
     scale = scale or max(abs(r["value"]) for r in rows) or 1
-    row_h = {"feed": 66, "story": 80, "reel": 76}.get(size, 66)
+    row_h = {"feed": 66, "story": 80, "reel": 82}.get(size, 66)
     html_rows = []
     for r in rows:
         pct = abs(r["value"]) / scale * (50 if diverging else 100) * p
@@ -162,7 +172,7 @@ def bar_ranking(title_html, subtitle, rows, tag, source, size="feed", note="", s
      {'<div style="position:absolute;top:-6px;bottom:-6px;left:50%;width:2px;background:var(--line)"></div>' if diverging else ''}
      <div style="position:absolute;top:0;bottom:0;border-radius:6px;{bar_style}"></div></div>
   <div class="cond {'g' if pos else 'r'}" style="width:110px;text-align:right;font-size:38px;font-weight:800;opacity:{min(1, p * 1.25):.2f}">{escape(r["value_label"])}</div></div>''')
-    inner = f'''<h1>{title_html}</h1><div class="sub">{subtitle}</div>
+    inner = f'''{_head(title_html, subtitle, hook)}
 <div class="body" style="gap:2px">{''.join(html_rows)}</div>'''
     return page(inner, size, tag=tag, source=source, note=note)
 

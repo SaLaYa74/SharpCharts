@@ -37,40 +37,20 @@ def _ease(x):
     return 1 - (1 - x) ** 3  # ease-out cubic
 
 
-def make_reel(out_dir, name, hook, chart_html, tag, seed):
-    """hook=(line1, line2); chart_html(p) -> HTML at animation progress p. Returns (mp4, cover_jpg)."""
+def make_reel(out_dir, name, hook, chart_html, tag, seed, hold=5.2):
+    """Motion from frame 1: the chart animates in under the hook headline, holds so it can be read,
+    and ends on the full chart (loops cleanly back to the empty chart). chart_html(p) -> HTML.
+    `hook` and `tag` are baked into chart_html by the caller. Returns (mp4, cover_jpg)."""
     os.makedirs(out_dir, exist_ok=True)
     work = tempfile.mkdtemp(prefix="reel_")
     seq = []  # (png, seconds)
-
-    def frame(html, label, secs):
-        path = os.path.join(work, f"{len(seq):03d}_{label}.png")
-        html_to_png(html, path, "reel")
-        seq.append((path, secs))
-        return path
-
-    def blend(a, b, steps, secs):
-        ia, ib = Image.open(a).convert("RGB"), Image.open(b).convert("RGB")
-        for i in range(1, steps + 1):
-            path = os.path.join(work, f"{len(seq):03d}_x.png")
-            Image.blend(ia, ib, i / (steps + 1)).save(path)
-            seq.append((path, secs))
-
-    for i, p in enumerate((0.0, 0.35, 0.7, 1.0)):                       # hook pops in
-        last_hook = frame(T.reel_hook(*hook, tag=tag, p=p), "hook", 0.07)
-    seq.append((last_hook, 1.6))                                         # hold hook
-    chart0 = os.path.join(work, "chart0.png")
-    html_to_png(chart_html(0.0), chart0, "reel")
-    blend(last_hook, chart0, 6, 0.05)                                   # crossfade
-    steps = 20
-    for i in range(steps):                                              # chart builds in
-        last_chart = frame(chart_html(_ease(i / (steps - 1))), "chart", 0.075)
-    seq.append((last_chart, 5.0))                                       # hold so people can read
-    outro = os.path.join(work, "outro.png")
-    html_to_png(T.reel_outro(tag), outro, "reel")
-    blend(last_chart, outro, 6, 0.05)
-    seq.append((outro, 1.9))
-
+    steps = 24
+    for i in range(steps):                                   # 1.6s build-in, starting at t=0
+        path = os.path.join(work, f"{i:03d}.png")
+        html_to_png(chart_html(_ease(i / (steps - 1))), path, "reel")
+        seq.append((path, 0.067))
+    last_chart = seq[-1][0]
+    seq.append((last_chart, hold))                           # hold long enough to read
     total = sum(s for _, s in seq)
     audio = os.path.join(work, "beat.wav")
     make_beat(audio, total + 0.2, seed)
@@ -116,43 +96,44 @@ def _post(key, mp4, cover, caption, rep):
 
 def reel_ats(ctx, out_dir, sizes=None):
     ranked = P.ats_ranked(ctx)
-    rows = ranked[:6] + ranked[-6:]
     zero = [r for r in ranked if r["wins"] == 0]
-    if zero:
+    n_bottom = min(max(5, len(zero)), 7)          # every team the hook mentions is on the chart
+    rows = ranked[:10 - n_bottom] + ranked[-n_bottom:]
+    if zero and len(zero) <= n_bottom:
         hook = (f"{len(zero)} NFL team{'s' * (len(zero) > 1)}", f"{'haven' if len(zero) > 1 else 'hasn'}'t covered once")
     else:
         hook = ("Who's actually", "cashing tickets?")
     tag = f"NFL · {ctx.thru}"
     mp4, cover = make_reel(out_dir, "reel_ats", hook, lambda p: T.bar_ranking(
         'Best &amp; worst<br><em>against the spread</em>', "Avg. cover margin per game",
-        rows, tag=tag, source=P.SRC, size="reel", note=ctx.thru_note, p=p), tag, f"ats-{ctx.thru_week}")
+        rows, tag=tag, source=P.SRC, size="reel", note=ctx.thru_note, p=p, hook=hook), tag, f"ats-{ctx.thru_week}")
     key = f"{ctx.season}-wk{ctx.thru_week:02d}-reel-ats"
     best, worst = rows[0], rows[-1]
     caption = P.with_question(
         f"Best and worst ATS teams through Week {ctx.thru_week} 📊\n\n"
         f"{best['name']} {best['ats']} ATS ({best['value_label']} per game). {worst['name']} {worst['ats']} ATS.",
         "recap", key, best=best["name"], best_margin=best["value_label"], worst=worst["name"])
-    caption += f"\n\nFollow for daily verified betting data.\n{P.DISCLAIMER}\n#nfl #nflbetting #ats #sportsbetting #bettingdata"
+    caption += f"\n\n👉 Follow @sharp_charts for daily verified betting data.\n{P.DISCLAIMER}\n#nfl #nflbetting #ats #sportsbetting #bettingdata"
     return _post(key, mp4, cover, caption, C.Report("reel ats").extend(ctx.report))
 
 
 def reel_ou(ctx, out_dir, sizes=None):
     ranked = P.ou_ranked_rows(ctx)
-    rows = ranked[:6] + ranked[-6:]
+    rows = ranked[:5] + ranked[-5:]
     top = rows[0]
     tag = f"NFL · {ctx.thru}"
     o, u = (int(x) for x in top["ou"].split("-")[:2])
     hook = (f"{top['name']} games", "keep going over") if o > u else ("The NFL's biggest", "over & under teams")
     mp4, cover = make_reel(out_dir, "reel_ou", hook, lambda p: T.bar_ranking(
         'Over teams vs<br><em>under teams</em>', "Avg. points vs. the closing total per game",
-        rows, tag=tag, source=P.SRC, size="reel", note=ctx.thru_note, p=p), tag, f"ou-{ctx.thru_week}")
+        rows, tag=tag, source=P.SRC, size="reel", note=ctx.thru_note, p=p, hook=hook), tag, f"ou-{ctx.thru_week}")
     key = f"{ctx.season}-wk{ctx.thru_week:02d}-reel-ou"
     caption = P.with_question(
         f"The NFL's biggest over and under teams through Week {ctx.thru_week} 📈📉\n\n"
         f"{top['name']} games are landing {top['value_label']} points vs. the total ({top['ou']} O/U). "
         f"{rows[-1]['name']} games: {rows[-1]['value_label']} ({rows[-1]['ou']}).",
         "trend", key)
-    caption += f"\n\nFollow for daily verified betting data.\n{P.DISCLAIMER}\n#nfl #nflbetting #overunder #totals #sportsbetting"
+    caption += f"\n\n👉 Follow @sharp_charts for daily verified betting data.\n{P.DISCLAIMER}\n#nfl #nflbetting #overunder #totals #sportsbetting"
     return _post(key, mp4, cover, caption, C.Report("reel ou").extend(ctx.report))
 
 
@@ -162,16 +143,18 @@ def reel_fantasy(ctx, out_dir, sizes=None, focus="wr"):
     last = lead["name"].split()[-1] if len(lead["name"]) > 14 else lead["name"]
     what = "of his team's targets" if focus == "wr" else "of his team's touches"
     tag = f"{b['tag']} · {ctx.thru}"
-    mp4, cover = make_reel(out_dir, f"reel_fantasy_{focus}", (f"{last} sees {lead['share'] * 100:.0f}%", what),
-                           lambda p: T.bar_ranking(b["title"], b["sub"], b["bars"], tag=tag, size="reel", diverging=False,
-                                                   source="nflverse player stats", note=f"Min. {b['min_games']} games", p=p),
+    hook = (f"{last}: {lead['share'] * 100:.0f}%", f"of {lead['team']}'s {'targets' if focus == 'wr' else 'touches'}")
+    mp4, cover = make_reel(out_dir, f"reel_fantasy_{focus}", hook,
+                           lambda p: T.bar_ranking(b["title"], b["sub"], b["bars"][:10], tag=tag, size="reel", diverging=False,
+                                                   source="nflverse player stats", note=f"Min. {b['min_games']} games", p=p,
+                                                   hook=hook),
                            tag, f"fantasy-{focus}-{ctx.thru_week}")
     key = f"{ctx.season}-wk{ctx.thru_week:02d}-reel-fantasy-{focus}"
     caption = P.with_question(
         f"{'Target share' if focus == 'wr' else 'RB opportunity share'} leaders through Week {ctx.thru_week} 🎯\n\n"
         + "\n".join(f"{i + 1}. {p['name']} ({p['team']}) {p['share'] * 100:.0f}%" for i, p in enumerate(b["top"][:5])),
         "fantasy", key)
-    caption += f"\n\nRaw usage data, no projections. Follow for more.\n{P.DISCLAIMER}\n{b['hashtags']}"
+    caption += f"\n\nRaw usage data, no projections.\n👉 Follow @sharp_charts for more.\n{P.DISCLAIMER}\n{b['hashtags']}"
     return _post(key, mp4, cover, caption, C.Report("reel fantasy").extend(b["rep"]))
 
 
@@ -182,11 +165,12 @@ def reel_trend(ctx, out_dir, sizes=None, day=None):
     l1, l2 = title.split("<br>")
     l2 = re.sub("</?em>", "", l2)
     tag = f"NFL · {ctx.thru}"
-    mp4, cover = make_reel(out_dir, f"reel_trend_{tkey}", (l1, l2), lambda p: T.big_stat(
-        title, sub, number, label, rows, tag=tag, source=P.SRC, size="reel", color=color, p=p), tag, f"trend-{day}")
+    hook = (re.sub("<[^>]+>", "", l1), l2)
+    mp4, cover = make_reel(out_dir, f"reel_trend_{tkey}", hook, lambda p: T.big_stat(
+        title, sub, number, label, rows, tag=tag, source=P.SRC, size="reel", color=color, p=p, hook=hook), tag, f"trend-{day}")
     key = f"{day.isoformat()}-reel-trend"
     caption = P.with_question(f"{sentence} 📊\n\nData {ctx.thru.lower()}, verified vs ESPN.", "trend", key)
-    caption += f"\n\nFollow for daily verified betting data.\n{P.DISCLAIMER}\n#nfl #nflbetting #bettingtrends #sportsbetting"
+    caption += f"\n\n👉 Follow @sharp_charts for daily verified betting data.\n{P.DISCLAIMER}\n#nfl #nflbetting #bettingtrends #sportsbetting"
     return _post(key, mp4, cover, caption, C.Report("reel trend").extend(ctx.report))
 
 

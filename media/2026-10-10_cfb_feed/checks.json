@@ -1,0 +1,330 @@
+{
+  "subject": "cfb slate",
+  "counts": {
+    "pass": 64,
+    "warn": 0,
+    "block": 0
+  },
+  "checks": [
+    {
+      "status": "pass",
+      "check": "cfb: polls loaded",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #7 IU matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IU@NEB: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IU@NEB: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #14 MIZ matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TA&M@MIZ: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TA&M@MIZ: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #18 OKST matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UCF@OKST: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UCF@OKST: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #25 PITT matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UNC@PITT: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UNC@PITT: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #16 FLA matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SC@FLA: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SC@FLA: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #1 TEX matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TEX@OU: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TEX@OU: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #3 ND matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "STAN@ND: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "STAN@ND: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #9 MISS matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MISS@VAN: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MISS@VAN: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #13 ORE matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #21 UCLA matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UCLA@ORE: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UCLA@ORE: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #22 HOU matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@KSU: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@KSU: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #5 OSU matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MD@OSU: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MD@OSU: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #15 TENN matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TENN@ARK: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TENN@ARK: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #10 LSU matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LSU@UK: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LSU@UK: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #6 ALA matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #2 UGA matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UGA@ALA: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UGA@ALA: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #19 USC matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "USC@PSU: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "USC@PSU: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #12 UTAH matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "KU@UTAH: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "KU@UTAH: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: #23 BOIS matches a poll",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOIS@FRES: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOIS@FRES: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb: enough verified games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb_feed_feed.jpg: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb_feed_feed.jpg: dimensions",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb_feed_feed.jpg: not empty",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfb_feed_feed.jpg: has visible content",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: responsible-gambling line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    }
+  ]
+}

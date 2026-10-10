@@ -136,7 +136,7 @@ def main(days=30):
             except RuntimeError:
                 vals[metric] = None
         meta = index.get(m["id"], {})
-        rows.append({"id": m["id"], "when": ts.astimezone().strftime("%a %m/%d %H:%M"), "type": mtype,
+        rows.append({"id": m["id"], "ts": ts.isoformat(), "when": ts.astimezone().strftime("%a %m/%d %H:%M"), "type": mtype,
                      "kind": kind_of(meta.get("key"), meta.get("job")), "permalink": m.get("permalink"), **vals})
 
     try:
@@ -173,7 +173,7 @@ def main(days=30):
                      f"{fmt(watch / 1000 if watch else None, 1)} |")
     lines += ["", "## Every post", "", "| When | Kind | Views | Reach | Saves | Shares | Follows | Avg watch (s) |",
               "|---|---|---|---|---|---|---|---|"]
-    for r in sorted(rows, key=lambda r: r["when"], reverse=True):
+    for r in sorted(rows, key=lambda r: r["ts"], reverse=True):
         w = r.get("ig_reels_avg_watch_time")
         lines.append(f"| {r['when']} | {r['kind']} | {fmt(r.get('views'))} | {fmt(r.get('reach'))} | {fmt(r.get('saved'))} | "
                      f"{fmt(r.get('shares'))} | {fmt(r.get('follows'))} | {fmt(w / 1000 if w else None, 1)} |")

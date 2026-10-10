@@ -83,5 +83,20 @@
     "at": "2026-10-09T16:31-07:00",
     "detail": "https://www.instagram.com/reel/DeSsip5gIjV/",
     "status": "posted"
+  },
+  "2026-10-10:archive_am": {
+    "at": "2026-10-10T08:19-07:00",
+    "detail": "7 snapshot files",
+    "status": "done"
+  },
+  "2026-10-10:cfb_feed": {
+    "at": "2026-10-10T08:19-07:00",
+    "detail": "https://www.instagram.com/p/DeUY-3qEYAG/",
+    "status": "posted"
+  },
+  "2026-10-10:cfb_story": {
+    "at": "2026-10-10T08:19-07:00",
+    "detail": "2026-10-10-cfb-story",
+    "status": "posted"
   }
 }

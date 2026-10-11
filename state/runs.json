@@ -124,9 +124,19 @@
     "detail": "8 snapshot files",
     "status": "done"
   },
+  "2026-10-11:mlb_story": {
+    "at": "2026-10-11T11:54-07:00",
+    "detail": "2026-10-11-mlb-story",
+    "status": "posted"
+  },
   "2026-10-11:nfl_gameday": {
     "at": "2026-10-11T07:14-07:00",
     "detail": "2026-wk05-gameday-story",
     "status": "posted"
+  },
+  "2026-10-11:reel_trend_sun": {
+    "at": "2026-10-11T11:54-07:00",
+    "detail": "2026-10-11-reel-onestat already posted",
+    "status": "duplicate"
   }
 }

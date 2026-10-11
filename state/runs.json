@@ -118,5 +118,15 @@
     "at": "2026-10-10T18:15-07:00",
     "detail": "https://www.instagram.com/reel/DeVdU3tCDqA/",
     "status": "posted"
+  },
+  "2026-10-11:archive_am": {
+    "at": "2026-10-11T07:14-07:00",
+    "detail": "8 snapshot files",
+    "status": "done"
+  },
+  "2026-10-11:nfl_gameday": {
+    "at": "2026-10-11T07:14-07:00",
+    "detail": "2026-wk05-gameday-story",
+    "status": "posted"
   }
 }

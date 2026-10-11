@@ -108,5 +108,15 @@
     "at": "2026-10-10T12:23-07:00",
     "detail": "2026-10-10-mlb-story",
     "status": "posted"
+  },
+  "2026-10-10:nfl_snf_story": {
+    "at": "2026-10-10T18:15-07:00",
+    "detail": "2026-wk05-snf-story",
+    "status": "posted"
+  },
+  "2026-10-10:reel_onestat": {
+    "at": "2026-10-10T18:15-07:00",
+    "detail": "https://www.instagram.com/reel/DeVdU3tCDqA/",
+    "status": "posted"
   }
 }

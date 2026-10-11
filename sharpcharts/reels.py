@@ -262,7 +262,8 @@ def reel_onestat(ctx, out_dir, sizes=None, day=None):
         tag, f"onestat-{day}")
     key = f"{day.isoformat()}-reel-onestat"
     kind = "onestat"
-    caption = P.with_question(f"{sentence} 📊\n\nData {ctx.thru.lower()}, verified.", kind, key, **qvals)
+    caption = P.with_question(f"🦊 Digit's stat of the day: {sentence[0].lower() + sentence[1:] if sentence.startswith('The ') else sentence}"
+                              f"\n\nData {ctx.thru.lower()}, verified.", kind, key, **qvals)
     caption += f"\n\n👉 Follow @sharp_charts for one stat a day.\n{P.DISCLAIMER}\n#nfl #nflbetting #fantasyfootball #sportsbetting"
     return _post(key, mp4, cover, caption, C.Report("reel onestat").extend(ctx.report))
 

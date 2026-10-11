@@ -306,7 +306,7 @@ def reel_outro(tag):
     return page(inner, "reel", tag=tag, source="nflverse · MLB · ESPN")
 
 
-def one_stat(hook, number, label, who, color, tag, source, p=1.0, note=""):
+def one_stat(hook, number, label, who, color, tag, source, p=1.0, note="Digit's stat of the day 🦊"):
     """One giant number, readable in under a second. who = dict(abbr, color, name)."""
     c = "var(--green)" if color == "green" else "var(--red)"
     glow = "rgba(43,255,136,.30)" if color == "green" else "rgba(255,77,94,.30)"

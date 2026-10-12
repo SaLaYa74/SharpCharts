@@ -105,6 +105,16 @@
     "permalink": "https://www.instagram.com/reel/DeP7CbeimFM/",
     "posted_at": "2026-10-08T21:41:35+00:00"
   },
+  "2026-wk04-reel-ou": {
+    "images": 1,
+    "job": "reel_ou",
+    "media": "reel",
+    "media_id": "18212673994364097",
+    "permalink": "https://www.instagram.com/reel/DeadmpND0Ut/",
+    "posted_at": "2026-10-12T23:56:00+00:00",
+    "scheduled": "16:00",
+    "trial": false
+  },
   "2026-wk05-gameday-story": {
     "images": 1,
     "job": "nfl_gameday",
@@ -123,6 +133,16 @@
     "permalink": "https://www.instagram.com/p/DeZz-5WmJ_m/",
     "posted_at": "2026-10-12T17:51:52+00:00",
     "scheduled": "10:00",
+    "trial": false
+  },
+  "2026-wk05-mnf-story": {
+    "images": 1,
+    "job": "nfl_mnf_story",
+    "media": "story",
+    "media_id": "18118234195770729",
+    "permalink": null,
+    "posted_at": "2026-10-12T23:54:00+00:00",
+    "scheduled": "15:00",
     "trial": false
   },
   "2026-wk05-slate": {

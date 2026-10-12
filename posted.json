@@ -115,6 +115,16 @@
     "scheduled": "07:00",
     "trial": false
   },
+  "2026-wk05-mnf-feed": {
+    "images": 1,
+    "job": "nfl_mnf",
+    "media": "feed",
+    "media_id": "17994420369045049",
+    "permalink": "https://www.instagram.com/p/DeZz-5WmJ_m/",
+    "posted_at": "2026-10-12T17:51:52+00:00",
+    "scheduled": "10:00",
+    "trial": false
+  },
   "2026-wk05-slate": {
     "images": 10,
     "job": "nfl_slate",

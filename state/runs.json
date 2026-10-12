@@ -143,5 +143,15 @@
     "at": "2026-10-11T11:54-07:00",
     "detail": "2026-10-11-reel-onestat already posted",
     "status": "duplicate"
+  },
+  "2026-10-12:archive_am": {
+    "at": "2026-10-12T10:51-07:00",
+    "detail": "8 snapshot files",
+    "status": "done"
+  },
+  "2026-10-12:nfl_mnf": {
+    "at": "2026-10-12T10:51-07:00",
+    "detail": "https://www.instagram.com/p/DeZz-5WmJ_m/",
+    "status": "posted"
   }
 }

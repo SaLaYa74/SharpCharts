@@ -165,6 +165,16 @@
     "scheduled": "09:00",
     "trial": false
   },
+  "2026-wk05-reel-waiver": {
+    "images": 1,
+    "job": "reel_waiver",
+    "media": "reel",
+    "media_id": "18093968267667436",
+    "permalink": "https://www.instagram.com/reel/Dec8_iDiVAG/",
+    "posted_at": "2026-10-13T23:08:46+00:00",
+    "scheduled": "12:00",
+    "trial": false
+  },
   "2026-wk05-slate": {
     "images": 10,
     "job": "nfl_slate",

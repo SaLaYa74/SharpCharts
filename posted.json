@@ -83,6 +83,16 @@
     "scheduled": "16:00",
     "trial": true
   },
+  "2026-10-13-mlb-story": {
+    "images": 1,
+    "job": "mlb_story",
+    "media": "story",
+    "media_id": "18113106521600745",
+    "permalink": null,
+    "posted_at": "2026-10-13T18:37:03+00:00",
+    "scheduled": "11:00",
+    "trial": false
+  },
   "2026-wk04-fantasy-rb": {
     "images": 1,
     "job": "fantasy_wed",
@@ -143,6 +153,16 @@
     "permalink": null,
     "posted_at": "2026-10-12T23:54:00+00:00",
     "scheduled": "15:00",
+    "trial": false
+  },
+  "2026-wk05-recap": {
+    "images": 3,
+    "job": "nfl_recap",
+    "media": "feed",
+    "media_id": "17997525300041054",
+    "permalink": "https://www.instagram.com/p/Decd7VJGf5b/",
+    "posted_at": "2026-10-13T18:36:53+00:00",
+    "scheduled": "09:00",
     "trial": false
   },
   "2026-wk05-slate": {

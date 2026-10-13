@@ -173,5 +173,20 @@
     "at": "2026-10-12T16:53-07:00",
     "detail": "https://www.instagram.com/reel/DeadmpND0Ut/",
     "status": "posted"
+  },
+  "2026-10-13:archive_am": {
+    "at": "2026-10-13T11:36-07:00",
+    "detail": "8 snapshot files",
+    "status": "done"
+  },
+  "2026-10-13:mlb_story": {
+    "at": "2026-10-13T11:36-07:00",
+    "detail": "2026-10-13-mlb-story",
+    "status": "posted"
+  },
+  "2026-10-13:nfl_recap": {
+    "at": "2026-10-13T11:36-07:00",
+    "detail": "https://www.instagram.com/p/Decd7VJGf5b/",
+    "status": "posted"
   }
 }

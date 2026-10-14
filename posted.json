@@ -175,6 +175,16 @@
     "scheduled": "09:00",
     "trial": false
   },
+  "2026-wk05-reel-ats": {
+    "images": 1,
+    "job": "reel_ats",
+    "media": "reel",
+    "media_id": "18199383886383633",
+    "permalink": "https://www.instagram.com/reel/DeflW6KDKfv/",
+    "posted_at": "2026-10-14T23:39:57+00:00",
+    "scheduled": "16:00",
+    "trial": false
+  },
   "2026-wk05-reel-fantasy-rb": {
     "images": 1,
     "job": "reel_fantasy_rb",

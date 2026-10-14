@@ -93,6 +93,16 @@
     "scheduled": "11:00",
     "trial": false
   },
+  "2026-10-14-mlb-story": {
+    "images": 1,
+    "job": "mlb_story",
+    "media": "story",
+    "media_id": "18168992512464986",
+    "permalink": null,
+    "posted_at": "2026-10-14T20:58:14+00:00",
+    "scheduled": "11:00",
+    "trial": false
+  },
   "2026-wk04-fantasy-rb": {
     "images": 1,
     "job": "fantasy_wed",

@@ -229,6 +229,11 @@
     "detail": "9 snapshot files",
     "status": "done"
   },
+  "2026-10-15:archive_pm": {
+    "at": "2026-10-15T16:02-07:00",
+    "detail": "9 snapshot files",
+    "status": "done"
+  },
   "2026-10-15:mlb_story": {
     "at": "2026-10-15T13:06-07:00",
     "detail": "2026-10-15-mlb-story",
@@ -237,6 +242,11 @@
   "2026-10-15:nfl_slate": {
     "at": "2026-10-15T13:06-07:00",
     "detail": "https://www.instagram.com/p/Dehx_oyFuCQ/",
+    "status": "posted"
+  },
+  "2026-10-15:nfl_tnf_story": {
+    "at": "2026-10-15T16:02-07:00",
+    "detail": "2026-wk06-tnf-story",
     "status": "posted"
   },
   "2026-10-15:reel_fantasy": {

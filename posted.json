@@ -103,6 +103,16 @@
     "scheduled": "11:00",
     "trial": false
   },
+  "2026-10-15-mlb-story": {
+    "images": 1,
+    "job": "mlb_story",
+    "media": "story",
+    "media_id": "18107335235251527",
+    "permalink": null,
+    "posted_at": "2026-10-15T20:08:41+00:00",
+    "scheduled": "11:00",
+    "trial": false
+  },
   "2026-wk04-fantasy-rb": {
     "images": 1,
     "job": "fantasy_wed",
@@ -195,6 +205,16 @@
     "scheduled": "08:00",
     "trial": false
   },
+  "2026-wk05-reel-fantasy-wr": {
+    "images": 1,
+    "job": "reel_fantasy",
+    "media": "reel",
+    "media_id": "18024068780871995",
+    "permalink": "https://www.instagram.com/reel/DehyLVzETQv/",
+    "posted_at": "2026-10-15T20:10:25+00:00",
+    "scheduled": "12:00",
+    "trial": false
+  },
   "2026-wk05-reel-waiver": {
     "images": 1,
     "job": "reel_waiver",
@@ -230,5 +250,15 @@
     "media_id": "18144182239572172",
     "permalink": null,
     "posted_at": "2026-10-09T01:26:01+00:00"
+  },
+  "2026-wk06-slate": {
+    "images": 10,
+    "job": "nfl_slate",
+    "media": "feed",
+    "media_id": "18094366559161708",
+    "permalink": "https://www.instagram.com/p/Dehx_oyFuCQ/",
+    "posted_at": "2026-10-15T20:08:26+00:00",
+    "scheduled": "10:00",
+    "trial": false
   }
 }

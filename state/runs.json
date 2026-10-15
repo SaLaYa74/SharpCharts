@@ -228,5 +228,20 @@
     "at": "2026-10-15T09:55-07:00",
     "detail": "9 snapshot files",
     "status": "done"
+  },
+  "2026-10-15:mlb_story": {
+    "at": "2026-10-15T13:06-07:00",
+    "detail": "2026-10-15-mlb-story",
+    "status": "posted"
+  },
+  "2026-10-15:nfl_slate": {
+    "at": "2026-10-15T13:06-07:00",
+    "detail": "https://www.instagram.com/p/Dehx_oyFuCQ/",
+    "status": "posted"
+  },
+  "2026-10-15:reel_fantasy": {
+    "at": "2026-10-15T13:06-07:00",
+    "detail": "https://www.instagram.com/reel/DehyLVzETQv/",
+    "status": "posted"
   }
 }

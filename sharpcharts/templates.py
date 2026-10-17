@@ -2,6 +2,8 @@
 import re
 from html import escape
 
+from .helmets import helmet
+
 HANDLE = "@sharp_charts"
 
 BRAND_CSS = """
@@ -183,7 +185,7 @@ def bar_ranking(title_html, subtitle, rows, tag, source, size="feed", note="", s
         bar_style = (f"left:{left};width:{pct}%;background:linear-gradient(90deg,rgba(43,255,136,.55),var(--green))" if pos else
                      f"right:50%;width:{pct}%;background:linear-gradient(270deg,rgba(255,77,94,.55),var(--red))")
         html_rows.append(f'''<div style="display:flex;align-items:center;gap:18px;height:{row_h}px">
-  {chip(r["abbr"], r["color"], chip_px, int(chip_px * .46))}
+  {_row_badge(r["abbr"], r["color"], chip_px)}
   <div style="width:{330 if glance else 250}px"><div style="font-size:{name_px}px;font-weight:700;line-height:1.1">{escape(r["name"])}</div>
      <div class="m" style="font-size:{detail_px}px">{escape(r.get("record",""))}</div></div>
   <div style="flex:1;position:relative;height:{44 if glance else 30}px;background:var(--panel);border-radius:8px">
@@ -220,29 +222,61 @@ def splits(title_html, subtitle, items, tag, source, size="feed", note=""):
     return page(inner, size, tag=tag, source=source, note=note)
 
 
+def _dots(record, k=1.0, over_under=False):
+    """'4-1-0' → five dots: wins green, losses red, pushes grey (O/U: overs gold, unders slate)."""
+    parts = [int(x) for x in record.split("-")] + [0, 0]
+    w, l, p = parts[0], parts[1], parts[2]
+    c_w, c_l = ("var(--amber)", "#5B6B8C") if over_under else ("var(--green)", "var(--red)")
+    sz = int(38 * k)
+    dot = lambda c: f'<span style="display:inline-block;width:{sz}px;height:{sz}px;border-radius:50%;background:{c};margin:0 {int(4 * k)}px"></span>'
+    return "".join([dot(c_w)] * w + [dot(c_l)] * l + [dot("#8C98B0")] * p)
+
+
 def matchup(away, home, line_info, stat_rows, tag, source, size="feed", note=""):
-    """away/home: dict(abbr,name,color). line_info: list of (label, value). stat_rows: (label, away_val, home_val, better).
-    Story size scales everything up and spreads it over the full screen."""
+    """Visual-first card: helmets face off, one big spread, records as colored dots."""
     k = 1.3 if size == "story" else 1.0
-    def side(t, label):
-        return f'''<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:{int(14 * k)}px">
-  {chip(t["abbr"], t["color"], int(170 * k), int(72 * k))}
-  <div class="cond" style="font-size:{int(52 * k)}px;font-weight:800;text-transform:uppercase">{escape(t["name"])}</div>
-  <div class="m" style="font-size:{int(22 * k)}px;letter-spacing:3px;text-transform:uppercase">{label}</div></div>'''
-    lines = "".join(f'''<div style="flex:1;text-align:center;padding:{int(18 * k)}px 8px">
-   <div class="m" style="font-size:{int(20 * k)}px;letter-spacing:2px;text-transform:uppercase">{escape(lk)}</div>
-   <div class="cond" style="font-size:50px;font-weight:800;margin-top:4px;white-space:nowrap">{escape(v)}</div></div>''' for lk, v in line_info)
-    rows = "".join(f'''<div style="display:flex;align-items:center;padding:{int(16 * k * k)}px 0;border-bottom:2px solid var(--line)">
-   <div class="cond" style="flex:1;text-align:left;font-size:{int(44 * k)}px;font-weight:800;{'color:var(--green)' if b=='away' else ''}">{escape(a)}</div>
-   <div class="m" style="flex:1.3;text-align:center;font-size:{int(22 * k)}px;letter-spacing:2px;text-transform:uppercase;font-weight:600">{escape(lbl)}</div>
-   <div class="cond" style="flex:1;text-align:right;font-size:{int(44 * k)}px;font-weight:800;{'color:var(--green)' if b=='home' else ''}">{escape(h)}</div></div>'''
-                   for lbl, a, h, b in stat_rows)
-    inner = f'''<div class="body" style="gap:{int(30 * k)}px;justify-content:{'space-evenly' if size == 'story' else 'center'}">
- <div style="display:flex;align-items:center">{side(away,"Away")}
-   <div class="cond m" style="font-size:{int(60 * k)}px;font-weight:800">@</div>{side(home,"Home")}</div>
- <div style="display:flex;background:var(--panel);border:2px solid var(--line);border-radius:20px">{lines}</div>
- <div>{rows}</div></div>'''
+    stats = {lbl: (a, h) for lbl, a, h, _ in stat_rows}
+    spread = dict(line_info).get("Spread", "")
+    total = dict(line_info).get("Total", "")
+
+    def team(t, facing):
+        return f'''<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:{int(8 * k)}px">
+  {helmet(t["abbr"], int(330 * k), facing)}
+  <div class="cond" style="font-size:{int(58 * k)}px;font-weight:800;text-transform:uppercase;line-height:1">{escape(t["name"])}</div>
+  <div class="m" style="font-size:{int(26 * k)}px;font-weight:600">{escape(stats.get("Record", ("", ""))[0 if facing == "right" else 1])}</div></div>'''
+
+    def dots_row(label, key, ou=False):
+        a, h = stats.get(key, ("0-0", "0-0"))
+        return f'''<div style="display:flex;align-items:center;padding:{int(18 * k)}px 0;border-top:2px solid var(--line)">
+   <div style="flex:1;text-align:left">{_dots(a, k, ou)}</div>
+   <div class="m" style="width:{int(190 * k)}px;text-align:center;font-size:{int(22 * k)}px;letter-spacing:2px;text-transform:uppercase;font-weight:700">{label}</div>
+   <div style="flex:1;text-align:right">{_dots(h, k, ou)}</div></div>'''
+    inner = f'''<div class="body" style="gap:{int(22 * k)}px;justify-content:{'space-evenly' if size == 'story' else 'center'}">
+ <div style="display:flex;align-items:flex-end">{team(away, "right")}
+   <div class="cond m" style="font-size:{int(60 * k)}px;font-weight:800;padding-bottom:{int(70 * k)}px">@</div>{team(home, "left")}</div>
+ <div style="text-align:center;background:var(--panel);border:2px solid var(--line);border-radius:24px;padding:{int(18 * k)}px">
+   <div class="m" style="font-size:{int(22 * k)}px;letter-spacing:3px;text-transform:uppercase;font-weight:700">The line</div>
+   <div class="cond" style="font-size:{int(96 * k)}px;font-weight:800;line-height:1">{escape(spread)}</div>
+   <div class="m" style="font-size:{int(26 * k)}px;font-weight:600">Total {escape(total)}</div></div>
+ <div>{dots_row("vs the spread", "ATS")}{dots_row("over / under", "Over / Under", ou=True)}
+  <div class="m" style="text-align:center;font-size:{int(20 * k)}px;margin-top:{int(10 * k)}px">
+   <span class="g">●</span> covered &nbsp; <span class="r">●</span> didn't &nbsp; <span style="color:var(--amber)">●</span> over &nbsp; <span style="color:#5B6B8C">●</span> under &nbsp; ● push · this season</div></div></div>'''
     return page(inner, size, tag=tag, source=source, note=note)
+
+
+def _row_badge(abbr, color, px):
+    from .helmets import H
+    return helmet(abbr, int(px * 1.5), "right") if abbr in H else chip(abbr, color, px, int(px * .46))
+
+
+def _badge(team, sz, facing):
+    """NFL teams get a helmet; other sports (no helmet data) keep the color chip."""
+    from .helmets import H
+    if team[0] in H and len(team) < 3:
+        lab = f'<span class="cond" style="font-size:{int(sz * .62)}px;font-weight:800">{escape(team[0])}</span>'
+        hel = helmet(team[0], int(sz * 1.55), facing)
+        return f'<span style="display:inline-flex;align-items:center;gap:6px">{hel if facing == "right" else lab}{lab if facing == "right" else hel}</span>'
+    return chip(team[0], team[1], sz, int(sz * .42))
 
 
 def _rank(team):
@@ -262,7 +296,7 @@ def slate(week, rows, tag, source, size="feed", note="", title_html=None,
     else:
         row_h, k = min(64, int(760 / max(n, 1))), 1.0
     w = min(k, 1.3)                           # column widths grow less than text so nothing collides
-    chip_sz = min(int(46 * k), row_h - 14)
+    chip_sz = min(int(54 * k), row_h - 8)
     head = f'''<div style="display:flex;align-items:center;padding:0 0 10px;font-size:{int(20 * w)}px;letter-spacing:2px;text-transform:uppercase;font-weight:600" class="m">
   <div style="width:{int(170 * w)}px">Kickoff (ET)</div><div style="flex:1">Matchup</div>
   <div style="width:{int(200 * w)}px;text-align:right">Spread</div><div style="width:{int(120 * w)}px;text-align:right">Total</div></div>'''
@@ -271,8 +305,8 @@ def slate(week, rows, tag, source, size="feed", note="", title_html=None,
         body.append(f'''<div style="display:flex;align-items:center;height:{row_h}px;border-top:2px solid var(--line)">
   <div class="m" style="width:{int(170 * w)}px;font-size:{int(22 * w)}px;font-weight:600;white-space:nowrap">{escape(r["kick"])}</div>
   <div style="flex:1;display:flex;align-items:center;gap:{int(10 * w)}px">
-    {_rank(r["away"])}{chip(r["away"][0], r["away"][1], chip_sz, int(chip_sz*.42))}<span class="m cond" style="font-size:{int(28 * w)}px;font-weight:700">@</span>
-    {_rank(r["home"])}{chip(r["home"][0], r["home"][1], chip_sz, int(chip_sz*.42))}</div>
+    {_rank(r["away"])}{_badge(r["away"], chip_sz, "right")}<span class="m cond" style="font-size:{int(28 * w)}px;font-weight:700">@</span>
+    {_rank(r["home"])}{_badge(r["home"], chip_sz, "left")}</div>
   <div class="cond" style="width:{int(200 * w)}px;text-align:right;font-size:{int(36 * k)}px;font-weight:800;white-space:nowrap">{escape(r["spread"])}</div>
   <div class="cond g" style="width:{int(120 * w)}px;text-align:right;font-size:{int(36 * k)}px;font-weight:800">{escape(r["total"])}</div></div>''')
     title_html = title_html or f"Week {week}<br><em>betting slate</em>"

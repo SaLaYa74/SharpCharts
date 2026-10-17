@@ -123,6 +123,16 @@
     "scheduled": "11:00",
     "trial": false
   },
+  "2026-10-17-reel-trend": {
+    "images": 1,
+    "job": "reel_trend",
+    "media": "reel",
+    "media_id": "18383912308232293",
+    "permalink": "https://www.instagram.com/reel/Dekxif-DQde/",
+    "posted_at": "2026-10-17T00:02:39+00:00",
+    "scheduled": "16:00",
+    "trial": false
+  },
   "2026-wk04-fantasy-rb": {
     "images": 1,
     "job": "fantasy_wed",

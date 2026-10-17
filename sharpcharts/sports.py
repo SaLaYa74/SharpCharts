@@ -45,6 +45,15 @@ def _odds(comp):
     return o.get("details"), o.get("overUnder"), (o.get("provider") or {}).get("name")
 
 
+def _favorite_conflict(comp, fav_abbr):
+    """ESPN gives the line text ('TB -112') and separate favorite flags. If they point at different
+    teams, the data is internally inconsistent and we don't publish that game."""
+    o = (comp.get("odds") or [{}])[0]
+    side = {c["homeAway"]: c["team"]["abbreviation"] for c in comp["competitors"]}
+    flagged = [side[k] for k in ("home", "away") if (o.get(f"{k}TeamOdds") or {}).get("favorite") is True]
+    return bool(flagged) and fav_abbr not in flagged
+
+
 # ---------------------------------------------------------------- college football
 
 def cfb_slate(out_dir, sizes=("feed",), day=None, media="feed"):
@@ -84,8 +93,11 @@ def cfb_slate(out_dir, sizes=("feed",), day=None, media="feed"):
         except ValueError:
             rep.expect(False, f"cfb: {tag} line readable", f"unreadable line '{details}', left off")
             continue
-        C.line_ranges(rep, "cfb", tag, spread, float(ou))
         fav = details.rpartition(" ")[0]
+        if spread and _favorite_conflict(comp, fav):
+            rep.expect(False, f"cfb: {tag} favorite consistent", f"line says {details} but ESPN flags the other team, left off")
+            continue
+        C.line_ranges(rep, "cfb", tag, spread, float(ou))
 
         def team(k):
             t = side[k]["team"]
@@ -168,6 +180,10 @@ def mlb_tonight(out_dir, sizes=("story",), day=None, media="story"):
         except ValueError:
             rep.expect(False, f"mlb: {label} line readable", f"'{details}' unreadable, left off")
             continue
+        if _favorite_conflict(comp, fav):
+            rep.expect(False, f"mlb: {label} favorite consistent", f"line says {details} but ESPN flags the other team as favorite, left off")
+            continue
+        rep.require(True, f"mlb: {label} favorite consistent")
         C.line_ranges(rep, "mlb", label, total=float(ou), moneylines=(ml,))
 
         def team(k):

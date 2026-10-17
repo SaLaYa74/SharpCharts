@@ -18,7 +18,7 @@ body{background:var(--bg);color:var(--text);font-family:Inter,"Helvetica Neue",A
     radial-gradient(900px 600px at 100% 0%, rgba(43,255,136,.10), transparent 60%),
     radial-gradient(700px 500px at 0% 100%, rgba(64,120,255,.10), transparent 60%),
     var(--bg)}
-.frame.story{padding:230px 72px 270px}
+.frame.story{padding:200px 64px 240px}
 .frame.reel{padding:200px 150px 380px 72px}
 .grid{position:absolute;inset:0;pointer-events:none;opacity:.35;
   background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
@@ -73,6 +73,18 @@ def mascot_svg(size=64):
   <path d="M56 119 q8 -8 16 0" fill="none" stroke="#0A0F1C" stroke-width="5" stroke-linecap="round"/>
   <path d="M108 119 q8 -8 16 0" fill="none" stroke="#0A0F1C" stroke-width="5" stroke-linecap="round"/>
   <ellipse cx="90" cy="164" rx="9" ry="7" fill="#0A0F1C"/></svg>'''
+
+
+# Stories: scale the main content up until it fills the screen (inside Instagram's safe zones),
+# so short content (e.g. one MLB game) never leaves half the screen empty.
+FIT_JS = """<script>(function(){
+ var b=document.querySelector('.frame.story .body'); if(!b) return;
+ var w=document.createElement('div'); while(b.firstChild) w.appendChild(b.firstChild); b.appendChild(w);
+ w.style.display='flex'; w.style.flexDirection='column'; w.style.gap=getComputedStyle(b).gap;
+ b.style.justifyContent='center';
+ var z=Math.min(2.0, b.clientHeight / w.scrollHeight * 0.96);
+ if(z>1.03){ w.style.zoom=z; w.style.width=(100/z)+'%'; }
+})();</script>"""
 
 
 def page(inner, size="feed", tag="", source="", note=""):
@@ -209,23 +221,25 @@ def splits(title_html, subtitle, items, tag, source, size="feed", note=""):
 
 
 def matchup(away, home, line_info, stat_rows, tag, source, size="feed", note=""):
-    """away/home: dict(abbr,name,color). line_info: list of (label, value). stat_rows: (label, away_val, home_val, better)."""
+    """away/home: dict(abbr,name,color). line_info: list of (label, value). stat_rows: (label, away_val, home_val, better).
+    Story size scales everything up and spreads it over the full screen."""
+    k = 1.3 if size == "story" else 1.0
     def side(t, label):
-        return f'''<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:14px">
-  {chip(t["abbr"], t["color"], 170, 72)}
-  <div class="cond" style="font-size:52px;font-weight:800;text-transform:uppercase">{escape(t["name"])}</div>
-  <div class="m" style="font-size:22px;letter-spacing:3px;text-transform:uppercase">{label}</div></div>'''
-    lines = "".join(f'''<div style="flex:1;text-align:center;padding:18px 8px">
-   <div class="m" style="font-size:20px;letter-spacing:2px;text-transform:uppercase">{escape(k)}</div>
-   <div class="cond" style="font-size:50px;font-weight:800;margin-top:4px">{escape(v)}</div></div>''' for k, v in line_info)
-    rows = "".join(f'''<div style="display:flex;align-items:center;padding:16px 0;border-bottom:2px solid var(--line)">
-   <div class="cond" style="flex:1;text-align:left;font-size:44px;font-weight:800;{'color:var(--green)' if b=='away' else ''}">{escape(a)}</div>
-   <div class="m" style="flex:1.3;text-align:center;font-size:22px;letter-spacing:2px;text-transform:uppercase;font-weight:600">{escape(lbl)}</div>
-   <div class="cond" style="flex:1;text-align:right;font-size:44px;font-weight:800;{'color:var(--green)' if b=='home' else ''}">{escape(h)}</div></div>'''
+        return f'''<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:{int(14 * k)}px">
+  {chip(t["abbr"], t["color"], int(170 * k), int(72 * k))}
+  <div class="cond" style="font-size:{int(52 * k)}px;font-weight:800;text-transform:uppercase">{escape(t["name"])}</div>
+  <div class="m" style="font-size:{int(22 * k)}px;letter-spacing:3px;text-transform:uppercase">{label}</div></div>'''
+    lines = "".join(f'''<div style="flex:1;text-align:center;padding:{int(18 * k)}px 8px">
+   <div class="m" style="font-size:{int(20 * k)}px;letter-spacing:2px;text-transform:uppercase">{escape(lk)}</div>
+   <div class="cond" style="font-size:50px;font-weight:800;margin-top:4px;white-space:nowrap">{escape(v)}</div></div>''' for lk, v in line_info)
+    rows = "".join(f'''<div style="display:flex;align-items:center;padding:{int(16 * k * k)}px 0;border-bottom:2px solid var(--line)">
+   <div class="cond" style="flex:1;text-align:left;font-size:{int(44 * k)}px;font-weight:800;{'color:var(--green)' if b=='away' else ''}">{escape(a)}</div>
+   <div class="m" style="flex:1.3;text-align:center;font-size:{int(22 * k)}px;letter-spacing:2px;text-transform:uppercase;font-weight:600">{escape(lbl)}</div>
+   <div class="cond" style="flex:1;text-align:right;font-size:{int(44 * k)}px;font-weight:800;{'color:var(--green)' if b=='home' else ''}">{escape(h)}</div></div>'''
                    for lbl, a, h, b in stat_rows)
-    inner = f'''<div class="body" style="gap:30px">
+    inner = f'''<div class="body" style="gap:{int(30 * k)}px;justify-content:{'space-evenly' if size == 'story' else 'center'}">
  <div style="display:flex;align-items:center">{side(away,"Away")}
-   <div class="cond m" style="font-size:60px;font-weight:800">@</div>{side(home,"Home")}</div>
+   <div class="cond m" style="font-size:{int(60 * k)}px;font-weight:800">@</div>{side(home,"Home")}</div>
  <div style="display:flex;background:var(--panel);border:2px solid var(--line);border-radius:20px">{lines}</div>
  <div>{rows}</div></div>'''
     return page(inner, size, tag=tag, source=source, note=note)
@@ -242,20 +256,25 @@ def slate(week, rows, tag, source, size="feed", note="", title_html=None,
           subtitle="Every game · spread &amp; total · swipe for breakdowns →"):
     """Every game of the week with spread + total. rows: dict(kick, away, home, spread, total, fav_home)."""
     n = len(rows)
-    row_h = min(64, int((760 if size == "feed" else 1060) / max(n, 1)))
-    chip_sz = min(46, row_h - 12)
-    head = '''<div style="display:flex;align-items:center;padding:0 0 10px;font-size:20px;letter-spacing:2px;text-transform:uppercase;font-weight:600" class="m">
-  <div style="width:170px">Kickoff (ET)</div><div style="flex:1">Matchup</div>
-  <div style="width:190px;text-align:right">Spread</div><div style="width:120px;text-align:right">Total</div></div>'''
+    if size == "story":                       # grow rows + text to fill the tall Story screen
+        row_h = min(118, int(1000 / max(n, 1)))
+        k = max(1.0, min(1.7, row_h / 64))
+    else:
+        row_h, k = min(64, int(760 / max(n, 1))), 1.0
+    w = min(k, 1.3)                           # column widths grow less than text so nothing collides
+    chip_sz = min(int(46 * k), row_h - 14)
+    head = f'''<div style="display:flex;align-items:center;padding:0 0 10px;font-size:{int(20 * w)}px;letter-spacing:2px;text-transform:uppercase;font-weight:600" class="m">
+  <div style="width:{int(170 * w)}px">Kickoff (ET)</div><div style="flex:1">Matchup</div>
+  <div style="width:{int(200 * w)}px;text-align:right">Spread</div><div style="width:{int(120 * w)}px;text-align:right">Total</div></div>'''
     body = []
     for r in rows:
         body.append(f'''<div style="display:flex;align-items:center;height:{row_h}px;border-top:2px solid var(--line)">
-  <div class="m" style="width:170px;font-size:22px;font-weight:600">{escape(r["kick"])}</div>
-  <div style="flex:1;display:flex;align-items:center;gap:10px">
-    {_rank(r["away"])}{chip(r["away"][0], r["away"][1], chip_sz, int(chip_sz*.42))}<span class="m cond" style="font-size:28px;font-weight:700">@</span>
+  <div class="m" style="width:{int(170 * w)}px;font-size:{int(22 * w)}px;font-weight:600;white-space:nowrap">{escape(r["kick"])}</div>
+  <div style="flex:1;display:flex;align-items:center;gap:{int(10 * w)}px">
+    {_rank(r["away"])}{chip(r["away"][0], r["away"][1], chip_sz, int(chip_sz*.42))}<span class="m cond" style="font-size:{int(28 * w)}px;font-weight:700">@</span>
     {_rank(r["home"])}{chip(r["home"][0], r["home"][1], chip_sz, int(chip_sz*.42))}</div>
-  <div class="cond" style="width:190px;text-align:right;font-size:36px;font-weight:800">{escape(r["spread"])}</div>
-  <div class="cond g" style="width:120px;text-align:right;font-size:36px;font-weight:800">{escape(r["total"])}</div></div>''')
+  <div class="cond" style="width:{int(200 * w)}px;text-align:right;font-size:{int(36 * k)}px;font-weight:800;white-space:nowrap">{escape(r["spread"])}</div>
+  <div class="cond g" style="width:{int(120 * w)}px;text-align:right;font-size:{int(36 * k)}px;font-weight:800">{escape(r["total"])}</div></div>''')
     title_html = title_html or f"Week {week}<br><em>betting slate</em>"
     inner = f'''<h1 style="font-size:96px">{title_html}</h1>
 <div class="sub" style="font-size:26px">{subtitle}</div>
@@ -263,25 +282,42 @@ def slate(week, rows, tag, source, size="feed", note="", title_html=None,
     return page(inner, size, tag=tag, source=source, note=note)
 
 
+def _line_row(g, k):
+    fav = g["away"] if g["away"].get("line") else g["home"]
+    return (f'<div style="display:flex;justify-content:space-between;align-items:baseline;border-top:2px solid var(--line);'
+            f'padding-top:{int(12 * k)}px;margin-top:{int(6 * k)}px"><span class="m" style="font-size:{int(18 * k)}px;'
+            f'letter-spacing:2px;text-transform:uppercase;font-weight:600">Moneyline favorite</span>'
+            f'<span class="cond" style="font-size:{int(46 * k)}px;font-weight:800">{escape(fav["abbr"])} {escape(fav.get("line", ""))}</span></div>')
+
+
 def game_blocks(title_html, subtitle, games, tag, source, size="feed", note=""):
     """Stacked game cards (any sport). games: dict(kick, headline, total,
     away/home=dict(abbr,color,name,line,detail))."""
     n = max(len(games), 1)
-    avail = 700 if size == "feed" else 1000
-    block_h = min(240, int(avail / n) - 14)
+    story = size == "story"
+    avail = 1180 if story else 700
+    block_h = min(820 if story else 240, int(avail / n) - 16)
+    k = max(1.0, min(3.1, block_h / 240)) if story else 1.0   # fewer games → bigger cards + text
     big = block_h >= 190
-    chip_sz = 62 if big else 50
+    chip_sz = int((62 if big else 50) * k)
+
+    stacked = story and n <= 2      # few games: team rows without a line column, line gets its own big row
 
     def side(t):
-        return f'''<div style="display:flex;align-items:center;gap:16px;height:{chip_sz + 8}px">
+        if stacked:
+            return f'''<div style="display:flex;align-items:center;gap:{int(14 * k)}px">
       {chip(t["abbr"], t["color"], chip_sz, int(chip_sz * .38))}
-      <div style="flex:1;min-width:0"><div style="font-size:{28 if big else 24}px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{escape(t["name"])}</div>
-        <div class="m" style="font-size:{20 if big else 18}px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{escape(t.get("detail", ""))}</div></div>
-      <div class="cond" style="font-size:{44 if big else 38}px;font-weight:800;text-align:right;width:130px">{escape(t.get("line", ""))}</div></div>'''
-    blocks = "".join(f'''<div style="background:var(--panel);border:2px solid var(--line);border-radius:20px;padding:{14 if big else 10}px 22px;display:flex;flex-direction:column;justify-content:center;gap:6px;height:{block_h}px">
-    <div style="display:flex;justify-content:space-between;font-size:19px;letter-spacing:2px;text-transform:uppercase;font-weight:600">
+      <div style="flex:1;min-width:0"><div style="font-size:{int(28 * k)}px;font-weight:700;line-height:1">{escape(t["name"])}</div>
+        <div class="m" style="font-size:{int(20 * min(k, 1.8))}px;line-height:1.3;margin-top:6px">{escape(t.get("detail", ""))}</div></div></div>'''
+        return f'''<div style="display:flex;align-items:center;gap:{int(16 * k)}px;height:{chip_sz + 8}px">
+      {chip(t["abbr"], t["color"], chip_sz, int(chip_sz * .38))}
+      <div style="flex:1;min-width:0"><div style="font-size:{int((28 if big else 24) * k)}px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{escape(t["name"])}</div>
+        <div class="m" style="font-size:{int((20 if big else 18) * min(k, 1.7))}px;white-space:normal;line-height:1.25">{escape(t.get("detail", ""))}</div></div>
+      <div class="cond" style="font-size:{int((44 if big else 38) * k)}px;font-weight:800;text-align:right;width:{int(130 * min(k, 1.9))}px">{escape(t.get("line", ""))}</div></div>'''
+    blocks = "".join(f'''<div style="background:var(--panel);border:2px solid var(--line);border-radius:{int(20 * k)}px;padding:{int((14 if big else 10) * k)}px {int(22 * k)}px;display:flex;flex-direction:column;justify-content:center;gap:{int(6 * k)}px;height:{block_h}px">
+    <div style="display:flex;justify-content:space-between;font-size:{int(19 * min(k, 1.5))}px;letter-spacing:2px;text-transform:uppercase;font-weight:600">
       <span class="m">{escape(g["kick"])} · <span style="color:var(--text)">O/U {escape(g.get("total", "—"))}</span></span><span class="g">{escape(g.get("headline", ""))}</span></div>
-    {side(g["away"])}{side(g["home"])}</div>''' for g in games)
+    {side(g["away"])}{side(g["home"])}{_line_row(g, k) if stacked else ""}</div>''' for g in games)
     inner = f'''<h1 style="font-size:92px">{title_html}</h1><div class="sub" style="font-size:26px">{subtitle}</div>
 <div class="body" style="justify-content:flex-start;gap:14px;margin-top:24px">{blocks}</div>'''
     return page(inner, size, tag=tag, source=source, note=note)

@@ -2,7 +2,7 @@
 import re
 from html import escape
 
-from .helmets import helmet
+from .helmets import badge
 
 HANDLE = "@sharp_charts"
 
@@ -241,7 +241,7 @@ def matchup(away, home, line_info, stat_rows, tag, source, size="feed", note="")
 
     def team(t, facing):
         return f'''<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:{int(8 * k)}px">
-  {helmet(t["abbr"], int(330 * k), facing)}
+  {badge(t["abbr"], int(230 * k))}
   <div class="cond" style="font-size:{int(58 * k)}px;font-weight:800;text-transform:uppercase;line-height:1">{escape(t["name"])}</div>
   <div class="m" style="font-size:{int(26 * k)}px;font-weight:600">{escape(stats.get("Record", ("", ""))[0 if facing == "right" else 1])}</div></div>'''
 
@@ -253,7 +253,7 @@ def matchup(away, home, line_info, stat_rows, tag, source, size="feed", note="")
    <div style="flex:1;text-align:right">{_dots(h, k, ou)}</div></div>'''
     inner = f'''<div class="body" style="gap:{int(22 * k)}px;justify-content:{'space-evenly' if size == 'story' else 'center'}">
  <div style="display:flex;align-items:flex-end">{team(away, "right")}
-   <div class="cond m" style="font-size:{int(60 * k)}px;font-weight:800;padding-bottom:{int(70 * k)}px">@</div>{team(home, "left")}</div>
+   <div class="cond m" style="font-size:{int(60 * k)}px;font-weight:800;padding-bottom:{int(110 * k)}px">@</div>{team(home, "left")}</div>
  <div style="text-align:center;background:var(--panel);border:2px solid var(--line);border-radius:24px;padding:{int(18 * k)}px">
    <div class="m" style="font-size:{int(22 * k)}px;letter-spacing:3px;text-transform:uppercase;font-weight:700">The line</div>
    <div class="cond" style="font-size:{int(96 * k)}px;font-weight:800;line-height:1">{escape(spread)}</div>
@@ -266,16 +266,14 @@ def matchup(away, home, line_info, stat_rows, tag, source, size="feed", note="")
 
 def _row_badge(abbr, color, px):
     from .helmets import H
-    return helmet(abbr, int(px * 1.5), "right") if abbr in H else chip(abbr, color, px, int(px * .46))
+    return badge(abbr, int(px * 1.05)) if abbr in H else chip(abbr, color, px, int(px * .46))
 
 
 def _badge(team, sz, facing):
     """NFL teams get a helmet; other sports (no helmet data) keep the color chip."""
     from .helmets import H
     if team[0] in H and len(team) < 3:
-        lab = f'<span class="cond" style="font-size:{int(sz * .62)}px;font-weight:800">{escape(team[0])}</span>'
-        hel = helmet(team[0], int(sz * 1.55), facing)
-        return f'<span style="display:inline-flex;align-items:center;gap:6px">{hel if facing == "right" else lab}{lab if facing == "right" else hel}</span>'
+        return badge(team[0], int(sz * 1.3))
     return chip(team[0], team[1], sz, int(sz * .42))
 
 

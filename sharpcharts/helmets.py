@@ -81,3 +81,24 @@ def helmet(abbr, size=120, facing="right", uid=None):
    font-weight="800" font-size="{fs}" fill="{decal}" stroke="#000" stroke-opacity=".5" stroke-width="2.5"
    paint-order="stroke" letter-spacing="1">{escape(abbr)}</text>
 </svg>'''
+
+
+def badge(abbr, size=120, fallback_color="#3A4A6B"):
+    """Clean broadcast-style team badge: main color disc, second-color ring, crisp abbreviation."""
+    shell, stripe, edge, mask, decal = H.get(abbr, (fallback_color, "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"))
+    # pick the darker/more saturated of shell vs stripe as the disc so the text pops
+    lum = lambda c: sum(int(c[i:i + 2], 16) * w for i, w in ((1, .299), (3, .587), (5, .114)))
+    disc, ring = (shell, stripe) if lum(shell) < lum(stripe) else (stripe, shell)
+    if ring.lower() == disc.lower():
+        ring = edge                       # e.g. Baltimore: purple disc gets its gold accent ring
+    text = "#FFFFFF" if lum(disc) < 150 else "#111111"
+    rgb = [int(ring[i:i + 2], 16) for i in (1, 3, 5)]
+    grey = max(rgb) - min(rgb) < 40
+    if text == "#FFFFFF" and lum(ring) > 140 and not grey:
+        text = ring                       # e.g. gold on green, orange on navy; never grey/silver text
+    fs = 46 if len(abbr) <= 2 else 38
+    return f'''<svg width="{size}" height="{size}" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+ <circle cx="60" cy="60" r="56" fill="{ring}"/><circle cx="60" cy="60" r="47" fill="{disc}"/>
+ <circle cx="60" cy="60" r="47" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>
+ <text x="60" y="{60 + fs * .36:.0f}" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, sans-serif"
+   font-weight="800" font-size="{fs}" fill="{text}" letter-spacing="1">{escape(abbr)}</text></svg>'''

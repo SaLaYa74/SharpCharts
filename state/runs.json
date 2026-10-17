@@ -273,5 +273,20 @@
     "at": "2026-10-16T17:01-07:00",
     "detail": "https://www.instagram.com/reel/Dekxif-DQde/",
     "status": "posted"
+  },
+  "2026-10-17:archive_am": {
+    "at": "2026-10-17T08:45-07:00",
+    "detail": "7 snapshot files",
+    "status": "done"
+  },
+  "2026-10-17:cfb_feed": {
+    "at": "2026-10-17T08:45-07:00",
+    "detail": "https://www.instagram.com/p/DemdkM3G5-q/",
+    "status": "posted"
+  },
+  "2026-10-17:cfb_story": {
+    "at": "2026-10-17T08:45-07:00",
+    "detail": "2026-10-17-cfb-story",
+    "status": "posted"
   }
 }

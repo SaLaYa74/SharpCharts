@@ -287,7 +287,7 @@ def _line_row(g, k):
     return (f'<div style="display:flex;justify-content:space-between;align-items:baseline;border-top:2px solid var(--line);'
             f'padding-top:{int(12 * k)}px;margin-top:{int(6 * k)}px"><span class="m" style="font-size:{int(18 * k)}px;'
             f'letter-spacing:2px;text-transform:uppercase;font-weight:600">Moneyline favorite</span>'
-            f'<span class="cond" style="font-size:{int(46 * k)}px;font-weight:800">{escape(fav["abbr"])} {escape(fav.get("line", ""))}</span></div>')
+            f'<span class="cond" style="font-size:{int(46 * k)}px;font-weight:800;white-space:nowrap">{escape(fav["abbr"])} {escape(fav.get("line", ""))}</span></div>')
 
 
 def game_blocks(title_html, subtitle, games, tag, source, size="feed", note=""):
@@ -302,6 +302,9 @@ def game_blocks(title_html, subtitle, games, tag, source, size="feed", note=""):
     chip_sz = int((62 if big else 50) * k)
 
     stacked = story and n <= 2      # few games: team rows without a line column, line gets its own big row
+    if stacked:
+        k = min(k, 2.0 if n == 1 else 1.2)
+        chip_sz = int(62 * k)
 
     def side(t):
         if stacked:
@@ -312,14 +315,14 @@ def game_blocks(title_html, subtitle, games, tag, source, size="feed", note=""):
         return f'''<div style="display:flex;align-items:center;gap:{int(16 * k)}px;height:{chip_sz + 8}px">
       {chip(t["abbr"], t["color"], chip_sz, int(chip_sz * .38))}
       <div style="flex:1;min-width:0"><div style="font-size:{int((28 if big else 24) * k)}px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{escape(t["name"])}</div>
-        <div class="m" style="font-size:{int((20 if big else 18) * min(k, 1.7))}px;white-space:normal;line-height:1.25">{escape(t.get("detail", ""))}</div></div>
+        <div class="m" style="font-size:{int((20 if big else 18) * min(k, 1.5))}px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{escape(t.get("detail", ""))}</div></div>
       <div class="cond" style="font-size:{int((44 if big else 38) * k)}px;font-weight:800;text-align:right;width:{int(130 * min(k, 1.9))}px">{escape(t.get("line", ""))}</div></div>'''
-    blocks = "".join(f'''<div style="background:var(--panel);border:2px solid var(--line);border-radius:{int(20 * k)}px;padding:{int((14 if big else 10) * k)}px {int(22 * k)}px;display:flex;flex-direction:column;justify-content:center;gap:{int(6 * k)}px;height:{block_h}px">
+    blocks = "".join(f'''<div style="background:var(--panel);border:2px solid var(--line);border-radius:{int(20 * k)}px;padding:{int((14 if big else 10) * k)}px {int(22 * k)}px;display:flex;flex-direction:column;justify-content:{'space-evenly' if stacked else 'center'};gap:{int(6 * k)}px;{'min-' if stacked and n == 1 else ''}height:{block_h if not stacked or n == 1 else int(avail / n) - 24}px">
     <div style="display:flex;justify-content:space-between;font-size:{int(19 * min(k, 1.5))}px;letter-spacing:2px;text-transform:uppercase;font-weight:600">
       <span class="m">{escape(g["kick"])} · <span style="color:var(--text)">O/U {escape(g.get("total", "—"))}</span></span><span class="g">{escape(g.get("headline", ""))}</span></div>
     {side(g["away"])}{side(g["home"])}{_line_row(g, k) if stacked else ""}</div>''' for g in games)
     inner = f'''<h1 style="font-size:92px">{title_html}</h1><div class="sub" style="font-size:26px">{subtitle}</div>
-<div class="body" style="justify-content:flex-start;gap:14px;margin-top:24px">{blocks}</div>'''
+<div class="body" style="justify-content:{'center' if story and n == 1 else 'flex-start'};gap:14px;margin-top:24px">{blocks}</div>'''
     return page(inner, size, tag=tag, source=source, note=note)
 
 

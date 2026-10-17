@@ -29,6 +29,7 @@ from sharpcharts import posts as P
 from sharpcharts import reels as R
 from sharpcharts import sports as S
 from sharpcharts.schedule import JOBS, WINDOW_HOURS, Job
+from sharpcharts.voice import humanize
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 PT = ZoneInfo("America/Los_Angeles")
@@ -126,6 +127,7 @@ class Runner:
         except P.DataError as e:
             return "waiting", str(e)
 
+        post.caption = humanize(post.key, post.caption)     # human opener/sign-off; data lines untouched
         posted = load(POSTED)
         if post.key in posted and not self.force:
             return "duplicate", f"{post.key} already posted"

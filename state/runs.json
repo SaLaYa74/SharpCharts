@@ -313,5 +313,15 @@
     "at": "2026-10-18T06:15-07:00",
     "detail": "6 snapshot files",
     "status": "done"
+  },
+  "2026-10-18:nfl_gameday": {
+    "at": "2026-10-18T09:38-07:00",
+    "detail": "2026-wk06-gameday-story",
+    "status": "posted"
+  },
+  "2026-10-18:reel_trend_sun": {
+    "at": "2026-10-18T09:38-07:00",
+    "detail": "2026-10-18-reel-onestat already posted",
+    "status": "duplicate"
   }
 }

@@ -311,6 +311,16 @@
     "permalink": null,
     "posted_at": "2026-10-09T01:26:01+00:00"
   },
+  "2026-wk06-gameday-story": {
+    "images": 1,
+    "job": "nfl_gameday",
+    "media": "story",
+    "media_id": "18117811759802351",
+    "permalink": null,
+    "posted_at": "2026-10-18T16:38:27+00:00",
+    "scheduled": "07:00",
+    "trial": false
+  },
   "2026-wk06-slate": {
     "images": 10,
     "job": "nfl_slate",

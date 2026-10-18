@@ -163,6 +163,16 @@
     "scheduled": "16:00",
     "trial": false
   },
+  "2026-10-18-mlb-story": {
+    "images": 1,
+    "job": "mlb_story",
+    "media": "story",
+    "media_id": "18638794702018036",
+    "permalink": null,
+    "posted_at": "2026-10-18T18:54:43+00:00",
+    "scheduled": "11:00",
+    "trial": false
+  },
   "2026-10-18-reel-onestat": {
     "images": 1,
     "job": "reel_onestat",

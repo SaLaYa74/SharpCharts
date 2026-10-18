@@ -314,6 +314,11 @@
     "detail": "6 snapshot files",
     "status": "done"
   },
+  "2026-10-18:mlb_story": {
+    "at": "2026-10-18T11:54-07:00",
+    "detail": "2026-10-18-mlb-story",
+    "status": "posted"
+  },
   "2026-10-18:nfl_gameday": {
     "at": "2026-10-18T09:38-07:00",
     "detail": "2026-wk06-gameday-story",

@@ -163,6 +163,16 @@
     "scheduled": "16:00",
     "trial": false
   },
+  "2026-10-18-reel-onestat": {
+    "images": 1,
+    "job": "reel_onestat",
+    "media": "reel",
+    "media_id": "18141060499614366",
+    "permalink": "https://www.instagram.com/reel/DenYFgmDdrI/",
+    "posted_at": "2026-10-18T00:17:53+00:00",
+    "scheduled": "16:00",
+    "trial": true
+  },
   "2026-wk04-fantasy-rb": {
     "images": 1,
     "job": "fantasy_wed",
@@ -309,6 +319,16 @@
     "permalink": "https://www.instagram.com/p/Dehx_oyFuCQ/",
     "posted_at": "2026-10-15T20:08:26+00:00",
     "scheduled": "10:00",
+    "trial": false
+  },
+  "2026-wk06-snf-story": {
+    "images": 1,
+    "job": "nfl_snf_story",
+    "media": "story",
+    "media_id": "17965483208982060",
+    "permalink": null,
+    "posted_at": "2026-10-18T00:16:42+00:00",
+    "scheduled": "17:00",
     "trial": false
   },
   "2026-wk06-tnf-story": {

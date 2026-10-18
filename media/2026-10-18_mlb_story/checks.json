@@ -1,0 +1,70 @@
+{
+  "subject": "mlb tonight",
+  "counts": {
+    "pass": 12,
+    "warn": 0,
+    "block": 0
+  },
+  "checks": [
+    {
+      "status": "pass",
+      "check": "mlb: TB@CLE found on ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: TB@CLE start time agrees",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: TB@CLE favorite consistent",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TB@CLE: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TB@CLE: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: TB@CLE away starter announced",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: TB@CLE home starter announced",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb: at least one verified game",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb_story_story.jpg: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb_story_story.jpg: dimensions",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb_story_story.jpg: not empty",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mlb_story_story.jpg: has visible content",
+      "detail": ""
+    }
+  ]
+}

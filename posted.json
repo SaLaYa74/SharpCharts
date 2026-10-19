@@ -351,6 +351,16 @@
     "scheduled": "10:00",
     "trial": false
   },
+  "2026-wk06-mnf-story": {
+    "images": 1,
+    "job": "nfl_mnf_story",
+    "media": "story",
+    "media_id": "18398397703203591",
+    "permalink": null,
+    "posted_at": "2026-10-19T22:57:11+00:00",
+    "scheduled": "15:00",
+    "trial": false
+  },
   "2026-wk06-slate": {
     "images": 10,
     "job": "nfl_slate",

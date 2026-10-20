@@ -371,6 +371,26 @@
     "scheduled": "15:00",
     "trial": false
   },
+  "2026-wk06-recap": {
+    "images": 3,
+    "job": "nfl_recap",
+    "media": "feed",
+    "media_id": "18108449813216926",
+    "permalink": "https://www.instagram.com/p/DeumWoICTRY/",
+    "posted_at": "2026-10-20T19:36:58+00:00",
+    "scheduled": "09:00",
+    "trial": false
+  },
+  "2026-wk06-reel-waiver": {
+    "images": 1,
+    "job": "reel_waiver",
+    "media": "reel",
+    "media_id": "18054632447593015",
+    "permalink": "https://www.instagram.com/reel/DeumcmnjIZr/",
+    "posted_at": "2026-10-20T19:38:01+00:00",
+    "scheduled": "12:00",
+    "trial": false
+  },
   "2026-wk06-slate": {
     "images": 10,
     "job": "nfl_slate",

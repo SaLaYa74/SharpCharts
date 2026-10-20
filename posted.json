@@ -295,6 +295,16 @@
     "scheduled": "12:00",
     "trial": false
   },
+  "2026-wk05-reel-ou": {
+    "images": 1,
+    "job": "reel_ou",
+    "media": "reel",
+    "media_id": "18107525474250208",
+    "permalink": "https://www.instagram.com/reel/DespeDVAlCF/",
+    "posted_at": "2026-10-20T01:26:05+00:00",
+    "scheduled": "16:00",
+    "trial": false
+  },
   "2026-wk05-reel-waiver": {
     "images": 1,
     "job": "reel_waiver",

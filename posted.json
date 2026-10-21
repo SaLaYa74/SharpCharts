@@ -381,6 +381,16 @@
     "scheduled": "09:00",
     "trial": false
   },
+  "2026-wk06-reel-fantasy-rb": {
+    "images": 1,
+    "job": "reel_fantasy_rb",
+    "media": "reel",
+    "media_id": "18035267282895696",
+    "permalink": "https://www.instagram.com/reel/DewuxVZDc3x/",
+    "posted_at": "2026-10-21T15:29:17+00:00",
+    "scheduled": "08:00",
+    "trial": false
+  },
   "2026-wk06-reel-waiver": {
     "images": 1,
     "job": "reel_waiver",

@@ -394,6 +394,11 @@
     "detail": "6 snapshot files",
     "status": "done"
   },
+  "2026-10-21:archive_pm": {
+    "at": "2026-10-21T15:33-07:00",
+    "detail": "6 snapshot files",
+    "status": "done"
+  },
   "2026-10-21:mlb_story": {
     "at": "2026-10-21T12:26-07:00",
     "detail": "No MLB games on 2026-10-21.",

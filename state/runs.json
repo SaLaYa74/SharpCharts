@@ -419,6 +419,11 @@
     "detail": "7 snapshot files",
     "status": "done"
   },
+  "2026-10-22:archive_pm": {
+    "at": "2026-10-22T15:35-07:00",
+    "detail": "7 snapshot files",
+    "status": "done"
+  },
   "2026-10-22:mlb_story": {
     "at": "2026-10-22T12:28-07:00",
     "detail": "No MLB games on 2026-10-22.",
@@ -427,6 +432,11 @@
   "2026-10-22:nfl_slate": {
     "at": "2026-10-22T12:28-07:00",
     "detail": "https://www.instagram.com/p/DezvMYUCUUb/",
+    "status": "posted"
+  },
+  "2026-10-22:nfl_tnf_story": {
+    "at": "2026-10-22T15:35-07:00",
+    "detail": "2026-wk07-tnf-story",
     "status": "posted"
   },
   "2026-10-22:reel_fantasy": {

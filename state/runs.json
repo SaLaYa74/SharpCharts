@@ -418,5 +418,20 @@
     "at": "2026-10-22T08:38-07:00",
     "detail": "7 snapshot files",
     "status": "done"
+  },
+  "2026-10-22:mlb_story": {
+    "at": "2026-10-22T12:28-07:00",
+    "detail": "No MLB games on 2026-10-22.",
+    "status": "skipped"
+  },
+  "2026-10-22:nfl_slate": {
+    "at": "2026-10-22T12:28-07:00",
+    "detail": "https://www.instagram.com/p/DezvMYUCUUb/",
+    "status": "posted"
+  },
+  "2026-10-22:reel_fantasy": {
+    "at": "2026-10-22T12:28-07:00",
+    "detail": "https://www.instagram.com/reel/DezvR2jiX1f/",
+    "status": "posted"
   }
 }

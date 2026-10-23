@@ -448,5 +448,10 @@
     "at": "2026-10-23T08:21-07:00",
     "detail": "8 snapshot files",
     "status": "done"
+  },
+  "2026-10-23:mlb_story": {
+    "at": "2026-10-23T12:22-07:00",
+    "detail": "2026-10-23-mlb-story",
+    "status": "posted"
   }
 }

@@ -478,5 +478,10 @@
     "at": "2026-10-24T09:47-07:00",
     "detail": "2026-10-24-cfb-story",
     "status": "posted"
+  },
+  "2026-10-24:mlb_story": {
+    "at": "2026-10-24T12:07-07:00",
+    "detail": "2026-10-24-mlb-story",
+    "status": "posted"
   }
 }

@@ -223,6 +223,16 @@
     "scheduled": "07:00",
     "trial": false
   },
+  "2026-10-24-mlb-story": {
+    "images": 1,
+    "job": "mlb_story",
+    "media": "story",
+    "media_id": "17998249425032587",
+    "permalink": null,
+    "posted_at": "2026-10-24T19:08:00+00:00",
+    "scheduled": "11:00",
+    "trial": false
+  },
   "2026-10-24-reel-trend": {
     "images": 1,
     "job": "reel_trend",

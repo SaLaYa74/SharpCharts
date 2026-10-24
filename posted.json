@@ -233,6 +233,16 @@
     "scheduled": "11:00",
     "trial": false
   },
+  "2026-10-24-reel-onestat": {
+    "images": 1,
+    "job": "reel_onestat",
+    "media": "reel",
+    "media_id": "18199611985385583",
+    "permalink": "https://www.instagram.com/reel/De5VqBCCOzL/",
+    "posted_at": "2026-10-24T23:43:02+00:00",
+    "scheduled": "16:00",
+    "trial": true
+  },
   "2026-10-24-reel-trend": {
     "images": 1,
     "job": "reel_trend",

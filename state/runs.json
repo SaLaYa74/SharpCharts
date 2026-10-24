@@ -468,5 +468,15 @@
     "at": "2026-10-24T06:28-07:00",
     "detail": "8 snapshot files",
     "status": "done"
+  },
+  "2026-10-24:cfb_feed": {
+    "at": "2026-10-24T09:47-07:00",
+    "detail": "https://www.instagram.com/p/De4mPFgCbOi/",
+    "status": "posted"
+  },
+  "2026-10-24:cfb_story": {
+    "at": "2026-10-24T09:47-07:00",
+    "detail": "2026-10-24-cfb-story",
+    "status": "posted"
   }
 }

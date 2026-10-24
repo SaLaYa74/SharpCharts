@@ -203,6 +203,26 @@
     "scheduled": "11:00",
     "trial": false
   },
+  "2026-10-24-cfb-feed": {
+    "images": 1,
+    "job": "cfb_feed",
+    "media": "feed",
+    "media_id": "18348475513248357",
+    "permalink": "https://www.instagram.com/p/De4mPFgCbOi/",
+    "posted_at": "2026-10-24T16:48:17+00:00",
+    "scheduled": "08:00",
+    "trial": false
+  },
+  "2026-10-24-cfb-story": {
+    "images": 1,
+    "job": "cfb_story",
+    "media": "story",
+    "media_id": "17989980408096124",
+    "permalink": null,
+    "posted_at": "2026-10-24T16:48:01+00:00",
+    "scheduled": "07:00",
+    "trial": false
+  },
   "2026-10-24-reel-trend": {
     "images": 1,
     "job": "reel_trend",

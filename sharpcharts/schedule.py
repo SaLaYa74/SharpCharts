@@ -27,7 +27,7 @@ class Job:
 
 JOBS = [
     # ---- NFL (feed)
-    Job("nfl_recap",    "recap",    (TUE,), "09:00", live=True,  note="Weekly recap carousel"),
+    Job("nfl_recap",    "recap",    (TUE,), "09:00", live=False, note="Weekly recap carousel (preview only; replaced by reel_recap)"),
     Job("nfl_slate",    "slate",    (THU,), "10:00", live=True,  note="Week slate carousel"),
     Job("nfl_mnf",      "mnf",      (MON,), "10:00", live=True, note="Monday Night breakdown"),
     # ---- College football (Saturday)
@@ -40,9 +40,10 @@ JOBS = [
     Job("nfl_snf_story", "snf_story",     (SAT,), "17:00", live=True, note="SNF preview Story"),
     Job("nfl_gameday",   "gameday_story", (SUN,), "07:00", live=True, note="NFL Sunday slate Story"),
     Job("nfl_mnf_story", "mnf_story",     (MON,), "15:00", live=True, note="MNF card Story"),
-    # ---- Reels: motion from frame 1, ~7s, glance mode, original beat (shared to the feed)
+    # ---- Reels: motion from frame 1, ~5s, glance mode, original beat (shared to the feed)
     # Time test: Reels alternate between 12:00 PT (3pm ET) and 16:00 PT (7pm ET); insights.py compares them.
     Job("reel_ou",         "reel_ou",         (MON,), "16:00", live=True, note="Reel: over/under teams (7pm ET)"),
+    Job("reel_recap",      "reel_recap",      (TUE,), "09:00", live=True, note="Reel: last week vs. the closing lines"),
     Job("reel_waiver",     "reel_waiver",     (TUE,), "12:00", live=True, note="Reel: waiver usage risers/fallers"),
     Job("reel_fantasy_rb", "reel_fantasy_rb", (WED,), "08:00", live=True, note="Reel: RB usage leaders"),
     Job("reel_ats",        "reel_ats",        (WED,), "16:00", live=True, note="Reel: best/worst ATS (7pm ET)"),

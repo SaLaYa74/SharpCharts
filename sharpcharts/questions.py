@@ -14,6 +14,11 @@ BANK = {
         "{worst} haven't been covering. Buy-low spot or stay away?",
         "Favorites or dogs the rest of the way? Pick a side 👇",
     ],
+    "week": [
+        "Favorites or dogs the rest of the way? Pick a side 👇",
+        "Which Week {week} result surprised you most? 👇",
+        "Overs or unders next week? Make your case 👇",
+    ],
     "slate": [
         "Which line looks off to you this week? 👇",
         "Biggest upset of the week. Go 👇",

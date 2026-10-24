@@ -13,6 +13,11 @@ OPENERS = {
         "The spread doesn't care about your feelings. Weekly receipts 📊",
         "Week's in the books. Some teams are cashing, some are costing you money 💸",
     ],
+    "weekrecap": [
+        "Week's in the books. Here's how the league landed vs. the number 📊",
+        "Favorites, dogs, overs, unders. The weekly scoreboard 👇",
+        "Before you look ahead, look back. Last week vs. the lines 📊",
+    ],
     "slate": [
         "New week, new numbers. Here's the whole board 👀",
         "Lines are out. Grab a coffee, this is your cheat sheet ☕",
@@ -62,10 +67,20 @@ OPENERS = {
 
 SIGNOFFS = ["— Digit 🦊", "Digit out ✌️🦊", "— Digit (the fox with the spreadsheets) 🦊", "— Digit 🦊📊"]
 
+# Save/share prompt on every post: saves and shares are what push a post to non-followers.
+SAVE_SHARE = {
+    "fantasy": ["📌 Save this for waivers. 📤 Send it to your league chat.",
+                "📤 Send this to the person in your league who needs it. 📌 Save it for Sunday.",
+                "📌 Save this before you set your lineup. 📤 Share it with your league."],
+    "betting": ["📌 Save this for your weekly card. 📤 Send it to the group chat.",
+                "📤 Send this to the friend who bets every game. 📌 Save it for Sunday.",
+                "📌 Save this before you set your card. 📤 Share it with your betting group."],
+}
+
 
 def _kind(key, caption):
     k = key.lower()
-    for part, kind in (("waiver", "waiver"), ("reel-ats", "recap"), ("recap", "recap"), ("slate", "slate"),
+    for part, kind in (("waiver", "waiver"), ("reel-ats", "recap"), ("reel-recap", "weekrecap"), ("recap", "recap"), ("slate", "slate"),
                        ("gameday", "slate"), ("snf", "matchup"), ("mnf", "matchup"), ("tnf", "matchup"),
                        ("fantasy", "fantasy"), ("reel-ou", "overunder"), ("onestat", "trend"), ("trend", "trend"),
                        ("cfb", "cfb"), ("mlb", "mlb")):
@@ -93,6 +108,9 @@ def humanize(key, caption):
     body = lines[:cut]
     while body and not body[-1].strip():
         body.pop()
+    if "save this" not in caption.lower():
+        bank = SAVE_SHARE["fantasy" if kind in ("fantasy", "waiver") else "betting"]
+        body += ["", bank[(h >> 16) % len(bank)]]
     if (h >> 8) % 2 == 0:
         body += ["", SIGNOFFS[(h >> 12) % len(SIGNOFFS)]]
     return "\n".join([opener, ""] + body + [""] + lines[cut:]).replace("\n\n\n", "\n\n")

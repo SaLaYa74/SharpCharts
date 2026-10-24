@@ -197,8 +197,9 @@ def bar_ranking(title_html, subtitle, rows, tag, source, size="feed", note="", s
     return page(inner, size, tag=tag, source=source, note=note)
 
 
-def splits(title_html, subtitle, items, tag, source, size="feed", note=""):
-    """items: list of dict(label, left=(name,count), right=(name,count))."""
+def splits(title_html, subtitle, items, tag, source, size="feed", note="", p=1.0, hook=None):
+    """items: list of dict(label, left=(name,count), right=(name,count)).
+    p (0-1) grows the bars out from the middle for Reels; hook swaps in the big Reel headline."""
     blocks = []
     pad = 14 if size == "feed" else 30
     for it in items:
@@ -214,10 +215,10 @@ def splits(title_html, subtitle, items, tag, source, size="feed", note=""):
     <div><span style="font-size:28px;font-weight:600;margin-right:10px">{escape(rn)}</span>
          <span class="cond" style="font-size:54px;font-weight:800;{'' if lead_left else 'color:var(--green)'}">{rc}</span></div></div>
   <div style="display:flex;height:22px;border-radius:999px;overflow:hidden;background:var(--panel)">
-    <div style="width:{lp}%;background:{'var(--green)' if lead_left else '#3A4A6B'}"></div>
+    <div style="width:{50 + (lp - 50) * p:.1f}%;background:{'var(--green)' if lead_left else '#3A4A6B'}"></div>
     <div style="flex:1;background:{'#3A4A6B' if lead_left else 'var(--green)'}"></div></div>
   <div style="display:flex;justify-content:space-between;font-size:21px;margin-top:6px" class="m"><span>{lp}%</span><span>{100-lp}%</span></div></div>''')
-    inner = f'''<h1>{title_html}</h1><div class="sub">{subtitle}</div>
+    inner = f'''{_head(title_html, subtitle, hook)}
 <div class="body">{''.join(blocks)}</div>'''
     return page(inner, size, tag=tag, source=source, note=note)
 

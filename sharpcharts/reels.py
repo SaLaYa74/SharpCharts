@@ -37,17 +37,20 @@ def _ease(x):
     return 1 - (1 - x) ** 3  # ease-out cubic
 
 
-def make_reel(out_dir, name, hook, chart_html, tag, seed, hold=5.2):
-    """Motion from frame 1: the chart animates in under the hook headline, holds so it can be read,
-    and ends on the full chart (loops cleanly back to the empty chart). chart_html(p) -> HTML.
+START_P = 0.35  # frame 1 already shows bars + numbers mid-motion (viewers leave around 3s)
+
+
+def make_reel(out_dir, name, hook, chart_html, tag, seed, hold=4.0):
+    """Motion from frame 1: the chart is already a third built and moving under the hook headline,
+    finishes fast, holds so it can be read (~4.8s total). chart_html(p) -> HTML.
     `hook` and `tag` are baked into chart_html by the caller. Returns (mp4, cover_jpg)."""
     os.makedirs(out_dir, exist_ok=True)
     work = tempfile.mkdtemp(prefix="reel_")
     seq = []  # (png, seconds)
-    steps = 24
-    for i in range(steps):                                   # 1.6s build-in, starting at t=0
+    steps = 12
+    for i in range(steps):                                   # 0.8s build-in, starting at t=0
         path = os.path.join(work, f"{i:03d}.png")
-        html_to_png(chart_html(_ease(i / (steps - 1))), path, "reel")
+        html_to_png(chart_html(START_P + (1 - START_P) * _ease(i / (steps - 1))), path, "reel")
         seq.append((path, 0.067))
     last_chart = seq[-1][0]
     seq.append((last_chart, hold))                           # hold long enough to read
@@ -62,7 +65,7 @@ def make_reel(out_dir, name, hook, chart_html, tag, seed, hold=5.2):
     mp4 = os.path.join(out_dir, f"{name}.mp4")
     subprocess.run([ffmpeg_exe(), "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", listing,
                     "-i", audio, "-vf", f"fps={FPS},format=yuv420p", "-c:v", "libx264", "-preset", "medium",
-                    "-crf", "20", "-profile:v", "high", "-c:a", "aac", "-b:a", "128k", "-ar", "44100",
+                    "-crf", "14", "-profile:v", "high", "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
                     "-shortest", "-movflags", "+faststart", mp4], check=True)
     cover = os.path.join(out_dir, f"{name}_cover.jpg")
     Image.open(last_chart).convert("RGB").save(cover, "JPEG", quality=90)
@@ -235,6 +238,49 @@ def reel_waiver(ctx, out_dir, sizes=None):
     return _post(key, mp4, cover, caption, rep)
 
 
+def reel_recap(ctx, out_dir, sizes=None):
+    """Tuesday: how the league landed against the number in the week that just finished."""
+    wk = ctx.thru_week
+    games = [g for g in ctx.finals if g["week"] == wk]
+    sp = P.D.league_splits(games)
+    rep = C.Report("reel recap").extend(ctx.report)
+    n = sp["games"]
+    rep.require(n > 0 and n == len(games), f"week {wk}: every game has a closing line", f"{n} of {len(games)} games usable")
+    rep.require(sp["ou_O"] + sp["ou_U"] + sp["ou_P"] == n, f"week {wk}: totals add up", "over/under/push count mismatch")
+    rep.require(sp["fav_W"] + sp["fav_L"] <= n and sp["home_W"] + sp["home_L"] <= n, f"week {wk}: ATS splits add up",
+                "more ATS results than games")
+    items = [
+        {"label": "Favorites vs underdogs (ATS)", "left": ("Favs", sp["fav_W"]), "right": ("Dogs", sp["fav_L"])},
+        {"label": "Home vs away (ATS)", "left": ("Home", sp["home_W"]), "right": ("Away", sp["home_L"])},
+        {"label": "Totals", "left": ("Over", sp["ou_O"]), "right": ("Under", sp["ou_U"])},
+        {"label": "Underdogs winning outright", "left": ("Dog wins", sp["dog_outright_W"]), "right": ("Fav wins", sp["dog_outright_L"])},
+    ]
+    # hook = the most lopsided of the three headline splits
+    leans = [(sp["fav_W"], sp["fav_L"], "Favorites", "Underdogs", "ATS"), (sp["home_W"], sp["home_L"], "Home teams", "Road teams", "ATS"),
+             (sp["ou_O"], sp["ou_U"], "Overs", "Unders", "")]
+    a, b, la, lb, what = max(leans, key=lambda x: abs(x[0] - x[1]) / max(1, x[0] + x[1]))
+    if a == b:
+        hook = (f"Week {wk}", "by the numbers")
+    else:
+        hi, lo, who = (a, b, la) if a > b else (b, a, lb)
+        hook = (f"{who} went {hi}-{lo}", f"{what + ' ' if what else ''}in Week {wk}")
+    tag = f"NFL · Week {wk}"
+    note = f"Week {wk} · {n} games · pushes excluded"
+    mp4, cover = make_reel(out_dir, "reel_recap", hook, lambda p: T.splits(
+        f"Week {wk}<br><em>vs. the number</em>", "How the league landed against the closing lines", items,
+        tag=tag, source=P.SRC, size="reel", note=note, p=p, hook=hook), tag, f"recap-{wk}")
+    key = f"{ctx.season}-wk{wk:02d}-reel-recap"
+    caption = P.with_question(
+        f"Week {wk} vs. the closing lines 📊\n\n"
+        f"Favorites ATS: {sp['fav_W']}-{sp['fav_L']}\nHome teams ATS: {sp['home_W']}-{sp['home_L']}\n"
+        f"Overs: {sp['ou_O']}-{sp['ou_U']}\nUnderdogs won outright: {sp['dog_outright_W']} of {sp['dog_outright_W'] + sp['dog_outright_L']}",
+        "week", key, week=wk)
+    caption += (f"\n\nData: nflverse closing lines, scores verified vs ESPN. Pushes excluded.\n"
+                f"👉 Follow @sharp_charts for weekly verified betting data.\n{P.DISCLAIMER}\n"
+                f"#nfl #nflbetting #ats #overunder #sportsbetting #week{wk}")
+    return _post(key, mp4, cover, caption, rep)
+
+
 def reel_onestat(ctx, out_dir, sizes=None, day=None):
     """One giant number. Rotates through verified facts so consecutive weeks differ."""
     day = day or date.today()
@@ -269,6 +315,6 @@ def reel_onestat(ctx, out_dir, sizes=None, day=None):
 
 
 BUILDERS = {"reel_onestat": reel_onestat, "reel_ats": reel_ats, "reel_ou": reel_ou, "reel_trend": reel_trend, "reel_waiver": reel_waiver,
-            "reel_fantasy": reel_fantasy,
+            "reel_fantasy": reel_fantasy, "reel_recap": reel_recap,
             "reel_fantasy_rb": lambda ctx, out_dir, sizes=None: reel_fantasy(ctx, out_dir, focus="rb"),
             "reel_fantasy_wr": lambda ctx, out_dir, sizes=None: reel_fantasy(ctx, out_dir, focus="wr")}

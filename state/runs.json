@@ -504,6 +504,11 @@
     "detail": "7 snapshot files",
     "status": "done"
   },
+  "2026-10-25:archive_pm": {
+    "at": "2026-10-25T14:27-07:00",
+    "detail": "7 snapshot files",
+    "status": "done"
+  },
   "2026-10-25:nfl_gameday": {
     "at": "2026-10-25T09:08-07:00",
     "detail": "2026-wk07-gameday-story",

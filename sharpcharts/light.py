@@ -63,7 +63,8 @@ ICONS = {
 def icon(name, px=126):
     """Team badge for an NFL abbreviation, otherwise one of the simple icons."""
     if name in TEAM_COLORS:
-        return badge(name, px)
+        from .helmet_art import helmet_img
+        return f'<div style="width:{int(px * 1.38)}px;margin:0 -16px;display:flex;justify-content:center">{helmet_img(name, int(px * 1.38))}</div>'
     return f'<div style="width:{px}px;height:{px}px;border-radius:50%;background:#fff;border:5px solid #1F2937;display:flex;align-items:center;justify-content:center">' \
            f'<svg width="{int(px * .62)}" height="{int(px * .62)}" viewBox="0 0 64 64">{ICONS.get(name, ICONS["prices"])}</svg></div>'
 

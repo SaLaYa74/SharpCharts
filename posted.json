@@ -521,6 +521,16 @@
     "scheduled": "10:00",
     "trial": false
   },
+  "2026-wk07-snf-story": {
+    "images": 1,
+    "job": "nfl_snf_story",
+    "media": "story",
+    "media_id": "18198820345390315",
+    "permalink": null,
+    "posted_at": "2026-10-25T01:37:38+00:00",
+    "scheduled": "17:00",
+    "trial": false
+  },
   "2026-wk07-tnf-story": {
     "images": 1,
     "job": "nfl_tnf_story",

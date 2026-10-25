@@ -131,8 +131,8 @@ def reel_ats(ctx, out_dir, sizes=None):
     key = f"{ctx.season}-wk{ctx.thru_week:02d}-reel-ats"
     best, worst = rows[0], rows[-1]
     caption = P.with_question(
-        f"Best and worst ATS teams through Week {ctx.thru_week} 📊\n\n"
-        f"{best['name']} {best['ats']} ATS ({best['value_label']} per game). {worst['name']} {worst['ats']} ATS.",
+        f"The {best['name']} are {best['ats']} against the spread through Week {ctx.thru_week}, beating the number by "
+        f"{best['value_label'].lstrip('+')} a game. The {worst['name']}: {worst['ats']}.",
         "recap", key, best=best["name"], best_margin=best["value_label"], worst=worst["name"])
     caption += f"\n\n👉 Follow @sharp_charts for daily verified betting data.\n{P.DISCLAIMER}\n#nfl #nflbetting #ats #sportsbetting #bettingdata"
     return _post(key, mp4, cover, caption, C.Report("reel ats").extend(ctx.report))
@@ -151,8 +151,7 @@ def reel_ou(ctx, out_dir, sizes=None):
         tag, f"ou-{ctx.thru_week}")
     key = f"{ctx.season}-wk{ctx.thru_week:02d}-reel-ou"
     caption = P.with_question(
-        f"The NFL's biggest over and under teams through Week {ctx.thru_week} 📈📉\n\n"
-        f"{top['name']} games are landing {top['value_label']} points vs. the total ({top['ou']} O/U). "
+        f"{top['name']} games are landing {top['value_label']} points vs. the total through Week {ctx.thru_week} ({top['ou']} O/U). "
         f"{rows[-1]['name']} games: {rows[-1]['value_label']} ({rows[-1]['ou']}).",
         "trend", key)
     caption += f"\n\n👉 Follow @sharp_charts for daily verified betting data.\n{P.DISCLAIMER}\n#nfl #nflbetting #overunder #totals #sportsbetting"
@@ -173,7 +172,8 @@ def reel_fantasy(ctx, out_dir, sizes=None, focus="wr"):
                            tag, f"fantasy-{focus}-{ctx.thru_week}")
     key = f"{ctx.season}-wk{ctx.thru_week:02d}-reel-fantasy-{focus}"
     caption = P.with_question(
-        f"{'Target share' if focus == 'wr' else 'RB opportunity share'} leaders through Week {ctx.thru_week} 🎯\n\n"
+        f"{lead['name']} is getting {lead['share'] * 100:.0f}% of {lead['team']}'s "
+        f"{'targets' if focus == 'wr' else 'carries + targets'} through Week {ctx.thru_week}. The top 5:\n\n"
         + "\n".join(f"{i + 1}. {p['name']} ({p['team']}) {p['share'] * 100:.0f}%" for i, p in enumerate(b["top"][:5])),
         "fantasy", key, top=b["top"][0]["name"], second=b["top"][1]["name"])
     top5 = "\n".join(f"{i + 1}. {p['name']} ({p['team']}) {p['share'] * 100:.0f}%" for i, p in enumerate(b["top"][:8]))
@@ -224,8 +224,8 @@ def reel_waiver(ctx, out_dir, sizes=None):
     lines_up = "\n".join(f"🟢 {m['name']} ({m['team']} {m['pos']}): {pct(m['base'])} → {pct(m['now'])}" for m in risers)
     lines_dn = "\n".join(f"🔴 {m['name']} ({m['team']} {m['pos']}): {pct(m['base'])} → {pct(m['now'])}" for m in fallers)
     caption = P.with_question(
-        f"Week {ctx.thru_week + 1} waiver wire: who's getting more of the ball? 📈📉\n\n"
-        f"Share of team carries + targets, Week {ctx.thru_week} vs. their earlier average:\n\n{lines_up}\n\n{lines_dn}",
+        f"{top['name']} went from {pct(top['base'])} of {top['team']}'s carries + targets to {pct(top['now'])} in Week {ctx.thru_week}. "
+        f"Biggest usage changes vs. each player's earlier average:\n\n{lines_up}\n\n{lines_dn}",
         "fantasy", key, top=risers[0]["name"], second=risers[1]["name"])
     _share_kit(out_dir, f"[OC] Week {ctx.thru_week + 1} waiver wire: biggest usage risers & fallers (share of team carries + targets)",
                f"Week {ctx.thru_week} share of team carries + targets vs. each player's earlier average:\n\n{lines_up}\n\n{lines_dn}",
@@ -271,7 +271,7 @@ def reel_recap(ctx, out_dir, sizes=None):
         tag=tag, source=P.SRC, size="reel", note=note, p=p, hook=hook), tag, f"recap-{wk}")
     key = f"{ctx.season}-wk{wk:02d}-reel-recap"
     caption = P.with_question(
-        f"Week {wk} vs. the closing lines 📊\n\n"
+        (f"{hook[0]} {hook[1]}.\n\n" if a != b else f"How Week {wk} landed vs. the closing lines:\n\n") +
         f"Favorites ATS: {sp['fav_W']}-{sp['fav_L']}\nHome teams ATS: {sp['home_W']}-{sp['home_L']}\n"
         f"Overs: {sp['ou_O']}-{sp['ou_U']}\nUnderdogs won outright: {sp['dog_outright_W']} of {sp['dog_outright_W'] + sp['dog_outright_L']}",
         "week", key, week=wk)
@@ -308,8 +308,7 @@ def reel_onestat(ctx, out_dir, sizes=None, day=None):
         tag, f"onestat-{day}")
     key = f"{day.isoformat()}-reel-onestat"
     kind = "onestat"
-    caption = P.with_question(f"🦊 Digit's stat of the day: {sentence[0].lower() + sentence[1:] if sentence.startswith('The ') else sentence}"
-                              f"\n\nData {ctx.thru.lower()}, verified.", kind, key, **qvals)
+    caption = P.with_question(f"{sentence}\n\nData {ctx.thru.lower()}, verified.", kind, key, **qvals)
     caption += f"\n\n👉 Follow @sharp_charts for one stat a day.\n{P.DISCLAIMER}\n#nfl #nflbetting #fantasyfootball #sportsbetting"
     return _post(key, mp4, cover, caption, C.Report("reel onestat").extend(ctx.report))
 

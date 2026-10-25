@@ -29,6 +29,8 @@ body{background:var(--bg);color:var(--text);font-family:Inter,"Helvetica Neue",A
 .top{display:flex;align-items:center;justify-content:space-between;position:relative}
 .brand{display:flex;align-items:center;gap:14px;font-weight:700;font-size:26px;letter-spacing:.3px}
 .brand svg{width:46px;height:46px}
+.tag{font-family:"Barlow Condensed";font-weight:700;font-size:26px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.handle{font-size:20px;opacity:.6}
 .pill{font-family:"Barlow Condensed";font-weight:700;font-size:26px;letter-spacing:2px;text-transform:uppercase;
   padding:8px 18px;border:2px solid var(--green);color:var(--green);border-radius:999px}
 h1{font-family:"Barlow Condensed";font-weight:800;font-size:104px;line-height:.92;text-transform:uppercase;
@@ -94,10 +96,9 @@ def page(inner, size="feed", tag="", source="", note=""):
     note_html = f"<div>{note}</div>" if note else ""
     return f'''<!doctype html><html><head><meta charset="utf-8">{FONTS}<style>{BRAND_CSS}</style></head>
 <body><div class="{frame_cls}"><div class="grid"></div>
-<div class="top"><div class="brand">{logo_svg()}<span>{HANDLE}</span></div>
-<div style="display:flex;align-items:center;gap:16px">{f'<div class="pill">{escape(tag)}</div>' if tag else ''}{mascot_svg(68)}</div></div>
+{f'<div class="top"><div class="tag">{escape(tag)}</div></div>' if tag else ''}
 {inner}
-<div class="foot"><div>{note_html}<div>Data: <b>{escape(source)}</b></div></div><div style="text-align:right">21+ · Gamble responsibly<br>1-800-GAMBLER</div></div>
+<div class="foot"><div>{note_html}<div>Data: <b>{escape(source)}</b></div></div><div style="text-align:right"><span class="handle">{HANDLE}</span><br>21+ · Gamble responsibly · 1-800-GAMBLER</div></div>
 </div></body></html>'''
 
 
@@ -378,7 +379,7 @@ def reel_outro(tag):
     return page(inner, "reel", tag=tag, source="nflverse · MLB · ESPN")
 
 
-def one_stat(hook, number, label, who, color, tag, source, p=1.0, note="Digit's stat of the day 🦊"):
+def one_stat(hook, number, label, who, color, tag, source, p=1.0, note=""):
     """One giant number, readable in under a second. who = dict(abbr, color, name)."""
     c = "var(--green)" if color == "green" else "var(--red)"
     glow = "rgba(43,255,136,.30)" if color == "green" else "rgba(255,77,94,.30)"

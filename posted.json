@@ -511,6 +511,26 @@
     "scheduled": "15:00",
     "trial": false
   },
+  "2026-wk06-v2-wr": {
+    "images": 1,
+    "job": "v2_wr",
+    "media": "reel",
+    "media_id": "18113873096161438",
+    "permalink": "https://www.instagram.com/reel/De7GliGkY-Z/",
+    "posted_at": "2026-10-25T16:09:39+00:00",
+    "scheduled": "08:00",
+    "trial": false
+  },
+  "2026-wk07-gameday-story": {
+    "images": 1,
+    "job": "nfl_gameday",
+    "media": "story",
+    "media_id": "18133219801741248",
+    "permalink": null,
+    "posted_at": "2026-10-25T16:09:52+00:00",
+    "scheduled": "07:00",
+    "trial": false
+  },
   "2026-wk07-slate": {
     "images": 10,
     "job": "nfl_slate",

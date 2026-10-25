@@ -498,5 +498,20 @@
     "at": "2026-10-24T16:41-07:00",
     "detail": "https://www.instagram.com/reel/De5VqBCCOzL/",
     "status": "posted"
+  },
+  "2026-10-25:archive_am": {
+    "at": "2026-10-25T09:08-07:00",
+    "detail": "7 snapshot files",
+    "status": "done"
+  },
+  "2026-10-25:nfl_gameday": {
+    "at": "2026-10-25T09:08-07:00",
+    "detail": "2026-wk07-gameday-story",
+    "status": "posted"
+  },
+  "2026-10-25:v2_wr": {
+    "at": "2026-10-25T09:08-07:00",
+    "detail": "https://www.instagram.com/reel/De7GliGkY-Z/",
+    "status": "posted"
   }
 }

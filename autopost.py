@@ -29,6 +29,7 @@ from sharpcharts import checks as C
 from sharpcharts import posts as P
 from sharpcharts import reels as R
 from sharpcharts import sports as S
+from sharpcharts import v2 as V2
 from sharpcharts.schedule import JOBS, WINDOW_HOURS, Job
 from sharpcharts.voice import humanize
 
@@ -108,6 +109,8 @@ class Runner:
     def build(self, job, out_dir):
         if job.builder in S.BUILDERS:
             return S.BUILDERS[job.builder](out_dir)
+        if job.builder in V2.BUILDERS:
+            return V2.BUILDERS[job.builder](self.ctx, out_dir)
         if job.builder in R.BUILDERS:
             return R.BUILDERS[job.builder](self.ctx, out_dir)
         sizes = ("story",) if job.builder.endswith("_story") else ("feed",)

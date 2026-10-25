@@ -26,32 +26,20 @@ class Job:
 
 
 JOBS = [
-    # ---- NFL (feed)
-    Job("nfl_recap",    "recap",    (TUE,), "09:00", live=False, note="Weekly recap carousel (preview only; replaced by reel_recap)"),
-    Job("nfl_slate",    "slate",    (THU,), "10:00", live=True,  note="Week slate carousel"),
-    Job("nfl_mnf",      "mnf",      (MON,), "10:00", live=True, note="Monday Night breakdown"),
-    # ---- College football (Saturday)
-    Job("cfb_story",    "cfb_story", (SAT,), "07:00", live=True, note="Top 25 board Story"),
-    Job("cfb_feed",     "cfb",       (SAT,), "08:00", live=True, note="Top 25 board post"),
-    # ---- MLB (postseason now; skips itself on days without games)
-    Job("mlb_story",    "mlb_story", EVERY_DAY, "11:00", live=True, note="MLB tonight Story"),
-    # ---- NFL game-day Stories
-    Job("nfl_tnf_story", "tnf_story",     (THU,), "15:00", live=True, note="TNF card Story"),
-    Job("nfl_snf_story", "snf_story",     (SAT,), "17:00", live=True, note="SNF preview Story"),
-    Job("nfl_gameday",   "gameday_story", (SUN,), "07:00", live=True, note="NFL Sunday slate Story"),
-    Job("nfl_mnf_story", "mnf_story",     (MON,), "15:00", live=True, note="MNF card Story"),
-    # ---- Reels: motion from frame 1, ~5s, glance mode, original beat (shared to the feed)
-    # Time test: Reels alternate between 12:00 PT (3pm ET) and 16:00 PT (7pm ET); insights.py compares them.
-    Job("reel_ou",         "reel_ou",         (MON,), "16:00", live=True, note="Reel: over/under teams (7pm ET)"),
-    Job("reel_recap",      "reel_recap",      (TUE,), "09:00", live=True, note="Reel: last week vs. the closing lines"),
-    Job("reel_waiver",     "reel_waiver",     (TUE,), "12:00", live=True, note="Reel: waiver usage risers/fallers"),
-    Job("reel_fantasy_rb", "reel_fantasy_rb", (WED,), "08:00", live=True, note="Reel: RB usage leaders"),
-    Job("reel_ats",        "reel_ats",        (WED,), "16:00", live=True, note="Reel: best/worst ATS (7pm ET)"),
-    Job("reel_fantasy",    "reel_fantasy_wr", (THU,), "12:00", live=True, note="Reel: WR/TE target share"),
-    Job("reel_trend",      "reel_trend",      (FRI,), "16:00", live=True, note="Reel: stat of the day (7pm ET)"),
-    Job("reel_onestat",    "reel_onestat",    (SAT,), "16:00", live=True, trial=True, note="Trial Reel: one big stat"),
-    Job("reel_trend_sun",  "reel_onestat",    (SUN,), "08:00", live=True, note="Reel: game-day one big stat"),
+    # ---- v2 (Oct 24 rework): one plain-English Reel a day, light design, team badges, $100-bet framing.
+    # Midday Reels reached ~54% more people than evening in the Oct 2026 test, so everything posts at noon PT.
+    Job("v2_angles",  "v2_angles", (MON,), "12:00", live=True, note="Reel: Which bet pays? (favs/dogs/home/road/overs/unders)"),
+    Job("v2_waiver",  "v2_waiver", (TUE,), "12:00", live=True, note="Reel: waiver wire risers"),
+    Job("v2_best",    "v2_best",   (WED,), "12:00", live=True, note="Reel: best teams to bet on ($100 every game)"),
+    Job("v2_rb",      "v2_rb",     (THU,), "12:00", live=True, note="Reel: who gets the ball (RB touch share)"),
+    Job("v2_worst",   "v2_worst",  (FRI,), "12:00", live=True, note="Reel: worst teams to bet on"),
+    Job("v2_overs",   "v2_overs",  (SAT,), "12:00", live=True, note="Reel: best teams for the over"),
+    Job("v2_wr",      "v2_wr",     (SUN,), "08:00", live=True, note="Reel: who gets targeted (WR/TE target share)"),
+    # ---- Game-day Story (cheap, keeps followers engaged on Sundays)
+    Job("nfl_gameday", "gameday_story", (SUN,), "07:00", live=True, note="NFL Sunday slate Story"),
     # ---- Background: multi-sport line archive (never posts)
     Job("archive_am",   "archive",  EVERY_DAY, "06:00", live=True, note="Save lines + results"),
     Job("archive_pm",   "archive",  EVERY_DAY, "14:00", live=True, note="Save lines closer to game time"),
 ]
+# Retired Oct 24 (reached ~5 people each or replaced by v2): NFL slate/recap/MNF images, primetime Stories,
+# college football board, MLB Stories, old dark Reels. Their builders still exist if we want them back.

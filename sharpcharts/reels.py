@@ -15,7 +15,7 @@ from PIL import Image
 from . import checks as C
 from . import posts as P
 from . import templates as T
-from .music import make_beat
+from .music import make_mood
 from .render import html_to_png
 
 FPS = 30
@@ -56,7 +56,7 @@ def make_reel(out_dir, name, hook, chart_html, tag, seed, hold=4.0):
     seq.append((last_chart, hold))                           # hold long enough to read
     total = sum(s for _, s in seq)
     audio = os.path.join(work, "beat.wav")
-    make_beat(audio, total + 0.2, seed)
+    make_mood(audio, total + 0.2, seed, "hype")          # deep sports-highlight bed (picked Oct 26)
     listing = os.path.join(work, "frames.txt")
     with open(listing, "w") as f:
         for path, secs in seq:
@@ -100,7 +100,7 @@ def make_countdown(out_dir, name, chart_html, n, seed, hold=3.5, tease="Can you 
     seq[-1] = (seq[-1][0], hold)                         # full answer, long enough to read
     total = sum(x for _, x in seq)
     audio = os.path.join(work, "beat.wav")
-    make_beat(audio, total + 0.2, seed)
+    make_mood(audio, total + 0.2, seed, "hype")          # deep sports-highlight bed (picked Oct 26)
     listing = os.path.join(work, "frames.txt")
     with open(listing, "w") as f:
         for path, secs in seq:

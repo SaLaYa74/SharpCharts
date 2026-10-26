@@ -152,8 +152,14 @@ def make_beat(path, seconds, seed="sharpcharts"):
         for i in range(max(0, s0), min(n, s0 + int(0.22 * RATE))):
             duck[i] = min(duck[i], 0.35 + 0.65 * ((i - s0) / (0.22 * RATE)) ** 1.6)
     mix = [d + duck[i] * (b + m + l) for i, (d, b, m, l) in enumerate(zip(drums.b, bass.b, music.b, lead.b))]
+    _write(path, mix)
+    return {"style": style, "bpm": bpm, "key": key}
+
+
+def _write(path, mix, rate=RATE):
+    n = len(mix)
     peak = max(1e-6, max(abs(x) for x in mix))
-    fade_in, fade_out = int(0.05 * RATE), int(0.8 * RATE)
+    fade_in, fade_out = int(0.05 * rate), int(0.8 * rate)
     frames = bytearray()
     for i, x in enumerate(mix):
         g = min(1.0, i / fade_in, (n - i) / fade_out)
@@ -161,6 +167,112 @@ def make_beat(path, seconds, seed="sharpcharts"):
     with wave.open(path, "wb") as w:
         w.setnchannels(1)
         w.setsampwidth(2)
-        w.setframerate(RATE)
+        w.setframerate(rate)
         w.writeframes(bytes(frames))
-    return {"style": style, "bpm": bpm, "key": key}
+
+
+# ---------------------------------------------------------------- warmer, lower styles (Oct 26)
+# The originals lean on a bright square-wave lead an octave up, which reads as "chiptune" and shrill on
+# phone speakers. These two keep every part in the low-mid range and run through a low-pass filter.
+
+def _lowpass(buf, hz, passes=2):
+    a = 1 - math.exp(-TAU * hz / RATE)
+    for _ in range(passes):
+        y = 0.0
+        for i, x in enumerate(buf):
+            y += a * (x - y)
+            buf[i] = y
+    return buf
+
+
+def _keys(f, t):        # electric-piano tone: sine body + a soft bell partial that fades fast
+    return math.sin(TAU * f * t) + 0.25 * math.sin(TAU * 2 * f * t) * math.exp(-6 * t) + 0.08 * math.sin(TAU * 3 * f * t) * math.exp(-10 * t)
+
+
+def _warm_sub(f, t, drive=2.2):   # sine bass with a little saturation so phones can hear the harmonics
+    return math.tanh(drive * math.sin(TAU * f * t)) / math.tanh(drive)
+
+
+def make_mood(path, seconds, seed="sharpcharts", mood="lofi"):
+    """mood='lofi': laid-back 88 bpm, swung drums, electric-piano chords, soft low melody.
+    mood='hype': dark half-time 140 bpm sports bed, deep gliding 808, filtered minor pad, low pluck hook."""
+    rnd = random.Random(seed)
+    key = rnd.choice(KEYS) - 12                     # an octave lower than the originals
+    prog = rnd.choice(PROGRESSIONS)
+    hook = rnd.choice(HOOKS)
+    bpm = (88 if mood == "lofi" else 140) + rnd.choice([-2, 0, 2])
+    beat = 60.0 / bpm
+    step = beat / 4
+    swing = step * (0.18 if mood == "lofi" else 0.0)
+    at = lambda b0, s16: b0 + s16 * step + (swing if s16 % 2 else 0)
+    n = int(seconds * RATE)
+    drums, bass, music, lead = _Bus(n), _Bus(n), _Bus(n), _Bus(n)
+    noise = [rnd.uniform(-1, 1) for _ in range(RATE)]
+    nz = lambda t, off=0: noise[(int(t * RATE) + off) % RATE]
+    kick = lambda amp, top: (lambda t: amp * math.sin(TAU * (45 * t + top / 30 * (1 - math.exp(-30 * t)))) * math.exp(-6 * t))
+    snare = lambda amp: (lambda t: amp * (0.6 * nz(t, 700) * math.exp(-22 * t) + 0.5 * math.sin(TAU * 185 * t) * math.exp(-28 * t)))
+    hat = lambda amp: (lambda t: amp * (nz(t, 3000) - nz(t, 2999)) * math.exp(-70 * t))
+    bars = int(seconds / (beat * 4)) + 1
+    kicks = []
+    for bar in range(bars):
+        b0 = bar * beat * 4
+        root = key + prog[bar % len(prog)]
+        second_half = bar % 2 == 1
+        if mood == "lofi":
+            for s16 in (0, 7, 10) if not second_half else (0, 3, 10):
+                kicks.append(at(b0, s16))
+                drums.add(at(b0, s16), 0.4, kick(0.85, 70))
+            for q in (1, 3):
+                drums.add(b0 + q * beat, 0.3, snare(0.42))
+            for s16 in range(0, 16, 2):
+                drums.add(at(b0, s16 + 1), 0.04, hat(0.07))
+            # minor-7th chord, low register, on 1 and the "and" of 2
+            chord = [root + 12, root + 15, root + 19, root + 22]
+            for start, dur in ((0, beat * 1.4), (at(0, 6), beat * 2.2)):
+                for j, m in enumerate(chord):
+                    f = _hz(m)
+                    music.add(b0 + start + j * 0.008, dur, lambda t, f=f, d=dur: 0.07 * _keys(f * (1 + 0.003 * math.sin(TAU * 4 * t)), t)
+                              * min(1, t * 60) * math.exp(-1.6 * t) * min(1, (d - t) * 12))
+            bass.add(b0, beat * 1.8, lambda t, f=_hz(root): 0.36 * _warm_sub(f, t) * min(1, t * 50) * math.exp(-1.2 * t))
+            bass.add(b0 + at(0, 10), beat * 1.2, lambda t, f=_hz(root + 7): 0.30 * _warm_sub(f, t) * min(1, t * 50) * math.exp(-1.8 * t))
+            notes, mel_amp = [(s, d) for s, d in enumerate(hook) if d is not None and s % 4 in (0, 3)], 0.10
+        else:  # hype
+            for s16 in (0, 10) + ((7, 13) if second_half else (14,)):
+                kicks.append(b0 + s16 * step)
+                drums.add(b0 + s16 * step, 0.35, kick(0.95, 120))
+            drums.add(b0 + 2 * beat, 0.32, snare(0.55))
+            for s16 in range(0, 16, 2):
+                drums.add(b0 + s16 * step, 0.04, hat(0.06))
+            if second_half:
+                for r in range(4):
+                    drums.add(b0 + 3 * beat + 2 * step + r * step / 2, 0.03, hat(0.05))
+            # long 808 with a downward glide into the note
+            bass.add(b0, beat * 3.9, lambda t, f=_hz(root - 12): 0.42 * _warm_sub(f * (1 + 0.5 * math.exp(-18 * t)), t, 3.0)
+                     * min(1, t * 80) * math.exp(-0.55 * t))
+            # dark sustained pad (filtered below)
+            pad_dur = beat * 4
+            for m in (root + 12, root + 15, root + 19):
+                f = _hz(m)
+                music.add(b0, pad_dur, lambda t, f=f, d=pad_dur: 0.045 * _saw(f, t) * min(1, t * 6) * min(1, (d - t) * 8))
+            notes, mel_amp = [(s, d) for s, d in enumerate(hook) if d is not None], 0.11
+        for s16, deg in notes:
+            if second_half and s16 >= 12:
+                deg = min(deg + 1, len(PENTA) - 1)
+            f = _hz(key + 12 + PENTA[deg])          # same pitch region the chords sit in, not above them
+            decay = 3.0 if mood == "lofi" else 7.0
+            lead.add(at(b0, s16), step * (3 if mood == "lofi" else 1.6),
+                     lambda t, f=f, dc=decay: mel_amp * (math.sin(TAU * f * t) + 0.3 * math.sin(TAU * 2 * f * t) * math.exp(-8 * t))
+                     * min(1, t * 120) * math.exp(-dc * t))
+    _lowpass(music.b, 1400 if mood == "lofi" else 900)
+    _lowpass(lead.b, 2600)
+    _lowpass(drums.b, 6000 if mood == "lofi" else 8000, passes=1)
+    lead.echo(beat * 0.75, 0.28, 0.35)
+    duck = [1.0] * n
+    depth = 0.75 if mood == "lofi" else 0.45        # gentle pump for lofi, stronger for hype
+    for k in kicks:
+        s0 = int(k * RATE)
+        for i in range(max(0, s0), min(n, s0 + int(0.2 * RATE))):
+            duck[i] = min(duck[i], depth + (1 - depth) * ((i - s0) / (0.2 * RATE)) ** 1.5)
+    mix = [d + duck[i] * (b + m + l) for i, (d, b, m, l) in enumerate(zip(drums.b, bass.b, music.b, lead.b))]
+    _write(path, mix)
+    return {"style": mood, "bpm": bpm, "key": key}

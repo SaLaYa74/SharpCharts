@@ -53,7 +53,7 @@ def humanize(key, caption):
     body = lines[:cut]
     while body and not body[-1].strip():
         body.pop()
-    if "save this" not in caption.lower():
+    if "save this" not in caption.lower() and "📤" not in caption:     # builder already wrote a team-specific one
         bank = SAVE_SHARE["fantasy" if kind == "fantasy" else "betting"]
         body += ["", bank[(h >> 16) % len(bank)]]
     return "\n".join(head + body + [""] + lines[cut:]).replace("\n\n\n", "\n\n")

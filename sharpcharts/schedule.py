@@ -26,13 +26,15 @@ class Job:
 
 
 JOBS = [
-    # ---- v2 (Oct 24 rework): one plain-English Reel a day, light design, team badges, $100-bet framing.
+    # ---- v2 (Oct 24 rework): plain-English Reels (two on Tue/Sat since Oct 26: share-bait formats), light design, team badges, $100-bet framing.
     # Midday Reels reached ~54% more people than evening in the Oct 2026 test, so everything posts at noon PT.
     Job("v2_angles",  "v2_angles", (MON,), "12:00", live=True, note="Reel: Which bet pays? (favs/dogs/home/road/overs/unders)"),
+    Job("v2_upsets",  "v2_upsets", (TUE,), "09:00", live=True, note="Reel: underdogs that paid last week ($100 moneyline)"),
     Job("v2_waiver",  "v2_waiver", (TUE,), "12:00", live=True, note="Reel: waiver wire risers"),
     Job("v2_best",    "v2_best",   (WED,), "12:00", live=True, note="Reel: best teams to bet on ($100 every game)"),
     Job("v2_rb",      "v2_rb",     (THU,), "12:00", live=True, note="Reel: who gets the ball (RB touch share)"),
     Job("v2_worst",   "v2_worst",  (FRI,), "12:00", live=True, note="Reel: worst teams to bet on"),
+    Job("v2_all32",   "v2_all32",  (SAT,), "09:00", live=True, note="Reel: find your team (all 32, $100 every game)"),
     Job("v2_overs",   "v2_overs",  (SAT,), "12:00", live=True, note="Reel: best teams for the over"),
     Job("v2_wr",      "v2_wr",     (SUN,), "08:00", live=True, note="Reel: who gets targeted (WR/TE target share)"),
     # ---- Game-day Story (cheap, keeps followers engaged on Sundays)

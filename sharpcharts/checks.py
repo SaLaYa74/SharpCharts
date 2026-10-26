@@ -103,6 +103,7 @@ def image(rep, path, size):
 def caption(rep, text):
     rep.require(0 < len(text) <= 2200, "caption: length", f"{len(text)} chars (max 2200)")
     rep.require(text.count("#") <= 30, "caption: hashtag limit", f"{text.count('#')} hashtags (max 30)")
+    rep.expect(text.count("#") <= 5, "caption: 5 hashtags or fewer", f"{text.count('#')} hashtags (Instagram now favors ≤5)")
     rep.require("21+" in text, "caption: responsible-gambling line", "missing 21+ disclaimer")
     low = text.lower()
     bad = [w for w in BANNED_WORDS if re.search(r"(?<![\w'])" + re.escape(w) + r"(?![\w'])", low)]

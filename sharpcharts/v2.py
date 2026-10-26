@@ -6,7 +6,7 @@ Money framing: "bet $100 on every game" profit, computed from each game's actual
 from . import checks as C
 from . import data as D
 from . import light as L
-from .posts import DISCLAIMER, NoContent, Post, fantasy_board, usage_movers, with_question
+from .posts import DISCLAIMER, DataError, NoContent, Post, fantasy_board, usage_movers, with_question
 from .reels import make_reel, video_checks
 
 GREEN, RED = "#16A34A", "#EF4444"
@@ -84,8 +84,8 @@ def _reel(key, name, hook, html_fn, caption, rep, seed):
     return out
 
 
-def _post(out_dir, key, name, html_fn, caption, rep):
-    mp4, cover = make_reel(out_dir, name, ("", ""), html_fn, "", key)
+def _post(out_dir, key, name, html_fn, caption, rep, hold=4.0):
+    mp4, cover = make_reel(out_dir, name, ("", ""), html_fn, "", key, hold=hold)
     video_checks(rep, mp4)
     C.image(rep, cover, "reel")
     return Post(key=key, caption=caption, images=[{"reel": mp4, "cover": cover}], media="reel", checks=rep)
@@ -228,5 +228,94 @@ def waiver(ctx, out_dir, sizes=None):
         items, "nflverse player stats", p=p, hl_color=GREEN), cap, rep)
 
 
+
+def _ats(ctx, t):
+    r = ctx.recs[t]
+    return f"{r['ats_W']}-{r['ats_L']}" + (f"-{r['ats_P']}" if r["ats_P"] else "") + " ATS"
+
+
+def all_teams(ctx, out_dir, sizes=None):
+    """Every team's $100-a-game profit on one screen. Built to be shared: everyone looks for their team."""
+    rep = C.Report("v2 all32").extend(ctx.report)
+    team, _ = profits(ctx, rep)
+    rep.require(len(team) == 32, "all 32 teams on the board", f"{len(team)} teams")
+    rows = sorted(team.items(), key=lambda kv: -kv[1]["ats"])
+    board = [{"icon": t, "label": D.TEAMS[t][0], "sub": _ats(ctx, t), "value_label": money(v["ats"]),
+              "color": GREEN if v["ats"] >= 0 else RED} for t, v in rows]
+    key = f"{ctx.season}-wk{ctx.thru_week:02d}-v2-all32"
+    best, worst = rows[0], rows[-1]
+    up = sum(1 for _, v in rows if v["ats"] > 0)
+    cap = with_question(
+        f"Find your team 👇 $100 on every game this NFL season, all 32 teams.\n\n"
+        f"Best: {D.TEAMS[best[0]][0]} {money(best[1]['ats'])}. Worst: {D.TEAMS[worst[0]][0]} {money(worst[1]['ats'])}. "
+        f"Only {up} of 32 teams made you money.\n\n"
+        + "\n".join(f"{i + 1}. {D.TEAMS[t][0]}: {money(v['ats'])}" for i, (t, v) in enumerate(rows))
+        + f"\n\n📤 Send this to the {D.TEAMS[worst[0]][0]} fan in your group chat 😬 📌 Save it to check next week.",
+        "recap", key, best=D.TEAMS[best[0]][0], best_margin=money(best[1]["ats"]), worst=D.TEAMS[worst[0]][0])
+    cap += (f"\n\n$100 on every game against the spread, at closing odds, through Week {ctx.thru_week}.\n"
+            f"Data: nflverse, scores verified vs ESPN.\n{DISCLAIMER}\n#nfl #nflbetting #sportsbetting #nflfans")
+    return _post(out_dir, key, "v2_all32", lambda p: L.board(
+        "Find Your {hl}", "Team", f"$100 on every game, against the spread · thru Week {ctx.thru_week}",
+        board, "nflverse closing lines", p=p, hl_color="#3B82F6"), cap, rep, hold=7.0)
+
+
+def upsets(ctx, out_dir, sizes=None):
+    """Last week's underdogs that won outright, and what $100 on their moneyline paid."""
+    rep = C.Report("v2 upsets").extend(ctx.report)
+    wk = ctx.thru_week
+    games = [g for g in ctx.finals if g["week"] == wk]
+    rep.require(len(games) >= 10, f"week {wk}: full slate", f"only {len(games)} games")
+    from datetime import date, timedelta
+    last = max(g["gameday"] for g in games)
+    if last < (date.today() - timedelta(days=4)).isoformat():    # last week's games aren't final in the data yet
+        raise DataError(f"Week {wk} ended {last}; waiting for the newest week to be final.")
+    wins, net, dogs = [], 0.0, 0
+    for g in games:
+        h, a, hml, aml = g["home_team"], g["away_team"], g["home_moneyline"], g["away_moneyline"]
+        if hml is None or aml is None:
+            rep.expect(False, f"{g['game_id']}: moneylines present", "missing moneyline, game left out")
+            continue
+        C.line_ranges(rep, "nfl", g["game_id"], moneylines=(hml, aml))
+        if hml == aml or max(hml, aml) < 100:
+            continue                                          # pick'em: no real underdog
+        dog, fav, dml = (h, a, hml) if hml > aml else (a, h, aml)
+        sl = g["spread_line"]                                 # > 0 means the home team is favored
+        if sl:
+            spread_dog = a if sl > 0 else h
+            if not rep.expect(spread_dog == dog, f"{g['game_id']}: moneyline and spread agree on the underdog",
+                              f"spread says {spread_dog}, moneyline says {dog}; game left out"):
+                continue
+        ds, fs = (g["home_score"], g["away_score"]) if dog == h else (g["away_score"], g["home_score"])
+        rep.require(ds is not None and fs is not None, f"{g['game_id']}: final score", "score missing")
+        dogs += 1
+        if ds > fs:
+            net += dml
+            wins.append({"dog": dog, "fav": fav, "ml": dml, "score": f"{ds}-{fs}"})
+        elif ds < fs:
+            net -= 100
+    if not wins:
+        raise NoContent(f"No underdog won outright in Week {wk}.")
+    wins.sort(key=lambda w: -w["ml"])
+    top = wins[:5]
+    pal = COOL
+    items = [{"label": D.TEAMS[w["dog"]][0], "sub": f"{w['score'].replace('-', chr(8209))} vs {D.TEAMS[w['fav']][0]}", "value": w["ml"],
+              "icon": w["dog"], "value_label": money(w["ml"]), "color": pal[i % len(pal)]} for i, w in enumerate(top)]
+    key = f"{ctx.season}-wk{wk:02d}-v2-upsets"
+    w0 = top[0]
+    cap = (
+        f"The {D.TEAMS[w0['dog']][0]} were +{w0['ml']:.0f} underdogs against the {D.TEAMS[w0['fav']][0]}. "
+        f"$100 on them paid ${w0['ml']:,.0f} 🐶\n\n"
+        + "\n".join(f"🟢 {D.TEAMS[w['dog']][0]} (+{w['ml']:.0f}) beat the {D.TEAMS[w['fav']][0]} {w['score']}: +${w['ml']:,.0f}"
+                    for w in top)
+        + f"\n\n$100 on every underdog's moneyline in Week {wk} ({dogs} games): {money(net)} overall."
+        + f"\n\nWhich underdog are you riding in Week {wk + 1}? 👇"
+        + f"\n\n📤 Send this to the friend who bet the {D.TEAMS[w0['fav']][0]} 😅 📌 Save it for next week's card.")
+    cap += (f"\n\nProfit on a $100 moneyline bet at closing odds, Week {wk} underdogs that won outright.\n"
+            f"Data: nflverse, scores verified vs ESPN.\n{DISCLAIMER}\n#nfl #nflbetting #underdog #week{wk}")
+    return _post(out_dir, key, "v2_upsets", lambda p: L.bars(
+        "Underdogs That {hl}", "Paid", f"$100 on the moneyline · Week {wk} upsets · profit shown", items,
+        "nflverse closing lines", p=p, hl_color=GREEN), cap, rep)
+
 BUILDERS = {"v2_best": best_bets, "v2_worst": worst_bets, "v2_angles": which_bet_pays, "v2_overs": over_teams,
-            "v2_rb": touches, "v2_wr": targets, "v2_waiver": waiver}
+            "v2_rb": touches, "v2_wr": targets, "v2_waiver": waiver,
+            "v2_all32": all_teams, "v2_upsets": upsets}

@@ -132,3 +132,36 @@ def line(title, highlight, subtitle, pts, fmt, source, color="#3B82F6", marker=N
     body = f'''<div class="t" style="--hl:{hl_color}">{t}</div><div class="s">{escape(subtitle)}</div>
 <div style="flex:1;display:flex;align-items:center;margin-top:20px">{svg}</div>'''
     return _page(body, tall, source)
+
+
+def board(title, highlight, subtitle, rows, source, tall=True, p=1.0, hl_color="#3B82F6"):
+    """'Find your team' board: every team on one screen, two columns, best → worst.
+    rows: [dict(icon, label, sub, value_label, color)] in display order. Rows fade in top-down with p."""
+    from .helmet_art import helmet_img
+    n = len(rows)
+    half = (n + 1) // 2
+    cols = [rows[:half], rows[half:]]
+    html_cols = []
+    for c, part in enumerate(cols):
+        cells = []
+        for j, r in enumerate(part):
+            k = c * half + j
+            op = max(0.0, min(1.0, (p - k / n * 0.6) / 0.4))
+            sub = f'<small>{escape(r["sub"])}</small>' if r.get("sub") else ""
+            cells.append(f'''<div class="row" style="opacity:{op:.2f}"><div class="rk">{k + 1}</div>
+  <div class="hm">{helmet_img(r["icon"], 78)}</div><div class="nm">{escape(r["label"])}{sub}</div>
+  <div class="vl" style="color:{r.get("color", "#1F2937")}">{escape(r["value_label"])}</div></div>''')
+        html_cols.append(f'<div class="bcol">{"".join(cells)}</div>')
+    t = escape(title).replace("{hl}", f"<em>{escape(highlight)}</em>")
+    css = """<style>.board{flex:1;display:flex;gap:26px;margin-top:26px;min-height:0}
+.bcol{flex:1;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.row{display:flex;align-items:center;gap:8px;background:#fff;border-radius:16px;padding:2px 14px 2px 8px;
+     box-shadow:0 3px 0 rgba(0,0,0,.06);height:6.05%}
+.rk{width:34px;font-family:"Baloo 2";font-weight:800;font-size:26px;color:#9CA3AF;text-align:center}
+.hm{width:78px;display:flex;justify-content:center}
+.nm{flex:1;font-weight:800;font-size:29px;line-height:1;white-space:nowrap;overflow:hidden;min-width:0}
+.nm small{display:block;font-size:19px;color:#6B7280;font-weight:700;margin-top:3px}
+.vl{font-family:"Baloo 2";font-weight:800;font-size:38px;white-space:nowrap}</style>"""
+    body = f'''{css}<div class="t" style="--hl:{hl_color}">{t}</div><div class="s">{escape(subtitle)}</div>
+<div class="board">{"".join(html_cols)}</div>'''
+    return _page(body, tall, source)

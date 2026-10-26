@@ -26,6 +26,7 @@ from PIL import Image
 
 from sharpcharts import archive
 from sharpcharts import checks as C
+from sharpcharts import nba as NBA
 from sharpcharts import posts as P
 from sharpcharts import reels as R
 from sharpcharts import sports as S
@@ -109,6 +110,8 @@ class Runner:
     def build(self, job, out_dir):
         if job.builder in S.BUILDERS:
             return S.BUILDERS[job.builder](out_dir)
+        if job.builder in NBA.BUILDERS:
+            return NBA.BUILDERS[job.builder](out_dir)
         if job.builder in V2.BUILDERS:
             return V2.BUILDERS[job.builder](self.ctx, out_dir)
         if job.builder in R.BUILDERS:

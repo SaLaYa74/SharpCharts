@@ -65,7 +65,10 @@ ICONS = {
 
 
 def icon(name, px=126):
-    """Team badge for an NFL abbreviation, otherwise one of the simple icons."""
+    """Team badge for an NFL abbreviation ('nba:LAL' for NBA), otherwise one of the simple icons."""
+    if name and name.startswith("nba:"):
+        from .nba import badge
+        return badge(name[4:], px)
     if name in TEAM_COLORS:
         from .helmet_art import helmet_img
         return f'<div style="width:{int(px * 1.38)}px;margin:0 -16px;display:flex;justify-content:center">{helmet_img(name, int(px * 1.38))}</div>'
@@ -165,7 +168,7 @@ def board(title, highlight, subtitle, rows, source, tall=True, p=1.0, hl_color="
             op = max(0.0, min(1.0, (p - k / n * 0.6) / 0.4))
             sub = f'<small>{escape(r["sub"])}</small>' if r.get("sub") else ""
             cells.append(f'''<div class="row" style="opacity:{op:.2f}"><div class="rk">{k + 1}</div>
-  <div class="hm">{helmet_img(r["icon"], 78)}</div><div class="nm">{escape(r["label"])}{sub}</div>
+  <div class="hm">{icon(r["icon"], 62) if r["icon"].startswith("nba:") else helmet_img(r["icon"], 78)}</div><div class="nm">{escape(r["label"])}{sub}</div>
   <div class="vl" style="color:{r.get("color", "#1F2937")}">{escape(r["value_label"])}</div></div>''')
         html_cols.append(f'<div class="bcol">{"".join(cells)}</div>')
     t = escape(title).replace("{hl}", f"<em>{escape(highlight)}</em>")

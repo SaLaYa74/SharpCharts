@@ -40,6 +40,12 @@ JOBS = [
     # ---- Moments, not the calendar: same-day recap while people are still talking about the games.
     # Waits (retries hourly) until every afternoon game is final; ESPN scores, nflverse lines.
     Job("v2_sunday",  "v2_sunday", (SUN,), "17:30", live=True, note="Reel: Sunday in $ (today's favorites/dogs/overs/unders)"),
+    # ---- NBA (Oct 26): year-round content once football ends. Same $100 math, DraftKings closing lines via ESPN.
+    # Nightly recap the next morning; season leaderboards on days with only one NFL Reel, before tip-off.
+    Job("nba_night",  "nba_night", EVERY_DAY, "09:30", live=True, note="Reel: NBA last night in $ (favs/dogs/home/road/overs/unders)"),
+    Job("nba_all30",  "nba_all30", (MON,), "15:00", live=True, note="Reel: NBA find your team (all 30, $100 every game)"),
+    Job("nba_best",   "nba_best",  (WED,), "15:00", live=True, note="Reel: NBA teams that paid bettors most"),
+    Job("nba_worst",  "nba_worst", (FRI,), "15:00", live=True, note="Reel: NBA teams that burned bettors most"),
     # ---- Game-day Story (cheap, keeps followers engaged on Sundays)
     Job("nfl_gameday", "gameday_story", (SUN,), "07:00", live=True, note="NFL Sunday slate Story"),
     # ---- Background: multi-sport line archive (never posts)

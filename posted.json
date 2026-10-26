@@ -511,6 +511,16 @@
     "scheduled": "15:00",
     "trial": false
   },
+  "2026-wk06-v2-angles": {
+    "images": 1,
+    "job": "v2_angles",
+    "media": "reel",
+    "media_id": "18112448708125111",
+    "permalink": "https://www.instagram.com/reel/De-Cs1Vk4pm/",
+    "posted_at": "2026-10-26T19:33:34+00:00",
+    "scheduled": "12:00",
+    "trial": false
+  },
   "2026-wk06-v2-wr": {
     "images": 1,
     "job": "v2_wr",

@@ -523,5 +523,10 @@
     "at": "2026-10-26T06:31-07:00",
     "detail": "7 snapshot files",
     "status": "done"
+  },
+  "2026-10-26:v2_angles": {
+    "at": "2026-10-26T12:32-07:00",
+    "detail": "https://www.instagram.com/reel/De-Cs1Vk4pm/",
+    "status": "posted"
   }
 }

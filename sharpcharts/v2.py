@@ -7,7 +7,7 @@ from . import checks as C
 from . import data as D
 from . import light as L
 from .posts import DISCLAIMER, DataError, NoContent, Post, fantasy_board, usage_movers, with_question
-from .reels import make_reel, video_checks
+from .reels import make_countdown, make_reel, video_checks
 
 GREEN, RED = "#16A34A", "#EF4444"
 COOL = ["#16A34A", "#22C55E", "#14B8A6", "#3B82F6", "#6366F1"]      # winners: greens → blues
@@ -84,8 +84,12 @@ def _reel(key, name, hook, html_fn, caption, rep, seed):
     return out
 
 
-def _post(out_dir, key, name, html_fn, caption, rep, hold=4.0):
-    mp4, cover = make_reel(out_dir, name, ("", ""), html_fn, "", key, hold=hold)
+def _post(out_dir, key, name, html_fn, caption, rep, hold=4.0, countdown=0):
+    """countdown=n: html_fn takes (reveal, tease) and the Reel reveals #n → #1; otherwise html_fn(p) builds in."""
+    if countdown:
+        mp4, cover = make_countdown(out_dir, name, html_fn, countdown, key)
+    else:
+        mp4, cover = make_reel(out_dir, name, ("", ""), html_fn, "", key, hold=hold)
     video_checks(rep, mp4)
     C.image(rep, cover, "reel")
     return Post(key=key, caption=caption, images=[{"reel": mp4, "cover": cover}], media="reel", checks=rep)
@@ -111,14 +115,15 @@ def best_bets(ctx, out_dir, sizes=None):
     key = f"{ctx.season}-wk{ctx.thru_week:02d}-v2-best"
     top = rows[0]
     cap = with_question(
-        f"If you bet $100 on the {D.TEAMS[top[0]][0]} every week this season, you'd be up ${top[1]['ats']:,.0f} 💰\n\n"
+        f"The {D.TEAMS[top[0]][0]} have been an ATM for bettors 💰 $100 on them every week = up ${top[1]['ats']:,.0f}.\n\n"
         + "\n".join(f"🟢 {D.TEAMS[t][0]}: {money(v['ats'])} ({_record(ctx, t)})" for t, v in rows),
         "recap", key, best=D.TEAMS[top[0]][0], best_margin=money(top[1]["ats"]), worst=D.TEAMS[rows[-1][0]][0])
     cap += (f"\n\n$100 on every game against the spread, at closing odds, through Week {ctx.thru_week}.\n"
             f"Data: nflverse, scores verified vs ESPN.\n{DISCLAIMER}\n#nfl #nflbetting #sportsbetting #nflpicks")
-    return _post(out_dir, key, "v2_best", lambda p: L.bars(
-        "Best Teams to {hl}", "Bet On", f"$100 on every game this season, against the spread · thru Week {ctx.thru_week}",
-        items, "nflverse closing lines", p=p, hl_color=GREEN), cap, rep)
+    cap = cap.replace("\n\n$100 on every game", f"\n\n📤 Send this to a {D.TEAMS[top[0]][0]} fan. They've earned it.\n\n$100 on every game", 1)
+    return _post(out_dir, key, "v2_best", lambda r, t: L.bars(
+        "Which Team {hl} Bettors Most?", "Paid", f"$100 on every game, against the spread · thru Week\u00a0{ctx.thru_week}",
+        items, "nflverse closing lines", hl_color=GREEN, reveal=r, tease=t), cap, rep, countdown=len(items))
 
 
 def worst_bets(ctx, out_dir, sizes=None):
@@ -131,14 +136,15 @@ def worst_bets(ctx, out_dir, sizes=None):
     key = f"{ctx.season}-wk{ctx.thru_week:02d}-v2-worst"
     w = rows[0]
     cap = with_question(
-        f"Bet $100 on the {D.TEAMS[w[0]][0]} every week? You'd be down {money(w[1]['ats'])[1:]} 😬\n\n"
+        f"The {D.TEAMS[w[0]][0]} have cost bettors {money(w[1]['ats'])[1:]} this season. Nobody's been worse 😬\n\n"
         + "\n".join(f"🔴 {D.TEAMS[t][0]}: {money(v['ats'])} ({_record(ctx, t)})" for t, v in rows),
         "recap", key, best=D.TEAMS[rows[-1][0]][0], best_margin="", worst=D.TEAMS[w[0]][0])
     cap += (f"\n\n$100 on every game against the spread, at closing odds, through Week {ctx.thru_week}.\n"
             f"Data: nflverse, scores verified vs ESPN.\n{DISCLAIMER}\n#nfl #nflbetting #sportsbetting")
-    return _post(out_dir, key, "v2_worst", lambda p: L.bars(
-        "Worst Teams to {hl}", "Bet On", f"$100 on every game this season, against the spread · thru Week {ctx.thru_week}",
-        items, "nflverse closing lines", p=p, hl_color=RED), cap, rep)
+    cap = cap.replace("\n\n$100 on every game", f"\n\n📤 Send this to the {D.TEAMS[w[0]][0]} fan in your group chat 😬\n\n$100 on every game", 1)
+    return _post(out_dir, key, "v2_worst", lambda r, t: L.bars(
+        "Which Team {hl} Bettors Most?", "Burned", f"$100 on every game, against the spread · thru Week\u00a0{ctx.thru_week}",
+        items, "nflverse closing lines", hl_color=RED, reveal=r, tease=t), cap, rep, countdown=len(items))
 
 
 def which_bet_pays(ctx, out_dir, sizes=None):
@@ -157,7 +163,7 @@ def which_bet_pays(ctx, out_dir, sizes=None):
     cap += (f"\n\n$100 per game, all season, at closing odds, through Week {ctx.thru_week}. Green = profit, red = loss.\n"
             f"Data: nflverse, scores verified vs ESPN.\n{DISCLAIMER}\n#nfl #nflbetting #sportsbetting")
     return _post(out_dir, key, "v2_angles", lambda p: L.bars(
-        "Which Bet {hl}", "Pays?", f"$100 on every game this NFL season · green = profit, red = loss · thru Week {ctx.thru_week}",
+        "Which Bet {hl}", "Pays?", f"$100 on every game this NFL season · green = profit, red = loss · thru Week\u00a0{ctx.thru_week}",
         items, "nflverse closing lines", p=p, hl_color="#3B82F6"), cap, rep)
 
 
@@ -172,13 +178,13 @@ def over_teams(ctx, out_dir, sizes=None):
     key = f"{ctx.season}-wk{ctx.thru_week:02d}-v2-overs"
     top = rows[0]
     cap = with_question(
-        f"$100 on the OVER in every {D.TEAMS[top[0]][0]} game? You'd be up ${top[1]['over']:,.0f} 🔥\n\n"
+        f"{D.TEAMS[top[0]][0]} games keep blowing past the total 🔥 $100 on the over every week = up ${top[1]['over']:,.0f}.\n\n"
         + "\n".join(f"🟢 {D.TEAMS[t][0]} games: {money(v['over'])}" for t, v in rows), "trend", key)
     cap += (f"\n\n$100 on the over in every game, at closing odds, through Week {ctx.thru_week}.\n"
             f"Data: nflverse, scores verified vs ESPN.\n{DISCLAIMER}\n#nfl #nflbetting #overunder")
-    return _post(out_dir, key, "v2_overs", lambda p: L.bars(
-        "Best Teams for the {hl}", "Over", f"$100 on the over in every game this season · thru Week {ctx.thru_week}",
-        items, "nflverse closing lines", p=p, hl_color="#F97316"), cap, rep)
+    return _post(out_dir, key, "v2_overs", lambda r, t: L.bars(
+        "Whose Games Hit the {hl}?", "Over", f"$100 on the over, every game · thru Week\u00a0{ctx.thru_week}",
+        items, "nflverse closing lines", hl_color="#F97316", reveal=r, tease=t), cap, rep, countdown=len(items))
 
 
 def _usage(ctx, out_dir, focus):
@@ -196,10 +202,10 @@ def _usage(ctx, out_dir, focus):
         "fantasy", key, top=lead["name"], second=top[1]["name"])
     cap += (f"\n\nShare of team {what}, season to date (min. {b['min_games']} games). Raw data, no projections. "
             f"Data: nflverse.\n{DISCLAIMER}\n{b['hashtags']}")
-    title, hl = ("Who Gets the {hl}", "Ball") if focus == "rb" else ("Who Gets {hl}", "Targeted")
-    return _post(out_dir, key, f"v2_{focus}", lambda p: L.bars(
-        title, hl, f"Share of team {what} · season to date · thru Week {ctx.thru_week}", items,
-        "nflverse player stats", p=p, hl_color="#3B82F6"), cap, rep)
+    title, hl = ("Who Gets the {hl} Most?", "Ball") if focus == "rb" else ("Who Gets {hl} Most?", "Targeted")
+    return _post(out_dir, key, f"v2_{focus}", lambda r, t: L.bars(
+        title, hl, f"Share of team {what} · season to date · thru Week\u00a0{ctx.thru_week}", items,
+        "nflverse player stats", hl_color="#3B82F6", reveal=r, tease=t), cap, rep, countdown=len(items))
 
 
 def touches(ctx, out_dir, sizes=None):
@@ -218,14 +224,14 @@ def waiver(ctx, out_dir, sizes=None):
     key = f"{ctx.season}-wk{ctx.thru_week:02d}-v2-waiver"
     top = risers[0]
     cap = with_question(
-        f"Waiver wire alert: {top['name']} went from {pct(top['base'])} to {pct(top['now'])} of his team's touches 📈\n\n"
+        f"🚨 Waiver alert: {top['name']} just jumped from {pct(top['base'])} to {pct(top['now'])} of his team's touches. Grab him before your league does 📈\n\n"
         + "\n".join(f"🟢 {m['name']} ({m['team']} {m['pos']}): {pct(m['base'])} → {pct(m['now'])}" for m in risers),
         "fantasy", key, top=top["name"], second=risers[1]["name"])
     cap += (f"\n\nShare of team carries + targets, Week {ctx.thru_week} vs. earlier weeks. Raw data, no projections. "
             f"Data: nflverse.\n{DISCLAIMER}\n#fantasyfootball #waiverwire #week{ctx.thru_week + 1}")
-    return _post(out_dir, key, "v2_waiver", lambda p: L.bars(
-        "Waiver Wire {hl}", "Risers", f"Biggest jump in share of team touches · Week {ctx.thru_week} vs. before",
-        items, "nflverse player stats", p=p, hl_color=GREEN), cap, rep)
+    return _post(out_dir, key, "v2_waiver", lambda r, t: L.bars(
+        "Who's {hl} on Waivers?", "Rising", f"Biggest jump in share of team touches · Week {ctx.thru_week} vs. before",
+        items, "nflverse player stats", hl_color=GREEN, reveal=r, tease=t), cap, rep, countdown=len(items))
 
 
 
@@ -255,7 +261,7 @@ def all_teams(ctx, out_dir, sizes=None):
     cap += (f"\n\n$100 on every game against the spread, at closing odds, through Week {ctx.thru_week}.\n"
             f"Data: nflverse, scores verified vs ESPN.\n{DISCLAIMER}\n#nfl #nflbetting #sportsbetting #nflfans")
     return _post(out_dir, key, "v2_all32", lambda p: L.board(
-        "Find Your {hl}", "Team", f"$100 on every game, against the spread · thru Week {ctx.thru_week}",
+        "Find Your {hl}", "Team", f"$100 on every game, against the spread · thru Week\u00a0{ctx.thru_week}",
         board, "nflverse closing lines", p=p, hl_color="#3B82F6"), cap, rep, hold=7.0)
 
 
@@ -312,10 +318,98 @@ def upsets(ctx, out_dir, sizes=None):
         + f"\n\n📤 Send this to the friend who bet the {D.TEAMS[w0['fav']][0]} 😅 📌 Save it for next week's card.")
     cap += (f"\n\nProfit on a $100 moneyline bet at closing odds, Week {wk} underdogs that won outright.\n"
             f"Data: nflverse, scores verified vs ESPN.\n{DISCLAIMER}\n#nfl #nflbetting #underdog #week{wk}")
-    return _post(out_dir, key, "v2_upsets", lambda p: L.bars(
-        "Underdogs That {hl}", "Paid", f"$100 on the moneyline · Week {wk} upsets · profit shown", items,
-        "nflverse closing lines", p=p, hl_color=GREEN), cap, rep)
+    return _post(out_dir, key, "v2_upsets", lambda r, t: L.bars(
+        "Which Underdog {hl} Most?", "Paid", f"$100 on the moneyline · Week {wk} upsets · profit shown", items,
+        "nflverse closing lines", hl_color=GREEN, reveal=r, tease=t), cap, rep, countdown=len(items))
+
+
+def sunday(ctx, out_dir, sizes=None, day=None):
+    """Same-day 'Sunday in $': what $100 on every favorite / underdog / over / under paid on today's slate.
+    Posted Sunday evening while people are still talking about the games. Final scores come straight from
+    ESPN (nflverse can lag on game day) and must match nflverse wherever nflverse already has them;
+    lines come from nflverse."""
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    day = day or datetime.now(ZoneInfo("America/Los_Angeles")).date()
+    rep = C.Report("v2 sunday").extend(ctx.report)
+    slate = [g for g in ctx.games if g["gameday"] == day.isoformat()]
+    if len(slate) < 8:
+        raise NoContent(f"No full NFL slate on {day}.")
+    espn = {(e["away"], e["home"]): e for e in D.espn_scoreboard(day)}
+    early = [g for g in slate if (g["gametime"] or "99") < "19:00"]          # everything before Sunday night (ET)
+    games, missing = [], []
+    for g in slate:
+        e = espn.get((g["away_team"], g["home_team"]))
+        rep.require(e is not None, f"{g['game_id']}: on ESPN scoreboard", "game missing from ESPN")
+        if not e or not e["final"]:
+            if g in early:
+                missing.append(g["game_id"])
+            continue
+        if g["final"]:
+            rep.require((g["away_score"], g["home_score"]) == (e["away_score"], e["home_score"]),
+                        f"{g['game_id']}: ESPN and nflverse scores agree",
+                        f"ESPN {e['away_score']}-{e['home_score']} vs nflverse {g['away_score']}-{g['home_score']}")
+        if g["spread_line"] is None or g["total_line"] is None:
+            rep.expect(False, f"{g['game_id']}: lines present", "no spread/total in nflverse; game left out")
+            continue
+        C.line_ranges(rep, "nfl", g["game_id"], g["spread_line"], g["total_line"],
+                      moneylines=(g["home_moneyline"], g["away_moneyline"]))
+        h, a = e["home_score"], e["away_score"]
+        games.append(dict(g, home_score=h, away_score=a, result=h - a, total=h + a))
+    if missing:
+        raise DataError(f"Waiting on {len(missing)} afternoon game(s) to finish: {missing[:4]}")
+    rep.require(len(games) >= 8, "enough final games for a Sunday recap", f"only {len(games)} games")
+    wk = slate[0]["week"]
+    angle = {k: 0.0 for k in ("Favorites", "Underdogs", "Home teams", "Road teams", "Overs", "Unders")}
+    upsets = []
+    for g in games:
+        ho, ao = _odds(g.get("home_spread_odds")), _odds(g.get("away_spread_odds"))
+        oo, uo = _odds(g.get("over_odds")), _odds(g.get("under_odds"))
+        rh, ra = D.ats_side(g, g["home_team"]), D.ats_side(g, g["away_team"])
+        angle["Home teams"] += _bet(rh, ho)
+        angle["Road teams"] += _bet(ra, ao)
+        if g["spread_line"]:
+            fh = g["spread_line"] > 0
+            angle["Favorites"] += _bet(rh if fh else ra, ho if fh else ao)
+            angle["Underdogs"] += _bet(ra if fh else rh, ao if fh else ho)
+        ou = D.ou_side(g)
+        angle["Overs"] += _bet("W" if ou == "O" else ("L" if ou == "U" else "P"), oo)
+        angle["Unders"] += _bet("W" if ou == "U" else ("L" if ou == "O" else "P"), uo)
+        hml, aml = g["home_moneyline"], g["away_moneyline"]
+        if hml and aml and max(hml, aml) >= 100:
+            dog_home = hml > aml
+            dog, fav, ml = (g["home_team"], g["away_team"], hml) if dog_home else (g["away_team"], g["home_team"], aml)
+            ds, fs = (g["home_score"], g["away_score"]) if dog_home else (g["away_score"], g["home_score"])
+            if ds > fs:
+                upsets.append((ml, dog, fav, f"{ds}-{fs}"))
+    for k, v in angle.items():
+        rep.require(abs(v) <= len(games) * 260, f"{k} total plausible", f"{v:.0f} over {len(games)} games")
+    icons = {"Favorites": "crown", "Underdogs": "dog", "Home teams": "home", "Road teams": "plane", "Overs": "up", "Unders": "down"}
+    order = sorted(angle, key=lambda k: -angle[k])
+    items = [{"label": k, "sub": "today", "value": abs(angle[k]), "icon": icons[k], "value_label": money(angle[k]),
+              "color": GREEN if angle[k] >= 0 else RED} for k in order]
+    key = f"{ctx.season}-wk{wk:02d}-v2-sunday"
+    best, worst = order[0], order[-1]
+    one = {"Favorites": "favorite", "Underdogs": "underdog", "Home teams": "home team", "Road teams": "road team",
+           "Overs": "over", "Unders": "under"}
+    lines = [f"Sunday in $ 💸 $100 on every {one[best]} today: {money(angle[best])}. "
+             f"Every {one[worst]}: {money(angle[worst])}."]
+    if upsets:
+        ml, dog, fav, sc = max(upsets)
+        lines.append(f"Biggest upset: the {D.TEAMS[dog][0]} (+{ml:.0f}) beat the {D.TEAMS[fav][0]} {sc}. "
+                     f"$100 on them paid ${ml:,.0f} 🐶")
+    lines.append("\n".join(f"{'🟢' if angle[k] >= 0 else '🔴'} Every {one[k]}: {money(angle[k])}" for k in order))
+    lines.append("Which way did you go today? 👇")
+    lines.append(f"📤 Send this to the friend who rode the {worst.lower()} today 😅")
+    cap = "\n\n".join(lines)
+    cap += (f"\n\n$100 per game at game-day lines, {len(games)} Sunday games, Week {wk}"
+            f"{'' if len(games) == len(slate) else ' (Sunday night game not included)'}.\n"
+            f"Data: final scores from ESPN, lines from nflverse.\n{DISCLAIMER}\n#nfl #nflbetting #sportsbetting #nflsunday")
+    return _post(out_dir, key, "v2_sunday", lambda r, t: L.bars(
+        "Who Got {hl} Today?", "Paid", f"$100 on every bet type · {len(games)} Sunday games · Week\u00a0{wk}", items,
+        "ESPN scores · nflverse lines", hl_color=GREEN, reveal=r, tease=t), cap, rep, countdown=len(items))
 
 BUILDERS = {"v2_best": best_bets, "v2_worst": worst_bets, "v2_angles": which_bet_pays, "v2_overs": over_teams,
             "v2_rb": touches, "v2_wr": targets, "v2_waiver": waiver,
-            "v2_all32": all_teams, "v2_upsets": upsets}
+            "v2_all32": all_teams, "v2_upsets": upsets,
+            "v2_sunday": sunday}

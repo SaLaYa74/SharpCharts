@@ -73,6 +73,49 @@ def make_reel(out_dir, name, hook, chart_html, tag, seed, hold=4.0):
     return mp4, cover
 
 
+def make_countdown(out_dir, name, chart_html, n, seed, hold=3.5, tease="Can you guess #1?", drum="And #1 is..."):
+    """Countdown Reel: bars are revealed from #n up to #1, #1 last after a short pause, so viewers stay
+    to the end (watch time is a top ranking signal). chart_html(reveal, tease) -> HTML, where reveal is
+    the per-bar progress list (0 = hidden '?', 1 = fully grown). Returns (mp4, cover_jpg)."""
+    os.makedirs(out_dir, exist_ok=True)
+    work = tempfile.mkdtemp(prefix="reel_")
+    seq, prog, i = [], [0.0] * n, 0
+
+    def shot(t, secs):
+        nonlocal i
+        path = os.path.join(work, f"{i:03d}.png")
+        html_to_png(chart_html(list(prog), t), path, "reel")
+        seq.append((path, secs))
+        i += 1
+
+    for k in range(n - 1, -1, -1):                       # #n first, #1 last; motion starts on frame 1
+        if k == 0:
+            shot(drum, 0.55)                             # beat of suspense before the answer
+        steps = 8 if k == 0 else 6
+        for s_ in range(steps):
+            prog[k] = 0.15 + 0.85 * _ease((s_ + 1) / steps)
+            shot(tease if k else None, 0.067)
+        if k:
+            seq[-1] = (seq[-1][0], 0.35)                 # let each bar land
+    seq[-1] = (seq[-1][0], hold)                         # full answer, long enough to read
+    total = sum(x for _, x in seq)
+    audio = os.path.join(work, "beat.wav")
+    make_beat(audio, total + 0.2, seed)
+    listing = os.path.join(work, "frames.txt")
+    with open(listing, "w") as f:
+        for path, secs in seq:
+            f.write(f"file '{path}'\nduration {secs:.3f}\n")
+        f.write(f"file '{seq[-1][0]}'\n")
+    mp4 = os.path.join(out_dir, f"{name}.mp4")
+    subprocess.run([ffmpeg_exe(), "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", listing,
+                    "-i", audio, "-vf", f"fps={FPS},format=yuv420p", "-c:v", "libx264", "-preset", "medium",
+                    "-crf", "14", "-profile:v", "high", "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
+                    "-shortest", "-movflags", "+faststart", mp4], check=True)
+    cover = os.path.join(out_dir, f"{name}_cover.jpg")
+    Image.open(seq[-1][0]).convert("RGB").save(cover, "JPEG", quality=90)
+    shutil.rmtree(work, ignore_errors=True)
+    return mp4, cover
+
 def video_checks(rep, mp4):
     """Instagram Reels requirements + sanity: 9:16 1080x1920, 3-90s, has audio, < 20MB (CDN limit)."""
     name = os.path.basename(mp4)

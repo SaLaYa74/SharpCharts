@@ -33,6 +33,10 @@ body{background:#FBFCFF;color:#1F2937;font-family:Nunito,Arial,sans-serif;overfl
 .lab{flex:1;text-align:center;font-weight:800;font-size:30px;line-height:1.1;min-width:0}
 .lab small{display:block;font-size:22px;color:#6B7280;font-weight:700;margin-top:4px}
 .foot{display:flex;justify-content:space-between;align-items:center;margin-top:26px;font-size:24px;color:#6B7280;font-weight:700}
+.qm{width:126px;height:126px;border-radius:50%;background:#F3F4F6;border:5px dashed #9CA3AF;display:flex;align-items:center;
+    justify-content:center;font-family:"Baloo 2";font-weight:800;font-size:80px;color:#9CA3AF}
+.tease{align-self:center;background:#1F2937;color:#fff;font-family:"Baloo 2";font-weight:800;font-size:40px;
+       padding:6px 30px;border-radius:999px;margin:-60px 0 22px}
 .brand{display:flex;align-items:center;gap:12px;font-family:"Baloo 2";font-weight:800;color:#1F2937;font-size:30px;letter-spacing:1px}
 """
 
@@ -75,14 +79,24 @@ def _page(body, tall, source):
 <div class="foot"><div class="brand">{mascot_svg(54)}SHARP CHARTS</div><div style="text-align:right">Source: {escape(source)}<br>21+ · Gamble responsibly · 1-800-GAMBLER</div></div></div></body></html>'''
 
 
-def bars(title, highlight, subtitle, items, source, tall=True, p=1.0, hl_color="#F97316", fmt=None):
+def bars(title, highlight, subtitle, items, source, tall=True, p=1.0, hl_color="#F97316", fmt=None,
+         reveal=None, tease=None):
     """Big vertical bar chart. title may contain {hl} where the highlighted word goes.
-    items: [dict(label, sub, value, icon, value_label?, color?)] — values must be >= 0."""
+    items: [dict(label, sub, value, icon, value_label?, color?)] — values must be >= 0.
+    reveal: optional per-item progress (0 = still hidden behind a '?', 1 = fully grown) for countdown Reels.
+    tease: optional pill above the title (e.g. 'Guess #1 before it shows')."""
     n = len(items)
     hi = max(i["value"] for i in items) or 1
     cols, labs = [], []
     for k, it in enumerate(items):
         color = it.get("color") or PALETTE[k % len(PALETTE)]
+        if reveal is not None:
+            p = reveal[k]
+            if p <= 0:
+                cols.append(f'''<div class="col"><div class="icon"><div class="qm">?</div></div>
+  <div class="bar" style="height:7%;background:#E5E7EB;box-shadow:none"></div></div>''')
+                labs.append(f'<div class="lab" style="color:#9CA3AF">#{k + 1}<small>&nbsp;</small></div>')
+                continue
         h = max(3.0, it["value"] / hi * 100 * p)
         short = h < 16
         vl = it.get("value_label") or (fmt(it["value"]) if fmt else f'{it["value"]:g}')
@@ -94,7 +108,9 @@ def bars(title, highlight, subtitle, items, source, tall=True, p=1.0, hl_color="
         sub = f'<small>{escape(it["sub"])}</small>' if it.get("sub") else ""
         labs.append(f'<div class="lab">{escape(it["label"])}{sub}</div>')
     t = escape(title).replace("{hl}", f"<em>{escape(highlight)}</em>")
-    body = f'''<div class="t" style="--hl:{hl_color}">{t}</div><div class="s">{escape(subtitle)}</div>
+    pill = (f'<div class="tease">{escape(tease)}</div>' if tease else
+            '<div class="tease" style="visibility:hidden">&nbsp;</div>' if reveal is not None else "")   # no layout jump
+    body = f'''{pill}<div class="t" style="--hl:{hl_color}">{t}</div><div class="s">{escape(subtitle)}</div>
 <div class="chart" style="gap:{22 if n > 3 else 60}px">{''.join(cols)}</div><div class="labels" style="gap:{22 if n > 3 else 60}px">{''.join(labs)}</div>'''
     return _page(body, tall, source)
 

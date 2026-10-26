@@ -37,6 +37,9 @@ JOBS = [
     Job("v2_all32",   "v2_all32",  (SAT,), "09:00", live=True, note="Reel: find your team (all 32, $100 every game)"),
     Job("v2_overs",   "v2_overs",  (SAT,), "12:00", live=True, note="Reel: best teams for the over"),
     Job("v2_wr",      "v2_wr",     (SUN,), "08:00", live=True, note="Reel: who gets targeted (WR/TE target share)"),
+    # ---- Moments, not the calendar: same-day recap while people are still talking about the games.
+    # Waits (retries hourly) until every afternoon game is final; ESPN scores, nflverse lines.
+    Job("v2_sunday",  "v2_sunday", (SUN,), "17:30", live=True, note="Reel: Sunday in $ (today's favorites/dogs/overs/unders)"),
     # ---- Game-day Story (cheap, keeps followers engaged on Sundays)
     Job("nfl_gameday", "gameday_story", (SUN,), "07:00", live=True, note="NFL Sunday slate Story"),
     # ---- Background: multi-sport line archive (never posts)

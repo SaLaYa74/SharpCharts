@@ -524,6 +524,21 @@
     "detail": "7 snapshot files",
     "status": "done"
   },
+  "2026-10-26:archive_pm": {
+    "at": "2026-10-26T16:19-07:00",
+    "detail": "7 snapshot files",
+    "status": "done"
+  },
+  "2026-10-26:nba_all30": {
+    "at": "2026-10-26T16:19-07:00",
+    "detail": "Too early: some teams have fewer than 3 games.",
+    "status": "skipped"
+  },
+  "2026-10-26:nba_night": {
+    "at": "2026-10-26T16:19-07:00",
+    "detail": "https://www.instagram.com/reel/De-crCIDba5/",
+    "status": "posted"
+  },
   "2026-10-26:v2_angles": {
     "at": "2026-10-26T12:32-07:00",
     "detail": "https://www.instagram.com/reel/De-Cs1Vk4pm/",

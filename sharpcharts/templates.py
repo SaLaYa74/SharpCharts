@@ -266,8 +266,22 @@ def matchup(away, home, line_info, stat_rows, tag, source, size="feed", note="")
     return page(inner, size, tag=tag, source=source, note=note)
 
 
+def _logo_badge(abbr, px):
+    """White disc with the official logo (when the logo switch is on), else None."""
+    from .logos import logo_uri
+    uri = logo_uri(abbr)
+    if not uri:
+        return None
+    return (f'<span style="display:inline-flex;width:{px}px;height:{px}px;border-radius:50%;background:#fff;'
+            f'align-items:center;justify-content:center;box-shadow:0 0 0 2px rgba(0,0,0,.25)">'
+            f'<img src="{uri}" style="width:{int(px * .78)}px;height:{int(px * .78)}px;object-fit:contain"></span>')
+
+
 def _row_badge(abbr, color, px):
     from .helmets import H
+    lb = _logo_badge(abbr, int(px * 1.05)) if abbr in H else None
+    if lb:
+        return lb
     return badge(abbr, int(px * 1.05)) if abbr in H else chip(abbr, color, px, int(px * .46))
 
 
@@ -275,7 +289,7 @@ def _badge(team, sz, facing):
     """NFL teams get a helmet; other sports (no helmet data) keep the color chip."""
     from .helmets import H
     if team[0] in H and len(team) < 3:
-        return badge(team[0], int(sz * 1.3))
+        return _logo_badge(team[0], int(sz * 1.3)) or badge(team[0], int(sz * 1.3))
     return chip(team[0], team[1], sz, int(sz * .42))
 
 

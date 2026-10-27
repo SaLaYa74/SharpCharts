@@ -1,0 +1,3365 @@
+{
+  "subject": "usage movers",
+  "counts": {
+    "pass": 671,
+    "warn": 0,
+    "block": 0
+  },
+  "checks": [
+    {
+      "status": "pass",
+      "check": "nfl: 107 final scores match ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: source data is up to date",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_NE_SEA result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_NE_SEA: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_NE_SEA: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_SF_LA result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_SF_LA: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_SF_LA: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_CHI_CAR result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_CHI_CAR: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_CHI_CAR: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_TB_CIN result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_TB_CIN: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_TB_CIN: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_NO_DET result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_NO_DET: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_NO_DET: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_BUF_HOU result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_BUF_HOU: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_BUF_HOU: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_BAL_IND result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_BAL_IND: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_BAL_IND: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_CLE_JAX result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_CLE_JAX: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_CLE_JAX: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_ATL_PIT result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_ATL_PIT: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_ATL_PIT: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_NYJ_TEN result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_NYJ_TEN: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_NYJ_TEN: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_ARI_LAC result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_ARI_LAC: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_ARI_LAC: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_MIA_LV result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_MIA_LV: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_MIA_LV: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_GB_MIN result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_GB_MIN: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_GB_MIN: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_WAS_PHI result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_WAS_PHI: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_WAS_PHI: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_DAL_NYG result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_DAL_NYG: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_DAL_NYG: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_01_DEN_KC result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_DEN_KC: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_01_DEN_KC: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_DET_BUF result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_DET_BUF: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_DET_BUF: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_CAR_ATL result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_CAR_ATL: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_CAR_ATL: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_NO_BAL result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_NO_BAL: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_NO_BAL: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_MIN_CHI result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_MIN_CHI: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_MIN_CHI: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_CIN_HOU result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_CIN_HOU: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_CIN_HOU: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_PIT_NE result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_PIT_NE: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_PIT_NE: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_GB_NYJ result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_GB_NYJ: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_GB_NYJ: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_CLE_TB result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_CLE_TB: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_CLE_TB: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_PHI_TEN result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_PHI_TEN: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_PHI_TEN: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_JAX_DEN result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_JAX_DEN: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_JAX_DEN: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_LV_LAC result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_LV_LAC: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_LV_LAC: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_SEA_ARI result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_SEA_ARI: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_SEA_ARI: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_WAS_DAL result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_WAS_DAL: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_WAS_DAL: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_MIA_SF result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_MIA_SF: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_MIA_SF: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_IND_KC result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_IND_KC: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_IND_KC: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_02_NYG_LA result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_NYG_LA: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_02_NYG_LA: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_ATL_GB result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_ATL_GB: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_ATL_GB: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_LAC_BUF result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_LAC_BUF: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_LAC_BUF: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_CAR_CLE result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_CAR_CLE: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_CAR_CLE: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_NYJ_DET result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_NYJ_DET: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_NYJ_DET: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_HOU_IND result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_HOU_IND: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_HOU_IND: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_NE_JAX result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_NE_JAX: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_NE_JAX: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_KC_MIA result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_KC_MIA: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_KC_MIA: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_TEN_NYG result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_TEN_NYG: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_TEN_NYG: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_CIN_PIT result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_CIN_PIT: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_CIN_PIT: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_SEA_WAS result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_SEA_WAS: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_SEA_WAS: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_ARI_SF result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_ARI_SF: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_ARI_SF: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_MIN_TB result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_MIN_TB: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_MIN_TB: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_BAL_DAL result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_BAL_DAL: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_BAL_DAL: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_LV_NO result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_LV_NO: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_LV_NO: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_LA_DEN result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_LA_DEN: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_LA_DEN: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_03_PHI_CHI result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_PHI_CHI: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_03_PHI_CHI: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_PIT_CLE result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_PIT_CLE: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_PIT_CLE: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_IND_WAS result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_IND_WAS: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_IND_WAS: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_TEN_BAL result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_TEN_BAL: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_TEN_BAL: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_NE_BUF result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_NE_BUF: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_NE_BUF: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_NYJ_CHI result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_NYJ_CHI: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_NYJ_CHI: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_JAX_CIN result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_JAX_CIN: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_JAX_CIN: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_DAL_HOU result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_DAL_HOU: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_DAL_HOU: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_ARI_NYG result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_ARI_NYG: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_ARI_NYG: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_LA_PHI result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_LA_PHI: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_LA_PHI: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_GB_TB result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_GB_TB: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_GB_TB: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_MIA_MIN result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_MIA_MIN: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_MIA_MIN: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_KC_LV result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_KC_LV: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_KC_LV: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_LAC_SEA result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_LAC_SEA: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_LAC_SEA: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_DEN_SF result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_DEN_SF: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_DEN_SF: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_DET_CAR result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_DET_CAR: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_DET_CAR: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_04_ATL_NO result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_ATL_NO: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_04_ATL_NO: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_05_TB_DAL result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_TB_DAL: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_TB_DAL: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_05_PHI_JAX result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_PHI_JAX: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_PHI_JAX: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_05_CHI_GB result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_CHI_GB: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_CHI_GB: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_05_CIN_MIA result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_CIN_MIA: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_CIN_MIA: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_05_LV_NE result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_LV_NE: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_LV_NE: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_05_MIN_NO result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_MIN_NO: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_MIN_NO: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_05_CLE_NYJ result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_CLE_NYJ: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_CLE_NYJ: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_05_IND_PIT result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_IND_PIT: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_IND_PIT: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_05_HOU_TEN result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_HOU_TEN: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_HOU_TEN: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_05_NYG_WAS result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_NYG_WAS: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_NYG_WAS: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_05_DEN_LAC result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_DEN_LAC: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_DEN_LAC: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_05_DET_ARI result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_DET_ARI: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_DET_ARI: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_05_SF_SEA result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_SF_SEA: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_SF_SEA: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_05_BAL_ATL result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_BAL_ATL: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_BAL_ATL: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_05_BUF_LA result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_BUF_LA: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_05_BUF_LA: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_06_SEA_DEN result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_SEA_DEN: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_SEA_DEN: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_06_HOU_JAX result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_HOU_JAX: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_HOU_JAX: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_06_CHI_ATL result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_CHI_ATL: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_CHI_ATL: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_06_BAL_CLE result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_BAL_CLE: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_BAL_CLE: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_06_TEN_IND result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_TEN_IND: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_TEN_IND: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_06_NYJ_NE result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_NYJ_NE: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_NYJ_NE: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_06_NO_NYG result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_NO_NYG: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_NO_NYG: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_06_CAR_PHI result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_CAR_PHI: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_CAR_PHI: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_06_PIT_TB result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_PIT_TB: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_PIT_TB: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_06_ARI_LA result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_ARI_LA: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_ARI_LA: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_06_LAC_KC result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_LAC_KC: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_LAC_KC: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_06_BUF_LV result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_BUF_LV: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_BUF_LV: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_06_DAL_GB result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_DAL_GB: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_DAL_GB: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_06_WAS_SF result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_WAS_SF: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_06_WAS_SF: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_07_NE_CHI result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_NE_CHI: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_NE_CHI: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_07_PIT_NO result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_PIT_NO: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_PIT_NO: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_07_SF_ATL result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_SF_ATL: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_SF_ATL: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_07_CIN_BAL result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_CIN_BAL: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_CIN_BAL: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_07_TB_CAR result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_TB_CAR: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_TB_CAR: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_07_NYG_HOU result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_NYG_HOU: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_NYG_HOU: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_07_IND_MIN result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_IND_MIN: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_IND_MIN: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_07_MIA_NYJ result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_MIA_NYJ: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_MIA_NYJ: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_07_CLE_TEN result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_CLE_TEN: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_CLE_TEN: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_07_DEN_ARI result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_DEN_ARI: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_DEN_ARI: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_07_GB_DET result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_GB_DET: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_GB_DET: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_07_LA_LV result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_LA_LV: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_LA_LV: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_07_KC_SEA result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_KC_SEA: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_KC_SEA: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: 2026_07_DAL_PHI result/total math",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_DAL_PHI: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "2026_07_DAL_PHI: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: NE records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: SEA records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: SF records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: LA records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: CHI records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: CAR records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: TB records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: CIN records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: NO records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: DET records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: BUF records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: HOU records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: BAL records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: IND records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: CLE records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: JAX records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: ATL records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: PIT records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: NYJ records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: TEN records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: ARI records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: LAC records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: MIA records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: LV records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: GB records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: MIN records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: WAS records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: PHI records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: DAL records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: NYG records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: DEN records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: KC records add up",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: team-games equal 2\u00d7 games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nfl: all 32 teams present",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: latest week present",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: PIT wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: ATL wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: BAL wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LA wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LV wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: MIN wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NYJ wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DAL wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CAR wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: WAS wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: IND wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LAC wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: KC wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CHI wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NE wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: HOU wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: SF wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: SEA wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DEN wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: TB wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: MIA wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: JAX wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NYG wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DET wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: GB wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: ARI wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CLE wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CIN wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: PHI wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NO wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: TEN wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: BUF wk1 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: PIT wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: ATL wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: BAL wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LA wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: SF wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DAL wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NO wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LV wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: MIN wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NYJ wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CAR wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: WAS wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: IND wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LAC wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: KC wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: PHI wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NE wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CHI wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NYG wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: SEA wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: HOU wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DEN wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: TB wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: MIA wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: JAX wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CIN wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DET wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: ARI wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CLE wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: TEN wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: GB wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: BUF wk2 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: PIT wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: ATL wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: BAL wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LA wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DAL wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: PHI wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: MIN wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CHI wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LV wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NYJ wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: SF wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CAR wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: WAS wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: IND wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LAC wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: KC wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NE wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NYG wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: SEA wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: HOU wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CLE wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DEN wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: MIA wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: JAX wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: TB wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CIN wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DET wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: GB wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: ARI wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NO wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: BUF wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: TEN wk3 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: PIT wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: ATL wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: BAL wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LA wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NO wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: MIN wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LV wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NYJ wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DAL wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: SF wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: PHI wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CAR wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: WAS wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LAC wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: KC wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NE wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CHI wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NYG wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: HOU wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: SEA wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DEN wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: TB wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: MIA wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: JAX wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: GB wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: IND wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DET wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: ARI wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CLE wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CIN wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: TEN wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: BUF wk4 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: PIT wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: ATL wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: BAL wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LA wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: SF wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NO wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: GB wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CHI wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LV wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: MIN wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NYJ wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DAL wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: PHI wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: WAS wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: IND wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LAC wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NE wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NYG wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: HOU wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: SEA wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CLE wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DEN wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: MIA wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: JAX wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: TB wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DET wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: ARI wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CIN wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: TEN wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: BUF wk5 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: PIT wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: ATL wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: BAL wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LA wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: SF wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DAL wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NO wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LAC wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LV wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NYJ wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CAR wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: WAS wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: IND wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: KC wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: ARI wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NE wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CHI wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NYG wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: HOU wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: SEA wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CLE wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DEN wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: JAX wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: TB wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: PHI wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: TEN wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: GB wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: BUF wk6 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: PIT wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: ATL wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: BAL wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LA wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: SF wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DAL wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NO wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: LV wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: MIN wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NYJ wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CAR wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: IND wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: KC wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CHI wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NYG wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: NE wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: HOU wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: SEA wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DET wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DEN wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: MIA wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: PHI wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: TB wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: ARI wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CLE wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CIN wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: GB wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: TEN wk7 team opportunities plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Keenan Allen shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Travis Kelce shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Derrick Henry shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Christian McCaffrey shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: George Kittle shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Aaron Jones shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Samaje Perine shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Saquon Barkley shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Devin Singletary shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Tony Pollard shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: DK Metcalf shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Rico Dowdle shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: J.K. Dobbins shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Jonathan Taylor shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: D'Andre Swift shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: CeeDee Lamb shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Tee Higgins shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Nico Collins shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Chuba Hubbard shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Jaylen Waddle shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Rhamondre Stevenson shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Ja'Marr Chase shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Kenny Gainwell shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Amon-Ra St. Brown shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Javonte Williams shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Jaylen Warren shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Drake London shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Chris Olave shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Jameson Williams shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: George Pickens shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Tyler Allgeier shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Garrett Wilson shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Trey McBride shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Isaiah Likely shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Kyren Williams shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Wan'Dale Robinson shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Christian Watson shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Kenneth Walker III shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Bijan Robinson shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Jaxon Smith-Njigba shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Kendre Miller shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Michael Wilson shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Tre Tucker shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Chase Brown shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Xavier Hutchinson shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Emanuel Wilson shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Zay Flowers shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Puka Nacua shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Jahmyr Gibbs shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: George Holani shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Malik Nabers shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Bucky Irving shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Jalen Coker shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Blake Corum shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: AJ Barner shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Braelon Allen shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: MarShawn Lloyd shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Malik Washington shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Ashton Jeanty shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Tetairoa McMillan shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Colston Loveland shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Woody Marks shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Harold Fannin Jr. shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Matthew Golden shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Cam Skattebo shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: RJ Harvey shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Luther Burden III shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Quinshon Judkins shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Makai Lemon shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Denzel Boston shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Kaelon Black shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Seth McGowan shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Carnell Tate shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Jonah Coleman shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: KC Concepcion shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Alvin Kamara shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Bam Knight shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Ollie Gordon II shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: TreVeyon Henderson shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Tyler Goodson shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Brock Bowers shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: Dameon Pierce shares valid",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "waiver: enough qualified players",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "v2_waiver.mp4: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "v2_waiver.mp4: file size",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "v2_waiver.mp4: duration",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "v2_waiver.mp4: 1080x1920",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "v2_waiver.mp4: has audio",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "v2_waiver.mp4: H.264 video",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "v2_waiver_cover.jpg: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "v2_waiver_cover.jpg: dimensions",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "v2_waiver_cover.jpg: not empty",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "v2_waiver_cover.jpg: has visible content",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: responsible-gambling line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    }
+  ]
+}

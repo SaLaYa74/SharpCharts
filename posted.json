@@ -610,5 +610,15 @@
     "posted_at": "2026-10-27T16:31:37+00:00",
     "scheduled": "09:30",
     "trial": false
+  },
+  "nba-2026-10-27-night": {
+    "images": 1,
+    "job": "nba_night",
+    "media": "reel",
+    "media_id": "17954407089328953",
+    "permalink": "https://www.instagram.com/reel/DfC3gpcAXxr/",
+    "posted_at": "2026-10-28T16:31:57+00:00",
+    "scheduled": "09:30",
+    "trial": false
   }
 }

@@ -571,6 +571,16 @@
     "scheduled": "15:00",
     "trial": false
   },
+  "2026-wk07-v2-best": {
+    "images": 1,
+    "job": "v2_best",
+    "media": "reel",
+    "media_id": "17878466556573643",
+    "permalink": "https://www.instagram.com/reel/DfDIpczD9XM/",
+    "posted_at": "2026-10-28T19:01:47+00:00",
+    "scheduled": "12:00",
+    "trial": false
+  },
   "2026-wk07-v2-upsets": {
     "images": 1,
     "job": "v2_upsets",

@@ -10,7 +10,7 @@ from zoneinfo import ZoneInfo
 
 from . import checks as C
 from . import templates as T
-from .data import _get
+from .data import get_json
 from .posts import DISCLAIMER, DataError, NoContent, Post, _render, with_question
 
 ET = ZoneInfo("America/New_York")
@@ -22,7 +22,7 @@ CFB_EXTRA = set()
 
 
 def _json(url):
-    return json.loads(_get(url))
+    return get_json(url)
 
 
 def _et(iso):

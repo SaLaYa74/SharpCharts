@@ -19,7 +19,7 @@ from zoneinfo import ZoneInfo
 
 from . import checks as C
 from . import light as L
-from .data import CACHE, ROOT, _get
+from .data import CACHE, ROOT, get_json
 from .logos import logo_uri
 from .posts import DISCLAIMER, DataError, NoContent
 from .v2 import COOL, GREEN, RED, WARM, _bet, _post, money
@@ -42,7 +42,7 @@ def teams():
     """abbr -> {name, color} for all 30 teams (ESPN)."""
     global _teams
     if _teams is None:
-        d = json.loads(_get(TEAMS_URL))
+        d = get_json(TEAMS_URL)
         _teams = {}
         for t in (x["team"] for x in d["sports"][0]["leagues"][0]["teams"]):
             n = t["shortDisplayName"]
@@ -71,7 +71,7 @@ def _cached(url, path, keep):
     full = os.path.join(CACHE, "nba", path)
     if os.path.exists(full):
         return json.load(open(full))
-    d = json.loads(_get(url))
+    d = get_json(url)
     if keep(d):
         os.makedirs(os.path.dirname(full), exist_ok=True)
         json.dump(d, open(full, "w"))

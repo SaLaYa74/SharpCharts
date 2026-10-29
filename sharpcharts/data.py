@@ -55,6 +55,20 @@ def _get(url, timeout=30, tries=4):
         time.sleep(2 * (attempt + 1))
 
 
+def get_json(url):
+    """JSON from url. ESPN's CDN sometimes caches a blank 200 response for one URL for minutes at a time;
+    asking with a harmless extra parameter gets a fresh copy. If every variant is blank or not JSON,
+    raise a URLError so the runner treats it as a temporary outage and retries quietly."""
+    sep = "&" if "?" in url else "?"
+    for u in (url, url + sep + "lang=en", url + sep + "region=us"):
+        body = _get(u)
+        try:
+            return json.loads(body)
+        except ValueError:
+            continue
+    raise urllib.error.URLError(f"blank or invalid response from {url.split('?')[0]}")
+
+
 def load_games(season, refresh=True):
     """All games for a season from nflverse (cached to data/games.csv)."""
     os.makedirs(CACHE, exist_ok=True)
@@ -78,7 +92,7 @@ def load_games(season, refresh=True):
 
 
 def espn_scoreboard(day):
-    data = json.loads(_get(ESPN_URL.format(day.strftime("%Y%m%d"))))
+    data = get_json(ESPN_URL.format(day.strftime("%Y%m%d")))
     out = []
     for e in data.get("events", []):
         c = e["competitions"][0]

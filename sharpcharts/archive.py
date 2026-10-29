@@ -8,7 +8,7 @@ import json
 import os
 from datetime import date, datetime, timedelta, timezone
 
-from .data import _get
+from .data import get_json
 
 SPORTS = {
     "nfl": "football/nfl",
@@ -46,7 +46,7 @@ def snapshot(root, today=None):
             url = (f"https://site.api.espn.com/apis/site/v2/sports/{path}/scoreboard"
                    f"?dates={day.strftime('%Y%m%d')}{EXTRA.get(sport, '')}")
             try:
-                events = json.loads(_get(url)).get("events", [])
+                events = get_json(url).get("events", [])
             except Exception as ex:  # one sport failing never stops the others
                 print(f"  ! archive {sport} {day}: {ex}")
                 continue

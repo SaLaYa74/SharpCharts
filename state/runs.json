@@ -593,5 +593,10 @@
     "at": "2026-10-28T12:00-07:00",
     "detail": "https://www.instagram.com/reel/DfDIpczD9XM/",
     "status": "posted"
+  },
+  "2026-10-29:archive_am": {
+    "at": "2026-10-29T06:00-07:00",
+    "detail": "8 snapshot files",
+    "status": "done"
   }
 }

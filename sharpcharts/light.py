@@ -75,6 +75,17 @@ def icon(name, px=126):
     return f'<div style="width:{px}px;height:{px}px;border-radius:50%;background:#fff;border:5px solid #1F2937;display:flex;align-items:center;justify-content:center">' \
            f'<svg width="{int(px * .62)}" height="{int(px * .62)}" viewBox="0 0 64 64">{ICONS.get(name, ICONS["prices"])}</svg></div>'
 
+GOOD_TO_BAD = ("#16A34A", "#65A30D", "#CA8A04", "#EA580C", "#DC2626")
+
+
+def ramp(k, n, stops=GOOD_TO_BAD):
+    """Color k of n along a gradient (default green → red), for coloring ranked rows."""
+    t = k / max(1, n - 1) * (len(stops) - 1)
+    i = min(int(t), len(stops) - 2)
+    f = t - i
+    a, b = (tuple(int(c[j:j + 2], 16) for j in (1, 3, 5)) for c in (stops[i], stops[i + 1]))
+    return "#" + "".join(f"{round(x + (y - x) * f):02X}" for x, y in zip(a, b))
+
 
 def _page(body, tall, source):
     return f'''<!doctype html><html><head><meta charset="utf-8">{FONTS}<style>{CSS}</style></head>
@@ -167,7 +178,8 @@ def board(title, highlight, subtitle, rows, source, tall=True, p=1.0, hl_color="
             k = c * half + j
             op = max(0.0, min(1.0, (p - k / n * 0.6) / 0.4))
             sub = f'<small>{escape(r["sub"])}</small>' if r.get("sub") else ""
-            cells.append(f'''<div class="row" style="opacity:{op:.2f}"><div class="rk">{k + 1}</div>
+            tint = ramp(k, n)
+            cells.append(f'''<div class="row" style="opacity:{op:.2f};background:{tint}1A;box-shadow:inset 8px 0 0 {tint}"><div class="rk" style="background:{tint}">{k + 1}</div>
   <div class="hm">{icon(r["icon"], 62) if r["icon"].startswith("nba:") else helmet_img(r["icon"], 78)}</div><div class="nm">{escape(r["label"])}{sub}</div>
   <div class="vl" style="color:{r.get("color", "#1F2937")}">{escape(r["value_label"])}</div></div>''')
         html_cols.append(f'<div class="bcol">{"".join(cells)}</div>')
@@ -176,7 +188,8 @@ def board(title, highlight, subtitle, rows, source, tall=True, p=1.0, hl_color="
 .bcol{flex:1;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
 .row{display:flex;align-items:center;gap:8px;background:#fff;border-radius:16px;padding:2px 14px 2px 8px;
      box-shadow:0 3px 0 rgba(0,0,0,.06);height:6.05%}
-.rk{width:34px;font-family:"Baloo 2";font-weight:800;font-size:26px;color:#9CA3AF;text-align:center}
+.rk{width:40px;height:40px;border-radius:50%;flex:none;margin-left:6px;font-family:"Baloo 2";font-weight:800;font-size:22px;
+    color:#fff;display:flex;align-items:center;justify-content:center;line-height:1}
 .hm{width:78px;display:flex;justify-content:center}
 .nm{flex:1;font-weight:800;font-size:29px;line-height:1;white-space:nowrap;overflow:hidden;min-width:0}
 .nm small{display:block;font-size:19px;color:#6B7280;font-weight:700;margin-top:3px}

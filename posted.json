@@ -581,6 +581,16 @@
     "scheduled": "12:00",
     "trial": false
   },
+  "2026-wk07-v2-rb": {
+    "images": 1,
+    "job": "v2_rb",
+    "media": "reel",
+    "media_id": "18114740261177991",
+    "permalink": "https://www.instagram.com/reel/DfFtnOuAKXj/",
+    "posted_at": "2026-10-29T19:03:15+00:00",
+    "scheduled": "12:00",
+    "trial": false
+  },
   "2026-wk07-v2-upsets": {
     "images": 1,
     "job": "v2_upsets",

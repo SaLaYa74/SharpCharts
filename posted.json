@@ -670,5 +670,15 @@
     "posted_at": "2026-10-28T22:46:39+00:00",
     "scheduled": "15:00",
     "trial": false
+  },
+  "nba-2027-w2644-worst": {
+    "images": 1,
+    "job": "nba_worst",
+    "media": "reel",
+    "media_id": "17954205117297426",
+    "permalink": "https://www.instagram.com/reel/DfIm6FACpnJ/",
+    "posted_at": "2026-10-30T22:02:27+00:00",
+    "scheduled": "15:00",
+    "trial": false
   }
 }

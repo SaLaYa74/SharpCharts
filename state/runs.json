@@ -629,6 +629,11 @@
     "detail": "Only 3 NBA games on 2026-10-29.",
     "status": "skipped"
   },
+  "2026-10-30:nba_worst": {
+    "at": "2026-10-30T15:00-07:00",
+    "detail": "https://www.instagram.com/reel/DfIm6FACpnJ/",
+    "status": "posted"
+  },
   "2026-10-30:v2_worst": {
     "at": "2026-10-30T12:00-07:00",
     "detail": "https://www.instagram.com/reel/DfISdAHEptO/",

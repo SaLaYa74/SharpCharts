@@ -1,0 +1,5840 @@
+{
+  "subject": "nba worst",
+  "counts": {
+    "pass": 1166,
+    "warn": 0,
+    "block": 0
+  },
+  "checks": [
+    {
+      "status": "pass",
+      "check": "BOS@DET 2026-10-20: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@DET 2026-10-20: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@DET 2026-10-20: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@NY 2026-10-20: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@NY 2026-10-20: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@NY 2026-10-20: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@SA 2026-10-20: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@SA 2026-10-20: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@SA 2026-10-20: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@ORL 2026-10-21: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@ORL 2026-10-21: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@ORL 2026-10-21: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@WSH 2026-10-21: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@WSH 2026-10-21: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@WSH 2026-10-21: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@MIA 2026-10-21: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@MIA 2026-10-21: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@MIA 2026-10-21: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@BKN 2026-10-21: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@BKN 2026-10-21: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@BKN 2026-10-21: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@TOR 2026-10-21: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@TOR 2026-10-21: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@TOR 2026-10-21: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@MEM 2026-10-21: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@MEM 2026-10-21: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@MEM 2026-10-21: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@NO 2026-10-21: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@NO 2026-10-21: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@NO 2026-10-21: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@HOU 2026-10-21: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@HOU 2026-10-21: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@HOU 2026-10-21: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@LAL 2026-10-21: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@LAL 2026-10-21: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@LAL 2026-10-21: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@POR 2026-10-21: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@POR 2026-10-21: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@POR 2026-10-21: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@LAC 2026-10-21: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@LAC 2026-10-21: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@LAC 2026-10-21: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@PHI 2026-10-22: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@PHI 2026-10-22: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@PHI 2026-10-22: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@OKC 2026-10-22: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@OKC 2026-10-22: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@OKC 2026-10-22: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@MIL 2026-10-23: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@MIL 2026-10-23: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@MIL 2026-10-23: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@BOS 2026-10-23: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@BOS 2026-10-23: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@BOS 2026-10-23: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@CHA 2026-10-23: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@CHA 2026-10-23: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@CHA 2026-10-23: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@IND 2026-10-23: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@IND 2026-10-23: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@IND 2026-10-23: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@ORL 2026-10-23: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@ORL 2026-10-23: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@ORL 2026-10-23: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@WSH 2026-10-23: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@WSH 2026-10-23: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@WSH 2026-10-23: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@MIA 2026-10-23: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@MIA 2026-10-23: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@MIA 2026-10-23: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@SA 2026-10-23: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@SA 2026-10-23: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@SA 2026-10-23: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@UTAH 2026-10-23: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@UTAH 2026-10-23: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@UTAH 2026-10-23: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@GS 2026-10-23: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@GS 2026-10-23: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@GS 2026-10-23: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@LAL 2026-10-23: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@LAL 2026-10-23: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@LAL 2026-10-23: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@SAC 2026-10-23: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@SAC 2026-10-23: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@SAC 2026-10-23: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@CHA 2026-10-24: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@CHA 2026-10-24: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@CHA 2026-10-24: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@CLE 2026-10-24: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@CLE 2026-10-24: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@CLE 2026-10-24: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@PHI 2026-10-24: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@PHI 2026-10-24: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@PHI 2026-10-24: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHI 2026-10-24: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHI 2026-10-24: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHI 2026-10-24: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@DAL 2026-10-24: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@DAL 2026-10-24: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@DAL 2026-10-24: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@ATL 2026-10-24: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@ATL 2026-10-24: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@ATL 2026-10-24: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@DEN 2026-10-24: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@DEN 2026-10-24: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@DEN 2026-10-24: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@PHX 2026-10-24: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@PHX 2026-10-24: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@PHX 2026-10-24: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@UTAH 2026-10-25: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@UTAH 2026-10-25: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@UTAH 2026-10-25: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@BKN 2026-10-25: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@BKN 2026-10-25: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@BKN 2026-10-25: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@NY 2026-10-25: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@NY 2026-10-25: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@NY 2026-10-25: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@MIN 2026-10-25: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@MIN 2026-10-25: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@MIN 2026-10-25: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@OKC 2026-10-25: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@OKC 2026-10-25: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@OKC 2026-10-25: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@PHI 2026-10-25: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@PHI 2026-10-25: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@PHI 2026-10-25: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@SAC 2026-10-25: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@SAC 2026-10-25: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@SAC 2026-10-25: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHA 2026-10-26: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHA 2026-10-26: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHA 2026-10-26: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@CLE 2026-10-26: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@CLE 2026-10-26: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@CLE 2026-10-26: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@BOS 2026-10-26: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@BOS 2026-10-26: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@BOS 2026-10-26: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIA 2026-10-26: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIA 2026-10-26: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIA 2026-10-26: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@MIL 2026-10-26: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@MIL 2026-10-26: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@MIL 2026-10-26: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@OKC 2026-10-26: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@OKC 2026-10-26: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@OKC 2026-10-26: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@HOU 2026-10-26: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@HOU 2026-10-26: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@HOU 2026-10-26: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@UTAH 2026-10-26: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@UTAH 2026-10-26: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@UTAH 2026-10-26: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@DEN 2026-10-26: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@DEN 2026-10-26: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@DEN 2026-10-26: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@BOS 2026-10-27: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@BOS 2026-10-27: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@BOS 2026-10-27: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@NY 2026-10-27: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@NY 2026-10-27: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@NY 2026-10-27: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@SA 2026-10-27: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@SA 2026-10-27: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@SA 2026-10-27: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@LAL 2026-10-27: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@LAL 2026-10-27: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@LAL 2026-10-27: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@ATL 2026-10-28: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@ATL 2026-10-28: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@ATL 2026-10-28: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CLE 2026-10-28: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CLE 2026-10-28: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CLE 2026-10-28: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@DET 2026-10-28: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@DET 2026-10-28: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@DET 2026-10-28: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@IND 2026-10-28: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@IND 2026-10-28: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@IND 2026-10-28: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@TOR 2026-10-28: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@TOR 2026-10-28: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@TOR 2026-10-28: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@CHI 2026-10-28: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@CHI 2026-10-28: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@CHI 2026-10-28: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@MIL 2026-10-28: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@MIL 2026-10-28: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@MIL 2026-10-28: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@MIN 2026-10-28: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@MIN 2026-10-28: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@MIN 2026-10-28: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@NO 2026-10-28: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@NO 2026-10-28: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@NO 2026-10-28: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@UTAH 2026-10-28: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@UTAH 2026-10-28: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@UTAH 2026-10-28: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@DAL 2026-10-28: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@DAL 2026-10-28: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@DAL 2026-10-28: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@LAC 2026-10-28: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@LAC 2026-10-28: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@LAC 2026-10-28: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@ATL 2026-10-29: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@ATL 2026-10-29: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@ATL 2026-10-29: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@NO 2026-10-29: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@NO 2026-10-29: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@NO 2026-10-29: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@POR 2026-10-29: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@POR 2026-10-29: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@POR 2026-10-29: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@DET 2026-10-20: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@DET 2026-10-20: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@DET 2026-10-20: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@DET 2026-10-20: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@DET 2026-10-20: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@DET 2026-10-20: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@DET 2026-10-20: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@DET 2026-10-20: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@DET 2026-10-20: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@DET 2026-10-20: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@DET 2026-10-20: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@MIA 2026-10-21: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@MIA 2026-10-21: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@MIA 2026-10-21: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@MIA 2026-10-21: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@MIA 2026-10-21: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@MIA 2026-10-21: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@MIA 2026-10-21: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@MIA 2026-10-21: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@MIA 2026-10-21: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@MIA 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@MIA 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@WSH 2026-10-21: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@WSH 2026-10-21: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@WSH 2026-10-21: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@WSH 2026-10-21: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@WSH 2026-10-21: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@WSH 2026-10-21: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@WSH 2026-10-21: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@WSH 2026-10-21: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@WSH 2026-10-21: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@WSH 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@WSH 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@NY 2026-10-20: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@NY 2026-10-20: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@NY 2026-10-20: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@NY 2026-10-20: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@NY 2026-10-20: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@NY 2026-10-20: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@NY 2026-10-20: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@NY 2026-10-20: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@NY 2026-10-20: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@NY 2026-10-20: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@NY 2026-10-20: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@SA 2026-10-20: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@SA 2026-10-20: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@SA 2026-10-20: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@SA 2026-10-20: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@SA 2026-10-20: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@SA 2026-10-20: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@SA 2026-10-20: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@SA 2026-10-20: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@SA 2026-10-20: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@SA 2026-10-20: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@SA 2026-10-20: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@ORL 2026-10-21: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@ORL 2026-10-21: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@ORL 2026-10-21: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@ORL 2026-10-21: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@ORL 2026-10-21: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@ORL 2026-10-21: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@ORL 2026-10-21: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@ORL 2026-10-21: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@ORL 2026-10-21: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@ORL 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@ORL 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@TOR 2026-10-21: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@TOR 2026-10-21: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@TOR 2026-10-21: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@TOR 2026-10-21: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@TOR 2026-10-21: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@TOR 2026-10-21: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@TOR 2026-10-21: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@TOR 2026-10-21: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@TOR 2026-10-21: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@TOR 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@TOR 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@BKN 2026-10-21: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@BKN 2026-10-21: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@BKN 2026-10-21: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@BKN 2026-10-21: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@BKN 2026-10-21: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@BKN 2026-10-21: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@BKN 2026-10-21: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@BKN 2026-10-21: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@BKN 2026-10-21: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@BKN 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@BKN 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@PHI 2026-10-22: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@PHI 2026-10-22: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@PHI 2026-10-22: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@PHI 2026-10-22: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@PHI 2026-10-22: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@PHI 2026-10-22: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@PHI 2026-10-22: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@PHI 2026-10-22: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@PHI 2026-10-22: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@PHI 2026-10-22: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@PHI 2026-10-22: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@POR 2026-10-21: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@POR 2026-10-21: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@POR 2026-10-21: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@POR 2026-10-21: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@POR 2026-10-21: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@POR 2026-10-21: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@POR 2026-10-21: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@POR 2026-10-21: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@POR 2026-10-21: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@POR 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@POR 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@HOU 2026-10-21: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@HOU 2026-10-21: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@HOU 2026-10-21: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@HOU 2026-10-21: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@HOU 2026-10-21: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@HOU 2026-10-21: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@HOU 2026-10-21: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@HOU 2026-10-21: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@HOU 2026-10-21: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@HOU 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@HOU 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@MEM 2026-10-21: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@MEM 2026-10-21: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@MEM 2026-10-21: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@MEM 2026-10-21: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@MEM 2026-10-21: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@MEM 2026-10-21: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@MEM 2026-10-21: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@MEM 2026-10-21: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@MEM 2026-10-21: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@MEM 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@MEM 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@NO 2026-10-21: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@NO 2026-10-21: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@NO 2026-10-21: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@NO 2026-10-21: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@NO 2026-10-21: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@NO 2026-10-21: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@NO 2026-10-21: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@NO 2026-10-21: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@NO 2026-10-21: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@NO 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@NO 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@OKC 2026-10-22: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@OKC 2026-10-22: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@OKC 2026-10-22: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@OKC 2026-10-22: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@OKC 2026-10-22: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@OKC 2026-10-22: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@OKC 2026-10-22: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@OKC 2026-10-22: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@OKC 2026-10-22: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@OKC 2026-10-22: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@OKC 2026-10-22: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@LAC 2026-10-21: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@LAC 2026-10-21: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@LAC 2026-10-21: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@LAC 2026-10-21: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@LAC 2026-10-21: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@LAC 2026-10-21: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@LAC 2026-10-21: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@LAC 2026-10-21: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@LAC 2026-10-21: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@LAC 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@LAC 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@LAL 2026-10-21: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@LAL 2026-10-21: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@LAL 2026-10-21: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@LAL 2026-10-21: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@LAL 2026-10-21: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@LAL 2026-10-21: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@LAL 2026-10-21: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@LAL 2026-10-21: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@LAL 2026-10-21: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@LAL 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@LAL 2026-10-21: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@MIL 2026-10-23: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@MIL 2026-10-23: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@MIL 2026-10-23: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@MIL 2026-10-23: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@MIL 2026-10-23: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@MIL 2026-10-23: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@MIL 2026-10-23: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@MIL 2026-10-23: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@MIL 2026-10-23: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@MIL 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@MIL 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@ORL 2026-10-23: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@ORL 2026-10-23: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@ORL 2026-10-23: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@ORL 2026-10-23: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@ORL 2026-10-23: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@ORL 2026-10-23: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@ORL 2026-10-23: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@ORL 2026-10-23: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@ORL 2026-10-23: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@ORL 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@ORL 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@IND 2026-10-23: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@IND 2026-10-23: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@IND 2026-10-23: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@IND 2026-10-23: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@IND 2026-10-23: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@IND 2026-10-23: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@IND 2026-10-23: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@IND 2026-10-23: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@IND 2026-10-23: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@IND 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@IND 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@BOS 2026-10-23: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@BOS 2026-10-23: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@BOS 2026-10-23: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@BOS 2026-10-23: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@BOS 2026-10-23: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@BOS 2026-10-23: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@BOS 2026-10-23: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@BOS 2026-10-23: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@BOS 2026-10-23: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@BOS 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@BOS 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@CHA 2026-10-23: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@CHA 2026-10-23: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@CHA 2026-10-23: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@CHA 2026-10-23: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@CHA 2026-10-23: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@CHA 2026-10-23: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@CHA 2026-10-23: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@CHA 2026-10-23: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@CHA 2026-10-23: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@CHA 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@CHA 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@UTAH 2026-10-23: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@UTAH 2026-10-23: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@UTAH 2026-10-23: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@UTAH 2026-10-23: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@UTAH 2026-10-23: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@UTAH 2026-10-23: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@UTAH 2026-10-23: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@UTAH 2026-10-23: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@UTAH 2026-10-23: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@UTAH 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@UTAH 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@MIA 2026-10-23: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@MIA 2026-10-23: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@MIA 2026-10-23: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@MIA 2026-10-23: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@MIA 2026-10-23: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@MIA 2026-10-23: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@MIA 2026-10-23: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@MIA 2026-10-23: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@MIA 2026-10-23: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@MIA 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@MIA 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@WSH 2026-10-23: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@WSH 2026-10-23: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@WSH 2026-10-23: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@WSH 2026-10-23: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@WSH 2026-10-23: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@WSH 2026-10-23: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@WSH 2026-10-23: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@WSH 2026-10-23: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@WSH 2026-10-23: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@WSH 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@WSH 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@SA 2026-10-23: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@SA 2026-10-23: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@SA 2026-10-23: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@SA 2026-10-23: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@SA 2026-10-23: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@SA 2026-10-23: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@SA 2026-10-23: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@SA 2026-10-23: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@SA 2026-10-23: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@SA 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@SA 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@GS 2026-10-23: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@GS 2026-10-23: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@GS 2026-10-23: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@GS 2026-10-23: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@GS 2026-10-23: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@GS 2026-10-23: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@GS 2026-10-23: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@GS 2026-10-23: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@GS 2026-10-23: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@GS 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@GS 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@SAC 2026-10-23: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@SAC 2026-10-23: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@SAC 2026-10-23: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@SAC 2026-10-23: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@SAC 2026-10-23: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@SAC 2026-10-23: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@SAC 2026-10-23: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@SAC 2026-10-23: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@SAC 2026-10-23: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@SAC 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@SAC 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@LAL 2026-10-23: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@LAL 2026-10-23: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@LAL 2026-10-23: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@LAL 2026-10-23: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@LAL 2026-10-23: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@LAL 2026-10-23: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@LAL 2026-10-23: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@LAL 2026-10-23: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@LAL 2026-10-23: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@LAL 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@LAL 2026-10-23: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@CHA 2026-10-24: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@CHA 2026-10-24: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@CHA 2026-10-24: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@CHA 2026-10-24: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@CHA 2026-10-24: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@CHA 2026-10-24: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@CHA 2026-10-24: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@CHA 2026-10-24: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@CHA 2026-10-24: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@CHA 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@CHA 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@CLE 2026-10-24: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@CLE 2026-10-24: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@CLE 2026-10-24: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@CLE 2026-10-24: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@CLE 2026-10-24: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@CLE 2026-10-24: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@CLE 2026-10-24: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@CLE 2026-10-24: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@CLE 2026-10-24: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@CLE 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@CLE 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@DAL 2026-10-24: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@DAL 2026-10-24: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@DAL 2026-10-24: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@DAL 2026-10-24: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@DAL 2026-10-24: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@DAL 2026-10-24: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@DAL 2026-10-24: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@DAL 2026-10-24: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@DAL 2026-10-24: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@DAL 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@DAL 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@PHI 2026-10-24: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@PHI 2026-10-24: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@PHI 2026-10-24: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@PHI 2026-10-24: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@PHI 2026-10-24: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@PHI 2026-10-24: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@PHI 2026-10-24: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@PHI 2026-10-24: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@PHI 2026-10-24: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@PHI 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@PHI 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHI 2026-10-24: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHI 2026-10-24: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHI 2026-10-24: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHI 2026-10-24: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHI 2026-10-24: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHI 2026-10-24: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHI 2026-10-24: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHI 2026-10-24: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHI 2026-10-24: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHI 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHI 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@NY 2026-10-25: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@NY 2026-10-25: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@NY 2026-10-25: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@NY 2026-10-25: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@NY 2026-10-25: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@NY 2026-10-25: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@NY 2026-10-25: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@NY 2026-10-25: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@NY 2026-10-25: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@NY 2026-10-25: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@NY 2026-10-25: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@UTAH 2026-10-25: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@UTAH 2026-10-25: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@UTAH 2026-10-25: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@UTAH 2026-10-25: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@UTAH 2026-10-25: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@UTAH 2026-10-25: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@UTAH 2026-10-25: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@UTAH 2026-10-25: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@UTAH 2026-10-25: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@UTAH 2026-10-25: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@UTAH 2026-10-25: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@PHX 2026-10-24: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@PHX 2026-10-24: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@PHX 2026-10-24: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@PHX 2026-10-24: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@PHX 2026-10-24: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@PHX 2026-10-24: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@PHX 2026-10-24: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@PHX 2026-10-24: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@PHX 2026-10-24: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@PHX 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@PHX 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@OKC 2026-10-25: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@OKC 2026-10-25: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@OKC 2026-10-25: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@OKC 2026-10-25: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@OKC 2026-10-25: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@OKC 2026-10-25: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@OKC 2026-10-25: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@OKC 2026-10-25: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@OKC 2026-10-25: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@OKC 2026-10-25: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@OKC 2026-10-25: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@MIN 2026-10-25: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@MIN 2026-10-25: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@MIN 2026-10-25: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@MIN 2026-10-25: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@MIN 2026-10-25: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@MIN 2026-10-25: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@MIN 2026-10-25: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@MIN 2026-10-25: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@MIN 2026-10-25: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@MIN 2026-10-25: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@MIN 2026-10-25: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@BKN 2026-10-25: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@BKN 2026-10-25: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@BKN 2026-10-25: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@BKN 2026-10-25: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@BKN 2026-10-25: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@BKN 2026-10-25: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@BKN 2026-10-25: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@BKN 2026-10-25: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@BKN 2026-10-25: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@BKN 2026-10-25: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@BKN 2026-10-25: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@DEN 2026-10-24: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@DEN 2026-10-24: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@DEN 2026-10-24: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@DEN 2026-10-24: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@DEN 2026-10-24: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@DEN 2026-10-24: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@DEN 2026-10-24: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@DEN 2026-10-24: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@DEN 2026-10-24: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@DEN 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@DEN 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@ATL 2026-10-24: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@ATL 2026-10-24: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@ATL 2026-10-24: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@ATL 2026-10-24: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@ATL 2026-10-24: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@ATL 2026-10-24: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@ATL 2026-10-24: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@ATL 2026-10-24: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@ATL 2026-10-24: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@ATL 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@ATL 2026-10-24: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@BOS 2026-10-26: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@BOS 2026-10-26: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@BOS 2026-10-26: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@BOS 2026-10-26: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@BOS 2026-10-26: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@BOS 2026-10-26: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@BOS 2026-10-26: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@BOS 2026-10-26: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@BOS 2026-10-26: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@BOS 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@BOS 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@PHI 2026-10-25: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@PHI 2026-10-25: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@PHI 2026-10-25: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@PHI 2026-10-25: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@PHI 2026-10-25: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@PHI 2026-10-25: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@PHI 2026-10-25: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@PHI 2026-10-25: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@PHI 2026-10-25: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@PHI 2026-10-25: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@PHI 2026-10-25: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@CLE 2026-10-26: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@CLE 2026-10-26: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@CLE 2026-10-26: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@CLE 2026-10-26: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@CLE 2026-10-26: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@CLE 2026-10-26: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@CLE 2026-10-26: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@CLE 2026-10-26: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@CLE 2026-10-26: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@CLE 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN@CLE 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHA 2026-10-26: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHA 2026-10-26: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHA 2026-10-26: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHA 2026-10-26: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHA 2026-10-26: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHA 2026-10-26: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHA 2026-10-26: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHA 2026-10-26: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHA 2026-10-26: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHA 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CHA 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@SAC 2026-10-25: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@SAC 2026-10-25: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@SAC 2026-10-25: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@SAC 2026-10-25: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@SAC 2026-10-25: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@SAC 2026-10-25: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@SAC 2026-10-25: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@SAC 2026-10-25: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@SAC 2026-10-25: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@SAC 2026-10-25: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@SAC 2026-10-25: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@HOU 2026-10-26: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@HOU 2026-10-26: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@HOU 2026-10-26: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@HOU 2026-10-26: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@HOU 2026-10-26: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@HOU 2026-10-26: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@HOU 2026-10-26: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@HOU 2026-10-26: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@HOU 2026-10-26: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@HOU 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@HOU 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@UTAH 2026-10-26: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@UTAH 2026-10-26: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@UTAH 2026-10-26: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@UTAH 2026-10-26: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@UTAH 2026-10-26: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@UTAH 2026-10-26: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@UTAH 2026-10-26: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@UTAH 2026-10-26: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@UTAH 2026-10-26: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@UTAH 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@UTAH 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIA 2026-10-26: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIA 2026-10-26: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIA 2026-10-26: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIA 2026-10-26: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIA 2026-10-26: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIA 2026-10-26: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIA 2026-10-26: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIA 2026-10-26: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIA 2026-10-26: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIA 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIA 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@NY 2026-10-27: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@NY 2026-10-27: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@NY 2026-10-27: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@NY 2026-10-27: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@NY 2026-10-27: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@NY 2026-10-27: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@NY 2026-10-27: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@NY 2026-10-27: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@NY 2026-10-27: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@NY 2026-10-27: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@DEN 2026-10-26: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@DEN 2026-10-26: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@DEN 2026-10-26: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@DEN 2026-10-26: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@DEN 2026-10-26: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@DEN 2026-10-26: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@DEN 2026-10-26: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@DEN 2026-10-26: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@DEN 2026-10-26: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@DEN 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@DEN 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@MIL 2026-10-26: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@MIL 2026-10-26: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@MIL 2026-10-26: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@MIL 2026-10-26: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@MIL 2026-10-26: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@MIL 2026-10-26: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@MIL 2026-10-26: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@MIL 2026-10-26: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@MIL 2026-10-26: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@MIL 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND@MIL 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@BOS 2026-10-27: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@BOS 2026-10-27: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@BOS 2026-10-27: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@BOS 2026-10-27: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@BOS 2026-10-27: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@BOS 2026-10-27: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@BOS 2026-10-27: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@BOS 2026-10-27: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@BOS 2026-10-27: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@BOS 2026-10-27: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@OKC 2026-10-26: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@OKC 2026-10-26: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@OKC 2026-10-26: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@OKC 2026-10-26: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@OKC 2026-10-26: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@OKC 2026-10-26: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@OKC 2026-10-26: close is near the pre-game line we archived",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@OKC 2026-10-26: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@OKC 2026-10-26: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@OKC 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@OKC 2026-10-26: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@CHI 2026-10-28: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@CHI 2026-10-28: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@CHI 2026-10-28: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@CHI 2026-10-28: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@CHI 2026-10-28: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@CHI 2026-10-28: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@CHI 2026-10-28: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@CHI 2026-10-28: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@CHI 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@CHI 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CLE 2026-10-28: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CLE 2026-10-28: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CLE 2026-10-28: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CLE 2026-10-28: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CLE 2026-10-28: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CLE 2026-10-28: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CLE 2026-10-28: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CLE 2026-10-28: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CLE 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@CLE 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@IND 2026-10-28: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@IND 2026-10-28: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@IND 2026-10-28: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@IND 2026-10-28: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@IND 2026-10-28: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@IND 2026-10-28: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@IND 2026-10-28: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@IND 2026-10-28: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@IND 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI@IND 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@ATL 2026-10-28: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@ATL 2026-10-28: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@ATL 2026-10-28: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@ATL 2026-10-28: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@ATL 2026-10-28: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@ATL 2026-10-28: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@ATL 2026-10-28: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@ATL 2026-10-28: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@ATL 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@ATL 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@DET 2026-10-28: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@DET 2026-10-28: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@DET 2026-10-28: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@DET 2026-10-28: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@DET 2026-10-28: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@DET 2026-10-28: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@DET 2026-10-28: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@DET 2026-10-28: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@DET 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@DET 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@TOR 2026-10-28: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@TOR 2026-10-28: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@TOR 2026-10-28: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@TOR 2026-10-28: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@TOR 2026-10-28: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@TOR 2026-10-28: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@TOR 2026-10-28: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@TOR 2026-10-28: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@TOR 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL@TOR 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@LAL 2026-10-27: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@LAL 2026-10-27: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@LAL 2026-10-27: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@LAL 2026-10-27: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@LAL 2026-10-27: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@LAL 2026-10-27: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@LAL 2026-10-27: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@LAL 2026-10-27: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@LAL 2026-10-27: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@LAL 2026-10-27: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@SA 2026-10-27: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@SA 2026-10-27: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@SA 2026-10-27: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@SA 2026-10-27: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@SA 2026-10-27: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@SA 2026-10-27: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@SA 2026-10-27: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@SA 2026-10-27: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@SA 2026-10-27: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@SA 2026-10-27: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@NO 2026-10-28: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@NO 2026-10-28: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@NO 2026-10-28: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@NO 2026-10-28: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@NO 2026-10-28: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@NO 2026-10-28: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@NO 2026-10-28: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@NO 2026-10-28: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@NO 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN@NO 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@ATL 2026-10-29: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@ATL 2026-10-29: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@ATL 2026-10-29: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@ATL 2026-10-29: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@ATL 2026-10-29: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@ATL 2026-10-29: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@ATL 2026-10-29: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@ATL 2026-10-29: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@ATL 2026-10-29: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE@ATL 2026-10-29: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@LAC 2026-10-28: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@LAC 2026-10-28: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@LAC 2026-10-28: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@LAC 2026-10-28: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@LAC 2026-10-28: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@LAC 2026-10-28: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@LAC 2026-10-28: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@LAC 2026-10-28: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@LAC 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL@LAC 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@MIN 2026-10-28: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@MIN 2026-10-28: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@MIN 2026-10-28: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@MIN 2026-10-28: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@MIN 2026-10-28: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@MIN 2026-10-28: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@MIN 2026-10-28: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@MIN 2026-10-28: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@MIN 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS@MIN 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@DAL 2026-10-28: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@DAL 2026-10-28: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@DAL 2026-10-28: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@DAL 2026-10-28: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@DAL 2026-10-28: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@DAL 2026-10-28: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@DAL 2026-10-28: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@DAL 2026-10-28: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@DAL 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@DAL 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@UTAH 2026-10-28: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@UTAH 2026-10-28: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@UTAH 2026-10-28: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@UTAH 2026-10-28: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@UTAH 2026-10-28: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@UTAH 2026-10-28: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@UTAH 2026-10-28: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@UTAH 2026-10-28: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@UTAH 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA@UTAH 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@MIL 2026-10-28: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@MIL 2026-10-28: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@MIL 2026-10-28: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@MIL 2026-10-28: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@MIL 2026-10-28: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@MIL 2026-10-28: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@MIL 2026-10-28: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@MIL 2026-10-28: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@MIL 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU@MIL 2026-10-28: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@NO 2026-10-29: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@NO 2026-10-29: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@NO 2026-10-29: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@NO 2026-10-29: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@NO 2026-10-29: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@NO 2026-10-29: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@NO 2026-10-29: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@NO 2026-10-29: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@NO 2026-10-29: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@NO 2026-10-29: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@POR 2026-10-29: DraftKings line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@POR 2026-10-29: closing line complete",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@POR 2026-10-29: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@POR 2026-10-29: line text matches the spread",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@POR 2026-10-29: spread and moneyline agree on the favorite",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@POR 2026-10-29: spread/total prices plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@POR 2026-10-29: spread in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@POR 2026-10-29: total in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@POR 2026-10-29: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM@POR 2026-10-29: moneyline in range",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "few games left out for line problems",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "most lines cross-checked against our archive",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET record after 2026-10-20 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS record after 2026-10-20 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY record after 2026-10-20 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI record after 2026-10-20 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA record after 2026-10-20 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC record after 2026-10-20 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC record after 2026-10-21 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI record after 2026-10-22 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE record after 2026-10-22 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC record after 2026-10-22 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN record after 2026-10-22 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR record after 2026-10-23 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS record after 2026-10-24 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH record after 2026-10-25 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL record after 2026-10-25 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN record after 2026-10-25 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND record after 2026-10-25 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY record after 2026-10-25 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL record after 2026-10-25 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN record after 2026-10-25 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR record after 2026-10-25 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC record after 2026-10-25 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC record after 2026-10-25 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI record after 2026-10-25 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET record after 2026-10-25 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC record after 2026-10-25 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM record after 2026-10-25 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS record after 2026-10-26 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS record after 2026-10-27 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN record after 2026-10-27 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY record after 2026-10-27 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET record after 2026-10-27 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA record after 2026-10-27 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC record after 2026-10-27 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL record after 2026-10-27 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR record after 2026-10-27 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL record after 2026-10-28 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL record after 2026-10-29 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE record after 2026-10-29 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO record after 2026-10-29 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC record after 2026-10-29 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR record after 2026-10-29 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM record after 2026-10-29 matches ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "all 30 teams have played",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHI total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SA total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ORL total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIN total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MEM total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "IND total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "HOU total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAL total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "GS total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CLE total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DEN total plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_worst.mp4: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_worst.mp4: file size",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_worst.mp4: duration",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_worst.mp4: 1080x1920",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_worst.mp4: has audio",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_worst.mp4: H.264 video",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_worst_cover.jpg: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_worst_cover.jpg: dimensions",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_worst_cover.jpg: not empty",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_worst_cover.jpg: has visible content",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: responsible-gambling line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    }
+  ]
+}

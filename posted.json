@@ -611,6 +611,16 @@
     "scheduled": "12:00",
     "trial": false
   },
+  "2026-wk07-v2-worst": {
+    "images": 1,
+    "job": "v2_worst",
+    "media": "reel",
+    "media_id": "18019483337954993",
+    "permalink": "https://www.instagram.com/reel/DfISdAHEptO/",
+    "posted_at": "2026-10-30T19:03:38+00:00",
+    "scheduled": "12:00",
+    "trial": false
+  },
   "nba-2026-10-25-night": {
     "images": 1,
     "job": "nba_night",

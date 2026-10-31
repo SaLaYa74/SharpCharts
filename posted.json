@@ -671,6 +671,16 @@
     "scheduled": "09:30",
     "trial": false
   },
+  "nba-2026-10-30-night": {
+    "images": 1,
+    "job": "nba_night",
+    "media": "reel",
+    "media_id": "18145958830603874",
+    "permalink": "https://www.instagram.com/reel/DfKl8DFilRN/",
+    "posted_at": "2026-10-31T16:32:24+00:00",
+    "scheduled": "09:30",
+    "trial": false
+  },
   "nba-2027-w2644-best": {
     "images": 1,
     "job": "nba_best",

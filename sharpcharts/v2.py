@@ -201,8 +201,10 @@ def _usage(ctx, out_dir, focus):
         + "\n".join(f"{i + 1}. {p_['name']} ({p_['team']}): {p_['share'] * 100:.0f}%" for i, p_ in enumerate(top)),
         "fantasy", key, top=lead["name"], second=top[1]["name"])
     cap += (f"\n\nShare of team {what}, season to date (min. {b['min_games']} games). Raw data, no projections. "
-            f"Data: nflverse.\n{DISCLAIMER}\n{b['hashtags']}")
-    title, hl = ("Who Gets the {hl} Most?", "Ball") if focus == "rb" else ("Who Gets {hl} Most?", "Targeted")
+            f"Data: nflverse.\n{b['hashtags']}")
+    # bold claim first (Oct 31): the #1 number in huge type, then the countdown reveals who
+    title, hl = ("{hl} of His Team's Touches. Who?", f"{lead['share'] * 100:.0f}%") if focus == "rb" else \
+        ("{hl} of His Team's Targets. Who?", f"{lead['share'] * 100:.0f}%")
     return _post(out_dir, key, f"v2_{focus}", lambda r, t: L.bars(
         title, hl, f"Share of team {what} · season to date · thru Week\u00a0{ctx.thru_week}", items,
         "nflverse player stats", hl_color="#3B82F6", reveal=r, tease=t), cap, rep, countdown=len(items))
@@ -228,9 +230,9 @@ def waiver(ctx, out_dir, sizes=None):
         + "\n".join(f"🟢 {m['name']} ({m['team']} {m['pos']}): {pct(m['base'])} → {pct(m['now'])}" for m in risers),
         "fantasy", key, top=top["name"], second=risers[1]["name"])
     cap += (f"\n\nShare of team carries + targets, Week {ctx.thru_week} vs. earlier weeks. Raw data, no projections. "
-            f"Data: nflverse.\n{DISCLAIMER}\n#fantasyfootball #waiverwire #week{ctx.thru_week + 1}")
+            f"Data: nflverse.\n#fantasyfootball #waiverwire #week{ctx.thru_week + 1}")
     return _post(out_dir, key, "v2_waiver", lambda r, t: L.bars(
-        "Who's {hl} on Waivers?", "Rising", f"Biggest jump in share of team touches · Week {ctx.thru_week} vs. before",
+        "{hl} More of the Touches. Who?", f"+{top['delta'] * 100:.0f}%", f"Biggest jump in share of team touches · Week {ctx.thru_week} vs. before",
         items, "nflverse player stats", hl_color=GREEN, reveal=r, tease=t), cap, rep, countdown=len(items))
 
 

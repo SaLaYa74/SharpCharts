@@ -23,9 +23,9 @@ SAVE_SHARE = {
     "fantasy": ["📌 Save this for waivers. 📤 Send it to your league chat.",
                 "📤 Send this to the person in your league who needs it. 📌 Save it for Sunday.",
                 "📌 Save this before you set your lineup. 📤 Share it with your league."],
-    "betting": ["📌 Save this for your weekly card. 📤 Send it to the group chat.",
-                "📤 Send this to the friend who bets every game. 📌 Save it for Sunday.",
-                "📌 Save this before you set your card. 📤 Share it with your betting group."],
+    "betting": ["📌 Save this. 📤 Send it to the group chat.",
+                "📤 Send this to the friend who argues stats with you. 📌 Save it for later.",
+                "📌 Save this for game day. 📤 Share it with your league."],
 }
 
 

@@ -27,6 +27,7 @@ from PIL import Image
 from sharpcharts import archive
 from sharpcharts import checks as C
 from sharpcharts import nba as NBA
+from sharpcharts import stats as ST
 from sharpcharts import posts as P
 from sharpcharts import reels as R
 from sharpcharts import sports as S
@@ -112,6 +113,10 @@ class Runner:
             return S.BUILDERS[job.builder](out_dir)
         if job.builder in NBA.BUILDERS:
             return NBA.BUILDERS[job.builder](out_dir)
+        if job.builder in ST.BUILDERS:
+            return ST.BUILDERS[job.builder](out_dir)
+        if job.builder in ST.BUILDERS_CTX:
+            return ST.BUILDERS_CTX[job.builder](self.ctx, out_dir)
         if job.builder in V2.BUILDERS:
             return V2.BUILDERS[job.builder](self.ctx, out_dir)
         if job.builder in R.BUILDERS:
@@ -208,6 +213,8 @@ def due_jobs(now, runs):
     out = []
     for job in JOBS:
         if now.weekday() not in job.days:
+            continue
+        if job.start and now.date().isoformat() < job.start:
             continue
         hh, mm = map(int, job.time.split(":"))
         start = now.replace(hour=hh, minute=mm, second=0, microsecond=0)

@@ -88,9 +88,11 @@ def ramp(k, n, stops=GOOD_TO_BAD):
 
 
 def _page(body, tall, source):
+    betting = any(w in source.lower() for w in ("line", "odds", "draftkings"))   # betting data keeps the 21+ line
+    note = "21+ · Gamble responsibly · 1-800-GAMBLER" if betting else "Real stats · no picks"
     return f'''<!doctype html><html><head><meta charset="utf-8">{FONTS}<style>{CSS}</style></head>
 <body><div class="f{' tall' if tall else ''}">{body}
-<div class="foot"><div class="brand">{mascot_svg(54)}SHARP CHARTS</div><div style="text-align:right">Source: {escape(source)}<br>21+ · Gamble responsibly · 1-800-GAMBLER</div></div></div></body></html>'''
+<div class="foot"><div class="brand">{mascot_svg(54)}SHARP CHARTS</div><div style="text-align:right">Source: {escape(source)}<br>{note}</div></div></div></body></html>'''
 
 
 def bars(title, highlight, subtitle, items, source, tall=True, p=1.0, hl_color="#F97316", fmt=None,

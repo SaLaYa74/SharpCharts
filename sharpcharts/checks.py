@@ -104,8 +104,12 @@ def caption(rep, text):
     rep.require(0 < len(text) <= 2200, "caption: length", f"{len(text)} chars (max 2200)")
     rep.require(text.count("#") <= 30, "caption: hashtag limit", f"{text.count('#')} hashtags (max 30)")
     rep.expect(text.count("#") <= 5, "caption: 5 hashtags or fewer", f"{text.count('#')} hashtags (Instagram now favors ≤5)")
-    rep.require("21+" in text, "caption: responsible-gambling line", "missing 21+ disclaimer")
     low = text.lower()
+    # Any post that talks about betting must carry the responsible-gambling line. Pure stats posts (the page
+    # became a stats page on Oct 31) don't need it.
+    betting = re.search(r"\b(bet|bets|betting|bettors?|odds|spread|moneyline|wager|sportsbook|ats|underdogs?)\b", low)
+    if betting:
+        rep.require("21+" in text, "caption: responsible-gambling line", f"mentions '{betting.group(0)}' but has no 21+ line")
     bad = [w for w in BANNED_WORDS if re.search(r"(?<![\w'])" + re.escape(w) + r"(?![\w'])", low)]
     rep.require(not bad, "caption: brand language", f"contains {bad}")
     rep.require("None" not in text and "nan" not in low.split(), "caption: no missing values", "caption contains None/nan")

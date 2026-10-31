@@ -201,9 +201,9 @@ def _verify_score(g, rep):
     rep.require(g["home_score"] != g["away_score"], f"{label}: has a winner", "tied final")
 
 
-def load_finals(days, rep):
-    """Regular-season finals on the given days, scores verified, closing lines attached.
-    Returns (games with lines, all verified finals)."""
+def load_finals(days, rep, lines=True):
+    """Regular-season finals on the given days, scores verified, closing lines attached (lines=False skips
+    the betting lines, for stats posts). Returns (games with lines, all verified finals, all games)."""
     with ThreadPoolExecutor(8) as ex:
         raw = [x for day_events in ex.map(_events, days) for x in day_events]
     games = [_game(d, e) for d, e in raw]
@@ -211,6 +211,8 @@ def load_finals(days, rep):
     finals = [g for g in games if g["final"]]
     for g in finals:
         _verify_score(g, rep)
+    if not lines:
+        return finals, finals, games
     archive = archived_lines()
     with ThreadPoolExecutor(8) as ex:
         ok = list(ex.map(lambda g: _closing(g, rep, archive), finals))
@@ -225,13 +227,14 @@ def load_finals(days, rep):
     return lined, finals, games
 
 
-def season(rep, through=None):
-    """Every regular-season final from opening night through `through` (default: last night)."""
+def season(rep, through=None, lines=True):
+    """Every regular-season final from opening night through `through` (default: last night).
+    With lines=False: verified finals only, no betting lines needed."""
     through = through or _today() - timedelta(days=1)
     days = [OPENING_NIGHT + timedelta(n) for n in range((through - OPENING_NIGHT).days + 1)]
     if not days:
         raise NoContent("The NBA season hasn't started.")
-    lined, finals, games = load_finals(days, rep)
+    lined, finals, games = load_finals(days, rep, lines)
     pending = [g for g in games if not g["final"] and g["status"] not in ("STATUS_POSTPONED", "STATUS_CANCELED")]
     if pending:
         raise DataError(f"{len(pending)} game(s) through {through} not final yet")

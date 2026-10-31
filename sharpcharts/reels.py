@@ -33,6 +33,18 @@ def ffmpeg_exe():
     return imageio_ffmpeg.get_ffmpeg_exe()
 
 
+STEP = 1 / 30          # one video frame: every animation step is its own frame (smooth, Oct 31)
+
+
+def _render_all(htmls, work):
+    """Render frames 4 at a time (each is its own headless Chrome) and return their PNG paths in order."""
+    from concurrent.futures import ThreadPoolExecutor
+    paths = [os.path.join(work, f"{i:03d}.png") for i in range(len(htmls))]
+    with ThreadPoolExecutor(4) as ex:
+        list(ex.map(lambda hp: html_to_png(hp[0], hp[1], "reel"), zip(htmls, paths)))
+    return paths
+
+
 def _ease(x):
     return 1 - (1 - x) ** 3  # ease-out cubic
 
@@ -46,12 +58,9 @@ def make_reel(out_dir, name, hook, chart_html, tag, seed, hold=4.0):
     `hook` and `tag` are baked into chart_html by the caller. Returns (mp4, cover_jpg)."""
     os.makedirs(out_dir, exist_ok=True)
     work = tempfile.mkdtemp(prefix="reel_")
-    seq = []  # (png, seconds)
-    steps = 12
-    for i in range(steps):                                   # 0.8s build-in, starting at t=0
-        path = os.path.join(work, f"{i:03d}.png")
-        html_to_png(chart_html(START_P + (1 - START_P) * _ease(i / (steps - 1))), path, "reel")
-        seq.append((path, 0.067))
+    steps = 24                                               # 0.8s build-in at 30 fps, starting at t=0
+    frames = _render_all([chart_html(START_P + (1 - START_P) * _ease(i / (steps - 1))) for i in range(steps)], work)
+    seq = [(f, STEP) for f in frames]  # (png, seconds)
     last_chart = seq[-1][0]
     seq.append((last_chart, hold))                           # hold long enough to read
     total = sum(s for _, s in seq)
@@ -79,25 +88,22 @@ def make_countdown(out_dir, name, chart_html, n, seed, hold=3.5, tease="Can you 
     the per-bar progress list (0 = hidden '?', 1 = fully grown). Returns (mp4, cover_jpg)."""
     os.makedirs(out_dir, exist_ok=True)
     work = tempfile.mkdtemp(prefix="reel_")
-    seq, prog, i = [], [0.0] * n, 0
+    plan, prog = [], [0.0] * n                           # (html, seconds), rendered in parallel at the end
 
     def shot(t, secs):
-        nonlocal i
-        path = os.path.join(work, f"{i:03d}.png")
-        html_to_png(chart_html(list(prog), t), path, "reel")
-        seq.append((path, secs))
-        i += 1
+        plan.append((chart_html(list(prog), t), secs))
 
     for k in range(n - 1, -1, -1):                       # #n first, #1 last; motion starts on frame 1
         if k == 0:
             shot(drum, 0.55)                             # beat of suspense before the answer
-        steps = 8 if k == 0 else 6
+        steps = 16 if k == 0 else 12                     # same timing as before, twice the frames
         for s_ in range(steps):
             prog[k] = 0.15 + 0.85 * _ease((s_ + 1) / steps)
-            shot(tease if k else None, 0.067)
+            shot(tease if k else None, STEP)
         if k:
-            seq[-1] = (seq[-1][0], 0.35)                 # let each bar land
-    seq[-1] = (seq[-1][0], hold)                         # full answer, long enough to read
+            plan[-1] = (plan[-1][0], 0.35)               # let each bar land
+    plan[-1] = (plan[-1][0], hold)                       # full answer, long enough to read
+    seq = list(zip(_render_all([h for h, _ in plan], work), [x for _, x in plan]))
     total = sum(x for _, x in seq)
     audio = os.path.join(work, "beat.wav")
     make_mood(audio, total + 0.2, seed, "hype")          # deep sports-highlight bed (picked Oct 26)

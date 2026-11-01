@@ -641,6 +641,16 @@
     "scheduled": "12:00",
     "trial": false
   },
+  "2026-wk07-v2-wr": {
+    "images": 1,
+    "job": "v2_wr",
+    "media": "reel",
+    "media_id": "18169391587513170",
+    "permalink": "https://www.instagram.com/reel/DfNHWyGDrs9/",
+    "posted_at": "2026-11-01T16:02:51+00:00",
+    "scheduled": "08:00",
+    "trial": false
+  },
   "nba-2026-10-25-night": {
     "images": 1,
     "job": "nba_night",

@@ -1,0 +1,290 @@
+{
+  "subject": "stats nba scorers",
+  "counts": {
+    "pass": 56,
+    "warn": 0,
+    "block": 0
+  },
+  "checks": [
+    {
+      "status": "pass",
+      "check": "BOS@ORL 2026-11-01: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@ORL 2026-11-01: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@ORL 2026-11-01: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@IND 2026-11-01: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@IND 2026-11-01: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@IND 2026-11-01: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@GS 2026-11-01: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@GS 2026-11-01: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@GS 2026-11-01: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAL 2026-11-01: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAL 2026-11-01: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAL 2026-11-01: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@ORL 2026-11-01: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@ORL 2026-11-01: BOS box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@ORL 2026-11-01: BOS player points add up to 108",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@ORL 2026-11-01: BOS top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@ORL 2026-11-01: ORL box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@ORL 2026-11-01: ORL player points add up to 97",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@ORL 2026-11-01: ORL top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@IND 2026-11-01: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@IND 2026-11-01: BKN box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@IND 2026-11-01: BKN player points add up to 98",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@IND 2026-11-01: BKN top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@IND 2026-11-01: IND box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@IND 2026-11-01: IND player points add up to 90",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@IND 2026-11-01: IND top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@GS 2026-11-01: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@GS 2026-11-01: LAC box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@GS 2026-11-01: LAC player points add up to 112",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@GS 2026-11-01: LAC top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@GS 2026-11-01: GS box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@GS 2026-11-01: GS player points add up to 124",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "LAC@GS 2026-11-01: GS top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAL 2026-11-01: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAL 2026-11-01: TOR box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAL 2026-11-01: TOR player points add up to 125",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAL 2026-11-01: TOR top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAL 2026-11-01: LAL box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAL 2026-11-01: LAL player points add up to 131",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAL 2026-11-01: LAL top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "box scores loaded for every final",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: file size",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: duration",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: 1080x1920",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: has audio",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: H.264 video",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: dimensions",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: not empty",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: has visible content",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    }
+  ]
+}

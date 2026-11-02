@@ -731,6 +731,16 @@
     "scheduled": "15:00",
     "trial": false
   },
+  "nba-2027-w2644-board": {
+    "images": 1,
+    "job": "nba_board",
+    "media": "reel",
+    "media_id": "18235203676325895",
+    "permalink": "https://www.instagram.com/reel/DfQcFeZD9Qm/",
+    "posted_at": "2026-11-02T23:01:47+00:00",
+    "scheduled": "15:00",
+    "trial": false
+  },
   "nba-2027-w2644-worst": {
     "images": 1,
     "job": "nba_worst",

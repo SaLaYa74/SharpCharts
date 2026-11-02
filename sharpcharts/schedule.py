@@ -30,7 +30,8 @@ JOBS = [
     # ---- Oct 31: SharpCharts is a STATS page now (owner: "just raw data... like a stat page"). No betting framing,
     # fewer but better Reels. Every Reel opens on a bold claim (the #1 number), then counts down to who it is.
     # NFL: fantasy + usage (our best performers) and team scoring; NBA: nightly top scorers + weekly team stats.
-    Job("st_fantasy",  "st_fantasy",  (MON,), "12:00", live=True, note="Reel: last week's top fantasy scorers (PPR)"),
+    # Jarvis Nov 2: Tuesday, not Monday. On Mondays the week isn't over (MNF), so the Reel showed the week before.
+    Job("st_fantasy",  "st_fantasy",  (TUE,), "08:00", live=True, note="Reel: last week's top fantasy scorers (PPR)"),
     Job("v2_waiver",   "v2_waiver",   (TUE,), "12:00", live=True, note="Reel: waiver risers (share of team touches)"),
     Job("st_offense",  "st_offense",  (WED,), "12:00", live=True, note="Reel: highest-scoring NFL offenses"),
     Job("v2_rb",       "v2_rb",       (THU,), "12:00", live=True, note="Reel: RB share of team touches"),

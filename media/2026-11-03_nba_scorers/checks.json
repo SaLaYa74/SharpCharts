@@ -1,0 +1,840 @@
+{
+  "subject": "stats nba scorers",
+  "counts": {
+    "pass": 166,
+    "warn": 0,
+    "block": 0
+  },
+  "checks": [
+    {
+      "status": "pass",
+      "check": "OKC@CLE 2026-11-02: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@CLE 2026-11-02: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@CLE 2026-11-02: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@CHA 2026-11-02: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@CHA 2026-11-02: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@CHA 2026-11-02: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@IND 2026-11-02: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@IND 2026-11-02: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@IND 2026-11-02: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@NY 2026-11-02: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@NY 2026-11-02: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@NY 2026-11-02: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@ORL 2026-11-02: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@ORL 2026-11-02: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@ORL 2026-11-02: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@PHI 2026-11-02: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@PHI 2026-11-02: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@PHI 2026-11-02: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@DAL 2026-11-02: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@DAL 2026-11-02: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@DAL 2026-11-02: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@MEM 2026-11-02: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@MEM 2026-11-02: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@MEM 2026-11-02: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@MIN 2026-11-02: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@MIN 2026-11-02: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@MIN 2026-11-02: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@HOU 2026-11-02: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@HOU 2026-11-02: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@HOU 2026-11-02: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@SA 2026-11-02: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@SA 2026-11-02: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@SA 2026-11-02: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@DEN 2026-11-02: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@DEN 2026-11-02: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@DEN 2026-11-02: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@GS 2026-11-02: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@GS 2026-11-02: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@GS 2026-11-02: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAC 2026-11-02: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAC 2026-11-02: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAC 2026-11-02: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@LAL 2026-11-02: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@LAL 2026-11-02: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@LAL 2026-11-02: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@CLE 2026-11-02: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@CLE 2026-11-02: OKC box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@CLE 2026-11-02: OKC player points add up to 117",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@CLE 2026-11-02: OKC top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@CLE 2026-11-02: CLE box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@CLE 2026-11-02: CLE player points add up to 112",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "OKC@CLE 2026-11-02: CLE top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@CHA 2026-11-02: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@CHA 2026-11-02: DET box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@CHA 2026-11-02: DET player points add up to 124",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@CHA 2026-11-02: DET top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@CHA 2026-11-02: CHA box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@CHA 2026-11-02: CHA player points add up to 91",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@CHA 2026-11-02: CHA top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@IND 2026-11-02: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@IND 2026-11-02: ATL box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@IND 2026-11-02: ATL player points add up to 108",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@IND 2026-11-02: ATL top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@IND 2026-11-02: IND box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@IND 2026-11-02: IND player points add up to 104",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ATL@IND 2026-11-02: IND top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@NY 2026-11-02: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@NY 2026-11-02: BKN box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@NY 2026-11-02: BKN player points add up to 90",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@NY 2026-11-02: BKN top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@NY 2026-11-02: NY box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@NY 2026-11-02: NY player points add up to 103",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BKN@NY 2026-11-02: NY top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@ORL 2026-11-02: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@ORL 2026-11-02: WSH box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@ORL 2026-11-02: WSH player points add up to 103",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@ORL 2026-11-02: WSH top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@ORL 2026-11-02: ORL box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@ORL 2026-11-02: ORL player points add up to 94",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "WSH@ORL 2026-11-02: ORL top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@PHI 2026-11-02: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@PHI 2026-11-02: CHI box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@PHI 2026-11-02: CHI player points add up to 107",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@PHI 2026-11-02: CHI top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@PHI 2026-11-02: PHI box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@PHI 2026-11-02: PHI player points add up to 126",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHI@PHI 2026-11-02: PHI top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@DAL 2026-11-02: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@DAL 2026-11-02: SAC box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@DAL 2026-11-02: SAC player points add up to 115",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@DAL 2026-11-02: SAC top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@DAL 2026-11-02: DAL box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@DAL 2026-11-02: DAL player points add up to 100",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "SAC@DAL 2026-11-02: DAL top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@MEM 2026-11-02: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@MEM 2026-11-02: NO box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@MEM 2026-11-02: NO player points add up to 135",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@MEM 2026-11-02: NO top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@MEM 2026-11-02: MEM box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@MEM 2026-11-02: MEM player points add up to 134",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NO@MEM 2026-11-02: MEM top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@MIN 2026-11-02: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@MIN 2026-11-02: MIL box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@MIN 2026-11-02: MIL player points add up to 100",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@MIN 2026-11-02: MIL top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@MIN 2026-11-02: MIN box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@MIN 2026-11-02: MIN player points add up to 112",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIL@MIN 2026-11-02: MIN top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@HOU 2026-11-02: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@HOU 2026-11-02: BOS box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@HOU 2026-11-02: BOS player points add up to 93",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@HOU 2026-11-02: BOS top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@HOU 2026-11-02: HOU box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@HOU 2026-11-02: HOU player points add up to 109",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BOS@HOU 2026-11-02: HOU top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@SA 2026-11-02: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@SA 2026-11-02: UTAH box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@SA 2026-11-02: UTAH player points add up to 97",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@SA 2026-11-02: UTAH top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@SA 2026-11-02: SA box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@SA 2026-11-02: SA player points add up to 119",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@SA 2026-11-02: SA top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@DEN 2026-11-02: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@DEN 2026-11-02: POR box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@DEN 2026-11-02: POR player points add up to 118",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@DEN 2026-11-02: POR top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@DEN 2026-11-02: DEN box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@DEN 2026-11-02: DEN player points add up to 110",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@DEN 2026-11-02: DEN top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@GS 2026-11-02: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@GS 2026-11-02: PHX box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@GS 2026-11-02: PHX player points add up to 113",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@GS 2026-11-02: PHX top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@GS 2026-11-02: GS box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@GS 2026-11-02: GS player points add up to 116",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "PHX@GS 2026-11-02: GS top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAC 2026-11-02: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAC 2026-11-02: TOR box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAC 2026-11-02: TOR player points add up to 125",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAC 2026-11-02: TOR top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAC 2026-11-02: LAC box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAC 2026-11-02: LAC player points add up to 118",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@LAC 2026-11-02: LAC top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@LAL 2026-11-02: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@LAL 2026-11-02: MIA box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@LAL 2026-11-02: MIA player points add up to 117",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@LAL 2026-11-02: MIA top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@LAL 2026-11-02: LAL box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@LAL 2026-11-02: LAL player points add up to 138",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "MIA@LAL 2026-11-02: LAL top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "box scores loaded for every final",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: file size",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: duration",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: 1080x1920",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: has audio",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: H.264 video",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: dimensions",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: not empty",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: has visible content",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    }
+  ]
+}

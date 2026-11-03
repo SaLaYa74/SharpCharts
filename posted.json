@@ -651,6 +651,16 @@
     "scheduled": "08:00",
     "trial": false
   },
+  "2026-wk08-st-fantasy": {
+    "images": 1,
+    "job": "st_fantasy",
+    "media": "reel",
+    "media_id": "18079663952729414",
+    "permalink": "https://www.instagram.com/reel/DfSQ41SAtCp/",
+    "posted_at": "2026-11-03T16:02:22+00:00",
+    "scheduled": "08:00",
+    "trial": false
+  },
   "nba-2026-10-25-night": {
     "images": 1,
     "job": "nba_night",

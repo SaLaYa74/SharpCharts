@@ -733,5 +733,10 @@
     "at": "2026-11-04T06:00-08:00",
     "detail": "7 snapshot files",
     "status": "done"
+  },
+  "2026-11-04:nba_scorers": {
+    "at": "2026-11-04T09:30-08:00",
+    "detail": "Only 0 NBA games on 2026-11-03.",
+    "status": "skipped"
   }
 }

@@ -790,5 +790,15 @@
     "posted_at": "2026-10-30T22:02:27+00:00",
     "scheduled": "15:00",
     "trial": false
+  },
+  "nba-2027-w2645-offense": {
+    "images": 1,
+    "job": "nba_offense",
+    "media": "reel",
+    "media_id": "18130059595852073",
+    "permalink": "https://www.instagram.com/reel/DfVlzQKkab9/",
+    "posted_at": "2026-11-04T23:02:46+00:00",
+    "scheduled": "15:00",
+    "trial": false
   }
 }

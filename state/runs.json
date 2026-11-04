@@ -738,5 +738,10 @@
     "at": "2026-11-04T09:30-08:00",
     "detail": "Only 0 NBA games on 2026-11-03.",
     "status": "skipped"
+  },
+  "2026-11-04:st_offense": {
+    "at": "2026-11-04T12:00-08:00",
+    "detail": "https://www.instagram.com/reel/DfVRMsFCmm4/",
+    "status": "posted"
   }
 }

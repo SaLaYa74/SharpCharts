@@ -661,6 +661,16 @@
     "scheduled": "08:00",
     "trial": false
   },
+  "2026-wk08-st-offense": {
+    "images": 1,
+    "job": "st_offense",
+    "media": "reel",
+    "media_id": "18096273776177249",
+    "permalink": "https://www.instagram.com/reel/DfVRMsFCmm4/",
+    "posted_at": "2026-11-04T20:02:45+00:00",
+    "scheduled": "12:00",
+    "trial": false
+  },
   "2026-wk08-v2-waiver": {
     "images": 1,
     "job": "v2_waiver",

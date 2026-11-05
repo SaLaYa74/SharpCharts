@@ -23,3 +23,18 @@ in 18 s on the retry, so it looks like a one-off.
 
 **Watch next time:** do the NBA scorers Reels keep beating ~120 reach? If 3+ do, give NBA more slots.
 First runs of the NFL/NBA team boards, offense and margin Reels. Any shares or saves at all.
+
+## 2026-11-05 (Thu, check-in)
+
+**Numbers (last 4 days):** 8 followers (no change). 8 Reels, no errors or blocked posts in the run log. NBA top-scorers
+Reels: 333, 150, 135 reach (avg 206). NBA offense 162, NBA board 114. NFL/fantasy Reels: fantasy top scorers 124,
+NFL offense 115, waiver risers 107. Average watch 2.3-5.1 s on ~7.6 s Reels (waiver risers lowest at 2.3 s).
+Midday 161 avg reach vs evening 138: no real difference. Saves, shares, follows: still 0.
+Wed's NBA scorers skipped because there were no NBA games on Election Day (Tue 11/3): correct, not a bug.
+
+**Changed:** nothing. NBA looks a bit stronger than NFL (~140 vs ~115 if the 333 outlier is left out, ~1.2x), short of
+the 1.5x bar, and each format has only 1-3 posts.
+
+**Watch Monday Nov 9:** if NBA keeps beating NFL by 1.5x+ over 7 days, move an NFL slot to NBA. Waiver risers
+(2.3 s watch) is the weakest hook so far: check its 2nd post on Tue 11/10. First runs of v2_rb (Thu), the margin Reels (Fri)
+and the NFL Find Your Team board (Sat).

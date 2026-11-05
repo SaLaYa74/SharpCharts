@@ -671,6 +671,16 @@
     "scheduled": "12:00",
     "trial": false
   },
+  "2026-wk08-v2-rb": {
+    "images": 1,
+    "job": "v2_rb",
+    "media": "reel",
+    "media_id": "18115663925037008",
+    "permalink": "https://www.instagram.com/reel/DfX1_Gzicqb/",
+    "posted_at": "2026-11-05T20:02:33+00:00",
+    "scheduled": "12:00",
+    "trial": false
+  },
   "2026-wk08-v2-waiver": {
     "images": 1,
     "job": "v2_waiver",

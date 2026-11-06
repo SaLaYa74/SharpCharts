@@ -784,6 +784,11 @@
     "detail": "9 snapshot files",
     "status": "done"
   },
+  "2026-11-06:nba_margin": {
+    "at": "2026-11-06T15:00-08:00",
+    "detail": "https://www.instagram.com/reel/DfavVI3kUq7/",
+    "status": "posted"
+  },
   "2026-11-06:nba_scorers": {
     "at": "2026-11-06T09:30-08:00",
     "detail": "Only 2 NBA games on 2026-11-05.",

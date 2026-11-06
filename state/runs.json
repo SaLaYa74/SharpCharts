@@ -773,5 +773,10 @@
     "at": "2026-11-05T12:00-08:00",
     "detail": "https://www.instagram.com/reel/DfX1_Gzicqb/",
     "status": "posted"
+  },
+  "2026-11-06:archive_am": {
+    "at": "2026-11-06T06:00-08:00",
+    "detail": "9 snapshot files",
+    "status": "done"
   }
 }

@@ -661,6 +661,16 @@
     "scheduled": "08:00",
     "trial": false
   },
+  "2026-wk08-st-margin": {
+    "images": 1,
+    "job": "st_margin",
+    "media": "reel",
+    "media_id": "18129655400512262",
+    "permalink": "https://www.instagram.com/reel/DfaayUQgC4I/",
+    "posted_at": "2026-11-06T20:02:46+00:00",
+    "scheduled": "12:00",
+    "trial": false
+  },
   "2026-wk08-st-offense": {
     "images": 1,
     "job": "st_offense",

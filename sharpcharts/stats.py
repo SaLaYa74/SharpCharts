@@ -31,9 +31,10 @@ def _rec(w, l_, t=0):
     return f"{w}-{l_}" + (f"-{t}" if t else "")
 
 
-def _countdown(out_dir, key, name, items, title, hl, sub, source, cap, rep, color=GREEN):
-    return _post(out_dir, key, name, lambda r, t: L.bars(title, hl, sub, items, source, hl_color=color,
-                                                         reveal=r, tease=t), cap, rep, countdown=len(items))
+def _countdown(out_dir, key, name, items, title, hl, sub, source, cap, rep, color=GREEN, chart=L.bars):
+    """chart: L.bars (vertical) or L.hbars (horizontal, Nov 6: owner wants more variety in how posts look)."""
+    return _post(out_dir, key, name, lambda r, t: chart(title, hl, sub, items, source, hl_color=color,
+                                                        reveal=r, tease=t), cap, rep, countdown=len(items))
 
 
 # ---------------------------------------------------------------- NFL teams
@@ -101,7 +102,8 @@ def nfl_dominant(ctx, out_dir, sizes=None):
         + f"\n\n📤 Send this to the {team} fan who won't stop talking about it.")
     cap += f"\n\nAverage point margin (points scored minus allowed, per game) through Week {wk}.\n{NFL_DATA}\n{NFL_TAGS}"
     return _countdown(out_dir, key, "st_margin", items, "Winning by {hl} a Game. Who?", f"{top['diff']:.1f}",
-                      f"Biggest average margin · NFL · thru Week {wk}", "nflverse · scores verified vs ESPN", cap, rep)
+                      f"Biggest average margin · NFL · thru Week {wk}", "nflverse · scores verified vs ESPN", cap, rep,
+                      chart=L.hbars)
 
 
 def nfl_board(ctx, out_dir, sizes=None):
@@ -220,7 +222,7 @@ def nba_offense(out_dir):
     cap += f"\n\nPoints per game, every game through {thru:%b} {thru.day}.\n{NBA_DATA}\n{NBA_TAGS}"
     return _countdown(out_dir, key, "nba_offense", _nba_items(rows, lambda r: r["ppg"], lambda r: f"{r['ppg']:.1f}"),
                       "{hl} Points a Game. Who?", f"{top['ppg']:.1f}", f"Highest-scoring NBA offenses · {N._thru(thru)}",
-                      "ESPN · scores verified", cap, rep)
+                      "ESPN · scores verified", cap, rep, chart=L.hbars)
 
 
 def nba_dominant(out_dir):
@@ -331,5 +333,63 @@ def nba_scorers(out_dir, day=None):
                       f"Top scorers · {len(finals)} NBA games · {day:%b} {day.day}", "ESPN box scores", cap, rep)
 
 
-BUILDERS_CTX = {"st_offense": nfl_offense, "st_margin": nfl_dominant, "st_board": nfl_board, "st_fantasy": nfl_fantasy_week}
-BUILDERS = {"nba_scorers": nba_scorers, "nba_offense": nba_offense, "nba_margin": nba_dominant, "nba_board": nba_board}
+
+# ---------------------------------------------------------------- offense vs defense scatter (Nov 6, owner's idea)
+
+QUADS = ("GOOD AT BOTH", "DEFENSE FIRST", "ALL OFFENSE", "STRUGGLING")
+
+
+def _scatter(out_dir, key, name, t, team_name, logo, color, league, thru_label, source, data_line, tags, rep):
+    """Every team as a logo: points scored (x) vs points allowed (y, flipped so better defense is higher)."""
+    games = sum(r["g"] for r in t.values())
+    avg = sum(r["pf"] for r in t.values()) / games
+    rep.require(sum(r["pf"] for r in t.values()) == sum(r["pa"] for r in t.values()),
+                f"{league}: league-wide points scored equal points allowed", "totals differ: a game is counted wrong")
+    for r in t.values():
+        r["papg"] = r["pa"] / r["g"]
+    both = sorted((a for a, r in t.items() if r["ppg"] > avg and r["papg"] < avg), key=lambda a: -t[a]["diff"])
+    worst = sorted((a for a, r in t.items() if r["ppg"] < avg and r["papg"] > avg), key=lambda a: t[a]["diff"])
+    if not both:
+        raise NoContent("No team is above average on both sides yet.")
+    off = max(t, key=lambda a: (t[a]["ppg"], a))
+    dfn = min(t, key=lambda a: (t[a]["papg"], a))
+    pts = [{"x": r["ppg"], "y": r["papg"], "abbr": a, "logo": logo(a), "color": color(a)} for a, r in t.items()]
+    n = len(both)
+    title = ("Only {hl} Teams Are Good at Both" if n <= len(t) // 3 else "{hl} Teams Are Good at Both")
+    cap = (
+        f"{'Only ' if n <= len(t) // 3 else ''}{n} {league.upper()} teams score more AND allow less than the league average "
+        f"({avg:.1f} points a game) 👀\n\n"
+        f"🟢 Good at both: {', '.join(team_name(a) for a in both)}\n"
+        + (f"🔴 Below average at both: {', '.join(team_name(a) for a in worst)}\n" if worst else "")
+        + f"\nBest offense: {team_name(off)}, {t[off]['ppg']:.1f} points a game. "
+        f"Best defense: {team_name(dfn)}, {t[dfn]['papg']:.1f} allowed.\n\n"
+        "Where's your team? 👇\n\n📤 Send this to a fan whose team is stuck in the red corner."
+        f"\n\nPoints scored and allowed per game, {thru_label}.\n{data_line}\n{tags}")
+    return _post(out_dir, key, name, lambda p: L.scatter(
+        title, str(n), f"Above the {league.upper()} average on offense and defense · {thru_label}", pts,
+        "Points scored per game →", "Points allowed per game (fewer = higher) →", source, (avg, avg), QUADS, p=p),
+        cap, rep, hold=5.0)
+
+
+def nfl_scatter(ctx, out_dir, sizes=None):
+    from .helmets import H as SHELL
+    from .logos import logo_uri
+    rep = C.Report("stats nfl scatter").extend(ctx.report)
+    t = nfl_teams(ctx, rep)
+    wk = ctx.thru_week
+    return _scatter(out_dir, f"{ctx.season}-wk{wk:02d}-st-scatter", "st_scatter", t, lambda a: D.TEAMS[a][0], logo_uri,
+                    lambda a: D.TEAMS[a][1] if a in D.TEAMS else SHELL[a][0], "nfl", f"thru Week {wk}",
+                    "nflverse · scores verified vs ESPN", NFL_DATA, NFL_TAGS, rep)
+
+
+def nba_scatter(out_dir):
+    from .logos import logo_uri
+    rep = C.Report("stats nba scatter")
+    t, thru = nba_teams(rep)
+    return _scatter(out_dir, N._week_key(thru, "scatter"), "nba_scatter", t, N.name, lambda a: logo_uri(a, "nba"),
+                    lambda a: N.teams().get(a, {}).get("color", "#3A4A6B"), "nba", N._thru(thru),
+                    "ESPN · scores verified", NBA_DATA, NBA_TAGS, rep)
+
+
+BUILDERS_CTX = {"st_scatter": nfl_scatter, "st_offense": nfl_offense, "st_margin": nfl_dominant, "st_board": nfl_board, "st_fantasy": nfl_fantasy_week}
+BUILDERS = {"nba_scatter": nba_scatter, "nba_scorers": nba_scorers, "nba_offense": nba_offense, "nba_margin": nba_dominant, "nba_board": nba_board}

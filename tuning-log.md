@@ -38,3 +38,22 @@ the 1.5x bar, and each format has only 1-3 posts.
 **Watch Monday Nov 9:** if NBA keeps beating NFL by 1.5x+ over 7 days, move an NFL slot to NBA. Waiver risers
 (2.3 s watch) is the weakest hook so far: check its 2nd post on Tue 11/10. First runs of v2_rb (Thu), the margin Reels (Fri)
 and the NFL Find Your Team board (Sat).
+
+## 2026-11-06 (Claude, with the owner): more variety + College Football Playoff
+
+**Owner:** "the posts all look exactly the same", likes the bar charts, wants horizontal bars, a scatter plot with team
+logos (offense vs defense), and to jump on trending topics: the first College Football Playoff rankings just came out.
+
+**Changed:**
+1. **CFP rankings Reel** (sharpcharts/cfp.py, new "ladder" look): counts down the committee's Top 10, #10 → #1, with
+   logos and an UNBEATEN tag; the caption lists all 25. ESPN's rankings feed must match collegefootballplayoff.com on
+   every rank, school, record and the release date, or nothing posts (Nov 3 ranking: 68 checks passed). Job runs daily
+   at 8am and posts once per new ranking; first one Sat Nov 7 (Miami #1 at 8-0; Utah and UCLA also unbeaten).
+2. **Offense vs defense scatter** (new look): every team as a logo, points scored per game (x) vs allowed (y, flipped so
+   better defense is higher), green "good at both" corner, red "struggling" corner. NFL replaces the NFL offense bars on
+   Wednesday; NBA replaces the NBA margin bars on Friday (from Nov 13). New check: league-wide points scored must equal
+   points allowed. Hand-checked from raw nflverse scores: Bills 33.3 scored/game, Vikings 13.3 allowed/game.
+3. **Horizontal bars** for the NFL margin Reel (Fri) and NBA offense Reel (moved Wed → Thu so Wednesday stays at 3 posts).
+
+**Watch:** does the CFP Reel beat the ~120-200 reach of the NBA scorers Reels? Do the scatter plots get shares
+(they're built for "find your team")? Saturday is now CFP + NFL board + NBA scorers (3, the max).

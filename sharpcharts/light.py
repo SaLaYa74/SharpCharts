@@ -199,3 +199,157 @@ def board(title, highlight, subtitle, rows, source, tall=True, p=1.0, hl_color="
     body = f'''{css}<div class="t" style="--hl:{hl_color}">{t}</div><div class="s">{escape(subtitle)}</div>
 <div class="board">{"".join(html_cols)}</div>'''
     return _page(body, tall, source)
+
+
+# ---------------------------------------------------------------- Nov 6 (owner: "the posts all look the same")
+# Three more looks so the feed has variety: horizontal bars, an offense-vs-defense logo scatter, a rankings ladder.
+
+def _qm(px):
+    return (f'<div class="qm" style="width:{px}px;height:{px}px;font-size:{int(px * .62)}px">?</div>')
+
+
+HCSS = """<style>.hchart{flex:1;display:flex;flex-direction:column;justify-content:center;gap:26px;margin-top:30px;min-height:0}
+.hr{display:flex;align-items:center;gap:16px;height:150px}
+.hk{width:56px;height:56px;border-radius:50%;flex:none;color:#fff;font-family:"Baloo 2";font-weight:800;font-size:30px;
+    display:flex;align-items:center;justify-content:center;line-height:1}
+.hi{width:132px;flex:none;display:flex;justify-content:center}
+.hn{width:230px;flex:none;font-weight:800;font-size:34px;line-height:1.05;min-width:0}
+.hn small{display:block;font-size:24px;color:#6B7280;margin-top:4px}
+.ht{flex:1;height:96px;display:flex;align-items:center;min-width:0}
+.hb{height:100%;border-radius:8px 24px 24px 8px;display:flex;align-items:center;justify-content:flex-end;padding-right:18px;
+    box-shadow:inset 0 -12px 0 rgba(0,0,0,.08)}
+.hv{font-family:"Baloo 2";font-weight:800;color:#fff;font-size:50px;white-space:nowrap;text-shadow:0 2px 0 rgba(0,0,0,.15)}
+.hv.out{color:#1F2937;text-shadow:none;margin-left:14px}</style>"""
+
+
+def hbars(title, highlight, subtitle, items, source, tall=True, hl_color="#F97316", reveal=None, tease=None):
+    """Horizontal bar chart, #1 on top. Same items and countdown reveal as bars()."""
+    hi = max(i["value"] for i in items) or 1
+    rows = []
+    for k, it in enumerate(items):
+        color = it.get("color") or PALETTE[k % len(PALETTE)]
+        p = 1.0 if reveal is None else reveal[k]
+        if p <= 0:
+            rows.append(f'<div class="hr"><div class="hk" style="background:#D1D5DB">{k + 1}</div><div class="hi">{_qm(96)}</div>'
+                        f'<div class="hn" style="color:#9CA3AF">?</div><div class="ht"><div class="hb" style="width:6%;'
+                        f'background:#E5E7EB;box-shadow:none"></div></div></div>')
+            continue
+        w = max(4.0, it["value"] / hi * 100 * p)
+        vl = it.get("value_label") or f'{it["value"]:g}'
+        inside = w >= 30
+        val = f'<div class="hv{"" if inside else " out"}" style="opacity:{min(1, p * 1.3):.2f}">{escape(vl)}</div>'
+        sub = f'<small>{escape(it["sub"])}</small>' if it.get("sub") else ""
+        rows.append(f'<div class="hr"><div class="hk" style="background:{color}">{k + 1}</div>'
+                    f'<div class="hi" style="opacity:{min(1, p * 1.6):.2f}">{icon(it.get("icon"), 96)}</div>'
+                    f'<div class="hn">{escape(it["label"])}{sub}</div><div class="ht"><div class="hb" style="width:{w:.1f}%;'
+                    f'background:{color}">{val if inside else ""}</div>{"" if inside else val}</div></div>')
+    t = escape(title).replace("{hl}", f"<em>{escape(highlight)}</em>")
+    pill = (f'<div class="tease">{escape(tease)}</div>' if tease else
+            '<div class="tease" style="visibility:hidden">&nbsp;</div>' if reveal is not None else "")
+    body = f'''{HCSS}{pill}<div class="t" style="--hl:{hl_color}">{t}</div><div class="s">{escape(subtitle)}</div>
+<div class="hchart">{"".join(rows)}</div>'''
+    return _page(body, tall, source)
+
+
+def _ticks(lo, hi, n=5):
+    step = (hi - lo) / n
+    mag = 10 ** len(str(int(step))) / 10 if step >= 1 else 1
+    step = next(s * mag for s in (1, 2, 2.5, 5, 10) if s * mag >= step)
+    first = -(-lo // step) * step
+    out, v = [], first
+    while v <= hi + 1e-9:
+        out.append(round(v, 2))
+        v += step
+    return out
+
+
+def scatter(title, highlight, subtitle, points, xlab, ylab, source, avg, quads, tall=True, p=1.0, hl_color="#16A34A"):
+    """Logo scatter: every team is a dot. points: [dict(x, y, logo (data URI or None), abbr, color)].
+    The y axis is flipped so fewer points allowed sits higher (up and right = good at both).
+    avg: (x_avg, y_avg) dashed lines; quads: labels (top-right, top-left, bottom-right, bottom-left)."""
+    W, H, L0, R0, T0, B0 = 960, 1060, 96, 24, 24, 96
+    xs, ys = [q["x"] for q in points], [q["y"] for q in points]
+    padx, pady = (max(xs) - min(xs)) * .08 or 1, (max(ys) - min(ys)) * .08 or 1
+    x0, x1, y0, y1 = min(xs) - padx, max(xs) + padx, min(ys) - pady, max(ys) + pady
+    X = lambda v: L0 + (v - x0) / (x1 - x0) * (W - L0 - R0)
+    Y = lambda v: T0 + (v - y0) / (y1 - y0) * (H - T0 - B0)        # flipped: low values (good defense) on top
+    ax, ay = X(avg[0]), Y(avg[1])
+    g = [f'<rect x="{ax:.0f}" y="{T0}" width="{W - R0 - ax:.0f}" height="{ay - T0:.0f}" fill="#16A34A" opacity=".09"/>',
+         f'<rect x="{L0}" y="{ay:.0f}" width="{ax - L0:.0f}" height="{H - B0 - ay:.0f}" fill="#DC2626" opacity=".08"/>']
+    for v in _ticks(x0, x1):
+        g.append(f'<line x1="{X(v):.0f}" y1="{T0}" x2="{X(v):.0f}" y2="{H - B0}" stroke="#E5E7EB" stroke-width="2"/>'
+                 f'<text x="{X(v):.0f}" y="{H - B0 + 40}" text-anchor="middle" font-size="28" font-weight="800" fill="#6B7280">{v:g}</text>')
+    for v in _ticks(y0, y1):
+        g.append(f'<line x1="{L0}" y1="{Y(v):.0f}" x2="{W - R0}" y2="{Y(v):.0f}" stroke="#E5E7EB" stroke-width="2"/>'
+                 f'<text x="{L0 - 14}" y="{Y(v) + 10:.0f}" text-anchor="end" font-size="28" font-weight="800" fill="#6B7280">{v:g}</text>')
+    g.append(f'<rect x="{L0}" y="{T0}" width="{W - L0 - R0}" height="{H - T0 - B0}" fill="none" stroke="#1F2937" stroke-width="4"/>')
+    g.append(f'<line x1="{ax:.0f}" y1="{T0}" x2="{ax:.0f}" y2="{H - B0}" stroke="#1F2937" stroke-width="3" stroke-dasharray="12 10" opacity=".5"/>'
+             f'<line x1="{L0}" y1="{ay:.0f}" x2="{W - R0}" y2="{ay:.0f}" stroke="#1F2937" stroke-width="3" stroke-dasharray="12 10" opacity=".5"/>')
+    qc = ("#15803D", "#6B7280", "#6B7280", "#DC2626")
+    for (tx, ty, anchor), text, col in zip(((W - R0 - 16, T0 + 44, "end"), (L0 + 16, T0 + 44, "start"),
+                                            (W - R0 - 16, H - B0 - 20, "end"), (L0 + 16, H - B0 - 20, "start")), quads, qc):
+        g.append(f'<text x="{tx}" y="{ty}" text-anchor="{anchor}" font-family="Baloo 2" font-size="34" font-weight="800" '
+                 f'fill="{col}">{escape(text)}</text>')
+    g.append(f'<text x="{(L0 + W - R0) / 2:.0f}" y="{H - 8}" text-anchor="middle" font-size="32" font-weight="800" fill="#1F2937">{escape(xlab)}</text>'
+             f'<text transform="translate(30 {(T0 + H - B0) / 2:.0f}) rotate(-90)" text-anchor="middle" font-size="32" font-weight="800" '
+             f'fill="#1F2937">{escape(ylab)}</text>')
+    cx, cy = (L0 + W - R0) / 2, (T0 + H - B0) / 2
+    n = len(points)
+    for i, q in enumerate(sorted(points, key=lambda q: q["abbr"])):
+        d = i / n * .45
+        k = max(0.0, min(1.0, (p - d) / .55))
+        e = 1 - (1 - k) ** 3
+        px, py = cx + (X(q["x"]) - cx) * e, cy + (Y(q["y"]) - cy) * e
+        op = min(1, k * 1.8)
+        if q.get("logo"):
+            dot = (f'<circle cx="{px:.1f}" cy="{py:.1f}" r="35" fill="#fff" stroke="#1F2937" stroke-width="3"/>'
+                   f'<image href="{q["logo"]}" x="{px - 27:.1f}" y="{py - 27:.1f}" width="54" height="54"/>')
+        else:
+            dot = (f'<circle cx="{px:.1f}" cy="{py:.1f}" r="35" fill="{q.get("color", "#3B82F6")}" stroke="#1F2937" stroke-width="3"/>'
+                   f'<text x="{px:.1f}" y="{py + 9:.1f}" text-anchor="middle" font-family="Baloo 2" font-size="26" font-weight="800" fill="#fff">{escape(q["abbr"])}</text>')
+        g.append(f'<g opacity="{op:.2f}">{dot}</g>')
+    t = escape(title).replace("{hl}", f"<em>{escape(highlight)}</em>")
+    body = f'''<div class="t" style="--hl:{hl_color};font-size:92px">{t}</div><div class="s">{escape(subtitle)}</div>
+<div style="flex:1;display:flex;align-items:center;justify-content:center;margin-top:18px;min-height:0">
+<svg viewBox="0 0 {W} {H}" style="width:100%;height:100%" font-family="Nunito, Arial, sans-serif">{"".join(g)}</svg></div>'''
+    return _page(body, tall, source)
+
+
+LCSS = """<style>.lad{flex:1;display:flex;flex-direction:column;justify-content:center;gap:12px;margin-top:26px;min-height:0}
+.lr{display:flex;align-items:center;gap:18px;height:96px;background:#fff;border-radius:20px;padding:0 22px 0 14px;
+    box-shadow:0 4px 0 rgba(0,0,0,.06)}
+.lk{width:74px;flex:none;font-family:"Baloo 2";font-weight:800;font-size:56px;text-align:center;line-height:1}
+.ll{width:84px;height:84px;flex:none;border-radius:50%;background:#fff;border:4px solid #1F2937;display:flex;
+    align-items:center;justify-content:center;overflow:hidden}
+.ln{flex:1;font-weight:800;font-size:40px;white-space:nowrap;overflow:hidden;min-width:0}
+.lt{font-family:"Baloo 2";font-weight:800;font-size:26px;color:#1F2937;background:#FDE047;border-radius:999px;padding:4px 16px;
+    letter-spacing:1px}
+.lrec{font-family:"Baloo 2";font-weight:800;font-size:44px;min-width:96px;text-align:right}</style>"""
+
+
+def ladder(title, highlight, subtitle, rows, source, tall=True, hl_color="#F97316", reveal=None, tease=None):
+    """Rankings ladder, #1 on top: rank, logo, name, an optional tag (e.g. UNBEATEN), record.
+    rows: [dict(rank, logo, name, record, tag, color)]. reveal works like bars() for countdown Reels."""
+    out = []
+    n = len(rows)
+    for k, r in enumerate(rows):
+        p = 1.0 if reveal is None else reveal[k]
+        tint = ramp(k, n, ("#16A34A", "#2563EB", "#7C3AED"))
+        if p <= 0:
+            out.append(f'<div class="lr" style="background:#F3F4F6;box-shadow:none"><div class="lk" style="color:#9CA3AF">{r["rank"]}</div>'
+                       f'{_qm(84)}<div class="ln" style="color:#9CA3AF">?</div></div>')
+            continue
+        op = min(1.0, p * 1.4)
+        logo = (f'<img src="{r["logo"]}" style="width:80%;height:80%;object-fit:contain">' if r.get("logo") else
+                f'<span style="font-family:\'Baloo 2\';font-weight:800;font-size:26px">{escape(r["name"][:4].upper())}</span>')
+        tag = f'<div class="lt">{escape(r["tag"])}</div>' if r.get("tag") else ""
+        out.append(f'<div class="lr" style="opacity:{op:.2f};box-shadow:inset 10px 0 0 {tint},0 4px 0 rgba(0,0,0,.06);'
+                   f'transform:translateX({(1 - p) * 60:.0f}px)"><div class="lk" style="color:{tint}">{r["rank"]}</div>'
+                   f'<div class="ll">{logo}</div><div class="ln">{escape(r["name"])}</div>{tag}'
+                   f'<div class="lrec">{escape(r["record"])}</div></div>')
+    t = escape(title).replace("{hl}", f"<em>{escape(highlight)}</em>").replace("\n", "<br>")
+    pill = (f'<div class="tease">{escape(tease)}</div>' if tease else
+            '<div class="tease" style="visibility:hidden">&nbsp;</div>' if reveal is not None else "")
+    body = f'''{LCSS}{pill}<div class="t" style="--hl:{hl_color}">{t}</div><div class="s">{escape(subtitle)}</div>
+<div class="lad">{"".join(out)}</div>'''
+    return _page(body, tall, source)

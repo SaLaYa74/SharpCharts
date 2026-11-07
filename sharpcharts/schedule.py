@@ -33,15 +33,20 @@ JOBS = [
     # Jarvis Nov 2: Tuesday, not Monday. On Mondays the week isn't over (MNF), so the Reel showed the week before.
     Job("st_fantasy",  "st_fantasy",  (TUE,), "08:00", live=True, note="Reel: last week's top fantasy scorers (PPR)"),
     Job("v2_waiver",   "v2_waiver",   (TUE,), "12:00", live=True, note="Reel: waiver risers (share of team touches)"),
-    Job("st_offense",  "st_offense",  (WED,), "12:00", live=True, note="Reel: highest-scoring NFL offenses"),
+    # Nov 6 (owner: "the posts all look the same"): more looks. Scatter plots replace NFL offense (Wed) and NBA margin (Fri);
+    # NFL margin and NBA offense (moved to Thu) are horizontal bars now; CFP rankings ladder whenever a new ranking is out.
+    Job("st_scatter",  "st_scatter",  (WED,), "12:00", live=True, note="Reel: NFL offense vs defense, every team as a logo"),
     Job("v2_rb",       "v2_rb",       (THU,), "12:00", live=True, note="Reel: RB share of team touches"),
-    Job("st_margin",   "st_margin",   (FRI,), "12:00", live=True, note="Reel: biggest average winning margin (NFL)"),
+    Job("st_margin",   "st_margin",   (FRI,), "12:00", live=True, note="Reel: biggest average winning margin (NFL, horizontal bars)"),
     Job("st_board",    "st_board",    (SAT,), "09:00", live=True, start="2026-11-01", note="Reel: Find Your Team (all 32, point differential)"),
     Job("v2_wr",       "v2_wr",       (SUN,), "08:00", live=True, note="Reel: WR/TE share of team targets"),
     Job("nba_scorers", "nba_scorers", EVERY_DAY, "09:30", live=True, start="2026-11-01", note="Reel: last night's top NBA scorers"),
     Job("nba_board",   "nba_board",   (MON,), "15:00", live=True, note="Reel: NBA Find Your Team (all 30, point differential)"),
-    Job("nba_offense", "nba_offense", (WED,), "15:00", live=True, note="Reel: highest-scoring NBA offenses"),
-    Job("nba_margin",  "nba_margin",  (FRI,), "15:00", live=True, note="Reel: biggest average winning margin (NBA)"),
+    Job("nba_offense", "nba_offense", (THU,), "15:00", live=True, note="Reel: highest-scoring NBA offenses (horizontal bars)"),
+    Job("nba_scatter", "nba_scatter", (FRI,), "15:00", live=True, start="2026-11-07", note="Reel: NBA offense vs defense, every team as a logo"),
+    # CFP committee ranking (Tuesdays, final one a Sunday): checks every morning, posts once per new ranking.
+    Job("cfp_rankings", "cfp_rankings", EVERY_DAY, "08:00", live=True, start="2026-11-07",
+        note="Reel: College Football Playoff Top 10 (ESPN, checked vs collegefootballplayoff.com)"),
     # ---- Background: multi-sport line archive (never posts)
     Job("archive_am",   "archive",  EVERY_DAY, "06:00", live=True, note="Save lines + results"),
     Job("archive_pm",   "archive",  EVERY_DAY, "14:00", live=True, note="Save lines closer to game time"),

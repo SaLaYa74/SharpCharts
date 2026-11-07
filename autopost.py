@@ -25,6 +25,7 @@ from zoneinfo import ZoneInfo
 from PIL import Image
 
 from sharpcharts import archive
+from sharpcharts import cfp as CFP
 from sharpcharts import checks as C
 from sharpcharts import nba as NBA
 from sharpcharts import stats as ST
@@ -109,6 +110,8 @@ class Runner:
         return self._ctx
 
     def build(self, job, out_dir):
+        if job.builder in CFP.BUILDERS:
+            return CFP.BUILDERS[job.builder](out_dir)
         if job.builder in S.BUILDERS:
             return S.BUILDERS[job.builder](out_dir)
         if job.builder in NBA.BUILDERS:

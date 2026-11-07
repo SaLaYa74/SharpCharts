@@ -28,6 +28,14 @@ class NoContent(DataError):
     """Nothing to post today (no games, off-season). Skipped quietly, not an error."""
 
 
+def already_posted(key):
+    """Daily jobs that post once per event (CFP ranking, Champions League matchday) stop here, before rendering."""
+    import json
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "posted.json")
+    if key in (json.load(open(path)) if os.path.exists(path) else {}):
+        raise NoContent(f"{key} already posted")
+
+
 @dataclass
 class Post:
     key: str

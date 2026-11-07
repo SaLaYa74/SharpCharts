@@ -15,7 +15,7 @@ from . import checks as C
 from . import light as L
 from .data import _get
 from .logos import logo_uri
-from .posts import DataError, NoContent
+from .posts import DataError, NoContent, already_posted
 from .v2 import _post
 
 ESPN = "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings"
@@ -95,6 +95,7 @@ def cfp_rankings(out_dir):
             "tag": "UNBEATEN" if r["record"].endswith("-0") else ""} for r in top]
     when = f"{released:%b} {released.day}"
     key = f"cfp-rankings-{released:%Y-%m-%d}"
+    already_posted(key)
     lead = rows[0]
     title, hl = ("{hl} and #1.\nGuess Who?", lead["record"]) if lead["record"].endswith("-0") else ("Who's {hl}?", "#1")
     sub = f"{'First ' if first else ''}College Football Playoff rankings · {when}"

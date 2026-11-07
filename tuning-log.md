@@ -57,3 +57,25 @@ logos (offense vs defense), and to jump on trending topics: the first College Fo
 
 **Watch:** does the CFP Reel beat the ~120-200 reach of the NBA scorers Reels? Do the scatter plots get shares
 (they're built for "find your team")? Saturday is now CFP + NFL board + NBA scorers (3, the max).
+
+## 2026-11-06 (later, Claude with the owner): Champions League + a daily cap
+
+**Owner:** keep the big hooks and tags ("big gold UNBEATEN"), the first 2 seconds are everything; add some Champions
+League posts about the big clubs only (Real Madrid, Man City, Barcelona, Bayern, Chelsea, PSG...).
+
+**Changed:**
+1. **Giants table** (sharpcharts/ucl.py, ladder look): the 10 most famous clubs in this season's Champions League, in
+   table order, with PERFECT / TOP 8 / PLAYOFFS / DANGER tags. Hook picks itself from the data: a giant in the bottom 12
+   ("___ Would Be Out Today"), else "Only N Giants Are Still Perfect" (now: PSG and Real Madrid). Posts the morning after
+   each matchday finishes (first: Sun Nov 8, Matchday 4). 66 checks: every giant's position, points and W-D-L match
+   UEFA's own table, points add up (3 per win, 1 per draw), and ESPN's zone notes match the top 8 / 9-24 / 25-36 rules.
+2. **Superstar scorers** (hbars): goals by players at those clubs, ties for the last spot included (so Kane makes it).
+   "5 Goals in 3 Games. Who?" → Haaland. Goals and games match between UEFA's player stats and ESPN for every player;
+   the caption also names the overall leader if he isn't at a giant (Como's Douvikas, 6). Mondays after a matchday
+   (first: Mon Nov 9).
+3. **3 posts a day, enforced** in autopost.py (MAX_POSTS_PER_DAY). Earliest jobs win; later ones wait and then skip.
+   Next squeeze: Thanksgiving Thu Nov 26 (Matchday 5 table at 7am) will push out the 3pm NBA offense Reel.
+4. Daily once-per-event jobs (CFP, Champions League) now stop before rendering when that event already posted.
+
+**Watch:** do soccer Reels reach a different audience (non-follower reach, shares) than NFL/NBA? If the giants table
+beats ~150 reach, add a "giant vs giant" matchday preview next.

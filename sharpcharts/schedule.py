@@ -9,6 +9,7 @@ hourly for WINDOW_HOURS, then skipped for the day.
 from dataclasses import dataclass
 
 WINDOW_HOURS = 12
+MAX_POSTS_PER_DAY = 3      # feed posts + Reels per day (Stories don't count); earliest jobs win
 
 MON, TUE, WED, THU, FRI, SAT, SUN = range(7)
 EVERY_DAY = (MON, TUE, WED, THU, FRI, SAT, SUN)
@@ -47,6 +48,12 @@ JOBS = [
     # CFP committee ranking (Tuesdays, final one a Sunday): checks every morning, posts once per new ranking.
     Job("cfp_rankings", "cfp_rankings", EVERY_DAY, "08:00", live=True, start="2026-11-07",
         note="Reel: College Football Playoff Top 10 (ESPN, checked vs collegefootballplayoff.com)"),
+    # Nov 6 (owner: "throw in some soccer... Champions League... the big names only"): the giants' table the morning
+    # after each matchday finishes, the superstar scorers race the following Monday. Both idle between matchdays.
+    Job("ucl_giants",  "ucl_giants",  EVERY_DAY, "07:00", live=True, start="2026-11-08",
+        note="Reel: Champions League table, biggest clubs only (ESPN, checked vs UEFA)"),
+    Job("ucl_scorers", "ucl_scorers", (MON,), "12:00", live=True, start="2026-11-09",
+        note="Reel: Champions League goals, stars at the biggest clubs (UEFA, checked vs ESPN)"),
     # ---- Background: multi-sport line archive (never posts)
     Job("archive_am",   "archive",  EVERY_DAY, "06:00", live=True, note="Save lines + results"),
     Job("archive_pm",   "archive",  EVERY_DAY, "14:00", live=True, note="Save lines closer to game time"),

@@ -66,6 +66,9 @@ ICONS = {
 
 def icon(name, px=126):
     """Team badge for an NFL abbreviation ('nba:LAL' for NBA), otherwise one of the simple icons."""
+    if name and name.startswith("data:"):          # a club logo (soccer): round white badge
+        return (f'<div style="width:{px}px;height:{px}px;border-radius:50%;background:#fff;border:5px solid #1F2937;display:flex;'
+                f'align-items:center;justify-content:center"><img src="{name}" style="width:72%;height:72%;object-fit:contain"></div>')
     if name and name.startswith("nba:"):
         from .nba import badge
         return badge(name[4:], px)
@@ -342,7 +345,8 @@ def ladder(title, highlight, subtitle, rows, source, tall=True, hl_color="#F9731
         op = min(1.0, p * 1.4)
         logo = (f'<img src="{r["logo"]}" style="width:80%;height:80%;object-fit:contain">' if r.get("logo") else
                 f'<span style="font-family:\'Baloo 2\';font-weight:800;font-size:26px">{escape(r["name"][:4].upper())}</span>')
-        tag = f'<div class="lt">{escape(r["tag"])}</div>' if r.get("tag") else ""
+        tag = (f'<div class="lt" style="background:{r.get("tag_bg", "#FDE047")};color:{r.get("tag_fg", "#1F2937")}">'
+               f'{escape(r["tag"])}</div>' if r.get("tag") else "")
         out.append(f'<div class="lr" style="opacity:{op:.2f};box-shadow:inset 10px 0 0 {tint},0 4px 0 rgba(0,0,0,.06);'
                    f'transform:translateX({(1 - p) * 60:.0f}px)"><div class="lk" style="color:{tint}">{r["rank"]}</div>'
                    f'<div class="ll">{logo}</div><div class="ln">{escape(r["name"])}</div>{tag}'

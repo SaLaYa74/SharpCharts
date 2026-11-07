@@ -33,7 +33,7 @@ from sharpcharts import posts as P
 from sharpcharts import reels as R
 from sharpcharts import sports as S
 from sharpcharts import v2 as V2
-from sharpcharts.schedule import JOBS, WINDOW_HOURS, Job
+from sharpcharts.schedule import JOBS, MAX_POSTS_PER_DAY, WINDOW_HOURS, Job
 from sharpcharts.voice import humanize
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -192,6 +192,13 @@ class Runner:
             for u in urls + ([cover_url] if cover_url else []):
                 wait_public(u, video=u.endswith(".mp4"))   # proves Instagram will be able to fetch it
             return "previewed", "built, checked and hosting verified, not published"
+
+        # Nov 6: soccer + CFP posts can land on a day that's already full; the earliest jobs win, later ones wait.
+        today = datetime.now(PT).date()
+        n_today = sum(1 for v in load(POSTED).values() if v.get("media") != "story" and v.get("posted_at")
+                      and datetime.fromisoformat(v["posted_at"]).astimezone(PT).date() == today)
+        if n_today >= MAX_POSTS_PER_DAY:
+            return "waiting", f"already {n_today} posts today (max {MAX_POSTS_PER_DAY})"
 
         from sharpcharts.instagram import Instagram
         ig = Instagram()

@@ -651,6 +651,16 @@
     "scheduled": "08:00",
     "trial": false
   },
+  "2026-wk08-st-board": {
+    "images": 1,
+    "job": "st_board",
+    "media": "reel",
+    "media_id": "18119150393107549",
+    "permalink": "https://www.instagram.com/reel/Dfcq53-Fhzr/",
+    "posted_at": "2026-11-07T17:02:02+00:00",
+    "scheduled": "09:00",
+    "trial": false
+  },
   "2026-wk08-st-fantasy": {
     "images": 1,
     "job": "st_fantasy",

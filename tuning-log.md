@@ -79,3 +79,13 @@ League posts about the big clubs only (Real Madrid, Man City, Barcelona, Bayern,
 
 **Watch:** do soccer Reels reach a different audience (non-follower reach, shares) than NFL/NBA? If the giants table
 beats ~150 reach, add a "giant vs giant" matchday preview next.
+
+## 2026-11-08 (Sun, Claude): fix for failing runs
+
+**What happened:** the Champions League jobs added Nov 6 were scheduled but never wired into autopost.py's builder
+dispatch. From 7am PT today the ucl_giants job crashed (KeyError) on every 15-minute run, so each run failed and GitHub
+emailed the owner. Nothing else was affected: the CFP Reel (Sat), NFL board, NBA scorers and today's WR Reel all posted.
+
+**Fixed:** ucl builders wired in; both build cleanly through the runner (66 and 86 checks, 0 blocking). New guard:
+`python3 autopost.py --list` now exits with an error if any scheduled job has no builder (Jarvis already runs it after
+every calendar change). The Matchday 4 giants table posts on the next run today instead of 7am.

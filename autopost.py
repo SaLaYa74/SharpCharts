@@ -29,6 +29,7 @@ from sharpcharts import cfp as CFP
 from sharpcharts import checks as C
 from sharpcharts import nba as NBA
 from sharpcharts import stats as ST
+from sharpcharts import ucl as UCL
 from sharpcharts import posts as P
 from sharpcharts import reels as R
 from sharpcharts import sports as S
@@ -112,6 +113,8 @@ class Runner:
     def build(self, job, out_dir):
         if job.builder in CFP.BUILDERS:
             return CFP.BUILDERS[job.builder](out_dir)
+        if job.builder in UCL.BUILDERS:
+            return UCL.BUILDERS[job.builder](out_dir)
         if job.builder in S.BUILDERS:
             return S.BUILDERS[job.builder](out_dir)
         if job.builder in NBA.BUILDERS:
@@ -219,6 +222,12 @@ class Runner:
         return "posted", link or post.key
 
 
+def has_builder(name):
+    """True if Runner.build can find this builder (keep in step with Runner.build)."""
+    return name == "archive" or any(name in m for m in (CFP.BUILDERS, UCL.BUILDERS, S.BUILDERS, NBA.BUILDERS, ST.BUILDERS,
+                                                        ST.BUILDERS_CTX, V2.BUILDERS, R.BUILDERS, P.BUILDERS))
+
+
 def due_jobs(now, runs):
     out = []
     for job in JOBS:
@@ -249,8 +258,12 @@ def main():
 
     if args.list:
         days = "Mon Tue Wed Thu Fri Sat Sun".split()
+        missing = [j.name for j in JOBS if not has_builder(j.builder)]
         for j in sorted(JOBS, key=lambda j: (j.days[0], j.time)):
-            print(f"{'LIVE   ' if j.live else 'preview'}  {j.time} PT  {','.join(days[d] for d in j.days):<28} {j.name:<15} {j.note}")
+            flag = "  ⛔ NO BUILDER: wire it into Runner.build" if j.name in missing else ""
+            print(f"{'LIVE   ' if j.live else 'preview'}  {j.time} PT  {','.join(days[d] for d in j.days):<28} {j.name:<15} {j.note}{flag}")
+        if missing:      # Nov 8: ucl_giants was scheduled but never wired in, and failed every 15 minutes
+            sys.exit(f"\n{len(missing)} job(s) have no builder: {', '.join(missing)}")
         return
 
     in_ci = os.environ.get("GITHUB_ACTIONS") == "true"

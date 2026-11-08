@@ -835,7 +835,7 @@
     "status": "skipped"
   },
   "2026-11-08:ucl_giants": {
-    "at": "2026-11-08T08:00-08:00",
+    "at": "2026-11-08T08:15-08:00",
     "detail": "KeyError: 'ucl_giants'",
     "status": "error"
   },

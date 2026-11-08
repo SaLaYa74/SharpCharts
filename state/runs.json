@@ -829,9 +829,19 @@
     "detail": "8 snapshot files",
     "status": "done"
   },
+  "2026-11-08:cfp_rankings": {
+    "at": "2026-11-08T08:00-08:00",
+    "detail": "cfp-rankings-2026-11-03 already posted",
+    "status": "skipped"
+  },
   "2026-11-08:ucl_giants": {
-    "at": "2026-11-08T07:45-08:00",
+    "at": "2026-11-08T08:00-08:00",
     "detail": "KeyError: 'ucl_giants'",
     "status": "error"
+  },
+  "2026-11-08:v2_wr": {
+    "at": "2026-11-08T08:00-08:00",
+    "detail": "https://www.instagram.com/reel/DffI8YygRfT/",
+    "status": "posted"
   }
 }

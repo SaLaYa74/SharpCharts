@@ -880,5 +880,15 @@
     "posted_at": "2026-11-04T23:02:46+00:00",
     "scheduled": "15:00",
     "trial": false
+  },
+  "ucl-giants-2027-md4": {
+    "images": 1,
+    "job": "ucl_giants",
+    "media": "reel",
+    "media_id": "18437755327180691",
+    "permalink": "https://www.instagram.com/reel/DffOMChATkp/",
+    "posted_at": "2026-11-08T16:48:55+00:00",
+    "scheduled": "07:00",
+    "trial": false
   }
 }

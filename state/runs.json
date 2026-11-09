@@ -859,6 +859,11 @@
     "detail": "8 snapshot files",
     "status": "done"
   },
+  "2026-11-09:cfp_rankings": {
+    "at": "2026-11-09T08:00-08:00",
+    "detail": "No CFP committee ranking in ESPN's feed (season not there yet).",
+    "status": "skipped"
+  },
   "2026-11-09:ucl_giants": {
     "at": "2026-11-09T07:00-08:00",
     "detail": "ucl-giants-2027-md4 already posted",

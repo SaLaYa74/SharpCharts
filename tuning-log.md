@@ -89,3 +89,27 @@ emailed the owner. Nothing else was affected: the CFP Reel (Sat), NFL board, NBA
 **Fixed:** ucl builders wired in; both build cleanly through the runner (66 and 86 checks, 0 blocking). New guard:
 `python3 autopost.py --list` now exits with an error if any scheduled job has no builder (Jarvis already runs it after
 every calendar change). The Matchday 4 giants table posts on the next run today instead of 7am.
+
+## 2026-11-09 (Mon, Jarvis full review)
+
+**Numbers (7 days, 17 Reels):** 8 followers. **Champions League giants table: 1,070 reach / 1,404 views** (Sun 11/8),
+the page's best ever, ~9x the usual. CFP Top 10: 295. NBA top scorers: 226 avg over 7 posts (607 best). Every NFL
+format: 107-125 (offense, margin, board, RB/WR share, waiver). Watch time 3.4-7.2 s; the boards hold best (7.2 s NFL).
+Saves, shares, comments: still 0 on all 62 posts. Midday 234 avg reach vs evening 130, but that gap is the formats
+(the winners all post midday), not the clock. No errors in the run log. Today's 8am CFP skip is expected: ESPN's feed
+shows the CFP poll only after the committee releases it (Tue Nov 10).
+
+**Changed:**
+1. **"Comment your team" on both Find Your Team boards** (NFL Sat, NBA Mon), plus a follow reason ("New NFL board every
+   Saturday. Follow to track your team all season."). Same conversion test as Paycheck Math. 0 comments in 62 posts
+   so far. Test builds: NBA 771 checks, NFL 474, 0 blocking; hand-checked Wolves +122 (1,299-1,177, 8-3) and
+   Bulls -150 (1,014-1,164, 1-8) against ESPN standings.
+
+**Not changed:** NBA vs NFL. NBA scorers is the only NBA format beating NFL. Other NBA formats sit at 109-167, so
+"more NBA" isn't the answer. Event-driven formats (Champions League, CFP, last night's scorers) are what break out.
+Soccer gets one post so far (n=1). Waiting for today's first Champions League scorers Reel before building a spin-off.
+
+**Watch Thu Nov 12:** Champions League scorers (Mon noon) reach. If it also tops ~500, build a "giant vs giant" or
+Mbappé-vs-Haaland Reel at the Nov 16 review, ahead of Matchday 5 (Nov 24-25). Comments on the NBA board (today 3pm).
+Waiver risers' 3rd post (Tue): retire it if it stays under ~3 s watch (now 2.3 and 2.7 s). First CFP ranking
+week 2 (Tue).

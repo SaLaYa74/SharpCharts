@@ -120,8 +120,9 @@ def nfl_board(ctx, out_dir, sizes=None):
         f"Find your team 👇 Every NFL team by point differential (points scored minus allowed).\n\n"
         f"Best: {D.TEAMS[ba][0]} {b['pf'] - b['pa']:+d}. Worst: {D.TEAMS[wa][0]} {w['pf'] - w['pa']:+d}.\n\n"
         + "\n".join(f"{i + 1}. {D.TEAMS[a][0]} ({r['record']}): {r['pf'] - r['pa']:+d}" for i, (a, r) in enumerate(rows))
-        + "\n\nIs your team better or worse than its record? 👇"
-        + f"\n\n📤 Send this to the {D.TEAMS[wa][0]} fan in your group chat 😬")
+        + "\n\n💬 Comment your team 👇 Better or worse than its record?"
+        + f"\n\n📤 Send this to the {D.TEAMS[wa][0]} fan in your group chat 😬"
+        + "\n🔁 New NFL board every Saturday. Follow to track your team all season.")
     cap += f"\n\nPoint differential, every game through Week {wk}.\n{NFL_DATA}\n{NFL_TAGS}"
     return _post(out_dir, key, "st_board", lambda p: L.board(
         "Find Your {hl}", "Team", f"Point differential · {D.TEAMS[ba][0]} lead at {b['pf'] - b['pa']:+d} · thru Week {wk}",
@@ -254,8 +255,9 @@ def nba_board(out_dir):
         f"Find your team 👇 All 30 NBA teams by point differential (points scored minus allowed).\n\n"
         f"Best: {N.name(ba)} {b['pf'] - b['pa']:+d}. Worst: {N.name(wa)} {w['pf'] - w['pa']:+d}.\n\n"
         + "\n".join(f"{i + 1}. {N.name(a)} ({r['record']}): {r['pf'] - r['pa']:+d}" for i, (a, r) in enumerate(rows))
-        + "\n\nWhere's your team, and is it for real? 👇"
-        + f"\n\n📤 Send this to the {N.name(wa)} fan in your group chat 😬")
+        + "\n\n💬 Comment your team 👇 Is it for real?"
+        + f"\n\n📤 Send this to the {N.name(wa)} fan in your group chat 😬"
+        + "\n🔁 New NBA board every Monday. Follow to track your team all season.")
     cap += f"\n\nPoint differential, every game through {thru:%b} {thru.day}.\n{NBA_DATA}\n{NBA_TAGS}"
     return _post(out_dir, key, "nba_board", lambda p: L.board(
         "Find Your {hl}", "Team", f"Point differential · {N.name(ba)} lead at {b['pf'] - b['pa']:+d} · {N._thru(thru)}",

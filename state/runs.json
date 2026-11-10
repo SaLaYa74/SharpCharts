@@ -888,5 +888,10 @@
     "at": "2026-11-09T12:00-08:00",
     "detail": "https://www.instagram.com/reel/DfiJOSiiune/",
     "status": "posted"
+  },
+  "2026-11-10:archive_am": {
+    "at": "2026-11-10T06:00-08:00",
+    "detail": "8 snapshot files",
+    "status": "done"
   }
 }

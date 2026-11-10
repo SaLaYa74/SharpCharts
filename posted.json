@@ -721,6 +721,16 @@
     "scheduled": "08:00",
     "trial": false
   },
+  "2026-wk09-st-fantasy": {
+    "images": 1,
+    "job": "st_fantasy",
+    "media": "reel",
+    "media_id": "18083280620419642",
+    "permalink": "https://www.instagram.com/reel/DfkSf_hjwOx/",
+    "posted_at": "2026-11-10T16:02:35+00:00",
+    "scheduled": "08:00",
+    "trial": false
+  },
   "cfp-rankings-2026-11-03": {
     "images": 1,
     "job": "cfp_rankings",

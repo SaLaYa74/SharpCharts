@@ -113,3 +113,13 @@ Soccer gets one post so far (n=1). Waiting for today's first Champions League sc
 Mbappé-vs-Haaland Reel at the Nov 16 review, ahead of Matchday 5 (Nov 24-25). Comments on the NBA board (today 3pm).
 Waiver risers' 3rd post (Tue): retire it if it stays under ~3 s watch (now 2.3 and 2.7 s). First CFP ranking
 week 2 (Tue).
+
+## 2026-11-11 (Wed, Claude): CFP Reel held back by a date-check bug; new "fallen #1" hook
+
+**What happened:** the Nov 10 CFP rankings matched rank-for-rank and record-for-record between ESPN and
+collegefootballplayoff.com, but the post kept waiting: the date check read the official site's week menu
+("Nov. 10 Nov. 3", newest first) from the wrong end and compared ESPN's Nov 10 with "Nov. 3". By tonight that would have
+become a failed run (and a failure email). Fixed: compare with the newest week in the menu (68 checks pass).
+**Hook:** when last week's #1 has fallen, the Reel leads with it: "Last Week's #1 Is Now #7" (Miami, #1 → #7). ESPN's
+previous-rank field must agree with the #1 in our own posted Reel from last week, or the hook isn't used.
+Today's 6 "startup failure" emails (12:30 and 12:45 PT) were a GitHub outage, not this.

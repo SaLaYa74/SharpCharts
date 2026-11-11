@@ -57,8 +57,11 @@ def official_ranking():
         raise DataError("collegefootballplayoff.com: 'Full Rankings' section not found (page layout changed?)")
     seg = text[i + len("Full Rankings"):i + 3000]
     rows = [(int(r), s.strip(), rec) for r, s, rec in re.findall(r"\b(\d{1,2}) ([A-Z][\w.&'() -]*?) (\d{1,2}-\d{1,2})\b", seg)]
-    label = re.search(r"\b((?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)\.? \d{1,2}) Top 4 Seeds", text)
-    return (label.group(1) if label else ""), rows
+    # The week menu sits just before "Top 4 Seeds", newest first ("... 2014 Nov. 10 Nov. 3 Top 4 Seeds"), and the page
+    # shows the newest week. Nov 11: this used to take the label nearest "Top 4 Seeds", i.e. the OLDEST week.
+    k = text.find("Top 4 Seeds")
+    weeks = re.findall(r"\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)\.? \d{1,2}\b", text[max(0, k - 200):k]) if k >= 0 else []
+    return (weeks[0] if weeks else ""), rows
 
 
 def checked_ranking(rep, today=None):
@@ -85,6 +88,19 @@ def checked_ranking(rep, today=None):
     return released, espn
 
 
+def last_week_number_one():
+    """The #1 team in our most recent posted CFP Reel (its caption's '1. Team (record)' line), or None."""
+    import glob
+    import os
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    caps = sorted(glob.glob(os.path.join(root, "media", "*_cfp_rankings", "caption.txt")))
+    for path in reversed(caps):
+        m = re.search(r"^1\. (.+?) \(\d{1,2}-\d{1,2}\)$", open(path).read(), re.M)
+        if m:
+            return m.group(1)
+    return None
+
+
 def cfp_rankings(out_dir):
     rep = C.Report("cfp rankings")
     released, rows = checked_ranking(rep)
@@ -98,9 +114,18 @@ def cfp_rankings(out_dir):
     already_posted(key)
     lead = rows[0]
     title, hl = ("{hl} and #1.\nGuess Who?", lead["record"]) if lead["record"].endswith("-0") else ("Who's {hl}?", "#1")
+    # Nov 11: when last week's #1 has fallen, that's the headline ("Last Week's #1 Is Now #7"). ESPN's previous-rank
+    # field must agree with the #1 in our own verified post from last week, or we don't make the claim.
+    fallen = next((r for r in rows if r["previous"] == 1 and r["rank"] != 1), None)
+    if fallen and last_week_number_one() == fallen["name"]:
+        rep.add(C.PASS, "cfp: last week's #1 matches our previous post", fallen["name"])
+        title, hl = "Last Week's #1\nIs Now {hl}", f"#{fallen['rank']}"
+    else:
+        fallen = None
     sub = f"{'First ' if first else ''}College Football Playoff rankings · {when}"
     cap = (
-        f"The {'first ' if first else ''}College Football Playoff rankings are out 🏈 {lead['name']} is #1 at {lead['record']}.\n\n"
+        f"The {'first ' if first else ''}College Football Playoff rankings are out 🏈 {lead['name']} is #1 at {lead['record']}."
+        + (f" Last week's #1, {fallen['name']}, fell to #{fallen['rank']} 😳" if fallen else "") + "\n\n"
         + "\n".join(f"{r['rank']}. {r['name']} ({r['record']})" for r in rows)
         + (f"\n\nStill unbeaten in the Top 25: {', '.join(r['name'] for r in unbeaten)}." if unbeaten else "")
         + "\n\nWho's ranked too high? Who got robbed? 👇"

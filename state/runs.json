@@ -929,6 +929,11 @@
     "detail": "8 snapshot files",
     "status": "done"
   },
+  "2026-11-11:cfp_rankings": {
+    "at": "2026-11-11T08:00-08:00",
+    "detail": "CFP ranking: ESPN and collegefootballplayoff.com disagree; see checks.",
+    "status": "waiting"
+  },
   "2026-11-11:ucl_giants": {
     "at": "2026-11-11T07:00-08:00",
     "detail": "ucl-giants-2027-md4 already posted",

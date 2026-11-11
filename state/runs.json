@@ -929,8 +929,13 @@
     "detail": "8 snapshot files",
     "status": "done"
   },
+  "2026-11-11:archive_pm": {
+    "at": "2026-11-11T14:00-08:00",
+    "detail": "8 snapshot files",
+    "status": "done"
+  },
   "2026-11-11:cfp_rankings": {
-    "at": "2026-11-11T13:45-08:00",
+    "at": "2026-11-11T14:00-08:00",
     "detail": "CFP ranking: ESPN and collegefootballplayoff.com disagree; see checks.",
     "status": "waiting"
   },

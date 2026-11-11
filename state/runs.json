@@ -923,5 +923,10 @@
     "at": "2026-11-10T12:00-08:00",
     "detail": "https://www.instagram.com/reel/DfkuHdJiqJa/",
     "status": "posted"
+  },
+  "2026-11-11:archive_am": {
+    "at": "2026-11-11T06:00-08:00",
+    "detail": "8 snapshot files",
+    "status": "done"
   }
 }

@@ -930,9 +930,14 @@
     "status": "done"
   },
   "2026-11-11:cfp_rankings": {
-    "at": "2026-11-11T09:15-08:00",
+    "at": "2026-11-11T09:30-08:00",
     "detail": "CFP ranking: ESPN and collegefootballplayoff.com disagree; see checks.",
     "status": "waiting"
+  },
+  "2026-11-11:nba_scorers": {
+    "at": "2026-11-11T09:30-08:00",
+    "detail": "https://www.instagram.com/reel/DfnBkQECAPM/",
+    "status": "posted"
   },
   "2026-11-11:ucl_giants": {
     "at": "2026-11-11T07:00-08:00",

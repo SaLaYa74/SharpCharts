@@ -1,0 +1,380 @@
+{
+  "subject": "cfp rankings",
+  "counts": {
+    "pass": 72,
+    "warn": 2,
+    "block": 0
+  },
+  "checks": [
+    {
+      "status": "pass",
+      "check": "cfp: ESPN has 25 teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: official site lists ranks 1-25 in order",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: both sources show the same release date",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #1 Georgia 8-1 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Georgia record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #2 Utah 9-0 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Utah record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #3 Alabama 7-2 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Alabama record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #4 UCLA 9-0 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: UCLA record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #5 Notre Dame 8-1 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Notre Dame record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #6 Texas 7-2 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Texas record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #7 Miami 8-1 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Miami record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #8 Tennessee 7-2 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Tennessee record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #9 Indiana 8-1 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Indiana record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #10 BYU 7-2 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: BYU record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #11 Kentucky 7-2 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Kentucky record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #12 Texas Tech 8-1 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Texas Tech record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #13 Wake Forest 8-1 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Wake Forest record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #14 Houston 7-2 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Houston record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #15 Iowa 7-2 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Iowa record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #16 Oregon 6-3 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Oregon record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #17 South Carolina 6-3 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: South Carolina record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #18 USC 7-2 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: USC record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #19 Ole Miss 6-3 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Ole Miss record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #20 Ohio State 6-3 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Ohio State record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #21 LSU 6-3 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: LSU record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #22 Missouri 6-3 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Missouri record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #23 Arizona 7-2 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Arizona record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #24 Boise State 8-1 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Boise State record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #25 Oklahoma State 6-3 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Oklahoma State record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: last week's #1 matches our previous post",
+      "detail": "Miami"
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "warn",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": "7 hashtags (Instagram now favors \u22645)"
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_rankings.mp4: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_rankings.mp4: file size",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_rankings.mp4: duration",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_rankings.mp4: 1080x1920",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_rankings.mp4: has audio",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_rankings.mp4: H.264 video",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_rankings_cover.jpg: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_rankings_cover.jpg: dimensions",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_rankings_cover.jpg: not empty",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_rankings_cover.jpg: has visible content",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "warn",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": "7 hashtags (Instagram now favors \u22645)"
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    }
+  ]
+}

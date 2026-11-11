@@ -731,6 +731,16 @@
     "scheduled": "08:00",
     "trial": false
   },
+  "2026-wk09-st-scatter": {
+    "images": 1,
+    "job": "st_scatter",
+    "media": "reel",
+    "media_id": "18135876424839644",
+    "permalink": "https://www.instagram.com/reel/DfnSuImEeIl/",
+    "posted_at": "2026-11-11T20:02:24+00:00",
+    "scheduled": "12:00",
+    "trial": false
+  },
   "2026-wk09-v2-waiver": {
     "images": 1,
     "job": "v2_waiver",

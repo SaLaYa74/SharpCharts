@@ -1021,6 +1021,16 @@
     "scheduled": "15:00",
     "trial": false
   },
+  "nba-2027-w2646-scatter": {
+    "images": 1,
+    "job": "nba_scatter",
+    "media": "reel",
+    "media_id": "18090920684283378",
+    "permalink": "https://www.instagram.com/reel/Dfsw6DYjGNl/",
+    "posted_at": "2026-11-13T23:02:09+00:00",
+    "scheduled": "15:00",
+    "trial": false
+  },
   "ucl-giants-2027-md4": {
     "images": 1,
     "job": "ucl_giants",

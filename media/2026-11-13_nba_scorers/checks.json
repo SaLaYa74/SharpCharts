@@ -1,0 +1,290 @@
+{
+  "subject": "stats nba scorers",
+  "counts": {
+    "pass": 56,
+    "warn": 0,
+    "block": 0
+  },
+  "checks": [
+    {
+      "status": "pass",
+      "check": "TOR@PHI 2026-11-12: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@PHI 2026-11-12: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@PHI 2026-11-12: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@WSH 2026-11-12: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@WSH 2026-11-12: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@WSH 2026-11-12: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIN 2026-11-12: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIN 2026-11-12: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIN 2026-11-12: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@PHX 2026-11-12: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@PHX 2026-11-12: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@PHX 2026-11-12: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@PHI 2026-11-12: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@PHI 2026-11-12: TOR box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@PHI 2026-11-12: TOR player points add up to 112",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@PHI 2026-11-12: TOR top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@PHI 2026-11-12: PHI box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@PHI 2026-11-12: PHI player points add up to 123",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "TOR@PHI 2026-11-12: PHI top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@WSH 2026-11-12: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@WSH 2026-11-12: DET box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@WSH 2026-11-12: DET player points add up to 144",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@WSH 2026-11-12: DET top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@WSH 2026-11-12: WSH box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@WSH 2026-11-12: WSH player points add up to 140",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@WSH 2026-11-12: WSH top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIN 2026-11-12: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIN 2026-11-12: DAL box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIN 2026-11-12: DAL player points add up to 94",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIN 2026-11-12: DAL top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIN 2026-11-12: MIN box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIN 2026-11-12: MIN player points add up to 133",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DAL@MIN 2026-11-12: MIN top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@PHX 2026-11-12: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@PHX 2026-11-12: CHA box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@PHX 2026-11-12: CHA player points add up to 96",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@PHX 2026-11-12: CHA top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@PHX 2026-11-12: PHX box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@PHX 2026-11-12: PHX player points add up to 101",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@PHX 2026-11-12: PHX top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "box scores loaded for every final",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: file size",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: duration",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: 1080x1920",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: has audio",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: H.264 video",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: dimensions",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: not empty",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: has visible content",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    }
+  ]
+}

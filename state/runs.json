@@ -994,6 +994,11 @@
     "detail": "9 snapshot files",
     "status": "done"
   },
+  "2026-11-13:archive_pm": {
+    "at": "2026-11-13T14:00-08:00",
+    "detail": "9 snapshot files",
+    "status": "done"
+  },
   "2026-11-13:cfp_rankings": {
     "at": "2026-11-13T08:00-08:00",
     "detail": "cfp-rankings-2026-11-10 already posted",

@@ -1,0 +1,46 @@
+Find your team 👇 Every NFL team by point differential (points scored minus allowed).
+
+Best: Jaguars +108. Worst: Chargers -98.
+
+1. Jaguars (6-2): +108
+2. 49ers (7-1): +79
+3. Bills (7-1): +69
+4. Bengals (6-2): +65
+5. Chiefs (6-2): +59
+6. Bears (7-2): +57
+7. Seahawks (5-4): +40
+8. Steelers (6-2): +36
+9. Lions (6-2): +33
+10. Rams (5-4): +33
+11. Vikings (6-2): +30
+12. Packers (6-3): +25
+13. Buccaneers (3-6): +24
+14. Texans (3-5): +17
+15. Broncos (7-2): +12
+16. Cowboys (4-5): +10
+17. Giants (5-2-1): +10
+18. Patriots (5-4): +4
+19. Panthers (3-5): -20
+20. Raiders (4-5): -30
+21. Commanders (2-5-1): -30
+22. Saints (3-5): -31
+23. Falcons (3-6): -35
+24. Browns (5-4): -35
+25. Jets (2-7): -41
+26. Ravens (4-5): -47
+27. Titans (1-7): -55
+28. Colts (2-7): -65
+29. Eagles (2-7): -73
+30. Dolphins (1-7): -74
+31. Cardinals (3-6): -77
+32. Chargers (0-8): -98
+
+💬 Comment your team 👇 Better or worse than its record?
+
+📤 Send this to the Chargers fan in your group chat 😬
+🔁 New NFL board every Saturday. Follow to track your team all season.
+
+Point differential, every game through Week 9.
+
+Data: nflverse, every final score verified vs. ESPN.
+#nfl #nflstats #football #nflfootball

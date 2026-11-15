@@ -123,3 +123,16 @@ become a failed run (and a failure email). Fixed: compare with the newest week i
 **Hook:** when last week's #1 has fallen, the Reel leads with it: "Last Week's #1 Is Now #7" (Miami, #1 → #7). ESPN's
 previous-rank field must agree with the #1 in our own posted Reel from last week, or the hook isn't used.
 Today's 6 "startup failure" emails (12:30 and 12:45 PT) were a GitHub outage, not this.
+
+## 2026-11-14 (Sat, Claude with the owner): the "debates" reset
+
+**Numbers (28 days):** 78 posts, most at ~110-140 reach, 10 followers, ~0 shares/saves. What broke out: Champions League
+giants table 1,076 reach; CFP rankings 440 avg + comments; NFL scatter 10.8 s watch + 6 comments; NBA scorers 306 avg
+(best 949).
+
+**Changed:** half the volume, only formats that sparked reactions: nba_scorers (daily), st_scatter (Wed), nba_scatter
+(Fri), cfp_rankings (weekly), Champions League giants + scorers (after matchdays). Retired: fantasy top scorers, waiver,
+RB/WR usage, NFL/NBA margin, NBA offense bars, NFL/NBA Find Your Team boards. Owner asked about switching to general
+data trends; decided against it (it would compete with Paycheck Math and Liftoff Daily).
+
+**Checkpoint Fri Dec 5:** if reach and followers are still flat vs this baseline, recommend pausing the page.

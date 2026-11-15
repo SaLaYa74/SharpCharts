@@ -32,18 +32,12 @@ JOBS = [
     # fewer but better Reels. Every Reel opens on a bold claim (the #1 number), then counts down to who it is.
     # NFL: fantasy + usage (our best performers) and team scoring; NBA: nightly top scorers + weekly team stats.
     # Jarvis Nov 2: Tuesday, not Monday. On Mondays the week isn't over (MNF), so the Reel showed the week before.
-    Job("st_fantasy",  "st_fantasy",  (TUE,), "08:00", live=True, note="Reel: last week's top fantasy scorers (PPR)"),
-    Job("v2_waiver",   "v2_waiver",   (TUE,), "12:00", live=True, note="Reel: waiver risers (share of team touches)"),
-    # Nov 6 (owner: "the posts all look the same"): more looks. Scatter plots replace NFL offense (Wed) and NBA margin (Fri);
-    # NFL margin and NBA offense (moved to Thu) are horizontal bars now; CFP rankings ladder whenever a new ranking is out.
-    Job("st_scatter",  "st_scatter",  (WED,), "12:00", live=True, note="Reel: NFL offense vs defense, every team as a logo"),
-    Job("v2_rb",       "v2_rb",       (THU,), "12:00", live=True, note="Reel: RB share of team touches"),
-    Job("st_margin",   "st_margin",   (FRI,), "12:00", live=True, note="Reel: biggest average winning margin (NFL, horizontal bars)"),
-    Job("st_board",    "st_board",    (SAT,), "09:00", live=True, start="2026-11-01", note="Reel: Find Your Team (all 32, point differential)"),
-    Job("v2_wr",       "v2_wr",       (SUN,), "08:00", live=True, note="Reel: WR/TE share of team targets"),
+    # Nov 14 (owner + Claude, 28 days: 78 posts, ~110-140 reach each, 10 followers): "sports debates, settled with data".
+    # Half the volume. Kept only what sparked reactions: NBA big-scorer nights (up to 949 reach), the logo scatters
+    # (10.8 s watch, 6 comments), CFP rankings (440 avg + comments), Champions League giants (1,076). Everything else
+    # (fantasy usage, margins, offense bars, Find Your Team boards: ~60-140 reach, no shares) retired.
     Job("nba_scorers", "nba_scorers", EVERY_DAY, "09:30", live=True, start="2026-11-01", note="Reel: last night's top NBA scorers"),
-    Job("nba_board",   "nba_board",   (MON,), "15:00", live=True, note="Reel: NBA Find Your Team (all 30, point differential)"),
-    Job("nba_offense", "nba_offense", (THU,), "15:00", live=True, note="Reel: highest-scoring NBA offenses (horizontal bars)"),
+    Job("st_scatter",  "st_scatter",  (WED,), "12:00", live=True, note="Reel: NFL offense vs defense, every team as a logo"),
     Job("nba_scatter", "nba_scatter", (FRI,), "15:00", live=True, start="2026-11-07", note="Reel: NBA offense vs defense, every team as a logo"),
     # CFP committee ranking (Tuesdays, final one a Sunday): checks every morning, posts once per new ranking.
     Job("cfp_rankings", "cfp_rankings", EVERY_DAY, "08:00", live=True, start="2026-11-07",
@@ -58,6 +52,8 @@ JOBS = [
     Job("archive_am",   "archive",  EVERY_DAY, "06:00", live=True, note="Save lines + results"),
     Job("archive_pm",   "archive",  EVERY_DAY, "14:00", live=True, note="Save lines closer to game time"),
 ]
+# Retired Nov 14 (the debates reset): st_fantasy, v2_waiver, v2_rb, v2_wr, st_margin, st_board, nba_board, nba_offense.
+# Builders still exist. Judge the reset on Dec 5: if reach and followers are still flat, pause the page.
 # Retired Oct 31 (stats page, no betting framing): v2_angles/best/worst/overs/upsets/all32/sunday, the Sunday
 # game-day Story (betting lines), nba_night/best/worst/all30. Their builders still exist.
 # Retired Oct 24 (reached ~5 people each or replaced by v2): NFL slate/recap/MNF images, primetime Stories,

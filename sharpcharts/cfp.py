@@ -140,3 +140,126 @@ def cfp_rankings(out_dir):
 
 
 BUILDERS = {"cfp_rankings": cfp_rankings}
+
+
+# ---------------------------------------------------------------- Top 25 offense vs defense (Jarvis, Nov 16)
+# The College Football Playoff Top 25 as a logo scatter: points scored vs allowed per game. Every team's games,
+# points scored and points allowed must match exactly between ESPN (each team's schedule, game by game) and NCAA.com
+# (official FBS scoring offense + scoring defense tables), or the post is blocked. The ranking itself is the same
+# two-source checked ranking as cfp_rankings.
+TEAM_SCHED = "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/{}/schedule"
+NCAA_STATS = "https://www.ncaa.com/stats/football/fbs/current/team/{}{}"     # 27 = scoring offense, 28 = scoring defense
+NCAA_ALIASES = {"southern california": "usc", "army west point": "army", "miami (fl)": "miami", "ole miss": "ole miss",
+                "app state": "appalachian state", "fiu": "florida international", "uconn": "uconn",
+                "ga. southern": "georgia southern", "ucf": "ucf", "smu": "smu", "tcu": "tcu", "byu": "byu", "lsu": "lsu"}
+
+
+def _ncaa_norm(name):
+    n = re.sub(r"\s+", " ", html.unescape(name).strip().lower())
+    n = NCAA_ALIASES.get(n, n)
+    return re.sub(r" st\.$", " state", n)
+
+
+def _ncaa_table(stat):
+    """{normalized school: (games, total points)} from every page of an NCAA.com FBS team-stat table."""
+    out, page = {}, ""
+    for i in range(1, 6):
+        s = _get(NCAA_STATS.format(stat, page)).decode("utf-8", "replace")
+        head = re.search(r"<thead>(.*?)</thead>", s, re.S)
+        cols = [re.sub(r"<[^>]+>", "", c).strip() for c in re.findall(r"<th[^>]*>(.*?)</th>", head.group(1), re.S)] if head else []
+        if "Team" not in cols or "G" not in cols or "Pts" not in cols:
+            raise DataError(f"NCAA.com stat {stat}: table columns changed ({cols})")
+        rows = re.findall(r"<tr>(.*?)</tr>", re.search(r"<tbody>(.*?)</tbody>", s, re.S).group(1), re.S)
+        for r in rows:
+            cells = [re.sub(r"<[^>]+>", "", c).strip() for c in re.findall(r"<td[^>]*>(.*?)</td>", r, re.S)]
+            if len(cells) == len(cols):
+                row = dict(zip(cols, cells))
+                out[_ncaa_norm(row["Team"])] = (int(row["G"]), int(float(row["Pts"].replace(",", ""))))
+        if f"/team/{stat}/p{i + 1}\"" not in s:
+            break
+        page = f"/p{i + 1}"
+    return out
+
+
+def _espn_points(team_id):
+    """(games, points for, points against, last game date, color) from ESPN's game-by-game schedule (completed games)."""
+    d = json.loads(_get(TEAM_SCHED.format(team_id)))
+    g = pf = pa = 0
+    last = None
+    for e in d.get("events", []):
+        c = e["competitions"][0]
+        if not c["status"]["type"].get("completed"):
+            continue
+        us = next(x for x in c["competitors"] if x["team"]["id"] == str(team_id))
+        them = next(x for x in c["competitors"] if x["team"]["id"] != str(team_id))
+        g += 1
+        pf += int(us["score"]["value"])
+        pa += int(them["score"]["value"])
+        last = max(last or e["date"], e["date"])
+    return g, pf, pa, last, "#" + (d.get("team", {}).get("color") or "3A4A6B")
+
+
+def top25_scatter(out_dir, rows, released, poll_label, rep):
+    """rows: the checked ranking (dicts with rank, name, id). Builds the scatter Reel."""
+    QUADS = ("ELITE AT BOTH", "DEFENSE FIRST", "ALL OFFENSE", "BELOW AVG")    # vs the Top 25 average
+    off, dfn = _ncaa_table(27), _ncaa_table(28)
+    rep.require(len(off) >= 120 and len(dfn) >= 120, "ncaa: full FBS scoring tables loaded",
+                f"{len(off)} offense rows, {len(dfn)} defense rows")
+    t, last = {}, None
+    for r in rows:
+        g, pf, pa, when, color = _espn_points(r["id"])
+        k = _ncaa_norm(r["name"])
+        if not rep.require(k in off and k in dfn, f"ncaa: {r['name']} found on NCAA.com", f"no NCAA.com row for {k!r}"):
+            continue
+        (go, po), (gd, pd) = off[k], dfn[k]
+        rep.require(g == go == gd and pf == po and pa == pd, f"{r['name']}: games and points match (ESPN vs NCAA.com)",
+                    f"ESPN {g} g, {pf}-{pa} vs NCAA.com {go} g {po} scored, {gd} g {pd} allowed")
+        rep.require(8 <= pf / max(g, 1) <= 60 and 3 <= pa / max(g, 1) <= 45, f"{r['name']}: per-game points plausible",
+                    f"{pf / max(g, 1):.1f} scored, {pa / max(g, 1):.1f} allowed")
+        t[r["id"]] = {"name": r["name"], "rank": r["rank"], "g": g, "ppg": pf / g if g else 0, "papg": pa / g if g else 0,
+                      "color": color}
+        last = max(last or when, when)
+    rep.require(len(t) == len(rows) == 25, "cfp scatter: all 25 ranked teams plotted", f"{len(t)} of {len(rows)}")
+    if not rep.ok:
+        raise DataError("CFP scatter: ESPN and NCAA.com disagree; see checks.")
+    ax = sum(r["ppg"] for r in t.values()) / len(t)
+    ay = sum(r["papg"] for r in t.values()) / len(t)
+    both = sorted((i for i, r in t.items() if r["ppg"] > ax and r["papg"] < ay), key=lambda i: t[i]["rank"])
+    if not both:
+        raise NoContent("No ranked team is above the Top 25 average on both sides.")
+    best_o = max(t, key=lambda i: (t[i]["ppg"], -t[i]["rank"]))
+    best_d = min(t, key=lambda i: (t[i]["papg"], t[i]["rank"]))
+    thru = datetime.fromisoformat(last.replace("Z", "+00:00")).astimezone(timezone(timedelta(hours=-5))).date()
+    pts = [{"x": r["ppg"], "y": r["papg"], "abbr": r["name"][:4].upper(), "logo": logo_uri(i, "ncaa"), "color": r["color"]}
+           for i, r in t.items()]
+    n = len(both)
+    title = "Only {hl} of the Top 25\nAre Elite at Both" if n <= 8 else "{hl} of the Top 25\nAre Elite at Both"
+    name = lambda i: f"#{t[i]['rank']} {t[i]['name']}"
+    cap = (
+        f"{'Only ' if n <= 8 else ''}{n} of the College Football Playoff Top 25 score more AND allow less than the "
+        f"Top 25 average ({ax:.1f} scored, {ay:.1f} allowed per game) 👀\n\n"
+        f"🟢 Elite at both: {', '.join(name(i) for i in both)}\n\n"
+        f"Best offense: {name(best_o)}, {t[best_o]['ppg']:.1f} points a game. "
+        f"Best defense: {name(best_d)}, {t[best_d]['papg']:.1f} allowed.\n\n"
+        "Most complete team in the country? Who's ranked on reputation? 👇"
+        "\n\n📤 Send this to the fan who swears their team is underrated."
+        f"\n\n{poll_label} ({released:%b} {released.day}). Points per game, all games through {thru:%b} {thru.day}."
+        "\nData: ESPN game-by-game scores, every team's games and points matched against NCAA.com's official FBS stats."
+        f"\n{TAGS}")
+    C.caption(rep, cap)
+    key = f"cfp-scatter-{released:%Y-%m-%d}"
+    return _post(out_dir, key, "cfp_scatter", lambda p: L.scatter(
+        title, str(n), f"Above the Top 25 average on offense and defense · thru {thru:%b} {thru.day}", pts,
+        "Points scored per game →", "Points allowed per game (fewer = higher) →",
+        "ESPN · checked vs NCAA.com", (ax, ay), QUADS, p=p), cap, rep, hold=5.0)
+
+
+def cfp_scatter(out_dir):
+    rep = C.Report("cfp scatter")
+    released, rows = checked_ranking(rep)
+    key = f"cfp-scatter-{released:%Y-%m-%d}"
+    already_posted(key)
+    return top25_scatter(out_dir, rows, released, "College Football Playoff committee Top 25", rep)
+
+
+BUILDERS["cfp_scatter"] = cfp_scatter

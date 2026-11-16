@@ -42,6 +42,10 @@ JOBS = [
     # CFP committee ranking (Tuesdays, final one a Sunday): checks every morning, posts once per new ranking.
     Job("cfp_rankings", "cfp_rankings", EVERY_DAY, "08:00", live=True, start="2026-11-07",
         note="Reel: College Football Playoff Top 10 (ESPN, checked vs collegefootballplayoff.com)"),
+    # Jarvis Nov 16: the CFP Top 25 as an offense-vs-defense logo scatter, Thursdays after each new ranking (the CFP
+    # Reel and the NFL scatter are this page's best formats). Every team's points match ESPN vs NCAA.com or it blocks.
+    Job("cfp_scatter", "cfp_scatter", (THU,), "12:00", live=True, start="2026-11-19",
+        note="Reel: CFP Top 25 offense vs defense, logo scatter (ESPN, checked vs NCAA.com)"),
     # Nov 6 (owner: "throw in some soccer... Champions League... the big names only"): the giants' table the morning
     # after each matchday finishes, the superstar scorers race the following Monday. Both idle between matchdays.
     Job("ucl_giants",  "ucl_giants",  EVERY_DAY, "07:00", live=True, start="2026-11-08",

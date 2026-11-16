@@ -136,3 +136,20 @@ RB/WR usage, NFL/NBA margin, NBA offense bars, NFL/NBA Find Your Team boards. Ow
 data trends; decided against it (it would compete with Paycheck Math and Liftoff Daily).
 
 **Checkpoint Fri Dec 5:** if reach and followers are still flat vs this baseline, recommend pausing the page.
+
+## 2026-11-16 (Mon, Jarvis full review)
+
+**Numbers (7 days, 18 Reels):** 10 followers (flat). NBA scorers: 440 avg (Sat 1,027, Mon 949, Tue 547; others ~115-210).
+CFP Top 10: 583 reach, 5 comments. NFL scatter 123 reach but **10.8 s watch, 6 comments**. NBA scatter 116, 6.8 s.
+Retired formats 6-119. No errors in the run log. Today's 8am CFP skip is expected (ESPN drops the poll on Mondays).
+
+**New format: CFP Top 25 offense vs defense (cfp_scatter, Thu 12:00 PT, from Nov 19).** Combines the two formats that
+spark reactions (CFP + logo scatter). The ranking is the same two-source check as cfp_rankings; every team's games,
+points scored and points allowed must match exactly between ESPN's game-by-game schedule and NCAA.com's official FBS
+scoring tables, or it blocks. Quadrants are vs the Top 25 average ("ELITE AT BOTH" ... "BELOW AVG"), said in the
+title and caption. Key starts "cfp-". Test build on this week's Coaches Poll (CFP feed is empty on Mondays): 92
+checks, 0 blocking, all 25 matched. Hand-checked: Miami 441 pts / 10 g = 44.1; Iowa 117 allowed / 10 g = 11.7.
+**Runner fix (autopost.py):** overlapping-run duplicate guard (see LiftoffDaily log, Nov 16).
+
+**Watch Thu Nov 19:** first CFP scatter (reach, comments vs CFP 583 / NFL scatter 10.8 s). Tue CFP ranking posts.
+Champions League Matchday 5 (Nov 24-26). Checkpoint Fri Dec 5.

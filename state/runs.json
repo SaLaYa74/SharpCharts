@@ -1114,6 +1114,11 @@
     "detail": "8 snapshot files",
     "status": "done"
   },
+  "2026-11-17:archive_pm": {
+    "at": "2026-11-17T14:00-08:00",
+    "detail": "8 snapshot files",
+    "status": "done"
+  },
   "2026-11-17:cfp_rankings": {
     "at": "2026-11-17T08:00-08:00",
     "detail": "No CFP committee ranking in ESPN's feed (season not there yet).",

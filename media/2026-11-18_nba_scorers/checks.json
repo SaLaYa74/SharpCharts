@@ -1,0 +1,340 @@
+{
+  "subject": "stats nba scorers",
+  "counts": {
+    "pass": 66,
+    "warn": 0,
+    "block": 0
+  },
+  "checks": [
+    {
+      "status": "pass",
+      "check": "NY@TOR 2026-11-17: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@TOR 2026-11-17: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@TOR 2026-11-17: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@MIN 2026-11-17: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@MIN 2026-11-17: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@MIN 2026-11-17: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@SA 2026-11-17: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@SA 2026-11-17: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@SA 2026-11-17: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@LAC 2026-11-17: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@LAC 2026-11-17: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@LAC 2026-11-17: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@LAL 2026-11-17: home score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@LAL 2026-11-17: away score equals its quarter scores",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@LAL 2026-11-17: has a winner",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@TOR 2026-11-17: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@TOR 2026-11-17: NY box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@TOR 2026-11-17: NY player points add up to 111",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@TOR 2026-11-17: NY top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@TOR 2026-11-17: TOR box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@TOR 2026-11-17: TOR player points add up to 102",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "NY@TOR 2026-11-17: TOR top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@MIN 2026-11-17: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@MIN 2026-11-17: POR box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@MIN 2026-11-17: POR player points add up to 105",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@MIN 2026-11-17: POR top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@MIN 2026-11-17: MIN box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@MIN 2026-11-17: MIN player points add up to 106",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "POR@MIN 2026-11-17: MIN top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@SA 2026-11-17: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@SA 2026-11-17: DET box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@SA 2026-11-17: DET player points add up to 105",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@SA 2026-11-17: DET top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@SA 2026-11-17: SA box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@SA 2026-11-17: SA player points add up to 93",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "DET@SA 2026-11-17: SA top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@LAC 2026-11-17: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@LAC 2026-11-17: UTAH box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@LAC 2026-11-17: UTAH player points add up to 132",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@LAC 2026-11-17: UTAH top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@LAC 2026-11-17: LAC box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@LAC 2026-11-17: LAC player points add up to 107",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UTAH@LAC 2026-11-17: LAC top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@LAL 2026-11-17: box score for both teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@LAL 2026-11-17: CHA box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@LAL 2026-11-17: CHA player points add up to 114",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@LAL 2026-11-17: CHA top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@LAL 2026-11-17: LAL box score has points",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@LAL 2026-11-17: LAL player points add up to 118",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "CHA@LAL 2026-11-17: LAL top scorer matches ESPN's scoreboard",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "box scores loaded for every final",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: file size",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: duration",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: 1080x1920",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: has audio",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers.mp4: H.264 video",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: dimensions",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: not empty",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "nba_scorers_cover.jpg: has visible content",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    }
+  ]
+}

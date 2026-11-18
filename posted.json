@@ -781,6 +781,16 @@
     "scheduled": "12:00",
     "trial": false
   },
+  "2026-wk10-st-scatter": {
+    "images": 1,
+    "job": "st_scatter",
+    "media": "reel",
+    "media_id": "18091111409289452",
+    "permalink": "https://www.instagram.com/reel/Df5UVX2jRDS/",
+    "posted_at": "2026-11-18T20:02:52+00:00",
+    "scheduled": "12:00",
+    "trial": false
+  },
   "cfp-rankings-2026-11-03": {
     "images": 1,
     "job": "cfp_rankings",

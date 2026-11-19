@@ -153,3 +153,23 @@ checks, 0 blocking, all 25 matched. Hand-checked: Miami 441 pts / 10 g = 44.1; I
 
 **Watch Thu Nov 19:** first CFP scatter (reach, comments vs CFP 583 / NFL scatter 10.8 s). Tue CFP ranking posts.
 Champions League Matchday 5 (Nov 24-26). Checkpoint Fri Dec 5.
+
+## 2026-11-19 (Thu, Jarvis check-in)
+
+**Numbers (4 days, 6 Reels):** 10 followers (flat). NBA scorers 425 avg reach (Mon **900**, Tue 564; Sun/Wed ~115-120),
+4.9 s watch. CFP Top 10 (Wed) 182 reach. NFL scatter 125 reach but **13.5 s watch, 2 comments**: still the best at
+holding people. No errors or blocks in the run log.
+
+**Pre-flight of today's first CFP scatter (noon)** found three things, all fixed before it posts:
+1. **Bug (sharpcharts/data.py):** a cut-off download from collegefootballplayoff.com ("IncompleteRead") was not retried,
+   so one network blip could kill a post. It now retries like any other network error. No check touched.
+2. **Accuracy (cfp.py):** Miami allowed 19.80 a game vs a 19.81 Top 25 average, so the caption would have read
+   "average 19.8 allowed" and still listed Miami as better. "Elite at both" is now judged at the one decimal we print;
+   a tie isn't elite. Headline went 7 → 6.
+3. **Layout (light.py scatter, all scatter Reels):** Iowa's logo covered "DEFENSE FIRST" and Boise State covered
+   "ALL OFFENSE". The plot now keeps a 100 px strip clear at top and bottom.
+Test build: 145 checks, 0 blocking (1 warning: 13 hashtags). Hand-checked from ESPN: Wake Forest 439 pts / 10 g = 43.9
+scored, 150 / 10 = 15.0 allowed; Iowa 117 / 10 = 11.7 allowed. All 25 teams matched NCAA.com.
+
+**Watch Mon Nov 23:** CFP scatter reach/comments vs NFL scatter; Champions League Matchday 5 (Nov 24-26); trim CFP
+hashtags to 5 if the scatter does well. Checkpoint Fri Dec 5.

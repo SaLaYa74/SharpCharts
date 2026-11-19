@@ -224,7 +224,10 @@ def top25_scatter(out_dir, rows, released, poll_label, rep):
         raise DataError("CFP scatter: ESPN and NCAA.com disagree; see checks.")
     ax = sum(r["ppg"] for r in t.values()) / len(t)
     ay = sum(r["papg"] for r in t.values()) / len(t)
-    both = sorted((i for i, r in t.items() if r["ppg"] > ax and r["papg"] < ay), key=lambda i: t[i]["rank"])
+    # Judge at the precision we print (one decimal): Nov 19, Miami allowed 19.80 vs a 19.81 average, which the
+    # caption would show as "19.8 vs 19.8" while calling Miami better. A tie at the shown number is not "elite".
+    both = sorted((i for i, r in t.items() if round(r["ppg"], 1) > round(ax, 1) and round(r["papg"], 1) < round(ay, 1)),
+                  key=lambda i: t[i]["rank"])
     if not both:
         raise NoContent("No ranked team is above the Top 25 average on both sides.")
     best_o = max(t, key=lambda i: (t[i]["ppg"], -t[i]["rank"]))

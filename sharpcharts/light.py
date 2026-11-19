@@ -272,8 +272,11 @@ def scatter(title, highlight, subtitle, points, xlab, ylab, source, avg, quads, 
     avg: (x_avg, y_avg) dashed lines; quads: labels (top-right, top-left, bottom-right, bottom-left)."""
     W, H, L0, R0, T0, B0 = 960, 1060, 96, 24, 24, 96
     xs, ys = [q["x"] for q in points], [q["y"] for q in points]
-    padx, pady = (max(xs) - min(xs)) * .08 or 1, (max(ys) - min(ys)) * .08 or 1
-    x0, x1, y0, y1 = min(xs) - padx, max(xs) + padx, min(ys) - pady, max(ys) + pady
+    padx = (max(xs) - min(xs)) * .08 or 1
+    # Keep every logo clear of the corner labels: the highest and lowest dot centers sit 100 px inside the frame
+    # (labels take the top ~55 px and bottom ~50 px; a logo is 35 px in radius). Nov 19: Iowa sat on DEFENSE FIRST.
+    dpp = (max(ys) - min(ys)) / (H - T0 - B0 - 200) or .01
+    x0, x1, y0, y1 = min(xs) - padx, max(xs) + padx, min(ys) - 100 * dpp, max(ys) + 100 * dpp
     X = lambda v: L0 + (v - x0) / (x1 - x0) * (W - L0 - R0)
     Y = lambda v: T0 + (v - y0) / (y1 - y0) * (H - T0 - B0)        # flipped: low values (good defense) on top
     ax, ay = X(avg[0]), Y(avg[1])

@@ -7,6 +7,7 @@ Every post the generator renders is built from numbers computed here, and
 `verify_scores()` must pass before anything is exported.
 """
 import csv
+import http.client
 import io
 import json
 import os
@@ -49,7 +50,8 @@ def _get(url, timeout=30, tries=4):
         except urllib.error.HTTPError as e:
             if e.code < 500 or attempt == tries - 1:   # 4xx is a real answer, don't retry
                 raise
-        except (urllib.error.URLError, TimeoutError, ConnectionError, OSError):
+        except (urllib.error.URLError, TimeoutError, ConnectionError, OSError,
+                http.client.IncompleteRead, http.client.RemoteDisconnected):   # cut-off download: retry
             if attempt == tries - 1:
                 raise
         time.sleep(2 * (attempt + 1))

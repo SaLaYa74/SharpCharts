@@ -821,6 +821,16 @@
     "scheduled": "08:00",
     "trial": false
   },
+  "cfp-scatter-2026-11-17": {
+    "images": 1,
+    "job": "cfp_scatter",
+    "media": "reel",
+    "media_id": "18097389893263808",
+    "permalink": "https://www.instagram.com/reel/Df75FB6DZk8/",
+    "posted_at": "2026-11-19T20:02:17+00:00",
+    "scheduled": "12:00",
+    "trial": false
+  },
   "nba-2026-10-25-night": {
     "images": 1,
     "job": "nba_night",

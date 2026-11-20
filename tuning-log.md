@@ -173,3 +173,7 @@ scored, 150 / 10 = 15.0 allowed; Iowa 117 / 10 = 11.7 allowed. All 25 teams matc
 
 **Watch Mon Nov 23:** CFP scatter reach/comments vs NFL scatter; Champions League Matchday 5 (Nov 24-26); trim CFP
 hashtags to 5 if the scatter does well. Checkpoint Fri Dec 5.
+
+## 2026-11-20 — CFP scatter breaks out; yards-rank version next
+- Nov 19 CFP Top 25 points scatter: 30,550 views, 12,456 reach, 19 shares, 12.5s avg watch. Page's best ever (old best 1.4k). Followers 10 → 15.
+- Owner: make the next one national rank in total offense vs total defense. Built; Thursday job uses it from Nov 26 with points as the fallback.

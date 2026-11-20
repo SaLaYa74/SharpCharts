@@ -294,10 +294,12 @@ def sel_snub(out_dir):
         tally, verdict = f"Dead even: {wa}-{wb}", f"On paper it's dead even, {wa}-{wb}."
     others = [i for i in F["benef"] if i != inn]
     also = ("\n\nAlso in ahead of them: " + ", ".join(
-        f"{F['names'][i]} ({'#' + str(F['rank'][i]) if F['rank'][i] else 'unranked'}, {F['titles'].get(i, 'at-large')}"
+        f"{F['names'][i]} ({'No. ' + str(F['rank'][i]) if F['rank'][i] else 'unranked'}, {F['titles'].get(i, 'at-large')}"
         f"{' champ' if i in F['titles'] else ''})" for i in others)) if others else ""
-    cap = (f"#{fo['rank']} {fo['name']} ({b['record']}) is OUT of the College Football Playoff. {F['names'][inn]} "
-           f"({a['record']}, {rin_txt}) is IN as {how}. 😳{also}\n\nHead to head:\n{edge_text(a, b)}\n\n{verdict}\n\n"
+    # Caption ranks as "No. 12": every "#12" counts toward Instagram's hashtag limit (the card itself keeps "#12").
+    rin_cap = f"ranked No. {rin}" if rin else "unranked"
+    cap = (f"No. {fo['rank']} {fo['name']} ({b['record']}) is OUT of the College Football Playoff. {F['names'][inn]} "
+           f"({a['record']}, {rin_cap}) is IN as {how}. 😳{also}\n\nHead to head:\n{edge_text(a, b)}\n\n{verdict}\n\n"
            f"Did the committee get it right, or did {b['short']} get robbed? 👇\n\n📤 Send this to a {b['short']} fan."
            f"\n\nFinal College Football Playoff ranking ({date.fromisoformat(F['released']):%b %-d}). National ranks "
            f"among all FBS teams; per-game stats through {_thru(P)}.\n{DATA}\n{X.TAGS} #selectionsunday")

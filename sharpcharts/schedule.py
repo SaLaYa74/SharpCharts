@@ -10,6 +10,7 @@ from dataclasses import dataclass
 
 WINDOW_HOURS = 12
 MAX_POSTS_PER_DAY = 3      # feed posts + Reels per day (Stories don't count); earliest jobs win
+BIG_DAY_MAX = 5            # Nov 20: "big" jobs (Selection Sunday, playoff game days) may go up to this many
 
 MON, TUE, WED, THU, FRI, SAT, SUN = range(7)
 EVERY_DAY = (MON, TUE, WED, THU, FRI, SAT, SUN)
@@ -25,6 +26,7 @@ class Job:
     note: str = ""
     trial: bool = False   # Reels only: post as a Trial Reel (non-followers first)
     start: str = ""       # "YYYY-MM-DD": don't run before this date (lets a replacement job start the next day)
+    big: bool = False     # a big moment: allowed past MAX_POSTS_PER_DAY, up to BIG_DAY_MAX
 
 
 JOBS = [
@@ -40,8 +42,24 @@ JOBS = [
     Job("st_scatter",  "st_scatter",  (WED,), "12:00", live=True, note="Reel: NFL offense vs defense, every team as a logo"),
     Job("nba_scatter", "nba_scatter", (FRI,), "15:00", live=True, start="2026-11-07", note="Reel: NBA offense vs defense, every team as a logo"),
     # CFP committee ranking (Tuesdays, final one a Sunday): checks every morning, posts once per new ranking.
-    Job("cfp_rankings", "cfp_rankings", EVERY_DAY, "08:00", live=True, start="2026-11-07",
-        note="Reel: College Football Playoff Top 10 (ESPN, checked vs collegefootballplayoff.com)"),
+    # Nov 20 (owner): the Top 10 ladder is retired (234 views on Nov 18; ESPN already shows everyone the Top 10). The
+    # scatter is our take nobody else has, so it gets the slot.
+    # ---- Nov 20, the playoff calendar (owner: "Selection Sunday, huge. We need multiple posts"; "each playoff game day,
+    # a head-to-head card"). Each job waits until its data exists (bracket announced, game on today) and posts once.
+    Job("sel_field",   "sel_field",   (SUN, MON), "09:30", live=True, start="2026-12-06", big=True,
+        note="Reel: Selection Sunday, the 12-team field on the total offense vs defense scatter"),
+    Job("sel_snub",    "sel_snub",    (SUN, MON), "11:30", live=True, start="2026-12-06", big=True,
+        note="Reel: Selection Sunday, first team OUT vs last team IN, head to head"),
+    Job("sel_bracket", "sel_bracket", (SUN, MON), "15:00", live=True, start="2026-12-06", big=True,
+        note="Reel: Selection Sunday, all four first-round games on paper + upset alerts + byes"),
+    Job("cfp_game1",   "cfp_game1",   EVERY_DAY, "06:00", live=True, start="2026-12-18", big=True,
+        note="Reel: playoff game day, head-to-head card for the day's 1st game (none = skip)"),
+    Job("cfp_game2",   "cfp_game2",   EVERY_DAY, "08:30", live=True, start="2026-12-18", big=True,
+        note="Reel: playoff game day, 2nd game"),
+    Job("cfp_game3",   "cfp_game3",   EVERY_DAY, "11:00", live=True, start="2026-12-18", big=True,
+        note="Reel: playoff game day, 3rd game"),
+    Job("cfp_game4",   "cfp_game4",   EVERY_DAY, "13:30", live=True, start="2026-12-18", big=True,
+        note="Reel: playoff game day, 4th game"),
     # Jarvis Nov 16: the CFP Top 25 as an offense-vs-defense logo scatter, Thursdays after each new ranking (the CFP
     # Reel and the NFL scatter are this page's best formats). Every team's points match ESPN vs NCAA.com or it blocks.
     Job("cfp_scatter", "cfp_scatter", (THU,), "12:00", live=True, start="2026-11-19",

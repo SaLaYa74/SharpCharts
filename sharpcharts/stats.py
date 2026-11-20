@@ -10,7 +10,7 @@ NBA: team scoring from ESPN finals (quarter scores add up, records match ESPN ga
      nightly top scorers from ESPN box scores, where each team's player points must add up to its final score
      and each team's top scorer must match the leader ESPN shows on its scoreboard.
 """
-from datetime import timedelta
+from datetime import date, timedelta
 
 from . import checks as C
 from . import data as D
@@ -341,14 +341,20 @@ def nba_scorers(out_dir, day=None):
 QUADS = ("GOOD AT BOTH", "DEFENSE FIRST", "ALL OFFENSE", "STRUGGLING")
 
 
-def _scatter(out_dir, key, name, t, team_name, logo, color, league, thru_label, source, data_line, tags, rep):
-    """Every team as a logo: points scored (x) vs points allowed (y, flipped so better defense is higher)."""
+def _scatter(out_dir, key, name, t, team_name, logo, color, league, thru_label, source, data_line, tags, rep, race=False):
+    """Every team as a logo: points scored (x) vs points allowed (y, flipped so better defense is higher).
+    race=True (NFL in December, owner Nov 20: "make the NFL chart a playoff race"): only teams at .500 or better are
+    plotted and judged, still against the league-wide average."""
     games = sum(r["g"] for r in t.values())
     avg = sum(r["pf"] for r in t.values()) / games
     rep.require(sum(r["pf"] for r in t.values()) == sum(r["pa"] for r in t.values()),
                 f"{league}: league-wide points scored equal points allowed", "totals differ: a game is counted wrong")
     for r in t.values():
         r["papg"] = r["pa"] / r["g"]
+    full = len(t)
+    if race:
+        t = {a: r for a, r in t.items() if r["w"] >= r["l"]}
+        rep.require(4 <= len(t) < full, f"{league}: playoff race has a sensible number of teams", f"{len(t)} at .500+")
     both = sorted((a for a, r in t.items() if r["ppg"] > avg and r["papg"] < avg), key=lambda a: -t[a]["diff"])
     worst = sorted((a for a, r in t.items() if r["ppg"] < avg and r["papg"] > avg), key=lambda a: t[a]["diff"])
     if not both:
@@ -357,18 +363,28 @@ def _scatter(out_dir, key, name, t, team_name, logo, color, league, thru_label, 
     dfn = min(t, key=lambda a: (t[a]["papg"], a))
     pts = [{"x": r["ppg"], "y": r["papg"], "abbr": a, "logo": logo(a), "color": color(a)} for a, r in t.items()]
     n = len(both)
-    title = ("Only {hl} Teams Are Good at Both" if n <= len(t) // 3 else "{hl} Teams Are Good at Both")
+    few = n <= len(t) // 3
+    if race:
+        title = f"{'Only ' if few else ''}{{hl}} of the {len(t)} Contenders Are Good at Both"
+        intro = (f"The playoff race: all {len(t)} NFL teams at .500 or better. {'Only ' if few else ''}{n} of them score "
+                 f"more AND allow less than the league average ({avg:.1f} points a game) 👀\n\n")
+        ask, share = "Who's for real, and who's a January fraud? 👇", "📤 Send this to the fan who's already booking playoff tickets."
+    else:
+        title = ("Only {hl} Teams Are Good at Both" if few else "{hl} Teams Are Good at Both")
+        intro = (f"{'Only ' if few else ''}{n} {league.upper()} teams score more AND allow less than the league average "
+                 f"({avg:.1f} points a game) 👀\n\n")
+        ask, share = "Where's your team? 👇", "📤 Send this to a fan whose team is stuck in the red corner."
     cap = (
-        f"{'Only ' if n <= len(t) // 3 else ''}{n} {league.upper()} teams score more AND allow less than the league average "
-        f"({avg:.1f} points a game) 👀\n\n"
+        intro +
         f"🟢 Good at both: {', '.join(team_name(a) for a in both)}\n"
         + (f"🔴 Below average at both: {', '.join(team_name(a) for a in worst)}\n" if worst else "")
         + f"\nBest offense: {team_name(off)}, {t[off]['ppg']:.1f} points a game. "
         f"Best defense: {team_name(dfn)}, {t[dfn]['papg']:.1f} allowed.\n\n"
-        "Where's your team? 👇\n\n📤 Send this to a fan whose team is stuck in the red corner."
+        f"{ask}\n\n{share}"
         f"\n\nPoints scored and allowed per game, {thru_label}.\n{data_line}\n{tags}")
     return _post(out_dir, key, name, lambda p: L.scatter(
-        title, str(n), f"Above the {league.upper()} average on offense and defense · {thru_label}", pts,
+        title, str(n), (f"Every team at .500 or better vs the NFL average · {thru_label}" if race else
+                        f"Above the {league.upper()} average on offense and defense · {thru_label}"), pts,
         "Points scored per game →", "Points allowed per game (fewer = higher) →", source, (avg, avg), QUADS, p=p),
         cap, rep, hold=5.0)
 
@@ -379,9 +395,10 @@ def nfl_scatter(ctx, out_dir, sizes=None):
     rep = C.Report("stats nfl scatter").extend(ctx.report)
     t = nfl_teams(ctx, rep)
     wk = ctx.thru_week
+    race = date.today() >= date(ctx.season, 12, 1)      # December on: the playoff race (owner, Nov 20)
     return _scatter(out_dir, f"{ctx.season}-wk{wk:02d}-st-scatter", "st_scatter", t, lambda a: D.TEAMS[a][0], logo_uri,
                     lambda a: D.TEAMS[a][1] if a in D.TEAMS else SHELL[a][0], "nfl", f"thru Week {wk}",
-                    "nflverse · scores verified vs ESPN", NFL_DATA, NFL_TAGS, rep)
+                    "nflverse · scores verified vs ESPN", NFL_DATA, NFL_TAGS, rep, race=race)
 
 
 def nba_scatter(out_dir):

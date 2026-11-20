@@ -399,3 +399,104 @@ def ladder(title, highlight, subtitle, rows, source, tall=True, hl_color="#F9731
     body = f'''{LCSS}{pill}<div class="t" style="--hl:{hl_color}">{t}</div><div class="s">{escape(subtitle)}</div>
 <div class="lad">{"".join(out)}</div>'''
     return _page(body, tall, source)
+
+
+# ---- Nov 20 (owner: "each playoff game day, a head-to-head card"; "Selection Sunday, huge"): playoff cards ----
+HCSS = """<style>
+.hh{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px;margin-top:18px;min-height:0}
+.hteams{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px}
+.hteam{flex:1;display:flex;flex-direction:column;align-items:center;min-width:0}
+.hlogo{width:180px;height:180px;border-radius:50%;background:#fff;border:6px solid #1F2937;display:flex;align-items:center;
+       justify-content:center;overflow:hidden;box-shadow:0 8px 0 rgba(0,0,0,.08)}
+.hname{font-family:"Baloo 2";font-weight:800;font-size:46px;line-height:1;margin-top:14px;text-align:center;white-space:nowrap}
+.hsub{font-size:28px;font-weight:800;color:#6B7280;margin-top:6px;white-space:nowrap}
+.htag{font-family:"Baloo 2";font-weight:800;font-size:30px;border-radius:999px;padding:2px 22px;margin-top:10px;letter-spacing:1px}
+.hvs{font-family:"Baloo 2";font-weight:800;font-size:64px;color:#9CA3AF;align-self:center;margin-top:-50px}
+.hrow{display:grid;grid-template-columns:1fr 240px 1fr;align-items:center;gap:12px;height:104px}
+.hv{height:100%;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;
+    box-shadow:0 4px 0 rgba(0,0,0,.06);font-family:"Baloo 2";font-weight:800;font-size:50px;line-height:1}
+.hv small{font-family:Nunito;font-size:22px;font-weight:800;color:#6B7280;margin-top:4px}
+.hv.win{background:#16A34A;color:#fff}
+.hv.win small{color:#DCFCE7}
+.hl{text-align:center;font-weight:800;font-size:28px;color:#1F2937;line-height:1.05}
+.htally{align-self:center;margin-top:14px;color:#fff;font-family:"Baloo 2";font-weight:800;font-size:44px;padding:8px 36px;
+        border-radius:999px;white-space:nowrap}
+.mg{background:#fff;border-radius:24px;box-shadow:0 4px 0 rgba(0,0,0,.06);padding:16px 18px 14px;display:flex;flex-direction:column;gap:10px}
+.mrow{display:grid;grid-template-columns:1fr 70px 1fr;align-items:center}
+.mt{display:flex;align-items:center;gap:14px;min-width:0}
+.mt.r{flex-direction:row-reverse;text-align:right}
+.ms{font-family:"Baloo 2";font-weight:800;font-size:40px;color:#9CA3AF;width:44px;text-align:center;flex:none}
+.mlogo{width:96px;height:96px;flex:none;border-radius:50%;background:#fff;border:4px solid #1F2937;display:flex;align-items:center;
+       justify-content:center;overflow:hidden}
+.mn{font-weight:800;font-size:34px;line-height:1.05;white-space:nowrap;overflow:hidden;min-width:0}
+.mn small{display:block;font-size:24px;color:#6B7280}
+.mv{text-align:center;font-family:"Baloo 2";font-weight:800;font-size:36px;color:#9CA3AF}
+.mtag{align-self:center;font-family:"Baloo 2";font-weight:800;font-size:28px;border-radius:999px;padding:2px 22px;letter-spacing:1px}
+.byes{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:6px}
+.byes b{font-family:"Baloo 2";font-weight:800;font-size:34px;color:#6B7280;margin-right:6px}
+</style>"""
+
+
+def _logo(src, name, px):
+    return (f'<img src="{src}" style="width:80%;height:80%;object-fit:contain">' if src else
+            f'<span style="font-family:\'Baloo 2\';font-weight:800;font-size:{px // 4}px">{escape(name[:4].upper())}</span>')
+
+
+def _title(title, highlight, size=104, width=930):
+    """Title HTML with the highlight, shrunk so the longest line fits (Baloo 2 averages ~0.5 em per character)."""
+    lines = title.replace("{hl}", highlight).split("\n")
+    fs = min(size, int(width / (0.5 * max(len(x) for x in lines))))
+    return fs, escape(title).replace("{hl}", f"<em>{escape(highlight)}</em>").replace("\n", "<br>")
+
+
+def h2h(title, highlight, subtitle, left, right, rows, tally, source, tall=True, p=1.0, hl_color="#16A34A",
+        tally_bg="#1F2937"):
+    """Head-to-head card. left/right: dict(logo, name, sub, tag, tag_bg, tag_fg).
+    rows: [dict(label, l, r, lsub, rsub, win)] with win 'l', 'r' or None (tie). The better side of each row turns green;
+    rows light up one by one as p goes 0 -> 1 and the tally lands last."""
+    def team(t):
+        tag = (f'<div class="htag" style="background:{t.get("tag_bg", "#FDE047")};color:{t.get("tag_fg", "#1F2937")}">'
+               f'{escape(t["tag"])}</div>' if t.get("tag") else "")
+        return (f'<div class="hteam"><div class="hlogo">{_logo(t.get("logo"), t["name"], 180)}</div>'
+                f'<div class="hname">{escape(t["name"])}</div><div class="hsub">{escape(t.get("sub", ""))}</div>{tag}</div>')
+    n = len(rows)
+    out = [f'<div class="hteams">{team(left)}<div class="hvs">VS</div>{team(right)}</div>']
+    for k, r in enumerate(rows):
+        d = 0.15 + 0.7 * k / max(n, 1)
+        op = max(0.0, min(1.0, (p - d) / 0.12))
+        lit = op >= 1
+        def cell(side, r=r, lit=lit):
+            sub = r.get(side + "sub") or ""
+            small = f"<small>{escape(sub)}</small>" if sub else ""
+            win = " win" if lit and r["win"] == side else ""
+            return f'<div class="hv{win}">{escape(r[side])}{small}</div>'
+        out.append(f'<div class="hrow" style="opacity:{op:.2f}">{cell("l")}<div class="hl">{escape(r["label"])}</div>{cell("r")}</div>')
+    if tally:
+        out.append(f'<div class="htally" style="background:{tally_bg};opacity:{1 if p >= 0.97 else 0}">{escape(tally)}</div>')
+    fs, t = _title(title, highlight)
+    body = f'''{HCSS}<div class="t" style="--hl:{hl_color};font-size:{fs}px">{t}</div><div class="s">{escape(subtitle)}</div>
+<div class="hh">{"".join(out)}</div>'''
+    return _page(body, tall, source)
+
+
+def matchups(title, highlight, subtitle, games, byes, source, tall=True, p=1.0, hl_color="#DC2626"):
+    """First-round board. games: [dict(l=dict(seed, logo, name, line), r=..., tag, tag_bg, tag_fg)];
+    byes: [dict(seed, logo, name)]. Games slide in one after another."""
+    out = []
+    for k, g in enumerate(games):
+        d = 0.1 + 0.6 * k / max(len(games), 1)
+        q = max(0.0, min(1.0, (p - d) / 0.2))
+        side = lambda t, cls: (f'<div class="mt{cls}"><div class="ms">{t["seed"]}</div><div class="mlogo">{_logo(t.get("logo"), t["name"], 96)}</div>'
+                               f'<div class="mn">{escape(t["name"])}<small>{escape(t.get("line", ""))}</small></div></div>')
+        tag = (f'<div class="mtag" style="background:{g.get("tag_bg", "#F3F4F6")};color:{g.get("tag_fg", "#1F2937")}">'
+               f'{escape(g["tag"])}</div>' if g.get("tag") else "")
+        out.append(f'<div class="mg" style="opacity:{q:.2f};transform:translateX({(1 - q) * 80:.0f}px)">'
+                   f'<div class="mrow">{side(g["l"], "")}<div class="mv">vs</div>{side(g["r"], " r")}</div>{tag}</div>')
+    if byes:
+        out.append('<div class="byes"><b>BYES</b>' + "".join(
+            f'<div class="mt"><div class="ms" style="width:auto">{b["seed"]}</div><div class="mlogo" style="width:84px;height:84px">'
+            f'{_logo(b.get("logo"), b["name"], 84)}</div></div>' for b in byes) + "</div>")
+    fs, t = _title(title, highlight)
+    body = f'''{HCSS}<div class="t" style="--hl:{hl_color};font-size:{fs}px">{t}</div><div class="s">{escape(subtitle)}</div>
+<div class="hh" style="gap:16px">{"".join(out)}</div>'''
+    return _page(body, tall, source)

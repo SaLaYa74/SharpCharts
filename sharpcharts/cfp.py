@@ -156,10 +156,24 @@ NCAA_ALIASES = {"southern california": "usc", "army west point": "army", "miami 
                 "ga. southern": "georgia southern", "ucf": "ucf", "smu": "smu", "tcu": "tcu", "byu": "byu", "lsu": "lsu"}
 
 
+# Nov 20: NCAA.com abbreviates ("Western Ky.", "Fla. Atlantic", "NIU"); ESPN spells out ("Western Kentucky", "Hawai'i",
+# "San José State"). Both sides go through _ncaa_norm, so every FBS school must map to one name (tested on all 138).
+NCAA_WORDS = {"fla.": "florida", "ky.": "kentucky", "tenn.": "tennessee", "mich.": "michigan", "ga.": "georgia",
+              "caro.": "carolina", "ill.": "illinois", "miss.": "miss", "ala.": "alabama", "la.": "louisiana",
+              "southern mississippi": "southern miss"}
+NCAA_ALIASES.update({"niu": "northern illinois", "ulm": "ul monroe", "louisiana-monroe": "ul monroe",
+                     "louisiana monroe": "ul monroe", "south fla.": "south florida", "hawai'i": "hawaii",
+                     "southern mississippi": "southern miss", "app state": "appalachian state", "umass": "massachusetts",
+                     "sam houston state": "sam houston", "ul lafayette": "louisiana", "louisiana-lafayette": "louisiana"})
+
+
 def _ncaa_norm(name):
     n = re.sub(r"\s+", " ", html.unescape(name).strip().lower())
+    n = "".join(c for c in __import__("unicodedata").normalize("NFKD", n) if not __import__("unicodedata").combining(c))
     n = NCAA_ALIASES.get(n, n)
-    return re.sub(r" st\.$", " state", n)
+    n = re.sub(r" st\.$", " state", n)
+    n = " ".join(NCAA_WORDS.get(w, w) for w in n.split(" "))
+    return NCAA_ALIASES.get(n, n)
 
 
 def _ncaa_table(stat):
@@ -183,12 +197,27 @@ def _ncaa_table(stat):
     return out
 
 
+def _team_events(team_id):
+    """(this season's events, team json): regular season + postseason. Nov 20: ESPN's schedule feed returns only one
+    season type per call, so bowl/playoff games need seasontype=3 or a team's totals would miss them vs NCAA.com."""
+    seen, events, team = set(), [], {}
+    for st in (2, 3):
+        d = json.loads(_get(TEAM_SCHED.format(team_id) + f"?seasontype={st}"))
+        team = team or d.get("team", {})
+        for e in d.get("events", []):
+            if e["id"] not in seen:
+                seen.add(e["id"])
+                events.append(e)
+    return events, team
+
+
 def _espn_points(team_id):
     """(games, points for, points against, last game date, color) from ESPN's game-by-game schedule (completed games)."""
-    d = json.loads(_get(TEAM_SCHED.format(team_id)))
+    events, team = _team_events(team_id)
+    d = {"team": team}
     g = pf = pa = 0
     last = None
-    for e in d.get("events", []):
+    for e in events:
         c = e["competitions"][0]
         if not c["status"]["type"].get("completed"):
             continue
@@ -291,16 +320,31 @@ def _ncaa_yards(stat):
     return out
 
 
+_BOX = {}
+
+
+def box_yards(event_id):
+    """{team id: total yards} from ESPN's box score of one game (cached per run: several posts can share games)."""
+    if event_id not in _BOX:
+        box = json.loads(_get(ESPN_SUMMARY.format(event_id)))["boxscore"]["teams"]
+        try:
+            _BOX[event_id] = {t["team"]["id"]: int({x["name"]: x["displayValue"] for x in t["statistics"]}["totalYards"])
+                              for t in box}
+        except (KeyError, ValueError) as e:
+            raise DataError(f"ESPN box score {event_id}: no total yards ({e})")
+    return dict(_BOX[event_id])
+
+
 def _espn_yards(team_id):
     """(games, yards gained, yards allowed, last game date, color), summed from ESPN's box score of every completed game."""
-    d = json.loads(_get(TEAM_SCHED.format(team_id)))
+    events, team = _team_events(team_id)
+    d = {"team": team}
     g = yf = ya = 0
     last = None
-    for e in d.get("events", []):
+    for e in events:
         if not e["competitions"][0]["status"]["type"].get("completed"):
             continue
-        box = json.loads(_get(ESPN_SUMMARY.format(e["id"])))["boxscore"]["teams"]
-        tot = {t["team"]["id"]: int({x["name"]: x["displayValue"] for x in t["statistics"]}["totalYards"]) for t in box}
+        tot = box_yards(e["id"])
         if str(team_id) not in tot or len(tot) != 2:
             raise DataError(f"ESPN box score {e['id']}: teams {list(tot)}")
         g += 1
@@ -317,7 +361,9 @@ def _rank_check(rep, table, label, better):
     rep.require(not bad, f"ncaa: {label} ranks agree with yards per game", f"{len(bad)} off, e.g. {bad[:3]}")
 
 
-def top25_yards_scatter(out_dir, rows, released, poll_label, rep):
+def top25_yards_scatter(out_dir, rows, released, poll_label, rep, group="Top 25", key=None, reel_name="cfp_yards",
+                        label=None, tags_extra=""):
+    """group/key/reel_name/label let Selection Sunday reuse this for the 12-team field (rows carry the seed as 'rank')."""
     QUADS = ("ELITE AT BOTH", "DEFENSE FIRST", "ALL OFFENSE", "NEITHER")
     off, dfn = _ncaa_yards(21), _ncaa_yards(22)
     rep.require(len(off) >= 120 and len(off) == len(dfn), "ncaa: full FBS total offense and defense tables",
@@ -346,7 +392,8 @@ def top25_yards_scatter(out_dir, rows, released, poll_label, rep):
                       "oypg": o["ypg"], "dypg": d["ypg"], "color": color}
         last = max(last or when, when)
         time.sleep(0.3)
-    rep.require(len(t) == len(rows) == 25, "cfp yards scatter: all 25 ranked teams plotted", f"{len(t)} of {len(rows)}")
+    rep.require(len(t) == len(rows) and len(t) in (12, 25), f"cfp yards scatter: all {len(rows)} teams plotted",
+                f"{len(t)} of {len(rows)}")
     if not rep.ok:
         raise DataError("CFP yards scatter: ESPN and NCAA.com disagree; see checks.")
     both = sorted((i for i, r in t.items() if r["orank"] <= ELITE_RANK and r["drank"] <= ELITE_RANK), key=lambda i: t[i]["rank"])
@@ -359,29 +406,32 @@ def top25_yards_scatter(out_dir, rows, released, poll_label, rep):
     pts = [{"x": r["orank"], "y": r["drank"], "abbr": r["name"][:4].upper(), "logo": logo_uri(i, "ncaa"), "color": r["color"]}
            for i, r in t.items()]
     n = len(both)
-    name = lambda i: f"#{t[i]['rank']} {t[i]['name']}"
+    nm = label or (lambda r: f"#{r['rank']} {r['name']}")
+    name = lambda i: nm(t[i])
     # National ranks as ordinals: every "#16" counts against Instagram's 30-hashtag limit (Nov 20 test build hit 35).
     th = lambda k: f"{k}{'th' if 10 <= k % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(k % 10, 'th')}"
     nat = lambda i: f"{name(i)} ({th(t[i]['orank'])} offense, {th(t[i]['drank'])} defense)"
     cap = (
-        f"{'Only ' if n <= 8 else ''}{n} of the College Football Playoff Top 25 rank in the nation's top {ELITE_RANK} in "
+        f"{'Only ' if n <= 8 else ''}{n} of the {'College Football Playoff Top 25' if group == 'Top 25' else group} rank in the nation's top {ELITE_RANK} in "
         f"BOTH total offense and total defense 👀\n\n"
         f"🟢 Elite at both: {', '.join(nat(i) for i in both)}\n\n"
         + (f"🔴 Outside the top {ELITE_RANK} on both sides: {', '.join(nat(i) for i in weak)}\n\n" if weak else "")
-        + f"Best offense in the Top 25: {name(best_o)}, {th(t[best_o]['orank'])} in FBS at {t[best_o]['oypg']:.1f} yards a game. "
+        + f"Best offense {'in the Top 25' if group == 'Top 25' else 'among the ' + group}: {name(best_o)}, {th(t[best_o]['orank'])} in FBS at {t[best_o]['oypg']:.1f} yards a game. "
         f"Best defense: {name(best_d)}, {th(t[best_d]['drank'])} at {t[best_d]['dypg']:.1f} allowed.\n\n"
-        "Yards don't care who you played. Who's built for the playoff, and who's living off the schedule? 👇"
-        "\n\n📤 Send this to the fan who swears their team is complete."
+        + ("Yards don't care who you played. Who's built for the playoff, and who's living off the schedule? 👇"
+           if group == "Top 25" else "Yards don't care who you played. Who's actually built to win it all? 👇")
+        + "\n\n📤 Send this to the fan who swears their team is complete."
         f"\n\n{poll_label} ({released:%b} {released.day}). National ranks among all {nfbs} FBS teams, yards per game, "
         f"all games through {thru:%b} {thru.day}."
         "\nData: NCAA.com official FBS total offense and total defense; every team's games and yards matched against "
         "ESPN box scores."
-        f"\n{TAGS}")
+        f"\n{TAGS}{tags_extra}")
     C.caption(rep, cap)
-    key = f"cfp-yards-{released:%Y-%m-%d}"
+    key = key or f"cfp-yards-{released:%Y-%m-%d}"
     lim = ELITE_RANK + 0.5
-    return _post(out_dir, key, "cfp_yards", lambda p: L.scatter(
-        "Only {hl} of the Top 25\nAre Top 30 at Both" if n <= 8 else "{hl} of the Top 25\nAre Top 30 at Both",
+    of = "the Top 25" if group == "Top 25" else f"the {len(t)}"
+    return _post(out_dir, key, reel_name, lambda p: L.scatter(
+        f"Only {{hl}} of {of}\nAre Top 30 at Both" if n <= 8 else f"{{hl}} of {of}\nAre Top 30 at Both",
         str(n), f"National rank in total offense and total defense, all {nfbs} FBS teams", pts,
         "Total offense rank (1 = most yards) →", "Total defense rank (1 = fewest allowed) →",
         "NCAA.com · checked vs ESPN box scores", (lim, lim), QUADS, p=p, flip_x=True,
@@ -392,6 +442,8 @@ def cfp_scatter(out_dir):
     the points version (Nov 19's 30k-view Reel) rather than skip the week. One scatter per ranking either way."""
     rep = C.Report("cfp scatter")
     released, rows = checked_ranking(rep)
+    if released.weekday() == 6:      # the final ranking (Selection Sunday): the sel_* posts cover it
+        raise NoContent("Final ranking: covered by the Selection Sunday posts.")
     already_posted(f"cfp-yards-{released:%Y-%m-%d}")
     key = f"cfp-scatter-{released:%Y-%m-%d}"
     already_posted(key)

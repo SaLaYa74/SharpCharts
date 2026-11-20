@@ -26,6 +26,7 @@ from PIL import Image
 
 from sharpcharts import archive
 from sharpcharts import cfp as CFP
+from sharpcharts import cfp_playoff  # noqa: F401  registers Selection Sunday + game-day builders in CFP.BUILDERS
 from sharpcharts import checks as C
 from sharpcharts import nba as NBA
 from sharpcharts import stats as ST
@@ -34,7 +35,7 @@ from sharpcharts import posts as P
 from sharpcharts import reels as R
 from sharpcharts import sports as S
 from sharpcharts import v2 as V2
-from sharpcharts.schedule import JOBS, MAX_POSTS_PER_DAY, WINDOW_HOURS, Job
+from sharpcharts.schedule import BIG_DAY_MAX, JOBS, MAX_POSTS_PER_DAY, WINDOW_HOURS, Job
 from sharpcharts.voice import humanize
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -200,8 +201,9 @@ class Runner:
         today = datetime.now(PT).date()
         n_today = sum(1 for v in load(POSTED).values() if v.get("media") != "story" and v.get("posted_at")
                       and datetime.fromisoformat(v["posted_at"]).astimezone(PT).date() == today)
-        if n_today >= MAX_POSTS_PER_DAY:
-            return "waiting", f"already {n_today} posts today (max {MAX_POSTS_PER_DAY})"
+        cap = BIG_DAY_MAX if job.big else MAX_POSTS_PER_DAY
+        if n_today >= cap:
+            return "waiting", f"already {n_today} posts today (max {cap})"
 
         from sharpcharts.instagram import Instagram
         ig = Instagram()

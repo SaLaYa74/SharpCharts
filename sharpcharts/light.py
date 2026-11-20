@@ -266,28 +266,65 @@ def _ticks(lo, hi, n=5):
     return out
 
 
-def scatter(title, highlight, subtitle, points, xlab, ylab, source, avg, quads, tall=True, p=1.0, hl_color="#16A34A"):
+def _spread(xs, ys, gap=66, limit=26, rounds=80):
+    """Nudge logo centers apart so no two overlap more than a sliver, moving none more than `limit` px from its
+    true spot (Nov 20: Georgia was hidden under Ohio State and Notre Dame). Pure layout; the data is untouched."""
+    ox, oy, xs, ys = list(xs), list(ys), list(xs), list(ys)
+    for _ in range(rounds):
+        moved = False
+        for i in range(len(xs)):
+            for j in range(i + 1, len(xs)):
+                dx, dy = xs[j] - xs[i], ys[j] - ys[i]
+                dist = (dx * dx + dy * dy) ** .5
+                if dist >= gap:
+                    continue
+                if dist < 1e-6:
+                    dx, dy, dist = 1.0, 0.0, 1.0
+                push = (gap - dist) / 2 / dist
+                xs[i] -= dx * push; ys[i] -= dy * push; xs[j] += dx * push; ys[j] += dy * push
+                moved = True
+        for i in range(len(xs)):          # never drift far from the real value
+            ddx, ddy = xs[i] - ox[i], ys[i] - oy[i]
+            dd = (ddx * ddx + ddy * ddy) ** .5
+            if dd > limit:
+                xs[i], ys[i] = ox[i] + ddx * limit / dd, oy[i] + ddy * limit / dd
+        if not moved:
+            break
+    return xs, ys
+
+
+def scatter(title, highlight, subtitle, points, xlab, ylab, source, avg, quads, tall=True, p=1.0, hl_color="#16A34A",
+            flip_x=False, ticks=None, tf=None):
     """Logo scatter: every team is a dot. points: [dict(x, y, logo (data URI or None), abbr, color)].
     The y axis is flipped so fewer points allowed sits higher (up and right = good at both).
-    avg: (x_avg, y_avg) dashed lines; quads: labels (top-right, top-left, bottom-right, bottom-left)."""
+    avg: (x_avg, y_avg) dashed lines; quads: labels (top-right, top-left, bottom-right, bottom-left).
+    flip_x: low x values on the right (for ranks, where #1 is best), so up and right still = good at both.
+    ticks: fixed tick values for both axes (e.g. ranks 1, 5, 10, 25, 50, 100) instead of round-number ticks.
+    tf: axis transform applied to every value, ticks and averages included (math.sqrt spreads out the top ranks,
+    where the Top 25 crowds together; the printed tick labels stay in real units)."""
     W, H, L0, R0, T0, B0 = 960, 1060, 96, 24, 24, 96
+    tf = tf or (lambda v: v)
+    points = [dict(q, x=tf(q["x"]), y=tf(q["y"])) for q in points]
+    avg = (tf(avg[0]), tf(avg[1]))
     xs, ys = [q["x"] for q in points], [q["y"] for q in points]
     padx = (max(xs) - min(xs)) * .08 or 1
     # Keep every logo clear of the corner labels: the highest and lowest dot centers sit 100 px inside the frame
     # (labels take the top ~55 px and bottom ~50 px; a logo is 35 px in radius). Nov 19: Iowa sat on DEFENSE FIRST.
     dpp = (max(ys) - min(ys)) / (H - T0 - B0 - 200) or .01
     x0, x1, y0, y1 = min(xs) - padx, max(xs) + padx, min(ys) - 100 * dpp, max(ys) + 100 * dpp
-    X = lambda v: L0 + (v - x0) / (x1 - x0) * (W - L0 - R0)
+    X = lambda v: L0 + ((x1 - v) if flip_x else (v - x0)) / (x1 - x0) * (W - L0 - R0)
     Y = lambda v: T0 + (v - y0) / (y1 - y0) * (H - T0 - B0)        # flipped: low values (good defense) on top
     ax, ay = X(avg[0]), Y(avg[1])
     g = [f'<rect x="{ax:.0f}" y="{T0}" width="{W - R0 - ax:.0f}" height="{ay - T0:.0f}" fill="#16A34A" opacity=".09"/>',
          f'<rect x="{L0}" y="{ay:.0f}" width="{ax - L0:.0f}" height="{H - B0 - ay:.0f}" fill="#DC2626" opacity=".08"/>']
-    for v in _ticks(x0, x1):
+    tx_ = [(tf(v), v) for v in ticks if x0 <= tf(v) <= x1] if ticks else [(v, v) for v in _ticks(x0, x1)]
+    ty_ = [(tf(v), v) for v in ticks if y0 <= tf(v) <= y1] if ticks else [(v, v) for v in _ticks(y0, y1)]
+    for v, lab in tx_:
         g.append(f'<line x1="{X(v):.0f}" y1="{T0}" x2="{X(v):.0f}" y2="{H - B0}" stroke="#E5E7EB" stroke-width="2"/>'
-                 f'<text x="{X(v):.0f}" y="{H - B0 + 40}" text-anchor="middle" font-size="28" font-weight="800" fill="#6B7280">{v:g}</text>')
-    for v in _ticks(y0, y1):
+                 f'<text x="{X(v):.0f}" y="{H - B0 + 40}" text-anchor="middle" font-size="28" font-weight="800" fill="#6B7280">{lab + 0:g}</text>')
+    for v, lab in ty_:
         g.append(f'<line x1="{L0}" y1="{Y(v):.0f}" x2="{W - R0}" y2="{Y(v):.0f}" stroke="#E5E7EB" stroke-width="2"/>'
-                 f'<text x="{L0 - 14}" y="{Y(v) + 10:.0f}" text-anchor="end" font-size="28" font-weight="800" fill="#6B7280">{v:g}</text>')
+                 f'<text x="{L0 - 14}" y="{Y(v) + 10:.0f}" text-anchor="end" font-size="28" font-weight="800" fill="#6B7280">{lab + 0:g}</text>')
     g.append(f'<rect x="{L0}" y="{T0}" width="{W - L0 - R0}" height="{H - T0 - B0}" fill="none" stroke="#1F2937" stroke-width="4"/>')
     g.append(f'<line x1="{ax:.0f}" y1="{T0}" x2="{ax:.0f}" y2="{H - B0}" stroke="#1F2937" stroke-width="3" stroke-dasharray="12 10" opacity=".5"/>'
              f'<line x1="{L0}" y1="{ay:.0f}" x2="{W - R0}" y2="{ay:.0f}" stroke="#1F2937" stroke-width="3" stroke-dasharray="12 10" opacity=".5"/>')
@@ -301,11 +338,13 @@ def scatter(title, highlight, subtitle, points, xlab, ylab, source, avg, quads, 
              f'fill="#1F2937">{escape(ylab)}</text>')
     cx, cy = (L0 + W - R0) / 2, (T0 + H - B0) / 2
     n = len(points)
-    for i, q in enumerate(sorted(points, key=lambda q: q["abbr"])):
+    pts = sorted(points, key=lambda q: q["abbr"])
+    fx, fy = _spread([X(q["x"]) for q in pts], [Y(q["y"]) for q in pts])
+    for i, q in enumerate(pts):
         d = i / n * .45
         k = max(0.0, min(1.0, (p - d) / .55))
         e = 1 - (1 - k) ** 3
-        px, py = cx + (X(q["x"]) - cx) * e, cy + (Y(q["y"]) - cy) * e
+        px, py = cx + (fx[i] - cx) * e, cy + (fy[i] - cy) * e
         op = min(1, k * 1.8)
         if q.get("logo"):
             dot = (f'<circle cx="{px:.1f}" cy="{py:.1f}" r="35" fill="#fff" stroke="#1F2937" stroke-width="3"/>'

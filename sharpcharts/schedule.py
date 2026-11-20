@@ -45,7 +45,8 @@ JOBS = [
     # Jarvis Nov 16: the CFP Top 25 as an offense-vs-defense logo scatter, Thursdays after each new ranking (the CFP
     # Reel and the NFL scatter are this page's best formats). Every team's points match ESPN vs NCAA.com or it blocks.
     Job("cfp_scatter", "cfp_scatter", (THU,), "12:00", live=True, start="2026-11-19",
-        note="Reel: CFP Top 25 offense vs defense, logo scatter (ESPN, checked vs NCAA.com)"),
+        note="Reel: CFP Top 25 national rank in total offense vs total defense, logo scatter (NCAA.com, checked vs "
+             "ESPN box scores; falls back to points per game if the yards sources disagree)"),
     # Nov 6 (owner: "throw in some soccer... Champions League... the big names only"): the giants' table the morning
     # after each matchday finishes, the superstar scorers race the following Monday. Both idle between matchdays.
     Job("ucl_giants",  "ucl_giants",  EVERY_DAY, "07:00", live=True, start="2026-11-08",

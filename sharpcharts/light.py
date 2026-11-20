@@ -406,13 +406,13 @@ HCSS = """<style>
 .hh{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px;margin-top:18px;min-height:0}
 .hteams{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px}
 .hteam{flex:1;display:flex;flex-direction:column;align-items:center;min-width:0}
-.hlogo{width:180px;height:180px;border-radius:50%;background:#fff;border:6px solid #1F2937;display:flex;align-items:center;
-       justify-content:center;overflow:hidden;box-shadow:0 8px 0 rgba(0,0,0,.08)}
+.hlogo{width:250px;height:250px;display:flex;align-items:center;justify-content:center}
+.hlogo img,.mlogo img{filter:drop-shadow(0 6px 8px rgba(0,0,0,.20))}
 .hname{font-family:"Baloo 2";font-weight:800;font-size:46px;line-height:1;margin-top:14px;text-align:center;white-space:nowrap}
 .hsub{font-size:28px;font-weight:800;color:#6B7280;margin-top:6px;white-space:nowrap}
 .htag{font-family:"Baloo 2";font-weight:800;font-size:30px;border-radius:999px;padding:2px 22px;margin-top:10px;letter-spacing:1px}
-.hvs{font-family:"Baloo 2";font-weight:800;font-size:64px;color:#9CA3AF;align-self:center;margin-top:-50px}
-.hrow{display:grid;grid-template-columns:1fr 240px 1fr;align-items:center;gap:12px;height:104px}
+.hvs{font-family:"Baloo 2";font-weight:800;font-size:64px;color:#9CA3AF;align-self:center;margin-top:-80px}
+.hrow{display:grid;grid-template-columns:1fr 240px 1fr;align-items:center;gap:12px;height:98px}
 .hv{height:100%;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;
     box-shadow:0 4px 0 rgba(0,0,0,.06);font-family:"Baloo 2";font-weight:800;font-size:50px;line-height:1}
 .hv small{font-family:Nunito;font-size:22px;font-weight:800;color:#6B7280;margin-top:4px}
@@ -426,8 +426,7 @@ HCSS = """<style>
 .mt{display:flex;align-items:center;gap:14px;min-width:0}
 .mt.r{flex-direction:row-reverse;text-align:right}
 .ms{font-family:"Baloo 2";font-weight:800;font-size:40px;color:#9CA3AF;width:44px;text-align:center;flex:none}
-.mlogo{width:96px;height:96px;flex:none;border-radius:50%;background:#fff;border:4px solid #1F2937;display:flex;align-items:center;
-       justify-content:center;overflow:hidden}
+.mlogo{width:112px;height:112px;flex:none;display:flex;align-items:center;justify-content:center}
 .mn{font-weight:800;font-size:34px;line-height:1.05;white-space:nowrap;overflow:hidden;min-width:0}
 .mn small{display:block;font-size:24px;color:#6B7280}
 .mv{text-align:center;font-family:"Baloo 2";font-weight:800;font-size:36px;color:#9CA3AF}
@@ -437,8 +436,9 @@ HCSS = """<style>
 </style>"""
 
 
-def _logo(src, name, px):
-    return (f'<img src="{src}" style="width:80%;height:80%;object-fit:contain">' if src else
+def _logo(src, name, px, fill=80):
+    """Nov 20 (owner): head-to-head and bracket logos are bigger with no circle (fill=100); the scatter keeps circles."""
+    return (f'<img src="{src}" style="width:{fill}%;height:{fill}%;object-fit:contain">' if src else
             f'<span style="font-family:\'Baloo 2\';font-weight:800;font-size:{px // 4}px">{escape(name[:4].upper())}</span>')
 
 
@@ -457,7 +457,7 @@ def h2h(title, highlight, subtitle, left, right, rows, tally, source, tall=True,
     def team(t):
         tag = (f'<div class="htag" style="background:{t.get("tag_bg", "#FDE047")};color:{t.get("tag_fg", "#1F2937")}">'
                f'{escape(t["tag"])}</div>' if t.get("tag") else "")
-        return (f'<div class="hteam"><div class="hlogo">{_logo(t.get("logo"), t["name"], 180)}</div>'
+        return (f'<div class="hteam"><div class="hlogo">{_logo(t.get("logo"), t["name"], 250, 100)}</div>'
                 f'<div class="hname">{escape(t["name"])}</div><div class="hsub">{escape(t.get("sub", ""))}</div>{tag}</div>')
     n = len(rows)
     out = [f'<div class="hteams">{team(left)}<div class="hvs">VS</div>{team(right)}</div>']
@@ -486,7 +486,7 @@ def matchups(title, highlight, subtitle, games, byes, source, tall=True, p=1.0, 
     for k, g in enumerate(games):
         d = 0.1 + 0.6 * k / max(len(games), 1)
         q = max(0.0, min(1.0, (p - d) / 0.2))
-        side = lambda t, cls: (f'<div class="mt{cls}"><div class="ms">{t["seed"]}</div><div class="mlogo">{_logo(t.get("logo"), t["name"], 96)}</div>'
+        side = lambda t, cls: (f'<div class="mt{cls}"><div class="ms">{t["seed"]}</div><div class="mlogo">{_logo(t.get("logo"), t["name"], 112, 100)}</div>'
                                f'<div class="mn">{escape(t["name"])}<small>{escape(t.get("line", ""))}</small></div></div>')
         tag = (f'<div class="mtag" style="background:{g.get("tag_bg", "#F3F4F6")};color:{g.get("tag_fg", "#1F2937")}">'
                f'{escape(g["tag"])}</div>' if g.get("tag") else "")
@@ -494,8 +494,8 @@ def matchups(title, highlight, subtitle, games, byes, source, tall=True, p=1.0, 
                    f'<div class="mrow">{side(g["l"], "")}<div class="mv">vs</div>{side(g["r"], " r")}</div>{tag}</div>')
     if byes:
         out.append('<div class="byes"><b>BYES</b>' + "".join(
-            f'<div class="mt"><div class="ms" style="width:auto">{b["seed"]}</div><div class="mlogo" style="width:84px;height:84px">'
-            f'{_logo(b.get("logo"), b["name"], 84)}</div></div>' for b in byes) + "</div>")
+            f'<div class="mt"><div class="ms" style="width:auto">{b["seed"]}</div><div class="mlogo" style="width:92px;height:92px">'
+            f'{_logo(b.get("logo"), b["name"], 92, 100)}</div></div>' for b in byes) + "</div>")
     fs, t = _title(title, highlight)
     body = f'''{HCSS}<div class="t" style="--hl:{hl_color};font-size:{fs}px">{t}</div><div class="s">{escape(subtitle)}</div>
 <div class="hh" style="gap:16px">{"".join(out)}</div>'''

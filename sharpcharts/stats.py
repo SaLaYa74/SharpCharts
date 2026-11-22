@@ -325,8 +325,12 @@ def nba_scorers(out_dir, day=None):
               "value_label": f"{p[4]}", "color": COOL[i]} for i, p in enumerate(top)]
     lead = top[0]
     key = f"nba-{day.isoformat()}-scorers"
+    # Nov 22: Herro and Wembanyama both scored 50 on Nov 21; naming only the alphabetical tiebreak winner buried the story.
+    tied = [p for p in top if p[4] == lead[4]]
+    who = lead[0] if len(tied) == 1 else (" and ".join(p[0] for p in tied) if len(tied) == 2
+                                          else ", ".join(p[0] for p in tied[:-1]) + f" and {tied[-1][0]}")
     cap = (
-        f"{lead[0]} dropped {lead[4]} points last night 🔥\n\n"
+        f"{who} {'each ' if len(tied) > 1 else ''}dropped {lead[4]} points last night 🔥\n\n"
         + "\n".join(f"{i + 1}. {p[0]} ({p[2]} vs {p[3]}): {p[5]}" for i, p in enumerate(top))
         + "\n\nBest performance of the night? 👇"
         + f"\n\n📤 Send this to a {N.name(lead[2])} fan.")

@@ -1278,5 +1278,10 @@
     "at": "2026-11-23T07:00-08:00",
     "detail": "ucl-giants-2027-md4 already posted",
     "status": "skipped"
+  },
+  "2026-11-23:ucl_scorers": {
+    "at": "2026-11-23T12:00-08:00",
+    "detail": "ucl-scorers-2027-md4 already posted",
+    "status": "skipped"
   }
 }

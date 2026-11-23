@@ -177,3 +177,27 @@ hashtags to 5 if the scatter does well. Checkpoint Fri Dec 5.
 ## 2026-11-20 — CFP scatter breaks out; yards-rank version next
 - Nov 19 CFP Top 25 points scatter: 30,550 views, 12,456 reach, 19 shares, 12.5s avg watch. Page's best ever (old best 1.4k). Followers 10 → 15.
 - Owner: make the next one national rank in total offense vs total defense. Built; Thursday job uses it from Nov 26 with points as the fallback.
+
+## 2026-11-23 (Mon, Jarvis full review)
+
+**Numbers (7 days, 11 Reels):** followers 15 → **18** (10 on Nov 14). Account reach 31.5K in 28 days. CFP Top 25 scatter
+(Nov 19): **45,675 views, 17,622 reach, 26 shares, 10 comments, 12.7 s watch**. NBA scatter (Fri) **2,254 reach, 16
+shares, 11.4 s** (last one: 116). NBA scorers 489 avg reach, 4.5 s, ~0 shares. NFL scatter 140 reach but 13 s watch.
+No errors or blocks in the run log.
+**Read:** the logo scatter is the format that travels when the topic is hot (CFP, then NBA the next day). Dec 5
+checkpoint is no longer "flat": reach is ~10x the Nov 14 baseline and followers almost doubled.
+
+**Fixed (insights.py, all three pages):** the 30-day report died on a Graph API read timeout. Network blips are now
+retried 3 times. No posting code touched.
+
+**Pre-flight of Thursday's CFP scatter (Thanksgiving):** tested on this week's Coaches Poll (the committee feed is
+empty on Mondays). The yards version blocks on **Ole Miss** (ESPN box scores 4,864 gained / 4,096 allowed vs NCAA.com
+4,852 / 4,058), and the points fallback blocks on **Missouri** (243 allowed on ESPN vs 237 on NCAA.com). Both are
+real disagreements between the sources, so the checks stay as they are. Both teams are ranked (Coaches #19 / #23).
+If NCAA.com hasn't fixed its tables by Thursday, the Reel won't post that week. Nothing else to change: no
+unverified numbers go out.
+
+**Not changed:** calendar. nba_scorers stays as the daily volume; the scatters are the reach drivers.
+
+**Watch Thu Nov 26:** did the CFP scatter post (or block)? Champions League Matchday 5 giants table (Nov 26-27 mornings).
+Dec 5 checkpoint: recommend keeping the page (scatter-led), not pausing it.

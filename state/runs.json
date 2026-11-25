@@ -1320,7 +1320,7 @@
     "status": "done"
   },
   "2026-11-25:ucl_giants": {
-    "at": "2026-11-25T09:00-08:00",
+    "at": "2026-11-25T09:15-08:00",
     "detail": "Champions League matchday still in progress (games played: [4, 5]).",
     "status": "waiting"
   }

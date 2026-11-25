@@ -201,3 +201,14 @@ unverified numbers go out.
 
 **Watch Thu Nov 26:** did the CFP scatter post (or block)? Champions League Matchday 5 giants table (Nov 26-27 mornings).
 Dec 5 checkpoint: recommend keeping the page (scatter-led), not pausing it.
+
+## 2026-11-24: roundtable (owner: "Apply all")
+
+**Numbers (28 days):** 32,063 reach, 18 followers (15 a week ago). CFP scatter (Nov 19) 46.5K views, 26 shares. NBA
+scatter (Fri Nov 20) 4,741 views, 16 shares (previous ~231).
+
+**Added (3e2e29d):** `nba_homeroad`, Tuesdays 3pm PT: every team's average point margin at home vs on the road
+("7 Teams Are Only Good at Home" on its first build). Same verified finals as the scatter, plus: league-wide home
+margins must cancel road margins exactly; neutral-site games count for records only. `light.scatter` gained `flip_y`.
+
+**Watch:** two runs (Nov 24, Dec 1). Both under ~500 views → retire it. Beats the Friday scatter → keep both.

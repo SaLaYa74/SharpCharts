@@ -1319,6 +1319,11 @@
     "detail": "8 snapshot files",
     "status": "done"
   },
+  "2026-11-25:archive_pm": {
+    "at": "2026-11-25T14:00-08:00",
+    "detail": "8 snapshot files",
+    "status": "done"
+  },
   "2026-11-25:nba_scorers": {
     "at": "2026-11-25T09:30-08:00",
     "detail": "Only 3 NBA games on 2026-11-24.",
@@ -1330,8 +1335,8 @@
     "status": "posted"
   },
   "2026-11-25:ucl_giants": {
-    "at": "2026-11-25T13:45-08:00",
-    "detail": "Champions League matchday still in progress (games played: [4, 5]).",
-    "status": "waiting"
+    "at": "2026-11-25T14:00-08:00",
+    "detail": "https://www.instagram.com/reel/DgLjojCKR5L/",
+    "status": "posted"
   }
 }

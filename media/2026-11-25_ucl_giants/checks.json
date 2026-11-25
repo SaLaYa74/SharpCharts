@@ -1,0 +1,365 @@
+{
+  "subject": "ucl giants table",
+  "counts": {
+    "pass": 71,
+    "warn": 0,
+    "block": 0
+  },
+  "checks": [
+    {
+      "status": "pass",
+      "check": "ucl: 36 clubs in both tables",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: ranks 1-36",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: points = 3 per win + 1 per draw",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #1 zone note says 'round of 16'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #2 zone note says 'round of 16'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #3 zone note says 'round of 16'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #4 zone note says 'round of 16'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #5 zone note says 'round of 16'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #6 zone note says 'round of 16'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #7 zone note says 'round of 16'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #8 zone note says 'round of 16'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #9 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #10 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #11 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #12 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #13 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #14 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #15 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #16 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #17 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #18 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #19 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #20 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #21 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #22 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #23 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #24 zone note says 'playoff'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #25 zone note says 'eliminated'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #26 zone note says 'eliminated'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #27 zone note says 'eliminated'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #28 zone note says 'eliminated'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #29 zone note says 'eliminated'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #30 zone note says 'eliminated'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #31 zone note says 'eliminated'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #32 zone note says 'eliminated'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #33 zone note says 'eliminated'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #34 zone note says 'eliminated'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #35 zone note says 'eliminated'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: #36 zone note says 'eliminated'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: Real Madrid matches UEFA's table",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: Barcelona matches UEFA's table",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: Man City matches UEFA's table",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: Bayern matches UEFA's table",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: PSG matches UEFA's table",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: Liverpool matches UEFA's table",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: Man United matches UEFA's table",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: Arsenal matches UEFA's table",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: Inter matches UEFA's table",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: Atl\u00e9tico matches UEFA's table",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: Dortmund matches UEFA's table",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl: Napoli matches UEFA's table",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl_giants.mp4: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl_giants.mp4: file size",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl_giants.mp4: duration",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl_giants.mp4: 1080x1920",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl_giants.mp4: has audio",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl_giants.mp4: H.264 video",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl_giants_cover.jpg: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl_giants_cover.jpg: dimensions",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl_giants_cover.jpg: not empty",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ucl_giants_cover.jpg: has visible content",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    }
+  ]
+}

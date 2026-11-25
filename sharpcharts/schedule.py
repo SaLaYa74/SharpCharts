@@ -41,6 +41,10 @@ JOBS = [
     Job("nba_scorers", "nba_scorers", EVERY_DAY, "09:30", live=True, start="2026-11-01", note="Reel: last night's top NBA scorers"),
     Job("st_scatter",  "st_scatter",  (WED,), "12:00", live=True, note="Reel: NFL offense vs defense, every team as a logo"),
     Job("nba_scatter", "nba_scatter", (FRI,), "15:00", live=True, start="2026-11-07", note="Reel: NBA offense vs defense, every team as a logo"),
+    # Jarvis Nov 24 (roundtable, owner: "Apply all"): the NBA scatter broke out (4,741 views, 16 shares, Nov 20), so a
+    # second everyone-on-one-chart NBA Reel on Tuesdays: home vs road point margin ("who's only good at home?").
+    Job("nba_homeroad", "nba_homeroad", (TUE,), "15:00", live=True, start="2026-11-24",
+        note="Reel: NBA home vs road point margin, every team as a logo"),
     # CFP committee ranking (Tuesdays, final one a Sunday): checks every morning, posts once per new ranking.
     # Nov 20 (owner): the Top 10 ladder is retired (234 views on Nov 18; ESPN already shows everyone the Top 10). The
     # scatter is our take nobody else has, so it gets the slot.

@@ -294,14 +294,15 @@ def _spread(xs, ys, gap=66, limit=26, rounds=80):
 
 
 def scatter(title, highlight, subtitle, points, xlab, ylab, source, avg, quads, tall=True, p=1.0, hl_color="#16A34A",
-            flip_x=False, ticks=None, tf=None):
+            flip_x=False, ticks=None, tf=None, flip_y=True):
     """Logo scatter: every team is a dot. points: [dict(x, y, logo (data URI or None), abbr, color)].
     The y axis is flipped so fewer points allowed sits higher (up and right = good at both).
     avg: (x_avg, y_avg) dashed lines; quads: labels (top-right, top-left, bottom-right, bottom-left).
     flip_x: low x values on the right (for ranks, where #1 is best), so up and right still = good at both.
     ticks: fixed tick values for both axes (e.g. ranks 1, 5, 10, 25, 50, 100) instead of round-number ticks.
     tf: axis transform applied to every value, ticks and averages included (math.sqrt spreads out the top ranks,
-    where the Top 25 crowds together; the printed tick labels stay in real units)."""
+    where the Top 25 crowds together; the printed tick labels stay in real units).
+    flip_y=False: high y values on top (e.g. road point margin, where more is better)."""
     W, H, L0, R0, T0, B0 = 960, 1060, 96, 24, 24, 96
     tf = tf or (lambda v: v)
     points = [dict(q, x=tf(q["x"]), y=tf(q["y"])) for q in points]
@@ -313,7 +314,7 @@ def scatter(title, highlight, subtitle, points, xlab, ylab, source, avg, quads, 
     dpp = (max(ys) - min(ys)) / (H - T0 - B0 - 200) or .01
     x0, x1, y0, y1 = min(xs) - padx, max(xs) + padx, min(ys) - 100 * dpp, max(ys) + 100 * dpp
     X = lambda v: L0 + ((x1 - v) if flip_x else (v - x0)) / (x1 - x0) * (W - L0 - R0)
-    Y = lambda v: T0 + (v - y0) / (y1 - y0) * (H - T0 - B0)        # flipped: low values (good defense) on top
+    Y = lambda v: T0 + ((v - y0) if flip_y else (y1 - v)) / (y1 - y0) * (H - T0 - B0)   # flip_y: low values on top
     ax, ay = X(avg[0]), Y(avg[1])
     g = [f'<rect x="{ax:.0f}" y="{T0}" width="{W - R0 - ax:.0f}" height="{ay - T0:.0f}" fill="#16A34A" opacity=".09"/>',
          f'<rect x="{L0}" y="{ay:.0f}" width="{ax - L0:.0f}" height="{H - B0 - ay:.0f}" fill="#DC2626" opacity=".08"/>']

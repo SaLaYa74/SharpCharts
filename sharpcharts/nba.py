@@ -94,7 +94,7 @@ def _game(day, e):
     side = {c["homeAway"]: c for c in comp["competitors"]}
     g = {"id": e["id"], "day": day, "tip": e["date"], "status": st.get("name"),
          "final": bool(st.get("completed")) and st.get("state") == "post",
-         "regular": (e.get("season") or {}).get("type") == 2}
+         "regular": (e.get("season") or {}).get("type") == 2, "neutral": bool(comp.get("neutralSite"))}
     for k in ("home", "away"):
         c = side[k]
         g[k] = c["team"]["abbreviation"]

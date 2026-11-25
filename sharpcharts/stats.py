@@ -414,5 +414,70 @@ def nba_scatter(out_dir):
                     "ESPN · scores verified", NBA_DATA, NBA_TAGS, rep)
 
 
+HR_QUADS = ("GOOD EVERYWHERE", "ROAD WARRIORS", "ONLY AT HOME", "BAD EVERYWHERE")
+
+
+def nba_homeroad(out_dir):
+    """Jarvis Nov 24 (roundtable, owner: "Apply all"): a second weekly NBA everyone-on-one-chart Reel, because the
+    offense-vs-defense scatter broke out (4,741 views, 16 shares on Nov 20 vs ~230 before). Every team's average point
+    margin at home (x) vs on the road (y): who's only good at home? Same verified finals as the scatter (quarters add
+    up, every team's record matches ESPN game by game), plus a split check: in every game the home team's margin is
+    exactly the road team's with the sign flipped, so league-wide home margins must cancel road margins to the point."""
+    from .logos import logo_uri
+    rep = C.Report("stats nba homeroad")
+    finals, thru = N.season(rep, lines=False)
+    s = {}
+    for g in finals:                       # neutral-site games (Mexico City, Europe, Las Vegas) count for the record only
+        m = g["home_score"] - g["away_score"]
+        for k, side, mm in (("home", "h", m), ("away", "r", -m)):
+            r = s.setdefault(g[k], {"h": [], "r": [], "w": 0, "l": 0})
+            if not g.get("neutral"):
+                r[side].append(mm)
+            r["w" if mm > 0 else "l"] += 1
+    finals = [g for g in finals if not g.get("neutral")]
+    rep.require(len(s) == 30, "nba: all 30 teams have played", f"{len(s)} teams")
+    if not s or min(min(len(r["h"]), len(r["r"])) for r in s.values()) < 4:
+        raise NoContent("Too early: some NBA teams have fewer than 4 home or 4 road games.")
+    rep.require(sum(len(r["h"]) for r in s.values()) == sum(len(r["r"]) for r in s.values()) == len(finals),
+                "nba: one home and one road team per game", "home/road game counts differ")
+    rep.require(sum(sum(r["h"]) for r in s.values()) == -sum(sum(r["r"]) for r in s.values()),
+                "nba: league-wide home margins cancel road margins", "a game's margin is counted wrong")
+    for a, r in s.items():
+        r["hm"], r["rm"] = sum(r["h"]) / len(r["h"]), sum(r["r"]) / len(r["r"])
+        r["record"] = _rec(r["w"], r["l"])
+        rep.require(-40 <= r["hm"] <= 40 and -40 <= r["rm"] <= 40, f"nba: {a} margins plausible",
+                    f"{r['hm']:+.1f} home, {r['rm']:+.1f} road")
+    if not rep.ok:
+        raise DataError("NBA home/road checks failed: " + "; ".join(i["detail"] for i in rep.blocked))
+    q = lambda hp, rp: sorted((a for a, r in s.items() if (r["hm"] > 0) == hp and (r["rm"] > 0) == rp),
+                              key=lambda a: -(s[a]["hm"] - s[a]["rm"]))
+    both, home, road, bad = q(True, True), q(True, False), q(False, True), q(False, False)
+    gap = max(s, key=lambda a: (s[a]["hm"] - s[a]["rm"], a))
+    tl = N._thru(thru)
+    nm = N.name
+    if len(home) >= 3:
+        title, hl, color = "{hl} Teams Are Only Good at Home", str(len(home)), RED
+        intro = (f"{len(home)} NBA teams outscore opponents at home, then get outscored on the road 🏠✈️\n\n")
+    else:
+        title, hl, color = "{hl} Teams Are Good Home AND Away", str(len(both)), GREEN
+        intro = f"Only {len(both)} NBA teams outscore opponents both at home AND on the road 🏠✈️\n\n"
+    lst = lambda xs: ", ".join(nm(a) for a in xs)
+    cap = (intro
+           + (f"🟢 Good home AND away: {lst(both)}\n" if both else "")
+           + (f"🏠 Only good at home: {lst(home)}\n" if home else "")
+           + (f"✈️ Better on the road: {lst(road)}\n" if road else "")
+           + (f"🔴 Outscored everywhere: {lst(bad)}\n" if bad else "")
+           + f"\nBiggest home-court edge: {nm(gap)}, {s[gap]['hm']:+.1f} a game at home vs {s[gap]['rm']:+.1f} on the road."
+           f"\n\nHome-court heroes or road frauds? Where's your team? 👇"
+           f"\n\n📤 Send this to the fan who only brags after home wins."
+           f"\n\nAverage point margin per game at home and on the road, {tl}.\n{NBA_DATA}\n{NBA_TAGS} #homecourt")
+    pts = [{"x": r["hm"], "y": r["rm"], "abbr": a, "logo": logo_uri(a, "nba"),
+            "color": N.teams().get(a, {}).get("color", "#3A4A6B")} for a, r in s.items()]
+    return _post(out_dir, N._week_key(thru, "homeroad"), "nba_homeroad", lambda p: L.scatter(
+        title, hl, f"Average point margin at home vs on the road · {tl}", pts,
+        "Point margin per game at HOME →", "Point margin per game on the ROAD →", "ESPN · scores verified",
+        (0, 0), HR_QUADS, p=p, hl_color=color, flip_y=False), cap, rep, hold=5.0)
+
+
 BUILDERS_CTX = {"st_scatter": nfl_scatter, "st_offense": nfl_offense, "st_margin": nfl_dominant, "st_board": nfl_board, "st_fantasy": nfl_fantasy_week}
-BUILDERS = {"nba_scatter": nba_scatter, "nba_scorers": nba_scorers, "nba_offense": nba_offense, "nba_margin": nba_dominant, "nba_board": nba_board}
+BUILDERS = {"nba_scatter": nba_scatter, "nba_homeroad": nba_homeroad, "nba_scorers": nba_scorers, "nba_offense": nba_offense, "nba_margin": nba_dominant, "nba_board": nba_board}

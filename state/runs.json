@@ -1318,5 +1318,10 @@
     "at": "2026-11-25T06:00-08:00",
     "detail": "8 snapshot files",
     "status": "done"
+  },
+  "2026-11-25:ucl_giants": {
+    "at": "2026-11-25T07:00-08:00",
+    "detail": "Champions League matchday still in progress (games played: [4, 5]).",
+    "status": "waiting"
   }
 }

@@ -1313,5 +1313,10 @@
     "at": "2026-11-24T07:00-08:00",
     "detail": "ucl-giants-2027-md4 already posted",
     "status": "skipped"
+  },
+  "2026-11-25:archive_am": {
+    "at": "2026-11-25T06:00-08:00",
+    "detail": "8 snapshot files",
+    "status": "done"
   }
 }

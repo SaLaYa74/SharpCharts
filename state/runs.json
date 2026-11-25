@@ -1324,8 +1324,13 @@
     "detail": "Only 3 NBA games on 2026-11-24.",
     "status": "skipped"
   },
+  "2026-11-25:st_scatter": {
+    "at": "2026-11-25T12:00-08:00",
+    "detail": "https://www.instagram.com/reel/DgLV6bRBom9/",
+    "status": "posted"
+  },
   "2026-11-25:ucl_giants": {
-    "at": "2026-11-25T11:45-08:00",
+    "at": "2026-11-25T12:00-08:00",
     "detail": "Champions League matchday still in progress (games played: [4, 5]).",
     "status": "waiting"
   }

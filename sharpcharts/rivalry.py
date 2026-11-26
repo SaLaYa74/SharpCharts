@@ -29,6 +29,7 @@ TY, MADDEN, NICO = "5092275", "5142594", "4870799"
 # Status line, word for word what's verified. Update if UCLA announces a decision before the post goes out.
 STATUS = "Dieffenbach (hip) not ruled out"
 STATUS_SHORT = "hip injury: not ruled out"
+STATUS_CAPTION = "His coach says he's \"doing better than we thought\" (ESPN), and he hasn't been ruled out."
 ESPN = "https://site.api.espn.com/apis/site/v2/sports/football/college-football"
 ATHLETE = "https://site.web.api.espn.com/apis/common/v3/sports/football/college-football/athletes/{}/stats?season=2026"
 ACTION = "https://api.actionnetwork.com/web/v2/scoreboard/ncaaf?bookIds=15,30,68,69,71,75,79&date=20261128&division=FBS"
@@ -296,7 +297,7 @@ def usc_ucla(out_dir, posted=None):
         f"Is Ty Dieffenbach worth {moved:g} points? 🏈",
         "",
         f"USC at UCLA, {kick:%A} {kick:%-I:%M} PT{' on ' + line['tv'] if line['tv'] else ''}. UCLA's QB was carted off "
-        "at Michigan last week. His coach says he's \"doing better than we thought\" (ESPN), and he hasn't been ruled out.",
+        "at Michigan last week. " + STATUS_CAPTION,
         "",
         f"📉 The line: {fmt(line['open'])} when DraftKings opened it. {fmt(line['now'])} now, "
         f"{moved:g} points toward UCLA. The other major books are all within a point.",

@@ -220,6 +220,10 @@ def card(title, hl, sub, usc, ucla, line, win, qbs, source, p=1.0):
 .qr .st{font-family:"Baloo 2";font-weight:800;font-size:40px;text-align:right;line-height:1}
 .qr .st small{display:block;font-family:Nunito;font-size:24px;color:#6B7280}
 .st2{display:flex;flex-direction:column;align-items:center}.st2 small{font-size:25px;font-weight:800;color:#6B7280;margin-top:6px;max-width:330px;line-height:1.15}
+.qt{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px}
+.qt div{border:5px solid;border-radius:20px;text-align:center;padding:12px 6px}
+.qt small{display:block;font-family:"Baloo 2";font-weight:800;font-size:30px;letter-spacing:1px;color:#6B7280}
+.qt b{display:block;font-family:"Baloo 2";font-weight:800;font-size:72px;line-height:1.05}
 .gap{margin-top:14px;text-align:center;font-family:"Baloo 2";font-weight:800;font-size:32px;color:#1F2937}
 .f{position:relative;background:#2D68C4}
 .f>*{position:relative;z-index:1}
@@ -239,19 +243,20 @@ def card(title, hl, sub, usc, ucla, line, win, qbs, source, p=1.0):
     bar = lambda lab, a, b: (f'<div class="wr"><div class="lb">{escape(lab)}</div><div class="sb">'
                              f'<div style="width:{a:.1f}%;background:{usc["color"]}">USC {a:.0f}%</div>'
                              f'<div style="width:{b:.1f}%;background:{ucla["color"]};justify-content:flex-end">UCLA {b:.0f}%</div></div></div>')
-    q = "".join(f'<div class="qr"><i style="background:{c}"></i><div class="nm">{escape(n)}<small>{escape(s)}</small></div>'
-                f'<div class="st">{escape(v)}<small>{escape(vs)}</small></div></div>' for c, n, s, v, vs in qbs)
+    # Nov 25 (owner: "a little less wordy"): two tiles, no sentences.
+    q = '<div class="qt">' + "".join(f'<div style="border-color:{c}"><small>{escape(n)}</small><b>{escape(v)}</b></div>'
+                                     for c, n, s, v, vs in qbs) + "</div>"
     fs, t = L._title(title, hl)
     body = f'''{L.HCSS}{css}{split_bg(usc["color"], ucla["color"])}<div class="t" style="font-size:{fs}px">{t}</div><div class="s">{escape(sub)}</div>
 <div class="qs">
  <div class="tm" style="opacity:{fade(0):.2f}">{team(usc)}<div class="vs">at</div>{team(ucla, " r")}</div>
- <div class="box" style="opacity:{fade(.15):.2f};text-align:center"><div class="cap">THE LINE vs TY'S HIP</div>
+ <div class="box" style="opacity:{fade(.15):.2f};text-align:center"><div class="cap">THE LINE</div>
   <div class="mv"><div class="st2"><span class="o">{escape(line[0])}</span><small>{escape(line[3])}</small></div><span class="a">→</span>
    <div class="st2"><span class="n">{escape(line[1])}</span><small>{escape(line[4])}</small></div></div>
-  <div style="margin-top:10px"><span class="pill">{escape(line[2])}</span></div></div>
+  </div>
  <div class="box" style="opacity:{fade(.4):.2f}"><div class="cap">WHO WINS?</div>{bar(*win[0])}{bar(*win[1])}
   <div class="gap">{escape(win[2])}</div></div>
- <div class="box" style="opacity:{fade(.65):.2f}"><div class="cap">UCLA WITH vs WITHOUT TY</div>{q}</div>
+ <div class="box" style="opacity:{fade(.65):.2f}"><div class="cap">UCLA AT QB</div>{q}</div>
 </div>'''
     return L._page(body, True, source)
 
@@ -287,17 +292,17 @@ def usc_ucla(out_dir, posted=None):
     ucla_t = {"name": "UCLA", "sub": f"{ucla_w}-{len(ucla) - ucla_w}", "logo": logo_uri(UCLA, "ncaa"), "color": "#2D68C4"}
     rec = lambda s: f"{s['w']}-{s['l']}"
     # Nov 25 (owner: "make it a little more obvious... the difference is being driven by Ty"): with vs without Ty only.
-    qbs = [(GREEN, "WITH Ty", "Dieffenbach · " + STATUS_SHORT, rec(ty), f"as starter · {ty['ppg']:.1f} pts/g · {ty['papg']:.1f} allowed"),
-           (RED, "WITHOUT Ty", "backup Madden Iamaleava", "0 starts", f"{md['cmp']}-of-{md['att']}, {md['yds']} yds this season")]
+    qbs = [(GREEN, "WITH TY", "Dieffenbach · " + STATUS_SHORT, rec(ty), f"as starter · {ty['ppg']:.1f} pts/g · {ty['papg']:.1f} allowed"),
+           (RED, "HIS BACKUP", "Madden Iamaleava", "0 starts", f"{md['cmp']}-of-{md['att']}, {md['yds']} yds this season")]
     from datetime import datetime
     from zoneinfo import ZoneInfo
     kick = datetime.fromisoformat(line["kick"].replace("Z", "+00:00")).astimezone(ZoneInfo("America/Los_Angeles"))
     when = f"{kick:%a} {kick:%-I:%M} PT" + (f" · {line['tv']}" if line["tv"] else "")
     title, hl = "UCLA's QB Is Hurt.\n{hl}", "Vegas Noticed."
-    sub = f"{ucla_t['sub']} UCLA is a home underdog to {usc_t['sub']} USC · {when}"
+    sub = f"{ucla_t['sub']} UCLA is a home underdog · {when}"
     source = "DraftKings via ESPN · Action Network · ESPN"
-    win = [("ESPN computer model", line["fpi_usc"], line["fpi_ucla"]), ("Betting market", mkt_usc, mkt_ucla),
-           f"Same game, a {abs(line['fpi_ucla'] - mkt_ucla):.0f}-point gap. The big unknown: Ty."]
+    win = [("Computer model", line["fpi_usc"], line["fpi_ucla"]), ("Betting market", mkt_usc, mkt_ucla),
+           "The big unknown: Ty."]
     cap = "\n".join([
         f"Why is {ucla_t['sub']} UCLA a home underdog to {usc_t['sub']} USC? Its quarterback's hip. 🏈",
         "",
@@ -328,7 +333,7 @@ def usc_ucla(out_dir, posted=None):
     C.caption(rep, cap)
     return _post(out_dir, key, "usc_ucla_qb", lambda p: card(title, hl, sub, usc_t, ucla_t,
                  (fmt(line["open"]), fmt(line["now"]), f"{moved:g} points back toward UCLA as Ty's outlook improved",
-                  "Opening line · Ty was carted off Sat.", "Now · Mon: \"doing better than we thought\""),
+                  "Open · Ty carted off", "Now · Ty \"doing better\""),
                  win, qbs, source, p=p),
                  cap, rep, hold=7.0)
 
@@ -379,11 +384,11 @@ def usc_ucla_tape(out_dir, posted=None):
     pt = kick.astimezone(ZoneInfo("America/Los_Angeles"))
     if wb > wa and line["now"] < 0:
         title, hl = f"UCLA Wins on Paper {wb}-{wa}.\n{{hl}}", f"The Line Says USC by {abs(line['now']):g}."
-        tally = "The big unknown: Ty Dieffenbach's hip."
+        tally = "The big unknown: Ty's hip."
     else:
         title, hl = "USC vs UCLA:\n{hl}", "Tale of the Tape"
         tally = f"Line: {fmt(line['now'])} · {STATUS_SHORT}"
-    sub = f"{pt:%a} {pt:%-I:%M} PT · Line: {fmt(line['now'])} · {STATUS}"
+    sub = f"{pt:%a} {pt:%-I:%M} PT · Ty Dieffenbach (hip) not ruled out"
     left = {"logo": logo_uri(USC, "ncaa"), "name": "USC", "sub": a["rec"]}
     right = {"logo": logo_uri(UCLA, "ncaa"), "name": "UCLA", "sub": b["rec"]}
     lines = "\n".join(f"• {r['label']}: USC {r['l']}, UCLA {r['r']}" for r in rows)

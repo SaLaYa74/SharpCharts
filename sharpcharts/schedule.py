@@ -64,6 +64,12 @@ JOBS = [
         note="Reel: playoff game day, 3rd game"),
     Job("cfp_game4",   "cfp_game4",   EVERY_DAY, "13:30", live=True, start="2026-12-18", big=True,
         note="Reel: playoff game day, 4th game"),
+    # Nov 25 (owner: "a post about USC versus UCLA and show the odds... with and without Ty Dieffenbach"; "post it at
+    # 9am PST thanksgiving day"). One-off, owner approved the preview. The builder refuses within 2 hours of kickoff.
+    # TEMP (remove after Nov 25): preview-only build on the GitHub runner, to prove every source answers from there.
+    Job("usc_ucla_ci", "usc_ucla",    (WED,), "16:00", live=False, start="2026-11-25", note="TEMP preview: CI source check"),
+    Job("usc_ucla",    "usc_ucla",    (THU,), "09:00", live=True, start="2026-11-26",
+        note="Reel: USC at UCLA, is one QB worth 5 points? (line move, market vs FPI, UCLA by starting QB)"),
     # Jarvis Nov 16: the CFP Top 25 as an offense-vs-defense logo scatter, Thursdays after each new ranking (the CFP
     # Reel and the NFL scatter are this page's best formats). Every team's points match ESPN vs NCAA.com or it blocks.
     Job("cfp_scatter", "cfp_scatter", (THU,), "12:00", live=True, start="2026-11-19",

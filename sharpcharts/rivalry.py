@@ -12,6 +12,7 @@ Every number has a second source or an exact recount:
     his ESPN season stats, and the game results must add up to UCLA's ESPN record.
 """
 import json
+import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from html import escape
@@ -65,8 +66,16 @@ def _line(rep):
     comp = s["header"]["competitions"][0]
     line["kick"] = comp["date"]
     line["tv"] = next((b.get("media", {}).get("shortName") for b in s.get("broadcasts", []) if b.get("media")), "")
-    # Second source: every book Action Network lists must sit within a point of DraftKings now
-    an = _get(ACTION)
+    # Second source: every book Action Network lists must sit within a point of DraftKings now. If Action Network
+    # won't answer (it may block cloud servers), ESPN's own weekly betting-lines story (a different book) is the backup.
+    try:
+        an = _get(ACTION)
+    except (urllib.error.URLError, ValueError) as e:
+        alt = _espn_story_line()
+        rep.require(alt is not None and abs(alt - line["now"]) <= 1.0, "odds: ESPN betting story within 1 point of DraftKings",
+                    f"Action Network down ({type(e).__name__}); ESPN story says {alt}, DraftKings {line['now']}")
+        line["books"], line["an_open"] = 1, None
+        return line
     g = next((g for g in an.get("games", []) if {t.get("abbr") for t in g.get("teams", [])} >= {"USC", "UCLA"}), None)
     if not rep.require(g is not None, "odds: game found on Action Network", "missing"):
         raise DataError("Action Network doesn't list USC-UCLA")
@@ -86,6 +95,22 @@ def _line(rep):
     line["books"] = len(current)
     line["an_open"] = books.get(OPENER_BOOK)
     return line
+
+
+STORY = "https://content.core.api.espn.com/v1/sports/news/50571004"     # ESPN "Top 25 betting lines", Week 13
+
+
+def _espn_story_line():
+    """USC's spread as printed in ESPN's Week 13 betting-lines story ('No. 15 USC -7 at No. 9 UCLA'), or None."""
+    import html
+    import re
+    try:
+        d = _get(STORY)
+    except (urllib.error.URLError, ValueError):
+        return None
+    text = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", d["headlines"][0]["story"])))
+    m = re.search(r"USC (-\d+(?:\.\d)?) at No\. \d+ UCLA", text)
+    return float(m.group(1)) if m else None
 
 
 def _games(tid):
@@ -148,6 +173,24 @@ def _by_starter(games, aid):
             "papg": sum(g["pa"] for g in gs) / len(gs)}
 
 
+def split_bg(left, right, w=1080, h=1920, top=650, bottom=430, teeth=9, amp=46):
+    """Rivalry background (owner, Nov 25: "half red half blue... a jagged line angled across the middle"): left team's
+    color on the left, right team's on the right, split by a zigzag seam that leans from top-right to bottom-left."""
+    pts = []
+    for k in range(teeth + 1):
+        y = h * k / teeth
+        x = top + (bottom - top) * k / teeth + (amp if k % 2 else -amp) * (0 < k < teeth)
+        pts.append((x, y))
+    seam = " ".join(f"{x:.0f},{y:.0f}" for x, y in pts)
+    return (f'<svg class="split" viewBox="0 0 {w} {h}" preserveAspectRatio="none">'
+            f'<defs><radialGradient id="vg" cx="50%" cy="40%" r="75%"><stop offset="60%" stop-color="#000" stop-opacity="0"/>'
+            f'<stop offset="100%" stop-color="#000" stop-opacity=".28"/></radialGradient></defs>'
+            f'<rect width="{w}" height="{h}" fill="{right}"/>'
+            f'<polygon points="0,0 {seam} 0,{h}" fill="{left}"/>'
+            f'<polyline points="{seam}" fill="none" stroke="#FFD23F" stroke-width="12" stroke-linejoin="miter"/>'
+            f'<rect width="{w}" height="{h}" fill="url(#vg)"/></svg>')
+
+
 def card(title, hl, sub, usc, ucla, line, win, qbs, source, p=1.0):
     """USC-UCLA QB-swing card: teams, the line move, the two win chances, UCLA by starting QB. Sections fade in."""
     fade = lambda d: max(0.0, min(1.0, (p - d) / 0.15))
@@ -175,6 +218,18 @@ def card(title, hl, sub, usc, ucla, line, win, qbs, source, p=1.0):
 .qr .nm{font-weight:800;font-size:34px;line-height:1.05}.qr .nm small{display:block;font-size:24px;color:#6B7280}
 .qr .st{font-family:"Baloo 2";font-weight:800;font-size:40px;text-align:right;line-height:1}
 .qr .st small{display:block;font-family:Nunito;font-size:24px;color:#6B7280}
+.f{position:relative;background:#2D68C4}
+.f>*{position:relative;z-index:1}
+.f>svg.split{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.f>.t{color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.35)}
+.f>.t em{color:#FFD23F}
+.f>.s{color:rgba(255,255,255,.92);text-shadow:0 2px 10px rgba(0,0,0,.35)}
+.tm b{color:#fff;text-shadow:0 3px 12px rgba(0,0,0,.35)}.tm small{color:rgba(255,255,255,.85)}
+.vs{color:rgba(255,255,255,.8)}
+.tm .lg img{filter:drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff)
+  drop-shadow(0 8px 10px rgba(0,0,0,.35))}
+.box{box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.foot,.foot .brand{color:#fff}
 </style>"""
     team = lambda t, cls="": (f'<div class="t1{cls}"><div class="lg">{L._logo(t["logo"], t["name"], 150, 100)}</div>'
                               f'<div><b>{escape(t["name"])}</b><small>{escape(t["sub"])}</small></div></div>')
@@ -184,7 +239,7 @@ def card(title, hl, sub, usc, ucla, line, win, qbs, source, p=1.0):
     q = "".join(f'<div class="qr"><i style="background:{c}"></i><div class="nm">{escape(n)}<small>{escape(s)}</small></div>'
                 f'<div class="st">{escape(v)}<small>{escape(vs)}</small></div></div>' for c, n, s, v, vs in qbs)
     fs, t = L._title(title, hl)
-    body = f'''{L.HCSS}{css}<div class="t" style="--hl:{RED};font-size:{fs}px">{t}</div><div class="s">{escape(sub)}</div>
+    body = f'''{L.HCSS}{css}{split_bg(usc["color"], ucla["color"])}<div class="t" style="font-size:{fs}px">{t}</div><div class="s">{escape(sub)}</div>
 <div class="qs">
  <div class="tm" style="opacity:{fade(0):.2f}">{team(usc)}<div class="vs">at</div>{team(ucla, " r")}</div>
  <div class="box" style="opacity:{fade(.15):.2f};text-align:center"><div class="cap">THE LINE</div>
@@ -202,6 +257,9 @@ def usc_ucla(out_dir, posted=None):
         raise NoContent("USC-UCLA QB post already made")
     rep = C.Report("rivalry usc ucla")
     line = _line(rep)
+    from datetime import datetime, timedelta, timezone
+    if datetime.now(timezone.utc) >= datetime.fromisoformat(line["kick"].replace("Z", "+00:00")) - timedelta(hours=2):
+        raise NoContent("Too close to kickoff (or the game is over): this preview no longer fits.")
     ucla = _splits(UCLA, rep, check_qbs=(TY, MADDEN))
     usc_games = _splits(USC, rep)
     if not rep.ok:

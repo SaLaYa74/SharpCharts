@@ -70,6 +70,12 @@ JOBS = [
     # thanksgiving games... take advantage of these holiday games"). Stats only; each refuses after kickoff.
     Job("rams_packers", "rams_packers", (WED,), "16:15", live=True, start="2026-11-25", big=True,
         note="Reel: Packers at Rams tale of the tape (Wed night, Netflix)"),
+    # Nov 25 breaking news (owner: "potential suitors for aaron rodgers now that he just got cut... major hot topic";
+    # "a funny one about mike mccarthy... over or under 5 meetings"). One-offs; Wednesday tops out at the 5-post max.
+    Job("rodgers_waivers", "rodgers_waivers", (WED,), "16:45", live=True, start="2026-11-25", big=True,
+        note="Reel: Rodgers on waivers, who claims him? (his 2026, teams that need a QB)"),
+    Job("mccarthy_ou", "mccarthy_ou", (WED,), "19:00", live=True, start="2026-11-25", big=True,
+        note="Reel: over/under 5.5 meetings McCarthy slept through (joke poll, all claims attributed)"),
     Job("thanksgiving", "thanksgiving", (THU,), "07:00", live=True, start="2026-11-26", big=True,
         note="Reel: all three Thanksgiving games on one board"),
     Job("usc_ucla",    "usc_ucla",    (THU,), "09:00", live=True, start="2026-11-26", big=True,

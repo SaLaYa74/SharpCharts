@@ -34,6 +34,7 @@ from sharpcharts import ucl as UCL
 from sharpcharts import posts as P
 from sharpcharts import rivalry as RIV
 from sharpcharts import holiday as HOL
+from sharpcharts import news as NEWS
 from sharpcharts import reels as R
 from sharpcharts import sports as S
 from sharpcharts import v2 as V2
@@ -130,6 +131,8 @@ class Runner:
             return ST.BUILDERS_CTX[job.builder](self.ctx, out_dir)
         if job.builder in HOL.BUILDERS_CTX:
             return HOL.BUILDERS_CTX[job.builder](self.ctx, out_dir)
+        if job.builder in NEWS.BUILDERS_CTX:
+            return NEWS.BUILDERS_CTX[job.builder](self.ctx, out_dir)
         if job.builder in V2.BUILDERS:
             return V2.BUILDERS[job.builder](self.ctx, out_dir)
         if job.builder in R.BUILDERS:
@@ -239,7 +242,7 @@ class Runner:
 
 def has_builder(name):
     """True if Runner.build can find this builder (keep in step with Runner.build)."""
-    return name == "archive" or any(name in m for m in (CFP.BUILDERS, UCL.BUILDERS, S.BUILDERS, NBA.BUILDERS, ST.BUILDERS, RIV.BUILDERS, HOL.BUILDERS_CTX,
+    return name == "archive" or any(name in m for m in (CFP.BUILDERS, UCL.BUILDERS, S.BUILDERS, NBA.BUILDERS, ST.BUILDERS, RIV.BUILDERS, HOL.BUILDERS_CTX, NEWS.BUILDERS_CTX,
                                                         ST.BUILDERS_CTX, V2.BUILDERS, R.BUILDERS, P.BUILDERS))
 
 

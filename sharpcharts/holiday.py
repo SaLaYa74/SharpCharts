@@ -145,7 +145,7 @@ def nfl_slate(ctx, out_dir, day, label="Thanksgiving", posted=None):
             lead = a if wa > wb else b
             tag, bg, fg = f"{k:%-I:%M} PT · EDGE: {name(lead).upper()} {max(wa, wb)}-{min(wa, wb)}", "#DCFCE7", "#15803D"
         sd = lambda x: {"seed": "", "logo": logo_uri(x), "name": name(x),
-                        "line": f"{t[x]['record']} · {t[x]['ppg']:.1f} pts · {t[x]['pa'] / t[x]['g']:.1f} allowed"}
+                        "line": f"{t[x]['record']} · {t[x]['ppg']:.1f} / {t[x]['pa'] / t[x]['g']:.1f}"}
         board.append({"l": sd(a), "r": sd(b), "tag": tag + (f" · {g['tv']}" if g["tv"] else ""), "tag_bg": bg, "tag_fg": fg})
         lines.append(f"🦃 {name(a)} ({t[a]['record']}) at {name(b)} ({t[b]['record']}), {k:%-I:%M} PT"
                      f"{' on ' + g['tv'] if g['tv'] else ''}\n   Scoring: {name(a)} {t[a]['ppg']:.1f} ({_ord(off[a])}), "
@@ -153,7 +153,7 @@ def nfl_slate(ctx, out_dir, day, label="Thanksgiving", posted=None):
                      f"({_ord(dfn[a])}), {name(b)} {t[b]['pa'] / t[b]['g']:.1f} ({_ord(dfn[b])}).\n   "
                      + (f"Edge on paper: {name(a if wa > wb else b)} {max(wa, wb)}-{min(wa, wb)}" if wa != wb else "Dead even on paper"))
     title, hl = f"{label}:\n{{hl}}", f"{len(games)} Games, 1 Chart"
-    sub = f"Record · points scored · points allowed · thru Week {ctx.thru_week}"
+    sub = f"Record · points scored / allowed per game · thru Week {ctx.thru_week}"
     cap = (f"Your {label} football, side by side 🦃🏈\n\n" + "\n\n".join(lines) +
            f"\n\n(Edge = who wins more of: record, points scored, points allowed, point differential. Ranks out of 32.)"
            f"\n\nWhich one's the upset? 👇\n\n📤 Send this to the family group chat before kickoff."

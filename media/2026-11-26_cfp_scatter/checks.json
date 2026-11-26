@@ -1,0 +1,1020 @@
+{
+  "subject": "cfp scatter",
+  "counts": {
+    "pass": 197,
+    "warn": 5,
+    "block": 0
+  },
+  "checks": [
+    {
+      "status": "pass",
+      "check": "cfp: ESPN has 25 teams",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: official site lists ranks 1-25 in order",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: both sources show the same release date",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #1 Georgia 10-1 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Georgia record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #2 Utah 11-0 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Utah record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #3 Texas 9-2 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Texas record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #4 Notre Dame 10-1 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Notre Dame record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #5 Tennessee 9-2 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Tennessee record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #6 Alabama 9-2 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Alabama record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #7 Miami 10-1 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Miami record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #8 Wake Forest 10-1 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Wake Forest record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #9 UCLA 10-1 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: UCLA record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #10 BYU 9-2 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: BYU record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #11 Texas Tech 10-1 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Texas Tech record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #12 Oregon 8-3 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Oregon record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #13 Iowa 9-2 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Iowa record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #14 Indiana 9-2 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Indiana record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #15 USC 8-3 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: USC record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #16 Arizona 8-3 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Arizona record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #17 Oklahoma 7-4 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Oklahoma record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #18 Houston 8-3 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Houston record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #19 Louisville 8-3 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Louisville record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #20 Florida 7-4 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Florida record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #21 Ohio State 7-4 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Ohio State record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #22 Ole Miss 7-4 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Ole Miss record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #23 Missouri 7-4 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Missouri record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #24 Washington 7-4 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Washington record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: #25 Nebraska 7-4 matches the official site",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp: Nebraska record plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: full FBS total offense and defense tables",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: total offense ranks agree with yards per game",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: total defense ranks agree with yards per game",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Georgia found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Georgia: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "warn",
+      "check": "Georgia: yards match exactly",
+      "detail": "ESPN 11 g, 4977 gained, 2943 allowed vs NCAA.com 11 g, 4977 gained, 2937 allowed"
+    },
+    {
+      "status": "pass",
+      "check": "Georgia: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Georgia: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Utah found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Utah: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Utah: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Utah: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Utah: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Texas found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Texas: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Texas: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Texas: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Texas: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Notre Dame found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Notre Dame: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Notre Dame: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Notre Dame: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Notre Dame: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Tennessee found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Tennessee: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Tennessee: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Tennessee: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Tennessee: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Alabama found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Alabama: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Alabama: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Alabama: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Alabama: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Miami found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Miami: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Miami: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Miami: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Miami: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Wake Forest found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Wake Forest: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Wake Forest: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Wake Forest: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Wake Forest: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: UCLA found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UCLA: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UCLA: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UCLA: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "UCLA: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: BYU found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BYU: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BYU: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BYU: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "BYU: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Texas Tech found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Texas Tech: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Texas Tech: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Texas Tech: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Texas Tech: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Oregon found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Oregon: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "warn",
+      "check": "Oregon: yards match exactly",
+      "detail": "ESPN 11 g, 4687 gained, 3633 allowed vs NCAA.com 11 g, 4687 gained, 3638 allowed"
+    },
+    {
+      "status": "pass",
+      "check": "Oregon: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Oregon: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Iowa found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Iowa: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Iowa: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Iowa: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Iowa: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Indiana found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Indiana: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Indiana: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Indiana: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Indiana: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: USC found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "USC: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "USC: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "USC: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "USC: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Arizona found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Arizona: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Arizona: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Arizona: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Arizona: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Oklahoma found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Oklahoma: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Oklahoma: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Oklahoma: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Oklahoma: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Houston found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Houston: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Houston: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Houston: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Houston: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Louisville found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Louisville: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Louisville: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Louisville: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Louisville: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Florida found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Florida: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "warn",
+      "check": "Florida: yards match exactly",
+      "detail": "ESPN 11 g, 4352 gained, 3925 allowed vs NCAA.com 11 g, 4346 gained, 3925 allowed"
+    },
+    {
+      "status": "pass",
+      "check": "Florida: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Florida: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Ohio State found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Ohio State: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Ohio State: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Ohio State: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Ohio State: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Ole Miss found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Ole Miss: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Ole Miss: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Ole Miss: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Ole Miss: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Missouri found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Missouri: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Missouri: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Missouri: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Missouri: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Washington found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Washington: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Washington: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Washington: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Washington: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "ncaa: Nebraska found on NCAA.com",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Nebraska: games and yards agree (ESPN box scores vs NCAA.com)",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Nebraska: yards match exactly",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Nebraska: NCAA.com yards per game = yards / games",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "Nebraska: yards per game plausible",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp yards scatter: all 25 teams plotted",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "warn",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": "15 hashtags (Instagram now favors \u22645)"
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_yards.mp4: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_yards.mp4: file size",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_yards.mp4: duration",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_yards.mp4: 1080x1920",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_yards.mp4: has audio",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_yards.mp4: H.264 video",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_yards_cover.jpg: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_yards_cover.jpg: dimensions",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_yards_cover.jpg: not empty",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "cfp_yards_cover.jpg: has visible content",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "warn",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": "15 hashtags (Instagram now favors \u22645)"
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    }
+  ]
+}

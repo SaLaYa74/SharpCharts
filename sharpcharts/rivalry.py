@@ -219,6 +219,8 @@ def card(title, hl, sub, usc, ucla, line, win, qbs, source, p=1.0):
 .qr .nm{font-weight:800;font-size:34px;line-height:1.05}.qr .nm small{display:block;font-size:24px;color:#6B7280}
 .qr .st{font-family:"Baloo 2";font-weight:800;font-size:40px;text-align:right;line-height:1}
 .qr .st small{display:block;font-family:Nunito;font-size:24px;color:#6B7280}
+.st2{display:flex;flex-direction:column;align-items:center}.st2 small{font-size:25px;font-weight:800;color:#6B7280;margin-top:6px;max-width:330px;line-height:1.15}
+.gap{margin-top:14px;text-align:center;font-family:"Baloo 2";font-weight:800;font-size:32px;color:#1F2937}
 .f{position:relative;background:#2D68C4}
 .f>*{position:relative;z-index:1}
 .f>svg.split{position:absolute;inset:0;width:100%;height:100%;z-index:0}
@@ -243,11 +245,13 @@ def card(title, hl, sub, usc, ucla, line, win, qbs, source, p=1.0):
     body = f'''{L.HCSS}{css}{split_bg(usc["color"], ucla["color"])}<div class="t" style="font-size:{fs}px">{t}</div><div class="s">{escape(sub)}</div>
 <div class="qs">
  <div class="tm" style="opacity:{fade(0):.2f}">{team(usc)}<div class="vs">at</div>{team(ucla, " r")}</div>
- <div class="box" style="opacity:{fade(.15):.2f};text-align:center"><div class="cap">THE LINE</div>
-  <div class="mv"><span class="o">{escape(line[0])}</span><span class="a">→</span><span class="n">{escape(line[1])}</span></div>
-  <div style="margin-top:8px"><span class="pill">{escape(line[2])}</span></div></div>
- <div class="box" style="opacity:{fade(.4):.2f}"><div class="cap">WHO WINS?</div>{bar(*win[0])}{bar(*win[1])}</div>
- <div class="box" style="opacity:{fade(.65):.2f}"><div class="cap">UCLA AT QB THIS SEASON</div>{q}</div>
+ <div class="box" style="opacity:{fade(.15):.2f};text-align:center"><div class="cap">THE LINE vs TY'S HIP</div>
+  <div class="mv"><div class="st2"><span class="o">{escape(line[0])}</span><small>{escape(line[3])}</small></div><span class="a">→</span>
+   <div class="st2"><span class="n">{escape(line[1])}</span><small>{escape(line[4])}</small></div></div>
+  <div style="margin-top:10px"><span class="pill">{escape(line[2])}</span></div></div>
+ <div class="box" style="opacity:{fade(.4):.2f}"><div class="cap">WHO WINS?</div>{bar(*win[0])}{bar(*win[1])}
+  <div class="gap">{escape(win[2])}</div></div>
+ <div class="box" style="opacity:{fade(.65):.2f}"><div class="cap">UCLA WITH vs WITHOUT TY</div>{q}</div>
 </div>'''
     return L._page(body, True, source)
 
@@ -282,33 +286,34 @@ def usc_ucla(out_dir, posted=None):
     ucla_w = sum(g["pf"] > g["pa"] for g in ucla)
     ucla_t = {"name": "UCLA", "sub": f"{ucla_w}-{len(ucla) - ucla_w}", "logo": logo_uri(UCLA, "ncaa"), "color": "#2D68C4"}
     rec = lambda s: f"{s['w']}-{s['l']}"
-    qbs = [(GREEN, "Ty Dieffenbach", STATUS_SHORT, rec(ty), f"{ty['ppg']:.1f} pts/g · {ty['papg']:.1f} allowed"),
-           (GRAY, "Madden Iamaleava", "next up if Ty can't go", "0 starts", f"{md['cmp']}-of-{md['att']}, {md['yds']} yds"),
-           (RED, "Nico Iamaleava", "out for season (torn ACL)", rec(nico), f"{nico['ppg']:.1f} pts/g · {nico['papg']:.1f} allowed")]
+    # Nov 25 (owner: "make it a little more obvious... the difference is being driven by Ty"): with vs without Ty only.
+    qbs = [(GREEN, "WITH Ty", "Dieffenbach · " + STATUS_SHORT, rec(ty), f"as starter · {ty['ppg']:.1f} pts/g · {ty['papg']:.1f} allowed"),
+           (RED, "WITHOUT Ty", "backup Madden Iamaleava", "0 starts", f"{md['cmp']}-of-{md['att']}, {md['yds']} yds this season")]
     from datetime import datetime
     from zoneinfo import ZoneInfo
     kick = datetime.fromisoformat(line["kick"].replace("Z", "+00:00")).astimezone(ZoneInfo("America/Los_Angeles"))
     when = f"{kick:%a} {kick:%-I:%M} PT" + (f" · {line['tv']}" if line["tv"] else "")
-    title, hl = "Is One QB Worth\n{hl}?", f"{moved:g} Points"
-    sub = f"USC at UCLA · {when} · {STATUS}"
+    title, hl = "UCLA's QB Is Hurt.\n{hl}", "Vegas Noticed."
+    sub = f"{ucla_t['sub']} UCLA is a home underdog to {usc_t['sub']} USC · {when}"
     source = "DraftKings via ESPN · Action Network · ESPN"
-    win = [("Betting market", mkt_usc, mkt_ucla), ("ESPN FPI model", line["fpi_usc"], line["fpi_ucla"])]
+    win = [("ESPN computer model", line["fpi_usc"], line["fpi_ucla"]), ("Betting market", mkt_usc, mkt_ucla),
+           f"Same game, a {abs(line['fpi_ucla'] - mkt_ucla):.0f}-point gap. The big unknown: Ty."]
     cap = "\n".join([
-        f"Is Ty Dieffenbach worth {moved:g} points? 🏈",
+        f"Why is {ucla_t['sub']} UCLA a home underdog to {usc_t['sub']} USC? Its quarterback's hip. 🏈",
         "",
-        f"USC at UCLA, {kick:%A} {kick:%-I:%M} PT{' on ' + line['tv'] if line['tv'] else ''}. UCLA's QB was carted off "
-        "at Michigan last week. " + STATUS_CAPTION,
+        f"USC at UCLA, {kick:%A} {kick:%-I:%M} PT{' on ' + line['tv'] if line['tv'] else ''}. UCLA QB Ty Dieffenbach was "
+        "carted off at Michigan last Saturday. " + STATUS_CAPTION,
         "",
         f"📉 The line: {fmt(line['open'])} when DraftKings opened it. {fmt(line['now'])} now, "
         f"{moved:g} points toward UCLA. The other major books are all within a point.",
         f"🎲 Who wins? Betting market: USC {mkt_usc:.0f}%, UCLA {mkt_ucla:.0f}% (it was UCLA {open_ucla:.0f}% at the open). "
         f"ESPN's FPI model: UCLA {line['fpi_ucla']:.0f}%.",
         "",
-        "UCLA at QB this season:",
-        f"✅ Ty Dieffenbach starting: {rec(ty)}, {ty['ppg']:.1f} points a game, {ty['papg']:.1f} allowed "
+        "UCLA with vs without Ty:",
+        f"✅ With Ty starting: {rec(ty)}, {ty['ppg']:.1f} points a game, {ty['papg']:.1f} allowed "
         f"({tys['yds']:,} passing yards, {tys['td']} TD, {tys['int']} INT)",
-        f"❓ Madden Iamaleava, next up: no starts, {md['cmp']} of {md['att']} for {md['yds']} yards",
-        f"🚑 Nico Iamaleava, out for the season: {rec(nico)}, {nico['ppg']:.1f} points a game",
+        f"❓ Without him: backup Madden Iamaleava has no starts, {md['cmp']} of {md['att']} for {md['yds']} yards this season",
+        f"(Ty only took over after starter Nico Iamaleava tore his ACL on Oct 10. UCLA was {rec(nico)} with Nico.)",
         "",
         f"USC: {usc_t['sub']}, {usc_ppg:.1f} points a game, {usc_pa:.1f} allowed.",
         "",
@@ -322,7 +327,9 @@ def usc_ucla(out_dir, posted=None):
     ])
     C.caption(rep, cap)
     return _post(out_dir, key, "usc_ucla_qb", lambda p: card(title, hl, sub, usc_t, ucla_t,
-                 (fmt(line["open"]), fmt(line["now"]), f"{moved:g} points toward UCLA"), win, qbs, source, p=p),
+                 (fmt(line["open"]), fmt(line["now"]), f"{moved:g} points back toward UCLA as Ty's outlook improved",
+                  "Opening line · Ty was carted off Sat.", "Now · Mon: \"doing better than we thought\""),
+                 win, qbs, source, p=p),
                  cap, rep, hold=7.0)
 
 

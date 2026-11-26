@@ -1329,6 +1329,11 @@
     "detail": "Only 3 NBA games on 2026-11-24.",
     "status": "skipped"
   },
+  "2026-11-25:rams_packers": {
+    "at": "2026-11-25T16:15-08:00",
+    "detail": "https://www.instagram.com/reel/DgLy7ojhuGC/",
+    "status": "posted"
+  },
   "2026-11-25:st_scatter": {
     "at": "2026-11-25T12:00-08:00",
     "detail": "https://www.instagram.com/reel/DgLV6bRBom9/",
@@ -1338,5 +1343,10 @@
     "at": "2026-11-25T14:00-08:00",
     "detail": "https://www.instagram.com/reel/DgLjojCKR5L/",
     "status": "posted"
+  },
+  "2026-11-25:usc_ucla_ci": {
+    "at": "2026-11-25T16:15-08:00",
+    "detail": "built, checked and hosting verified, not published",
+    "status": "previewed"
   }
 }

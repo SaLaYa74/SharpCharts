@@ -1,0 +1,190 @@
+{
+  "subject": "rivalry usc ucla",
+  "counts": {
+    "pass": 36,
+    "warn": 0,
+    "block": 0
+  },
+  "checks": [
+    {
+      "status": "pass",
+      "check": "odds: DraftKings line on ESPN",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "odds: both sides of the spread match",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "fpi: home + away add to 100%",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "odds: game found on Action Network",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "odds: at least 3 other books quote it",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "odds: every book within 1 point of DraftKings",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "odds: Action Network's opener near DraftKings'",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "26: game results add up to ESPN's record",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "5092275: box scores add up to his ESPN season line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "5142594: box scores add up to his ESPN season line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "30: game results add up to ESPN's record",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "qb: UCLA starts split between Nico and Ty",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "qb: Madden Iamaleava has no starts",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "odds: USC still favored, line moved toward UCLA",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: responsible-gambling line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "usc_ucla_qb.mp4: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "usc_ucla_qb.mp4: file size",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "usc_ucla_qb.mp4: duration",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "usc_ucla_qb.mp4: 1080x1920",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "usc_ucla_qb.mp4: has audio",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "usc_ucla_qb.mp4: H.264 video",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "usc_ucla_qb_cover.jpg: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "usc_ucla_qb_cover.jpg: dimensions",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "usc_ucla_qb_cover.jpg: not empty",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "usc_ucla_qb_cover.jpg: has visible content",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: responsible-gambling line",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    }
+  ]
+}

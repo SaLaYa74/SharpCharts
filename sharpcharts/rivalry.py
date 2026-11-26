@@ -333,4 +333,87 @@ def usc_ucla(out_dir, posted=None):
                  cap, rep, hold=7.0)
 
 
-BUILDERS = {"usc_ucla": usc_ucla}
+TAPE_CSS = """<style>.f{position:relative;background:#2D68C4}.f>*{position:relative;z-index:1}
+.f>svg.split{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.f>.t{color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.35)}.f>.t em{color:#FFD23F}
+.f>.s{color:rgba(255,255,255,.92);text-shadow:0 2px 10px rgba(0,0,0,.35)}
+.f .hname{color:#fff!important;text-shadow:0 3px 12px rgba(0,0,0,.35)}.f .hsub{color:rgba(255,255,255,.88)!important}.f .hvs{color:rgba(255,255,255,.8)!important}
+.f .hrow .hl{color:#fff!important;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.hlogo img{filter:drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff)
+  drop-shadow(0 8px 10px rgba(0,0,0,.35)) !important}
+.hv{box-shadow:0 8px 24px rgba(0,0,0,.25)}.foot,.foot .brand{color:#fff}</style>"""
+
+
+def usc_ucla_tape(out_dir, posted=None):
+    """Friday-night follow-up (owner, Nov 25: "Maybe another on friday night"): the season side by side, against the
+    latest line. Same checks as the Thursday post; refuses within 2 hours of kickoff."""
+    from datetime import datetime, timedelta, timezone
+    from zoneinfo import ZoneInfo
+    rep = C.Report("rivalry usc ucla tape")
+    line = _line(rep)
+    kick = datetime.fromisoformat(line["kick"].replace("Z", "+00:00"))
+    if datetime.now(timezone.utc) >= kick - timedelta(hours=2):
+        raise NoContent("Too close to kickoff (or the game is over).")
+    ucla = _splits(UCLA, rep, check_qbs=(TY, MADDEN))
+    usc = _splits(USC, rep)
+    if not rep.ok:
+        raise DataError("USC-UCLA checks failed: " + "; ".join(i["detail"] for i in rep.blocked)[:400])
+
+    def tot(gs):
+        w = sum(g["pf"] > g["pa"] for g in gs)
+        return {"rec": f"{w}-{len(gs) - w}", "pct": w / len(gs), "ppg": sum(g["pf"] for g in gs) / len(gs),
+                "pa": sum(g["pa"] for g in gs) / len(gs)}
+    a, b = tot(usc), tot(ucla)
+    a["diff"], b["diff"] = a["ppg"] - a["pa"], b["ppg"] - b["pa"]
+    cats = [("Record", "pct", True, lambda t: t["rec"]), ("Points / game", "ppg", True, lambda t: f"{t['ppg']:.1f}"),
+            ("Allowed / game", "pa", False, lambda t: f"{t['pa']:.1f}"), ("Point diff / game", "diff", True, lambda t: f"{t['diff']:+.1f}")]
+    rows, wa, wb = [], 0, 0
+    for label, k, high, shown in cats:
+        x, y = round(a[k], 3), round(b[k], 3)
+        win = None if x == y else ("l" if (x > y) == high else "r")
+        wa, wb = wa + (win == "l"), wb + (win == "r")
+        rows.append({"label": label, "l": shown(a), "r": shown(b), "lsub": "", "rsub": "", "win": win})
+    fmt = lambda v: f"USC {v:+g}".replace("-", "−")
+    ty = _by_starter(ucla, TY)
+    md = _season(MADDEN)
+    pt = kick.astimezone(ZoneInfo("America/Los_Angeles"))
+    if wb > wa and line["now"] < 0:
+        title, hl = f"UCLA Wins on Paper {wb}-{wa}.\n{{hl}}", f"The Line Says USC by {abs(line['now']):g}."
+        tally = "The big unknown: Ty Dieffenbach's hip."
+    else:
+        title, hl = "USC vs UCLA:\n{hl}", "Tale of the Tape"
+        tally = f"Line: {fmt(line['now'])} · {STATUS_SHORT}"
+    sub = f"{pt:%a} {pt:%-I:%M} PT · Line: {fmt(line['now'])} · {STATUS}"
+    left = {"logo": logo_uri(USC, "ncaa"), "name": "USC", "sub": a["rec"]}
+    right = {"logo": logo_uri(UCLA, "ncaa"), "name": "UCLA", "sub": b["rec"]}
+    lines = "\n".join(f"• {r['label']}: USC {r['l']}, UCLA {r['r']}" for r in rows)
+    cap = "\n".join([
+        f"UCLA has the better season. The betting line still has USC by {abs(line['now']):g}. The big unknown: one hip. 🏈"
+        if wb > wa and line["now"] < 0 else "USC at UCLA, side by side. 🏈",
+        "",
+        f"Saturday {pt:%-I:%M} PT. UCLA QB Ty Dieffenbach hurt his hip at Michigan last week. " + STATUS_CAPTION,
+        "",
+        "The season, side by side:",
+        lines,
+        "",
+        f"📉 The line: {fmt(line['open'])} at the open, {fmt(line['now'])} now (DraftKings).",
+        f"✅ UCLA with Ty starting: {ty['w']}-{ty['l']}. ❓ Backup Madden Iamaleava: no starts, {md['cmp']} of {md['att']} "
+        f"for {md['yds']} yards this season.",
+        "",
+        "If Ty plays, who wins? If he can't? 👇",
+        "📤 Send this to a Trojan and a Bruin.",
+        "",
+        "Odds: DraftKings via ESPN, checked against other books on Action Network. Stats: ESPN box scores (results match "
+        "each team's ESPN record). Not betting advice. 21+, gamble responsibly: 1-800-GAMBLER.",
+        "#usc #ucla #collegefootball #rivalryweek #cfb",
+    ])
+    C.caption(rep, cap)
+    source = "DraftKings via ESPN · Action Network · ESPN"
+
+    def html(p):
+        h = L.h2h(title, hl, sub, left, right, rows, tally, source, p=p, hl_color="#FFD23F", tally_bg="#1F2937")
+        return h.replace('<div class="f tall">', '<div class="f tall">' + TAPE_CSS + split_bg("#990000", "#2D68C4"), 1)
+    return _post(out_dir, "cfb-2026-usc-ucla-tape", "usc_ucla_tape", html, cap, rep, hold=6.0)
+
+
+BUILDERS = {"usc_ucla": usc_ucla, "usc_ucla_tape": usc_ucla_tape}

@@ -66,6 +66,12 @@ JOBS = [
         note="Reel: playoff game day, 4th game"),
     # Nov 25 (owner: "a post about USC versus UCLA and show the odds... with and without Ty Dieffenbach"; "post it at
     # 9am PST thanksgiving day"). One-off, owner approved the preview. The builder refuses within 2 hours of kickoff.
+    # Nov 25 (owner: "post about this wednesday night game (rams vs packers)... a post out tmrw morning about the
+    # thanksgiving games... take advantage of these holiday games"). Stats only; each refuses after kickoff.
+    Job("rams_packers", "rams_packers", (WED,), "16:15", live=True, start="2026-11-25", big=True,
+        note="Reel: Packers at Rams tale of the tape (Wed night, Netflix)"),
+    Job("thanksgiving", "thanksgiving", (THU,), "07:00", live=True, start="2026-11-26", big=True,
+        note="Reel: all three Thanksgiving games on one board"),
     # TEMP (remove after Nov 25): preview-only build on the GitHub runner, to prove every source answers from there.
     Job("usc_ucla_ci", "usc_ucla",    (WED,), "16:00", live=False, start="2026-11-25", note="TEMP preview: CI source check"),
     Job("usc_ucla",    "usc_ucla",    (THU,), "09:00", live=True, start="2026-11-26",

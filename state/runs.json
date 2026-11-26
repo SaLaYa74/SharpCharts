@@ -1363,5 +1363,15 @@
     "at": "2026-11-26T06:00-08:00",
     "detail": "7 snapshot files",
     "status": "done"
+  },
+  "2026-11-26:thanksgiving": {
+    "at": "2026-11-26T07:00-08:00",
+    "detail": "https://www.instagram.com/reel/DgNYOWjKAia/",
+    "status": "posted"
+  },
+  "2026-11-26:ucl_giants": {
+    "at": "2026-11-26T07:00-08:00",
+    "detail": "ucl-giants-2027-md5 already posted",
+    "status": "skipped"
   }
 }

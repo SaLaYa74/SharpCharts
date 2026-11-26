@@ -1,0 +1,110 @@
+{
+  "subject": "news mccarthy over under",
+  "counts": {
+    "pass": 20,
+    "warn": 0,
+    "block": 0
+  },
+  "checks": [
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mccarthy_ou.mp4: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mccarthy_ou.mp4: file size",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mccarthy_ou.mp4: duration",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mccarthy_ou.mp4: 1080x1920",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mccarthy_ou.mp4: has audio",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mccarthy_ou.mp4: H.264 video",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mccarthy_ou_cover.jpg: rendered",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mccarthy_ou_cover.jpg: dimensions",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mccarthy_ou_cover.jpg: not empty",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "mccarthy_ou_cover.jpg: has visible content",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: length",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: hashtag limit",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: 5 hashtags or fewer",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: brand language",
+      "detail": ""
+    },
+    {
+      "status": "pass",
+      "check": "caption: no missing values",
+      "detail": ""
+    }
+  ]
+}

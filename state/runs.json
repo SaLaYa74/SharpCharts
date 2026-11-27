@@ -1404,6 +1404,11 @@
     "detail": "8 snapshot files",
     "status": "done"
   },
+  "2026-11-27:nba_scatter": {
+    "at": "2026-11-27T15:00-08:00",
+    "detail": "https://www.instagram.com/reel/DgQz_Ldgjeo/",
+    "status": "posted"
+  },
   "2026-11-27:nba_scorers": {
     "at": "2026-11-27T09:30-08:00",
     "detail": "Only 0 NBA games on 2026-11-26.",

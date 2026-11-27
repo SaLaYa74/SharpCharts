@@ -1261,6 +1261,16 @@
     "scheduled": "15:00",
     "trial": false
   },
+  "nba-2027-w2648-scatter": {
+    "images": 1,
+    "job": "nba_scatter",
+    "media": "reel",
+    "media_id": "18031007516702761",
+    "permalink": "https://www.instagram.com/reel/DgQz_Ldgjeo/",
+    "posted_at": "2026-11-27T23:01:49+00:00",
+    "scheduled": "15:00",
+    "trial": false
+  },
   "news-2026-11-25-mccarthy-ou": {
     "images": 1,
     "job": "mccarthy_ou",

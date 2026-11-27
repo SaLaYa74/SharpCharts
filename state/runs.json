@@ -1398,5 +1398,10 @@
     "at": "2026-11-27T06:00-08:00",
     "detail": "8 snapshot files",
     "status": "done"
+  },
+  "2026-11-27:ucl_giants": {
+    "at": "2026-11-27T07:00-08:00",
+    "detail": "ucl-giants-2027-md5 already posted",
+    "status": "skipped"
   }
 }

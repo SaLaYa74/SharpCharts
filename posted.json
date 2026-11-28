@@ -831,6 +831,16 @@
     "scheduled": "09:00",
     "trial": false
   },
+  "cfb-2026-usc-ucla-tape": {
+    "images": 1,
+    "job": "usc_ucla_fri",
+    "media": "reel",
+    "media_id": "18140337187637620",
+    "permalink": "https://www.instagram.com/reel/DgRImhvpFB9/",
+    "posted_at": "2026-11-28T02:02:03+00:00",
+    "scheduled": "18:00",
+    "trial": false
+  },
   "cfp-rankings-2026-11-03": {
     "images": 1,
     "job": "cfp_rankings",
